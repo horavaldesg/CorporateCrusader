@@ -14,6 +14,11 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
+    public void Play()
+    {
+        //Play
+    }
+
     public void OptionsToggle(bool state)
     {
         //Toggles options menu depending on state recieved
