@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _currentVelocity;
     private SpriteRenderer playerSprite;
     private SpriteRenderer gunRenderer;
-    
+
+    private const string BulletTag = "Bullet";
     private void Awake()
     {
         TryGetComponent(out _cc);
@@ -73,5 +74,21 @@ public class PlayerController : MonoBehaviour
         gunRenderer.flipY = moveDir.y < 0;
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, moveDir);
         gunRotate.rotation = Quaternion.RotateTowards(gunRotate.transform.rotation, rotation, gunRotationSpeed * Time.deltaTime * 100);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        var whatHit = hit.collider.transform.tag;
+
+        switch (whatHit)
+        {
+            case BulletTag:
+                break;
+        }
+    }
+
+    private void TakeDamage()
+    {
+        //Takes Damage
     }
 }
