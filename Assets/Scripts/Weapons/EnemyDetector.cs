@@ -19,14 +19,11 @@ public class EnemyDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collided with: " + other.gameObject.name);
         if(!other.CompareTag("Enemy")) return;
         enemies.Add(other.gameObject);
         if(!_collided)
             StartCheck?.Invoke();
         _collided = true;
-
-        Debug.Log("Collided with enemy: " + other.gameObject.name);
     }
 
     private void OnTriggerExit2D(Collider2D other)

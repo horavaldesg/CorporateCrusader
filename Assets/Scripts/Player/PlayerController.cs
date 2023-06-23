@@ -7,20 +7,29 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float playerSpeed;
     [SerializeField] private Transform gunRotate;
+    [SerializeField] private RectTransform healthBar;
     [SerializeField][Range(0,1)] private float smoothMovement;
     [SerializeField] private float gunRotationSpeed;
     private PlayerControls _controls;
     private Vector2 _move;
-    private CharacterController _cc;
+    private Rigidbody2D _rb;
     private Vector3 _dampSpeed;
     private Vector3 _currentVelocity;
     private SpriteRenderer playerSprite;
     private SpriteRenderer gunRenderer;
 
+    private PlayerStats _playerStats;
+    private float _baseHealth;
+    private float _health;
     private const string BulletTag = "Bullet";
+    private const string EnemyTag = "Enemy";
+    
     private void Awake()
     {
-        TryGetComponent(out _cc);
+        _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
+        _baseHealth = _playerStats.health;
+        _health = _baseHealth;
+        TryGetComponent(out _rb);
         TryGetComponent(out playerSprite);
         gunRotate.TryGetComponent(out gunRenderer);
         _controls = new PlayerControls();
@@ -41,7 +50,7 @@ public class PlayerController : MonoBehaviour
         _controls.Player.Disable();
     }
 
-    private void Update()
+    private void FixedUpdate()
     { 
         //Move Function
         Move();
@@ -62,8 +71,8 @@ public class PlayerController : MonoBehaviour
         );
 
         //Moves Player
-        _cc.Move(_currentVelocity * Time.deltaTime);
-        if (_cc.velocity.magnitude == 0) return;
+        _rb.velocity = _currentVelocity;
+        if (_rb.velocity.magnitude is > -0.1f and < 0.1f) return;
         playerSprite.flipX = _move.x < 0;
         RotateGun();
     }
@@ -76,19 +85,10 @@ public class PlayerController : MonoBehaviour
         gunRotate.rotation = Quaternion.RotateTowards(gunRotate.transform.rotation, rotation, gunRotationSpeed * Time.deltaTime * 100);
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        var whatHit = hit.collider.transform.tag;
-
-        switch (whatHit)
-        {
-            case BulletTag:
-                break;
-        }
-    }
-
-    private void TakeDamage()
+    public void TakeDamage(float damage)
     {
         //Takes Damage
+        _health -= damage;
+        healthBar.localScale = new Vector3(_health / _baseHealth, 1, 1);
     }
 }
