@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
-
+    
     private void AddXp()
     {
         //Adds Xp

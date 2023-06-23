@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,12 +11,14 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private GameObject optionsMenu;
     private PlayerControls _controls;
-
+    [SerializeField] private TextMeshProUGUI killsText;
+    
     private void Awake()
     {
         Instance = this;
         _controls = new PlayerControls();
         _controls.Player.Escape.performed += tgb => OptionsToggle();
+        UpdateUI(0);
     }
     
     public void Play()
@@ -33,12 +36,14 @@ public class UIManager : MonoBehaviour
     {
         //Enables Player Input
         _controls.Player.Enable();
+        EnemyDetector.EnemyDied += UpdateUI;
     }
 
     private void OnDisable()
     {
         //Disables Player Input
         _controls.Player.Disable();
+        EnemyDetector.EnemyDied -= UpdateUI;
     }
 
     public void Resume()
@@ -49,6 +54,11 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         //Restarts Level
+    }
+    
+    private void UpdateUI(int enemiesKilled)
+    {
+        killsText.SetText(enemiesKilled == 0 ? "0" : enemiesKilled.ToString("##"));
     }
 
     public void QuitToMainMenu()

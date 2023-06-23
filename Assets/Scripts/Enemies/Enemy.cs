@@ -31,13 +31,13 @@ public class Enemy : MonoBehaviour
         health -= damage;
         healthBar.localScale = new Vector3(health / _baseHealth, 1, 1);
         health = Mathf.Clamp(health, 0, _baseHealth);
+        if(health <= 0)
+            EnemyDied();
     }
 
-    private void Update()
+    private void EnemyDied()
     {
-        if (!(health <= 0)) return;
-        EnemyDetector.Instance.enemies.Remove(gameObject);
-        Destroy(gameObject);
+        EnemyDetector.Instance.EnemyKilled(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
