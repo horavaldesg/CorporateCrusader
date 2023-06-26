@@ -3,15 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
     private EnemyStats _enemyStats;
     public float health;
-
+    
     private float _baseHealth;
     public float damage;
     [SerializeField] private RectTransform healthBar;
+    [SerializeField] private float amountOfXpToDrop;
+    [SerializeField] private GameObject xpObject;
 
     private void Awake()
     {
@@ -37,7 +40,21 @@ public class Enemy : MonoBehaviour
 
     private void EnemyDied()
     {
+        DropXp();
         EnemyDetector.Instance.EnemyKilled(gameObject);
+    }
+
+    private void DropXp()
+    {
+        for (int i = 0; i < amountOfXpToDrop; i++)
+        {
+            var radius = 0.75f;
+            var randomPos = Random.insideUnitSphere * radius;
+            randomPos += transform.position;
+
+            var go = Instantiate(xpObject, randomPos, Quaternion.identity);
+            go.transform.position = randomPos;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

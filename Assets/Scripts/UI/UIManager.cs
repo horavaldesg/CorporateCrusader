@@ -12,15 +12,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject optionsMenu;
     private PlayerControls _controls;
     [SerializeField] private TextMeshProUGUI killsText;
+    [SerializeField] private RectTransform xpBar;
     
     private void Awake()
     {
         Instance = this;
         _controls = new PlayerControls();
         _controls.Player.Escape.performed += tgb => OptionsToggle();
-        UpdateUI(0);
     }
-    
+
+    private void Start()
+    {
+        UpdateXpBar(0);
+        UpdateKills(0);
+    }
+
     public void Play()
     {
         //Play
@@ -36,14 +42,16 @@ public class UIManager : MonoBehaviour
     {
         //Enables Player Input
         _controls.Player.Enable();
-        EnemyDetector.EnemyDied += UpdateUI;
+        EnemyDetector.EnemyDied += UpdateKills;
+        GameManager.XpAdded += UpdateXpBar;
     }
 
     private void OnDisable()
     {
         //Disables Player Input
         _controls.Player.Disable();
-        EnemyDetector.EnemyDied -= UpdateUI;
+        EnemyDetector.EnemyDied -= UpdateKills;
+        GameManager.XpAdded -= UpdateXpBar;
     }
 
     public void Resume()
@@ -56,9 +64,16 @@ public class UIManager : MonoBehaviour
         //Restarts Level
     }
     
-    private void UpdateUI(int enemiesKilled)
+    private void UpdateKills(int enemiesKilled)
     {
         killsText.SetText(enemiesKilled == 0 ? "0" : enemiesKilled.ToString("##"));
+    }
+
+    private void UpdateXpBar(int coinsCollected)
+    {
+        var xpToAdd = (float)coinsCollected / GameManager.Instance.TotalXp;
+        var xpBarXScaler = Mathf.Clamp(xpToAdd, 0, 1);
+        xpBar.localScale = new Vector3(xpBarXScaler, 1, 1);
     }
 
     public void QuitToMainMenu()
