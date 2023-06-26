@@ -7,6 +7,7 @@ public class XpCollider : MonoBehaviour
 {
     [SerializeField] private int xpToAdd;
     private bool _moveTowardsPlayer;
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(!other.CompareTag("XPPickUpCollider")) return;
