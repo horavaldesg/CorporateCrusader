@@ -12,10 +12,10 @@ public class GameManager : MonoBehaviour
     public int TotalXp
     {
         get;
-        set;
+        private set;
     }
     
-    public int CurrentXp
+    private int CurrentXp
     {
         get;
         set;

@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
     [SerializeField] private float playerSpeed;
     [SerializeField] private Transform gunRotate;
     [SerializeField] private RectTransform healthBar;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     
     private void Awake()
     {
+        Instance = this;
         _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
         _baseHealth = _playerStats.health;
         _health = _baseHealth;
@@ -83,6 +86,12 @@ public class PlayerController : MonoBehaviour
         gunRenderer.flipY = moveDir.y < 0;
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, moveDir);
         gunRotate.rotation = Quaternion.RotateTowards(gunRotate.transform.rotation, rotation, gunRotationSpeed * Time.deltaTime * 100);
+    }
+
+    [NotNull]
+    public Transform CurrentPlayerTransform()
+    {
+        return gameObject.transform;
     }
 
     public void TakeDamage(float damage)
