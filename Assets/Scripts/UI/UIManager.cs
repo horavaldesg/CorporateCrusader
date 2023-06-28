@@ -10,34 +10,22 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     
     [SerializeField] private GameObject optionsMenu;
-    private PlayerControls _controls;
-    [SerializeField] private TextMeshProUGUI killsText;
+    [SerializeField] private TMP_Text enemiesKilledText;
     [SerializeField] private RectTransform xpBar;
+
+    private PlayerControls _controls;
+    private Animator _anim;
     
     private void Awake()
     {
         Instance = this;
+
         _controls = new PlayerControls();
-        _controls.Player.Escape.performed += tgb => OptionsToggle();
+        _controls.Player.Escape.performed += tgb => ToggleOptions();
+
+        _anim = GetComponent<Animator>();
     }
 
-    private void Start()
-    {
-        UpdateXpBar(0);
-        UpdateKills(0);
-    }
-
-    public void Play()
-    {
-        //Play
-    }
-
-    private void OptionsToggle()
-    {
-        //Toggles options menu depending on state recieved
-        optionsMenu.SetActive(!optionsMenu.activeSelf);
-    }
-    
     private void OnEnable()
     {
         //Enables Player Input
@@ -54,19 +42,15 @@ public class UIManager : MonoBehaviour
         GameManager.XpAdded -= UpdateXpBar;
     }
 
-    public void Resume()
+    private void Start()
     {
-        OptionsToggle();
+        UpdateKills(0);
+        UpdateXpBar(0);
     }
 
-    public void Restart()
-    {
-        //Restarts Level
-    }
-    
     private void UpdateKills(int enemiesKilled)
     {
-        killsText.SetText(enemiesKilled == 0 ? "0" : enemiesKilled.ToString("##"));
+        enemiesKilledText.SetText(enemiesKilled == 0 ? "0" : enemiesKilled.ToString("##"));
     }
 
     private void UpdateXpBar(int coinsCollected)
@@ -74,6 +58,14 @@ public class UIManager : MonoBehaviour
         var xpToAdd = (float)coinsCollected / GameManager.Instance.TotalXp;
         var xpBarXScaler = Mathf.Clamp(xpToAdd, 0, 1);
         xpBar.localScale = new Vector3(xpBarXScaler, 1, 1);
+    }
+
+    public void ToggleOptions() => _anim.SetTrigger("ToggleOptions");
+    public void ToggleInventory() => _anim.SetTrigger("ToggleInventory");
+
+    public void Restart()
+    {
+        //Restarts Level
     }
 
     public void QuitToMainMenu()
