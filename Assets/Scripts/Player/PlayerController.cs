@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,14 +11,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed;
     [SerializeField] private Transform gunRotate;
     [SerializeField] private RectTransform healthBar;
-    [SerializeField][Range(0,1)] private float smoothMovement;
+    [SerializeField] [Range(0, 1)] private float smoothMovement;
     [SerializeField] private float gunRotationSpeed;
+    [SerializeField] private Transform bodyTransform;
     private PlayerControls _controls;
     private Vector2 _move;
     private Rigidbody2D _rb;
     private Vector3 _dampSpeed;
     private Vector3 _currentVelocity;
-    private SpriteRenderer playerSprite;
     private SpriteRenderer gunRenderer;
 
     private PlayerStats _playerStats;
@@ -25,7 +26,10 @@ public class PlayerController : MonoBehaviour
     private float _health;
     private const string BulletTag = "Bullet";
     private const string EnemyTag = "Enemy";
-    
+
+    private const int XpMaxCollection = 150;
+    public List<GameObject> xpToCollect = new List<GameObject>();
+
     private void Awake()
     {
         Instance = this;
@@ -33,7 +37,6 @@ public class PlayerController : MonoBehaviour
         _baseHealth = _playerStats.health;
         _health = _baseHealth;
         TryGetComponent(out _rb);
-        TryGetComponent(out playerSprite);
         gunRotate.TryGetComponent(out gunRenderer);
         _controls = new PlayerControls();
         //Movement Player Input
@@ -54,7 +57,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    { 
+    {
         //Move Function
         Move();
     }
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         //Worlds Space of player
         var movement = transform.TransformDirection(_move);
-
+        
         //Speed damp
         _currentVelocity = Vector3.SmoothDamp
         (
@@ -76,7 +79,8 @@ public class PlayerController : MonoBehaviour
         //Moves Player
         _rb.velocity = _currentVelocity;
         if (_rb.velocity.magnitude is > -0.1f and < 0.1f) return;
-        playerSprite.flipX = _move.x < 0;
+        bodyTransform.rotation = Quaternion.Euler(0, _move.x < 0 ? 180 : 0, 0);
+        //playerSprite.flipX = _move.x < 0;
         RotateGun();
     }
 
@@ -85,7 +89,8 @@ public class PlayerController : MonoBehaviour
         var moveDir = new Vector2(-_move.y, _move.x);
         gunRenderer.flipY = moveDir.y < 0;
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, moveDir);
-        gunRotate.rotation = Quaternion.RotateTowards(gunRotate.transform.rotation, rotation, gunRotationSpeed * Time.deltaTime * 100);
+        gunRotate.rotation = Quaternion.RotateTowards(gunRotate.transform.rotation, rotation,
+            gunRotationSpeed * Time.deltaTime * 100);
     }
 
     [NotNull]
@@ -94,10 +99,28 @@ public class PlayerController : MonoBehaviour
         return gameObject.transform;
     }
 
+    private int XpCollected { get; set; }
+
+    public bool CanCollect()
+    {
+        return XpCollected <= XpMaxCollection;
+    }
+
     public void TakeDamage(float damage)
     {
         //Takes Damage
+        if (XpCollected >= XpMaxCollection)
+        {
+            StartCoroutine(ResetXpCollected());
+        }
+
         _health -= damage;
-        healthBar.localScale = new Vector3(_health / _baseHealth, 1, 1);
+        healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
+    }
+
+    private IEnumerator ResetXpCollected()
+    {
+        yield return new WaitForSeconds(0.15f);
+        XpCollected = 0;
     }
 }

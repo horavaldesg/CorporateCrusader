@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private TMP_Text enemiesKilledText;
+    [SerializeField] private TMP_Text levelText;
     [SerializeField] private RectTransform xpBar;
-
+    private Image _xpBarFill;
     private PlayerControls _controls;
     private Animator _anim;
+    private bool _canAddLevel;
     
     private void Awake()
     {
@@ -22,7 +25,7 @@ public class UIManager : MonoBehaviour
 
         _controls = new PlayerControls();
         _controls.Player.Escape.performed += tgb => ToggleOptions();
-
+        xpBar.TryGetComponent(out _xpBarFill);
         _anim = GetComponent<Animator>();
     }
 
@@ -31,7 +34,7 @@ public class UIManager : MonoBehaviour
         //Enables Player Input
         _controls.Player.Enable();
         EnemyDetector.EnemyDied += UpdateKills;
-        GameManager.XpAdded += UpdateXpBar;
+        GameManager.LevelIncreased += LevelUpdated;
     }
 
     private void OnDisable()
@@ -40,12 +43,14 @@ public class UIManager : MonoBehaviour
         _controls.Player.Disable();
         EnemyDetector.EnemyDied -= UpdateKills;
         GameManager.XpAdded -= UpdateXpBar;
+        GameManager.LevelIncreased -= LevelUpdated;
     }
 
     private void Start()
     {
         UpdateKills(0);
         UpdateXpBar(0);
+        LevelUpdated(GameManager.Instance.CurrentLevel = 1);
     }
 
     private void UpdateKills(int enemiesKilled)
@@ -53,11 +58,20 @@ public class UIManager : MonoBehaviour
         enemiesKilledText.SetText(enemiesKilled == 0 ? "0" : enemiesKilled.ToString("##"));
     }
 
-    private void UpdateXpBar(int coinsCollected)
+    public static void UpdateXpBar(int coinsCollected)
     {
         var xpToAdd = (float)coinsCollected / GameManager.Instance.TotalXp;
         var xpBarXScaler = Mathf.Clamp(xpToAdd, 0, 1);
-        xpBar.localScale = new Vector3(xpBarXScaler, 1, 1);
+        Instance._xpBarFill.fillAmount = xpBarXScaler;
+        if (Instance._xpBarFill.fillAmount >= 1)
+        {
+            Instance._xpBarFill.fillAmount = 0;
+        }
+    }
+
+    private void LevelUpdated(int level)
+    {
+        levelText.SetText(level == 0 ? "Level 0" : "Level "  + level);
     }
 
     public void ToggleOptions() => _anim.SetTrigger("ToggleOptions");

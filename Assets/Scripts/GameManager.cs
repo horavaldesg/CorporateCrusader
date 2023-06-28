@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public static event Action<int> XpAdded;
+    public static event Action<int> LevelIncreased;
     private float _timeAlive;
 
     public int TotalXp
@@ -20,11 +21,17 @@ public class GameManager : MonoBehaviour
         get;
         set;
     }
+
+    public int CurrentLevel
+    {
+        get;
+        set;
+    }
     
     private void Awake()
     {
         Instance = this;
-        TotalXp = 100;
+        TotalXp = 250;
     }
 
     private void Update()
@@ -38,10 +45,34 @@ public class GameManager : MonoBehaviour
         //Debug.Log(min + ":" + sec);
     }
 
-    public void AddXp(int xp)
+    public static void AddXp(int xp)
     {
         //Adds Xp
-        CurrentXp += xp;
-        XpAdded?.Invoke(CurrentXp);
+        Instance.CurrentXp += xp;
+        if (Instance.CheckLevelUpgrade())
+        {
+            Instance.UpgradeLevel();
+        }
+        
+        UIManager.UpdateXpBar(Instance.CurrentXp);
+        //XpAdded?.Invoke(Instance.CurrentXp);
+    }
+
+    private bool CheckLevelUpgrade()
+    {
+        return Instance.CurrentXp >= Instance.TotalXp;
+    }
+
+    private void UpgradeLevel()
+    {
+        TotalXp += 5; // Come up with formula that increases total xp required per level
+        CurrentXp = 0;
+        AddLevel();
+    }
+
+    private void AddLevel()
+    {
+        CurrentLevel++;
+        LevelIncreased?.Invoke(CurrentLevel);
     }
 }
