@@ -41,7 +41,9 @@ public class GameManager : MonoBehaviour
         //Converts time alive to minutes and seconds
         var min = Mathf.FloorToInt(_timeAlive / 60);
         var sec = Mathf.FloorToInt(_timeAlive - min * 60);
-        
+        var timerTextMin = min < 10 ? "0" + min + ":" : min + ":";
+        timerTextMin += sec < 10 ? "0" + sec : sec;
+        UIManager.Instance.timerText.SetText(timerTextMin);
         //Debug.Log(min + ":" + sec);
     }
 

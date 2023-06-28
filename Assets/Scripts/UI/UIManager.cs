@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private TMP_Text enemiesKilledText;
     [SerializeField] private TMP_Text levelText;
+    public TMP_Text timerText;
     [SerializeField] private RectTransform xpBar;
     private Image _xpBarFill;
     private PlayerControls _controls;
