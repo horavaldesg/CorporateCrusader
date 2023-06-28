@@ -4002,6 +4002,7 @@ MonoBehaviour:
   optionsMenu: {fileID: 2673719329858108349}
   enemiesKilledText: {fileID: 370016050}
   levelText: {fileID: 1703039671}
+  timerText: {fileID: 2055038344}
   xpBar: {fileID: 1759701086}
 --- !u!95 &1691906996
 Animator:
