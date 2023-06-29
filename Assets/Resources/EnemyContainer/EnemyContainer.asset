@@ -16,5 +16,11 @@ MonoBehaviour:
   - {fileID: 5056472810428508620, guid: 3b3907adf25b3dd4aa4feb90c46a7001, type: 3}
   - {fileID: 5056472810428508620, guid: 3b3907adf25b3dd4aa4feb90c46a7001, type: 3}
   - {fileID: 5056472810428508620, guid: 3b3907adf25b3dd4aa4feb90c46a7001, type: 3}
-  phase2Enemies: []
-  phase3Enemies: []
+  phase2Enemies:
+  - {fileID: 5056472810428508620, guid: 3b3907adf25b3dd4aa4feb90c46a7001, type: 3}
+  - {fileID: 5056472810428508620, guid: 3b3907adf25b3dd4aa4feb90c46a7001, type: 3}
+  - {fileID: 5056472810428508620, guid: 3b3907adf25b3dd4aa4feb90c46a7001, type: 3}
+  phase3Enemies:
+  - {fileID: 5056472810428508620, guid: 3b3907adf25b3dd4aa4feb90c46a7001, type: 3}
+  - {fileID: 5056472810428508620, guid: 3b3907adf25b3dd4aa4feb90c46a7001, type: 3}
+  - {fileID: 5056472810428508620, guid: 3b3907adf25b3dd4aa4feb90c46a7001, type: 3}
