@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     private Collider2D _collider;
     private readonly List<Transform> _nearbyEnemies = new List<Transform>();
     private const float AvoidanceRadius = 0.15f;
-
+    
     private void Awake()
     {
         _enemyStats = Resources.Load<EnemyStats>("EnemyStats/Enemy1Stats");
@@ -75,6 +75,11 @@ public class Enemy : MonoBehaviour
         }
 
         _rb.velocity = movement.normalized * speed;
+    }
+
+    public void OnDestroy()
+    {
+        EnemySpawner.Instance.RemoveEnemyFromList(gameObject);
     }
 
     public void TakeDamage(float damage)

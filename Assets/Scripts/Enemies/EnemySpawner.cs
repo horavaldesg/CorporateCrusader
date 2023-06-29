@@ -1,31 +1,89 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
+   public static EnemySpawner Instance;
+   [SerializeField] private int amountOfEnemiesPerWave;
+   [SerializeField] private float timeToSpawn;
+   
    private EnemyContainer _enemyContainer;
-
+   
+   [SerializeField] private List<GameObject> _enemiesSpawnedList = new();
+   private int _phaseIndex;
+   private int _enemiesSpawned;
+   private bool _enemiesSpawning;
+   private float _t;
+   
    private void Awake()
    {
+      Instance = this;
       _enemyContainer = Resources.Load<EnemyContainer>("EnemyContainer/EnemyContainer");
    }
 
    private void Start()
    {
-      StartCoroutine(Spawn());
+      _phaseIndex = 1;
    }
 
-   private IEnumerator Spawn()
+   private void Update()
    {
-      var go = Instantiate(_enemyContainer.phase1Enemies[GetRandomRange(_enemyContainer.phase1Enemies.Length)]);
-      go.transform.position = GetRadius();
-      yield return new WaitForSeconds(1.5f);
-      StartCoroutine(Spawn());
+      _t += Time.deltaTime;
+      if (!(_t > timeToSpawn)) return;
+      if (_enemiesSpawned < amountOfEnemiesPerWave)
+      {
+         _enemiesSpawning = true;
+         Spawn();
+      }
+      else
+      {
+         if (!WaveCheck()) return;
+         _enemiesSpawned = 0;
+         _t = 0;
+      }
    }
 
+   public void RemoveEnemyFromList(GameObject enemy)
+   {
+      if (enemy)
+         _enemiesSpawnedList.Remove(enemy);
+   }
+
+   private bool WaveCheck()
+   {
+      return _enemiesSpawnedList.Count <= 5;
+   }
+
+   private void Spawn()
+   {
+      _t = 0;
+      if (GameManager.Instance.ChangePhase())
+      {
+         _phaseIndex++;
+      }
+      
+      var go = Instantiate(GetRandomEnemy());
+      go.transform.position = GetRadius();
+      _enemiesSpawnedList.Add(go);
+      _enemiesSpawned++;
+   }
+
+   [CanBeNull]
+   private GameObject GetRandomEnemy()
+   {
+      return _phaseIndex switch
+      {
+         1 => _enemyContainer.phase1Enemies[GetRandomRange(_enemyContainer.phase1Enemies.Length)],
+         2 => _enemyContainer.phase2Enemies[GetRandomRange(_enemyContainer.phase2Enemies.Length)],
+         3 => _enemyContainer.phase3Enemies[GetRandomRange(_enemyContainer.phase3Enemies.Length)],
+         _ => null
+      };
+   }
+   
    private int GetRandomRange(int i)
    {
       return Random.Range(0, i);

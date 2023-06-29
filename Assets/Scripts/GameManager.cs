@@ -39,12 +39,28 @@ public class GameManager : MonoBehaviour
         // Play time keeper
         _timeAlive += Time.deltaTime;
         //Converts time alive to minutes and seconds
-        var min = Mathf.FloorToInt(_timeAlive / 60);
-        var sec = Mathf.FloorToInt(_timeAlive - min * 60);
+        var min = GetMinutes();
+        var sec = GetSeconds();
         var timerTextMin = min < 10 ? "0" + min + ":" : min + ":";
         timerTextMin += sec < 10 ? "0" + sec : sec;
         UIManager.Instance.timerText.SetText(timerTextMin);
         //Debug.Log(min + ":" + sec);
+    }
+
+    public bool ChangePhase()
+    {
+        if (_timeAlive == 0) return false;
+        return GetMinutes() % 5 == 0 && GetSeconds() == 0;
+    }
+
+    private int GetMinutes()
+    {
+        return Mathf.FloorToInt(_timeAlive / 60);
+    }
+
+    private int GetSeconds()
+    {
+        return Mathf.FloorToInt(_timeAlive - GetMinutes() * 60);
     }
 
     public static void AddXp(int xp)

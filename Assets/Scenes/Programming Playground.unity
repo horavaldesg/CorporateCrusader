@@ -3682,6 +3682,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e498072a611b85468bb2244ac106493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amountOfEnemiesPerWave: 10
+  timeToSpawn: 3
+  _enemiesSpawnedList: []
 --- !u!4 &1652447165
 Transform:
   m_ObjectHideFlags: 0
