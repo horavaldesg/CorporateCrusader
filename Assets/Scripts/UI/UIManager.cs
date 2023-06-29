@@ -10,15 +10,22 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     
-    [SerializeField] private GameObject optionsMenu;
+    public TMP_Text timerText;
+
     [SerializeField] private TMP_Text enemiesKilledText;
     [SerializeField] private TMP_Text levelText;
-    public TMP_Text timerText;
-    [SerializeField] private RectTransform xpBar;
-    private Image _xpBarFill;
+    [SerializeField] private Image xpBarFill;
+
+    [Header("Inventory References")]
+    [SerializeField] private Transform invRow1;
+    [SerializeField] private Transform invRow2;
+    [SerializeField] private List<Transform> last3InvItems;
+    
     private PlayerControls _controls;
     private Animator _anim;
     private bool _canAddLevel;
+    private bool _inventoryOpen = false;
+    private ScreenOrientation orientation;
     
     private void Awake()
     {
@@ -26,7 +33,7 @@ public class UIManager : MonoBehaviour
 
         _controls = new PlayerControls();
         _controls.Player.Escape.performed += tgb => ToggleOptions();
-        xpBar.TryGetComponent(out _xpBarFill);
+
         _anim = GetComponent<Animator>();
     }
 
@@ -36,6 +43,7 @@ public class UIManager : MonoBehaviour
         _controls.Player.Enable();
         EnemyDetector.EnemyDied += UpdateKills;
         GameManager.LevelIncreased += LevelUpdated;
+        OrientationManager.orientationChangedEvent += ScreenOrientationChanged;
     }
 
     private void OnDisable()
@@ -45,6 +53,7 @@ public class UIManager : MonoBehaviour
         EnemyDetector.EnemyDied -= UpdateKills;
         GameManager.XpAdded -= UpdateXpBar;
         GameManager.LevelIncreased -= LevelUpdated;
+        OrientationManager.orientationChangedEvent -= ScreenOrientationChanged;
     }
 
     private void Start()
@@ -52,6 +61,8 @@ public class UIManager : MonoBehaviour
         UpdateKills(0);
         UpdateXpBar(0);
         LevelUpdated(GameManager.Instance.CurrentLevel = 1);
+
+        orientation = GetComponent<OrientationManager>().orientation;
     }
 
     private void UpdateKills(int enemiesKilled)
@@ -63,10 +74,10 @@ public class UIManager : MonoBehaviour
     {
         var xpToAdd = (float)coinsCollected / GameManager.Instance.TotalXp;
         var xpBarXScaler = Mathf.Clamp(xpToAdd, 0, 1);
-        Instance._xpBarFill.fillAmount = xpBarXScaler;
-        if (Instance._xpBarFill.fillAmount >= 1)
+        Instance.xpBarFill.fillAmount = xpBarXScaler;
+        if (Instance.xpBarFill.fillAmount >= 1)
         {
-            Instance._xpBarFill.fillAmount = 0;
+            Instance.xpBarFill.fillAmount = 0;
         }
     }
 
@@ -75,8 +86,47 @@ public class UIManager : MonoBehaviour
         levelText.SetText(level == 0 ? "Level 0" : "Level "  + level);
     }
 
+    private void ScreenOrientationChanged(ScreenOrientation orientation)
+    {
+        this.orientation = orientation;
+        if(_inventoryOpen) UpdateInventoryRows(orientation);
+    }
+
+    private void UpdateInventoryRows(ScreenOrientation orientation)
+    {
+        //fix inventory rows based on current screen orientation
+        switch(orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                invRow2.gameObject.SetActive(true);
+                last3InvItems[0].SetParent(invRow2);
+                last3InvItems[1].SetParent(invRow2);
+                last3InvItems[2].SetParent(invRow2);
+                break;
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                if(invRow2.childCount > 0)
+                {
+                    last3InvItems[0].SetParent(invRow1);
+                    last3InvItems[1].SetParent(invRow1);
+                    last3InvItems[2].SetParent(invRow1);
+                    invRow2.gameObject.SetActive(false);
+                }
+                break;
+        }
+
+    }
+
     public void ToggleOptions() => _anim.SetTrigger("ToggleOptions");
-    public void ToggleInventory() => _anim.SetTrigger("ToggleInventory");
+    public void ToggleInventory()
+    {
+        //update inventory open bool and fix rows if inventory opened
+        _inventoryOpen = !_inventoryOpen;
+        if(_inventoryOpen) UpdateInventoryRows(orientation);
+
+        _anim.SetTrigger("ToggleInventory");
+    }
 
     public void Restart()
     {

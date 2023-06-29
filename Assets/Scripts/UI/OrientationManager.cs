@@ -11,11 +11,11 @@ public class OrientationManager : MonoBehaviour
  
     [SerializeField] private bool _debugMode = false;
  
-    private ScreenOrientation _orientation;
+    public ScreenOrientation orientation;
  
-    void Start()
+    private void Start()
     {
-        _orientation = Screen.orientation;
+        orientation = Screen.orientation;
         InvokeRepeating("CheckForChange", 1, 1);
     }
  
@@ -29,9 +29,9 @@ public class OrientationManager : MonoBehaviour
     {
         if (_debugMode)
             Debug.Log("Screen.orientation=" + Screen.orientation);
-        if (_orientation != Screen.orientation) {
-            _orientation = Screen.orientation;
-            OnOrientationChanged(_orientation);
+        if (orientation != Screen.orientation) {
+            orientation = Screen.orientation;
+            OnOrientationChanged(orientation);
         }
     }
  
@@ -40,7 +40,7 @@ public class OrientationManager : MonoBehaviour
     [ContextMenu("Print Orientation")]
     private void PrintOrientation()
     {
-        Debug.Log(_orientation);
+        Debug.Log(orientation);
     }
  
     [ContextMenu("Simulate Landscape Left")]
