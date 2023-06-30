@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
 
    private bool WaveCheck()
    {
-      return _enemiesSpawnedList.Count <= 5;
+      return _enemiesSpawnedList.Count <= 5; // change to percentage
    }
 
    private void Spawn()
