@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnemyContainer : ScriptableObject
 {
     public GameObject[] phase1Enemies;
+    public GameObject firstBoss;
     public GameObject[] phase2Enemies;
+    public GameObject secondBoss;
     public GameObject[] phase3Enemies;
 }

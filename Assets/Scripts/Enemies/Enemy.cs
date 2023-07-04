@@ -115,4 +115,11 @@ public class Enemy : MonoBehaviour
         other.gameObject.TryGetComponent(out PlayerController playerController);
         playerController.TakeDamage(_damage);
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!other.gameObject.CompareTag("Player")) return;
+        other.gameObject.TryGetComponent(out PlayerController playerController);
+        playerController.TakeDamage(_damage);
+    }
 }

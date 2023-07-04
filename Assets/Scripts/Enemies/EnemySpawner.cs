@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
    public static EnemySpawner Instance;
    [SerializeField] private int amountOfEnemiesPerWave;
    [SerializeField] private float timeToSpawn;
+
+   [SerializeField] private GameObject bossBoundary;
    
    private EnemyContainer _enemyContainer;
    
@@ -18,6 +20,12 @@ public class EnemySpawner : MonoBehaviour
    private int _enemiesSpawned;
    private bool _enemiesSpawning;
    private float _t;
+
+   public bool BossPhase
+   {
+      get;
+      set;
+   }
    
    private void Awake()
    {
@@ -31,6 +39,32 @@ public class EnemySpawner : MonoBehaviour
    }
 
    private void Update()
+   {
+      switch (BossPhase)
+      {
+         case true:
+            BossFight();
+            break;
+         case false:
+            LinearSpawn();
+            break;
+      }
+   }
+
+   private void BossFight()
+   {
+      SpawnBossBoundary();
+   }
+
+   private void SpawnBossBoundary()
+   {
+      var boundary = Instantiate(bossBoundary);
+      var playerPosition = PlayerController.Instance.CurrentPlayerTransform().position;
+      
+      boundary.transform.position = new Vector3(playerPosition.x, playerPosition.y + 1, 1);
+   }
+
+   private void LinearSpawn()
    {
       _t += Time.deltaTime;
       if (!(_t > timeToSpawn)) return;
