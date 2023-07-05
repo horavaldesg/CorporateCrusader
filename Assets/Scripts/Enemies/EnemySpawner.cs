@@ -33,6 +33,18 @@ public class EnemySpawner : MonoBehaviour
       _enemyContainer = Resources.Load<EnemyContainer>("EnemyContainer/EnemyContainer");
    }
 
+   private void OnEnable()
+   {
+      GameManager.ChangePhase += BossFight;
+      Boss.OnBossKilled += ChangePhase;
+   }
+
+   private void OnDisable()
+   {
+      GameManager.ChangePhase -= BossFight;
+      Boss.OnBossKilled -= ChangePhase;
+   }
+
    private void Start()
    {
       _phaseIndex = 1;
@@ -40,19 +52,13 @@ public class EnemySpawner : MonoBehaviour
 
    private void Update()
    {
-      switch (BossPhase)
-      {
-         case true:
-            BossFight();
-            break;
-         case false:
-            LinearSpawn();
-            break;
-      }
+      if (BossPhase) return;
+      LinearSpawn();
    }
 
    private void BossFight()
    {
+      BossPhase = true;
       SpawnBossBoundary();
    }
 
@@ -62,6 +68,18 @@ public class EnemySpawner : MonoBehaviour
       var playerPosition = PlayerController.Instance.CurrentPlayerTransform().position;
       
       boundary.transform.position = new Vector3(playerPosition.x, playerPosition.y + 1, 1);
+      SpawnBoss();
+   }
+
+   private void SpawnBoss()
+   {
+      //Spawns Boss
+   }
+
+   private void ChangePhase()
+   {
+      _phaseIndex++;
+      BossPhase = false;
    }
 
    private void LinearSpawn()
@@ -95,11 +113,6 @@ public class EnemySpawner : MonoBehaviour
    private void Spawn()
    {
       _t = 0;
-      if (GameManager.Instance.ChangePhase())
-      {
-         _phaseIndex++;
-      }
-      
       var go = Instantiate(GetRandomEnemy());
       go.transform.position = GetRadius();
       _enemiesSpawnedList.Add(go);

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public static event Action<int> XpAdded;
     public static event Action<int> LevelIncreased;
+    public static event Action ChangePhase;
     private float _timeAlive;
 
     public int TotalXp
@@ -44,12 +45,14 @@ public class GameManager : MonoBehaviour
         var timerTextMin = min < 10 ? "0" + min + ":" : min + ":";
         timerTextMin += sec < 10 ? "0" + sec : sec;
         UIManager.Instance.timerText.SetText(timerTextMin);
+        if(ChangePhaseCheck())
+            ChangePhase?.Invoke();
         //Debug.Log(min + ":" + sec);
     }
 
-    public bool ChangePhase()
+    private bool ChangePhaseCheck()
     {
-        if (_timeAlive == 0) return false;
+        if (_timeAlive <= 1) return false;
         return GetMinutes() % 5 == 0 && GetSeconds() == 0;
     }
 

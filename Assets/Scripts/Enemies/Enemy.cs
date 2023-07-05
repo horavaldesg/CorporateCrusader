@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
         _rb.velocity = movement.normalized * speed;
     }
 
-    public void OnDestroy()
+    public virtual void OnDestroy()
     {
         EnemySpawner.Instance.RemoveEnemyFromList(gameObject);
     }
@@ -121,5 +121,9 @@ public class Enemy : MonoBehaviour
         if (!other.gameObject.CompareTag("Player")) return;
         other.gameObject.TryGetComponent(out PlayerController playerController);
         playerController.TakeDamage(_damage);
+    }
+
+    public virtual void Attack()
+    {
     }
 }
