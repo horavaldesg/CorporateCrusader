@@ -13,7 +13,9 @@ public class EnemySpawner : MonoBehaviour
 
    [SerializeField] private GameObject bossBoundary;
    
+   //Separate this by enemy type/zone/level
    private EnemyContainer _enemyContainer;
+   private ZoneManager _zoneManager;
    
    [SerializeField] private List<GameObject> _enemiesSpawnedList = new();
    private int _phaseIndex;
@@ -21,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
    private bool _enemiesSpawning;
    private float _t;
 
-   public bool BossPhase
+   private bool BossPhase
    {
       get;
       set;
@@ -30,7 +32,20 @@ public class EnemySpawner : MonoBehaviour
    private void Awake()
    {
       Instance = this;
-      _enemyContainer = Resources.Load<EnemyContainer>("EnemyContainer/EnemyContainer");
+      _zoneManager = Resources.Load<ZoneManager>("EnemyContainer/ChosenZone");
+      _enemyContainer = _zoneManager.chosenZone switch
+      {
+         ZoneManager.ChosenZone.AlleyZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/AlleyZoneEnemies"),
+         ZoneManager.ChosenZone.BeachZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/BeachZoneEnemies"),
+         ZoneManager.ChosenZone.ClinicZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/ClinicZoneEnemies"),
+         ZoneManager.ChosenZone.FarmZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/FarmZoneEnemies"),
+         ZoneManager.ChosenZone.ForestZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/ForestZoneEnemies"),
+         ZoneManager.ChosenZone.MouseZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/MouseZoneEnemies"),
+         ZoneManager.ChosenZone.WarehouseZone => Resources.Load<EnemyContainer>(
+            "EnemyContainer/Zones/WarehouseZoneEnemies"),
+         ZoneManager.ChosenZone.YardZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/YardZoneEnemies"),
+         _ => throw new ArgumentOutOfRangeException()
+      };
    }
 
    private void OnEnable()
@@ -74,6 +89,8 @@ public class EnemySpawner : MonoBehaviour
    private void SpawnBoss()
    {
       //Spawns Boss
+      // var go = Instantiate()
+      // go.TryGetComponent(Boss bossComp);
    }
 
    private void ChangePhase()
@@ -122,6 +139,7 @@ public class EnemySpawner : MonoBehaviour
    [CanBeNull]
    private GameObject GetRandomEnemy()
    {
+      //Change to use different categories of enemies depending on time
       return _phaseIndex switch
       {
          1 => _enemyContainer.phase1Enemies[GetRandomRange(_enemyContainer.phase1Enemies.Length)],
