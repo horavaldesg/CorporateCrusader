@@ -14,7 +14,7 @@ public class Boss : Enemy
         OnBossKilled?.Invoke();
     }
 
-    public override void Attack()
+    protected override void Attack()
     {
         base.Attack();
         //Boss Attack

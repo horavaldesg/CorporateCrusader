@@ -14,9 +14,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private RectTransform healthBar;
     [SerializeField] private float amountOfXpToDrop;
     [SerializeField] private float speed;
+    [SerializeField] private float attackRange;
+    [SerializeField] private float attackCooldown;
     [SerializeField] private GameObject xpObject;
     private Rigidbody2D _rb;
     private Collider2D _collider;
+    private float _attackTime;
+    
     private readonly List<Transform> _nearbyEnemies = new List<Transform>();
     private const float AvoidanceRadius = 0.15f;
     
@@ -61,6 +65,15 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         var playerPos = PlayerController.Instance.CurrentPlayerTransform().position;
+        var differenceVector = playerPos - transform.position;
+        if (differenceVector.magnitude < attackRange)
+        {
+            //Cooldown attack
+            _attackTime += Time.deltaTime;
+            if(_attackTime > attackCooldown)
+                Attack();
+        }
+        
         var movement = (Vector2)(playerPos - transform.position).normalized;
         foreach (var enemy in _nearbyEnemies)
         {
@@ -123,7 +136,9 @@ public class Enemy : MonoBehaviour
         playerController.TakeDamage(_damage);
     }
 
-    public virtual void Attack()
+    protected virtual void Attack()
     {
+        //Attacks
+        _attackTime = 0;
     }
 }

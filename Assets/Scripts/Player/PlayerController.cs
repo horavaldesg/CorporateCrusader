@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         _currentVelocity = Vector3.SmoothDamp
         (
             _currentVelocity,
-            movement * playerSpeed,
+            movement * playerSpeed, //Clamp Speed to whatever de-buff
             ref _dampSpeed,
             smoothMovement
         );
