@@ -30,6 +30,8 @@ public class Enemy : MonoBehaviour
         health = _enemyStats.health;
         _baseHealth = health;
         _damage = _enemyStats.damage;
+        _attackTime = _enemyStats.attackTime;
+        // speed = _enemyStats.speed;
         TryGetComponent(out _rb);
         TryGetComponent(out _collider);
     }
