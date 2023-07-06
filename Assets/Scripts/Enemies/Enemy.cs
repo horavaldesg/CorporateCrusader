@@ -65,14 +65,14 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         var playerPos = PlayerController.Instance.CurrentPlayerTransform().position;
-        var differenceVector = playerPos - transform.position;
-        if (differenceVector.magnitude < attackRange)
+        //var differenceVector = playerPos - transform.position;
+        /*if (differenceVector.magnitude < attackRange)
         {
             //Cooldown attack
             _attackTime += Time.deltaTime;
             if(_attackTime > attackCooldown)
                 Attack();
-        }
+        }*/
         
         var movement = (Vector2)(playerPos - transform.position).normalized;
         foreach (var enemy in _nearbyEnemies)
