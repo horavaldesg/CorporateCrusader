@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
         _controls.Player.Move.performed += tgb => { _move = tgb.ReadValue<Vector2>(); };
         _controls.Player.Move.canceled += tgb => { _move = Vector2.zero; };
         _controls.Player.Space.performed += async tgb => await CloudSaveManager.Instance.SaveData();
+        _controls.Player.Fire.performed +=  tgb => WeaponManager.Instance.ChooseWeapon(0);
     }
 
     private void OnEnable()

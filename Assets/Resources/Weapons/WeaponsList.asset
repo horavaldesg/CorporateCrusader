@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375271bb2430d0e4baa7e8b975d61966, type: 3}
   m_Name: WeaponsList
   m_EditorClassIdentifier: 
-  weaponList: []
-  i: 0
+  weaponList:
+  - {fileID: 5674736406257060832, guid: 47106c13f95cb8841a25db044f1f0156, type: 3}

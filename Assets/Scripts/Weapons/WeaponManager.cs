@@ -7,11 +7,13 @@ using Random = UnityEngine.Random;
 
 public class WeaponManager : MonoBehaviour
 {
+    public static WeaponManager Instance;
     private WeaponsList _weaponsList;
     [SerializeField] private List<Transform> weaponPositions = new ();
     
     private void Awake()
     {
+        Instance = this;
         _weaponsList = Resources.Load<WeaponsList>("Weapons/WeaponsList");
     }
 

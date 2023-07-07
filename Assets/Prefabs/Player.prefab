@@ -580,6 +580,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3243028114203983458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8848285956899719887}
+  m_Layer: 0
+  m_Name: NailPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8848285956899719887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3243028114203983458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.92, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5056472810428508657}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3538322430244369727
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,6 +815,7 @@ GameObject:
   - component: {fileID: 8875141843408602930}
   - component: {fileID: 768815417141885660}
   - component: {fileID: 5056472810428508656}
+  - component: {fileID: 731509817785867039}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -807,6 +839,7 @@ Transform:
   - {fileID: 2354877874160493036}
   - {fileID: 6397563500407889097}
   - {fileID: 6076901445116773778}
+  - {fileID: 8848285956899719887}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -891,6 +924,20 @@ MonoBehaviour:
   gunRotationSpeed: 5
   bodyTransform: {fileID: 6076901445116773778}
   xpToCollect: []
+--- !u!114 &731509817785867039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056472810428508620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d5bd119d035c84db95e5353bd665bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPositions:
+  - {fileID: 8848285956899719887}
 --- !u!1 &5541413408973786608
 GameObject:
   m_ObjectHideFlags: 0
