@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 public class Enemy : MonoBehaviour
 {
     private EnemyStats _enemyStats;

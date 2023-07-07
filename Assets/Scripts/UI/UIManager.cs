@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
         //Enables Player Input
         _controls.Player.Enable();
         EnemyDetector.EnemyDied += UpdateKills;
+        CloudSaveManager.AddKills += UpdateKills;
         GameManager.LevelIncreased += LevelUpdated;
         OrientationManager.orientationChangedEvent += ScreenOrientationChanged;
     }
@@ -52,6 +53,7 @@ public class UIManager : MonoBehaviour
         //Disables Player Input
         _controls.Player.Disable();
         EnemyDetector.EnemyDied -= UpdateKills;
+        CloudSaveManager.AddKills -= UpdateKills;
         GameManager.XpAdded -= UpdateXpBar;
         GameManager.LevelIncreased -= LevelUpdated;
         OrientationManager.orientationChangedEvent -= ScreenOrientationChanged;
