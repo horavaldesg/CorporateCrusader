@@ -1439,10 +1439,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c944c81aadad8754e9f34f23ffb5294c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: Minions/OscillatingFan
   health: 200
+  _damage: 0
   healthBar: {fileID: 4518051293378505328}
   amountOfXpToDrop: 7
-  speed: 0.5
   attackRange: 0
   attackCooldown: 0
   xpObject: {fileID: 1039156588135131732, guid: b76e62c8302ceef428fb7deed61f1527, type: 3}
+  playerDist: {fileID: 0}

@@ -534,13 +534,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c944c81aadad8754e9f34f23ffb5294c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: Minions/Balloon
   health: 50
+  _damage: 0
   healthBar: {fileID: 5400585828504929411}
   amountOfXpToDrop: 3
-  speed: 2.75
   attackRange: 0
   attackCooldown: 0
   xpObject: {fileID: 1039156588135131732, guid: b76e62c8302ceef428fb7deed61f1527, type: 3}
+  playerDist: {fileID: 0}
 --- !u!1 &4416033793900875837
 GameObject:
   m_ObjectHideFlags: 0

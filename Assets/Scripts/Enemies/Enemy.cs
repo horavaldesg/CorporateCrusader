@@ -11,38 +11,37 @@ public class Enemy : MonoBehaviour
     [Tooltip("Change in every script to name in Resources/EnemyStats/")]public string enemyName;
     
     private EnemyStats _enemyStats;
-    public float health;
+    [HideInInspector] public float health;
     private float _baseHealth;
-    public float _damage;
+    [HideInInspector]  public float _damage;
     [SerializeField] private RectTransform healthBar;
     [SerializeField] private float amountOfXpToDrop;
     
     /// Use EnemyStats to change the values
     /// Can be set on awake
     /// Need to be public to be accessed by child scripts
-    [SerializeField] private float speed;
+    private float speed;
     
     [SerializeField] private float attackRange;
     [SerializeField] private float attackCooldown;
     
     [SerializeField] private GameObject xpObject;
     
-    private Rigidbody2D _rb;
+    public Rigidbody2D _rb;
     private Collider2D _collider;
     private float _attackTime;
-    public  GameObject playerDist;
     private readonly List<Transform> _nearbyEnemies = new List<Transform>();
     private const float AvoidanceRadius = 0.15f;
     
-    protected virtual void Awake()
+    public virtual void Awake()
     {
         _enemyStats = Resources.Load<EnemyStats>("EnemyStats/" + enemyName);
         
         health = _enemyStats.health;
+        speed = _enemyStats.speed;
         _baseHealth = health;
         _damage = _enemyStats.damage;
         _attackTime = _enemyStats.attackTime;
-        // speed = _enemyStats.speed;
         TryGetComponent(out _rb);
         TryGetComponent(out _collider);
     }
@@ -70,7 +69,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         Move();
     }

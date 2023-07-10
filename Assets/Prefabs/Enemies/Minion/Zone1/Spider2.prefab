@@ -786,13 +786,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c944c81aadad8754e9f34f23ffb5294c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: Minions/HouseSpider
   health: 5
+  _damage: 0
   healthBar: {fileID: 6843370095103739634}
   amountOfXpToDrop: 3
-  speed: 3
   attackRange: 0
   attackCooldown: 0
   xpObject: {fileID: 1039156588135131732, guid: b76e62c8302ceef428fb7deed61f1527, type: 3}
+  playerDist: {fileID: 0}
 --- !u!1 &8638301790121745114
 GameObject:
   m_ObjectHideFlags: 0

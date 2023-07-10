@@ -9,19 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fc121fb769c93844b55d17c2245ec06, type: 3}
-  m_Name: RoboVacCat
+  m_Script: {fileID: 11500000, guid: b99ecbae696f90b409896885be76a7fc, type: 3}
+  m_Name: Robovac
   m_EditorClassIdentifier: 
-  weakness: 1
-  health: 20
-  damage1: 5
-  damage2: 0
-  damage3: 0
-  damage4: 0
-  damage5: 0
-  cooldown1: 1
-  cooldown2: 0
-  cooldown3: 0
-  cooldown4: 0
-  cooldown5: 0
-  movespeed: 200
+  weakness: 0
+  health: 200
+  damage: 10
+  speed: 1
+  attackTime: 2
