@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         //Disables Player Input
         _controls.Player.Disable();
     }
-
+    
     private void FixedUpdate()
     {
         //Move Function
@@ -108,9 +108,14 @@ public class PlayerController : MonoBehaviour
     {
         var moveDir = new Vector2(-_move.y, _move.x);
         gunRenderer.flipY = moveDir.y < 0;
-        Quaternion rotation = Quaternion.LookRotation(Vector3.forward, moveDir);
+        var rotation = Quaternion.LookRotation(Vector3.forward, moveDir);
         gunRotate.rotation = Quaternion.RotateTowards(gunRotate.transform.rotation, rotation,
             gunRotationSpeed * Time.deltaTime * 100);
+    }
+
+    public Quaternion GunRotation()
+    {
+        return gunRotate.rotation;
     }
 
     [NotNull]
@@ -123,7 +128,6 @@ public class PlayerController : MonoBehaviour
     {
         return _playerDirection;
     }
-    
 
     private int XpCollected { get; set; }
 
