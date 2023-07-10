@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc121fb769c93844b55d17c2245ec06, type: 3}
+  m_Name: RoboVacCat
+  m_EditorClassIdentifier: 
+  weakness: 1
+  health: 20
+  damage1: 5
+  damage2: 0
+  damage3: 0
+  damage4: 0
+  damage5: 0
+  cooldown1: 1
+  cooldown2: 0
+  cooldown3: 0
+  cooldown4: 0
+  cooldown5: 0
+  movespeed: 200
