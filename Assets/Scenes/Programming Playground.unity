@@ -3689,10 +3689,6 @@ PrefabInstance:
       propertyPath: playerSpeed
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 5056472810428508656, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
-      propertyPath: rotationThreshold
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 5056472810428508657, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
       propertyPath: m_RootOrder
       value: 13
