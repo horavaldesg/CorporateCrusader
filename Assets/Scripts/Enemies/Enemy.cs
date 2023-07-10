@@ -8,26 +8,36 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 public class Enemy : MonoBehaviour
 {
+    public string _enemyName;
+    
     private EnemyStats _enemyStats;
     public float health;
     private float _baseHealth;
-    private float _damage;
+    public float _damage;
     [SerializeField] private RectTransform healthBar;
     [SerializeField] private float amountOfXpToDrop;
+    
+    /// Use EnemyStats to change the values
+    /// Can be set on awake
+    /// Need to be public to be accessed by child scripts
     [SerializeField] private float speed;
+    
     [SerializeField] private float attackRange;
     [SerializeField] private float attackCooldown;
+    
     [SerializeField] private GameObject xpObject;
+    
     private Rigidbody2D _rb;
     private Collider2D _collider;
     private float _attackTime;
-    
+    public  GameObject playerDist;
     private readonly List<Transform> _nearbyEnemies = new List<Transform>();
     private const float AvoidanceRadius = 0.15f;
     
-    private void Awake()
+    protected virtual void Awake()
     {
-        _enemyStats = Resources.Load<EnemyStats>("EnemyStats/Enemy1Stats");
+        _enemyStats = Resources.Load<EnemyStats>("EnemyStats/" + _enemyName);
+        
         health = _enemyStats.health;
         _baseHealth = health;
         _damage = _enemyStats.damage;
@@ -124,7 +134,7 @@ public class Enemy : MonoBehaviour
             go.transform.position = randomPos;
         }
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
