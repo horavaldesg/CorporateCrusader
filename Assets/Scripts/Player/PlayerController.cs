@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private RectTransform healthBar;
     [SerializeField] [Range(0, 1)] private float smoothMovement;
     [SerializeField] private float gunRotationSpeed;
+    [SerializeField] private float rotationThreshold;
     [SerializeField] private Transform bodyTransform;
     private PlayerControls _controls;
     private Vector2 _move;
@@ -72,12 +73,14 @@ public class PlayerController : MonoBehaviour
     {
         //Move Function
         Move();
+        if(_move.magnitude is > -0.1f and < 0.1f) return;
+        RotateGun();
     }
 
     private void Move()
     {
         //Worlds Space of player
-        var movement = transform.TransformDirection(_move);
+        var movement = _move.magnitude < rotationThreshold ? Vector3.zero: transform.TransformDirection(_move);
         
         //Speed damp
         _currentVelocity = Vector3.SmoothDamp
@@ -100,8 +103,6 @@ public class PlayerController : MonoBehaviour
         if (_rb.velocity.magnitude is > -0.1f and < 0.1f) return;
         
         bodyTransform.rotation = Quaternion.Euler(0, _move.x < 0 ? 180 : 0, 0);
-        //playerSprite.flipX = _move.x < 0;
-        RotateGun();
     }
 
     private void RotateGun()

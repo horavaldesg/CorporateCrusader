@@ -917,11 +917,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3502be6473c5547b9f6c4b52a356bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerDirection: 0
   playerSpeed: 5
   gunRotate: {fileID: 620490262424129746}
   healthBar: {fileID: 7839282139269459020}
   smoothMovement: 0
   gunRotationSpeed: 5
+  rotationThreshold: 0.75
   bodyTransform: {fileID: 6076901445116773778}
   xpToCollect: []
 --- !u!114 &731509817785867039
