@@ -8,6 +8,16 @@ using UnityEngine.Serialization;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
+
+    public enum PlayerDirection
+    {
+        Right,
+        Left,
+        Stopped
+    };
+
+    public PlayerDirection _playerDirection;
+    
     [SerializeField] private float playerSpeed;
     [SerializeField] private Transform gunRotate;
     [SerializeField] private RectTransform healthBar;
@@ -80,7 +90,15 @@ public class PlayerController : MonoBehaviour
 
         //Moves Player
         _rb.velocity = _currentVelocity;
+        _playerDirection = _rb.velocity.normalized.x switch
+        {
+            > 0.1f => PlayerDirection.Right,
+            < -0.1f => PlayerDirection.Left,
+            _ => _playerDirection
+        };
+
         if (_rb.velocity.magnitude is > -0.1f and < 0.1f) return;
+        
         bodyTransform.rotation = Quaternion.Euler(0, _move.x < 0 ? 180 : 0, 0);
         //playerSprite.flipX = _move.x < 0;
         RotateGun();
@@ -100,6 +118,12 @@ public class PlayerController : MonoBehaviour
     {
         return gameObject.transform;
     }
+
+    public PlayerDirection DirectionOfPlayer()
+    {
+        return _playerDirection;
+    }
+    
 
     private int XpCollected { get; set; }
 
