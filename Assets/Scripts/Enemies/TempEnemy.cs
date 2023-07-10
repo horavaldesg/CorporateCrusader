@@ -6,7 +6,7 @@ public class TempEnemy : Enemy
 {
     protected override void Awake()
     {
-        _enemyName = "TempEnemy";
+        enemyName = "TempEnemy";
         base.Awake();
     }
 

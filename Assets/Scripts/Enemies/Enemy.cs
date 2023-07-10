@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 public class Enemy : MonoBehaviour
 {
-    public string _enemyName;
+    [Tooltip("Change in every script to name in Resources/EnemyStats/")]public string enemyName;
     
     private EnemyStats _enemyStats;
     public float health;
@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     
     protected virtual void Awake()
     {
-        _enemyStats = Resources.Load<EnemyStats>("EnemyStats/" + _enemyName);
+        _enemyStats = Resources.Load<EnemyStats>("EnemyStats/" + enemyName);
         
         health = _enemyStats.health;
         _baseHealth = health;
