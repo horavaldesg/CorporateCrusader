@@ -983,11 +983,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465206736}
   m_CullTransparentMesh: 1
---- !u!4 &489009076 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 620490262424129746, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
-  m_PrefabInstance: {fileID: 5056472810951170643}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1176,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -30
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 69101f137a30a3149bf64b6c445bd0bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1202,64 +1197,12 @@ Transform:
   m_GameObject: {fileID: 551703164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &599336272
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 599336273}
-  - component: {fileID: 599336274}
-  m_Layer: 0
-  m_Name: Nail Gun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &599336273
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599336272}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0.88, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 489009076}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &599336274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599336272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c35134f23694d8498eb9727ac377e39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attribute: 0
-  damage: 10
-  level: 1
-  coolDown: 3
-  instantiatedObject: {fileID: 2121791791017959938, guid: 84ba159ebc803584aaae05d56288db81, type: 3}
-  radius: 3
-  amountOfObjectsToSpawn: 15
-  distanceFromPlayer: 0.25
 --- !u!1 &693060699
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,7 +3133,7 @@ PrefabInstance:
       objectReference: {fileID: 2241698119680336377, guid: 58c54d8fbb9d3a548bb5ff1f7cbf7e61, type: 3}
     - target: {fileID: 2390223284491747786, guid: de13cae54f42c72479b380a0260ec483, type: 3}
       propertyPath: amountOfEnemiesPerWave
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6776733305777691616, guid: de13cae54f42c72479b380a0260ec483, type: 3}
       propertyPath: m_RootOrder
@@ -3752,9 +3695,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5056472810428508657, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 549606806}
-    - targetCorrespondingSourceObject: {fileID: 620490262424129746, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 599336273}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
 --- !u!4 &5056472810951170650 stripped

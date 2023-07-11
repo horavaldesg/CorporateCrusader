@@ -20,7 +20,9 @@ public class Enemy : MonoBehaviour
     /// Use EnemyStats to change the values
     /// Can be set on awake
     /// Need to be public to be accessed by child scripts
-    private float speed;
+    [HideInInspector] public float speed;
+    [HideInInspector] public float baseSpeed;
+    [HideInInspector] public bool takingDamage;
     
     [SerializeField] private float attackRange;
     [SerializeField] private float attackCooldown;
@@ -39,6 +41,7 @@ public class Enemy : MonoBehaviour
         
         health = _enemyStats.health;
         speed = _enemyStats.speed;
+        baseSpeed = speed;
         _baseHealth = health;
         _damage = _enemyStats.damage;
         _attackTime = _enemyStats.attackTime;
@@ -109,11 +112,30 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        takingDamage = true;
         health -= damage;
         healthBar.localScale = new Vector3(health / _baseHealth, 1, 1);
         health = Mathf.Clamp(health, 0, _baseHealth);
         if (health <= 0)
             EnemyDied();
+    }
+
+    public void TakeDamageWithCoolDown(float time, float damage)
+    {
+        TakeDamage(damage);
+        StartCoroutine(WaitToTakeDamage(time, damage));
+    }
+
+    private IEnumerator WaitToTakeDamage(float time, float damage)
+    {
+        yield return new WaitForSeconds(time);
+        TakeDamageWithCoolDown(time, damage);
+    }
+
+    public void StopTakingDamage()
+    {
+        takingDamage = false;
+        StopAllCoroutines();
     }
 
     private void EnemyDied()

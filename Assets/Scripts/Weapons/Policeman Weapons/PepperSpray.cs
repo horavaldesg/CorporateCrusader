@@ -1,18 +1,49 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PepperSpray : MonoBehaviour
+[RequireComponent(typeof(CircleCollider2D))]
+public class PepperSpray : SelectedWeapon
 {
-    // Start is called before the first frame update
-    void Start()
+    public float radius;
+    public float slowDownMultiplier;
+
+    protected override void Start()
     {
-        
+        transform.localScale = new Vector3(radius,radius, 1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void IncreaseRadius(float r)
     {
-        
+        radius += r;
+        transform.localScale = new Vector3(radius,radius, 1);
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        other.TryGetComponent(out Enemy enemy);
+        if (!enemy) return;
+        SlowDownEnemy(enemy);
+        if(enemy.takingDamage) return;
+        enemy.TakeDamageWithCoolDown(coolDown, damage);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        other.TryGetComponent(out Enemy enemy);
+        if (!enemy) return;
+        RestoreEnemySpeed(enemy);
+    }
+
+    private void SlowDownEnemy(Enemy enemy)
+    {
+        enemy.speed -= slowDownMultiplier;
+    }
+
+    private void RestoreEnemySpeed(Enemy enemy)
+    {
+        enemy.speed = enemy.baseSpeed;
+        enemy.StopTakingDamage();
     }
 }

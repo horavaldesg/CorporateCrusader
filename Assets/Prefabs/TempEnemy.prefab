@@ -341,11 +341,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c944c81aadad8754e9f34f23ffb5294c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: Enemy1Stats
   health: 100
+  _damage: 0
   healthBar: {fileID: 3313630115974337399}
   amountOfXpToDrop: 7
   speed: 0.75
+  baseSpeed: 0
+  attackRange: 0
+  attackCooldown: 0
   xpObject: {fileID: 1039156588135131732, guid: b76e62c8302ceef428fb7deed61f1527, type: 3}
+  _rb: {fileID: 0}
 --- !u!1 &7849481968836427025
 GameObject:
   m_ObjectHideFlags: 0
