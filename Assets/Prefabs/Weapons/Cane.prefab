@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08d9ca264348ce4888072179068ad95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attribute: 0
+  attribute: 1
   damage: 2
   level: 1
   coolDown: 0
