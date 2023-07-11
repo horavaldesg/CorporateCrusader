@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cane : MonoBehaviour
+public class Cane : SelectedWeapon
 {
-    // Start is called before the first frame update
-    void Start()
+    public float rotateSpeed;
+    public float length;
+    
+    protected override void Start()
     {
-        
+        transform.localScale = new Vector3(length, 1, 1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateLength(float lengthMultiplier)
     {
-        
+        length += lengthMultiplier;
+        transform.localScale = new Vector3(length, 1, 1);
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Rotate(transform.forward * -rotateSpeed);
     }
 }
