@@ -5,10 +5,22 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] private RectTransform hatsButtonBtm, battleButtonBtm, upgradeButtonBtm;
-    [SerializeField] private RectTransform hatsButtonLeft, battleButtonLeft, upgradeButtonLeft;
-    [SerializeField] private GameObject HatCollectionPanel_Portrait, HatCollectionPanel_Landscape;
-    [SerializeField] private GameObject UpgradesPanel_Portrait, UpgradesPanel_Landscape;
+    [Header("Screen Selection Buttons")]
+    [SerializeField] private RectTransform hatsButtonBtm;
+    [SerializeField] private RectTransform battleButtonBtm;
+    [SerializeField] private RectTransform upgradeButtonBtm;
+    [SerializeField] private RectTransform hatsButtonLeft;
+    [SerializeField] private RectTransform battleButtonLeft;
+    [SerializeField] private RectTransform upgradeButtonLeft;
+
+    [Header("Screen Panels")]
+    [SerializeField] private GameObject hatCollectionPanel_Portrait;
+    [SerializeField] private GameObject hatCollectionPanel_Landscape;
+    [SerializeField] private GameObject upgradesPanel_Portrait;
+    [SerializeField] private GameObject ugradesPanel_Landscape;
+
+    [Header("Script References")]
+    [SerializeField] private UpgradesManager upgradesManager;
 
     private Animator _anim;
     private bool _pastSplashScreen = false;
@@ -160,26 +172,28 @@ public class MainMenuManager : MonoBehaviour
             case ScreenOrientation.PortraitUpsideDown:
                 if(currentScreen == ScreenType.Hats)
                 {
-                    HatCollectionPanel_Portrait.SetActive(true);
-                    HatCollectionPanel_Landscape.SetActive(false);
+                    hatCollectionPanel_Portrait.SetActive(true);
+                    hatCollectionPanel_Landscape.SetActive(false);
                 }
                 else if(currentScreen == ScreenType.Upgrades)
                 {
-                    UpgradesPanel_Portrait.SetActive(true);
-                    UpgradesPanel_Landscape.SetActive(false);
+                    upgradesPanel_Portrait.SetActive(true);
+                    ugradesPanel_Landscape.SetActive(false);
+                    upgradesManager.UpdateSelection();
                 }
                 break;
             case ScreenOrientation.LandscapeLeft:
             case ScreenOrientation.LandscapeRight:
                 if(currentScreen == ScreenType.Hats)
                 {
-                    HatCollectionPanel_Landscape.SetActive(true);
-                    HatCollectionPanel_Portrait.SetActive(false);
+                    hatCollectionPanel_Landscape.SetActive(true);
+                    hatCollectionPanel_Portrait.SetActive(false);
                 }
                 else if(currentScreen == ScreenType.Upgrades)
                 {
-                    UpgradesPanel_Landscape.SetActive(true);
-                    UpgradesPanel_Portrait.SetActive(false);
+                    ugradesPanel_Landscape.SetActive(true);
+                    upgradesPanel_Portrait.SetActive(false);
+                    upgradesManager.UpdateSelection();
                 }
                 break;
         }

@@ -2623,6 +2623,7 @@ GameObject:
   - component: {fileID: 102308477}
   - component: {fileID: 102308476}
   - component: {fileID: 102308475}
+  - component: {fileID: 102308478}
   m_Layer: 5
   m_Name: AttackSpeed_button
   m_TagString: Untagged
@@ -2696,7 +2697,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 102308476}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 102308478}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &102308476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2735,6 +2748,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102308473}
   m_CullTransparentMesh: 1
+--- !u!114 &102308478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102308473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ff25c4ee9ff4946808822ee1e0784b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Attack Speed
+  UpgradeIcon: {fileID: 21300000, guid: a0f4ca956211df74d97cba15986edb0f, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &108591434
 GameObject:
   m_ObjectHideFlags: 0
@@ -8715,7 +8743,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339078302}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8725,7 +8753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &339078304
@@ -10623,6 +10651,7 @@ GameObject:
   - component: {fileID: 428936480}
   - component: {fileID: 428936479}
   - component: {fileID: 428936478}
+  - component: {fileID: 428936481}
   m_Layer: 5
   m_Name: PickupRange_button
   m_TagString: Untagged
@@ -10697,7 +10726,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 428936479}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 428936481}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &428936479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10736,6 +10777,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428936476}
   m_CullTransparentMesh: 1
+--- !u!114 &428936481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428936476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f439d68ae455b844695fbfcbaab3a4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Pickup Range
+  UpgradeIcon: {fileID: 21300000, guid: 25a409abb9af6524d85bf0c5d13437ac, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &448065943
 GameObject:
   m_ObjectHideFlags: 0
@@ -12995,6 +13051,7 @@ GameObject:
   - component: {fileID: 568011497}
   - component: {fileID: 568011496}
   - component: {fileID: 568011495}
+  - component: {fileID: 568011498}
   m_Layer: 5
   m_Name: MaxHealth_button
   m_TagString: Untagged
@@ -13022,7 +13079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117.5, y: -517.5}
+  m_AnchoredPosition: {x: 317.5, y: -117.5}
   m_SizeDelta: {x: 185, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &568011495
@@ -13068,7 +13125,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 568011496}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 568011498}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &568011496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13107,6 +13176,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568011493}
   m_CullTransparentMesh: 1
+--- !u!114 &568011498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568011493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 651c0322685f9c2469e1073af9ba74ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Max Health
+  UpgradeIcon: {fileID: 21300000, guid: 7758fa887187a3f418aee07ded1b9e71, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &569150331
 GameObject:
   m_ObjectHideFlags: 0
@@ -17441,6 +17525,7 @@ GameObject:
   - component: {fileID: 695173672}
   - component: {fileID: 695173671}
   - component: {fileID: 695173670}
+  - component: {fileID: 695173673}
   m_Layer: 5
   m_Name: MoveSpeed_button
   m_TagString: Untagged
@@ -17514,7 +17599,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 695173671}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 695173673}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &695173671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17553,6 +17650,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695173668}
   m_CullTransparentMesh: 1
+--- !u!114 &695173673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695173668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5caaac612de160549aeb1b00955f343e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Move Speed
+  UpgradeIcon: {fileID: 21300000, guid: fb92edef70e9fe34c8dd5bbca68ce8a5, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &695712440
 GameObject:
   m_ObjectHideFlags: 0
@@ -18592,6 +18704,7 @@ GameObject:
   - component: {fileID: 733387328}
   - component: {fileID: 733387327}
   - component: {fileID: 733387326}
+  - component: {fileID: 733387329}
   m_Layer: 5
   m_Name: MaxArmor_button
   m_TagString: Untagged
@@ -18665,7 +18778,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 733387327}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 733387329}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &733387327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18704,6 +18829,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733387324}
   m_CullTransparentMesh: 1
+--- !u!114 &733387329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733387324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d988ca14a1913744ae54e7c553ff475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Max Armor
+  UpgradeIcon: {fileID: 21300000, guid: 3beedbbe2169ca54c9980a2c5a7ab40c, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &737452690
 GameObject:
   m_ObjectHideFlags: 0
@@ -21352,6 +21492,7 @@ GameObject:
   - component: {fileID: 858215098}
   - component: {fileID: 858215097}
   - component: {fileID: 858215096}
+  - component: {fileID: 858215099}
   m_Layer: 5
   m_Name: PickupRange_button
   m_TagString: Untagged
@@ -21426,7 +21567,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 858215097}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 428936481}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &858215097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21465,6 +21618,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858215094}
   m_CullTransparentMesh: 1
+--- !u!114 &858215099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858215094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f439d68ae455b844695fbfcbaab3a4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Pickup Range
+  UpgradeIcon: {fileID: 21300000, guid: 25a409abb9af6524d85bf0c5d13437ac, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &861530002
 GameObject:
   m_ObjectHideFlags: 0
@@ -22470,6 +22638,7 @@ GameObject:
   - component: {fileID: 919247130}
   - component: {fileID: 919247129}
   - component: {fileID: 919247128}
+  - component: {fileID: 919247131}
   m_Layer: 5
   m_Name: Regeneration_button
   m_TagString: Untagged
@@ -22543,7 +22712,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 919247129}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 919247131}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &919247129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22582,6 +22763,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919247126}
   m_CullTransparentMesh: 1
+--- !u!114 &919247131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919247126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69489502936ce24408575c5c3b9bbb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Regeneration
+  UpgradeIcon: {fileID: 21300000, guid: 945bf13df666d1341acfa006e89241ea, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &932266991
 GameObject:
   m_ObjectHideFlags: 0
@@ -23624,6 +23820,7 @@ GameObject:
   - component: {fileID: 978418315}
   - component: {fileID: 978418314}
   - component: {fileID: 978418313}
+  - component: {fileID: 978418316}
   m_Layer: 5
   m_Name: XPGain_button
   m_TagString: Untagged
@@ -23697,7 +23894,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 978418314}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 978418316}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &978418314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23736,6 +23945,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978418311}
   m_CullTransparentMesh: 1
+--- !u!114 &978418316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978418311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6846d622b125ec14283c53efceb10b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: XP Gain
+  UpgradeIcon: {fileID: 21300000, guid: cc2267d50c17d0d4d8aa4fbcfe686cf4, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &988008330
 GameObject:
   m_ObjectHideFlags: 0
@@ -24464,6 +24688,7 @@ GameObject:
   - component: {fileID: 1032338637}
   - component: {fileID: 1032338636}
   - component: {fileID: 1032338635}
+  - component: {fileID: 1032338638}
   m_Layer: 5
   m_Name: AttackSpeed_button
   m_TagString: Untagged
@@ -24491,7 +24716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 317.5, y: -317.5}
+  m_AnchoredPosition: {x: 517.5, y: -317.5}
   m_SizeDelta: {x: 185, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1032338635
@@ -24537,7 +24762,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1032338636}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 102308478}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1032338636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24576,6 +24813,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032338633}
   m_CullTransparentMesh: 1
+--- !u!114 &1032338638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032338633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ff25c4ee9ff4946808822ee1e0784b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Attack Speed
+  UpgradeIcon: {fileID: 21300000, guid: a0f4ca956211df74d97cba15986edb0f, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &1040571796
 GameObject:
   m_ObjectHideFlags: 0
@@ -26299,12 +26551,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1569162840}
+  - {fileID: 568011494}
   - {fileID: 1835951754}
   - {fileID: 1590719897}
   - {fileID: 2119833035}
   - {fileID: 1032338634}
   - {fileID: 2051969587}
-  - {fileID: 568011494}
   - {fileID: 978418312}
   - {fileID: 428936477}
   m_Father: {fileID: 1866573240}
@@ -26897,10 +27149,11 @@ MonoBehaviour:
   hatsButtonLeft: {fileID: 1746860086}
   battleButtonLeft: {fileID: 1004319767}
   upgradeButtonLeft: {fileID: 1238865227}
-  HatCollectionPanel_Portrait: {fileID: 895955766}
-  HatCollectionPanel_Landscape: {fileID: 1996456545}
-  UpgradesPanel_Portrait: {fileID: 946971745}
-  UpgradesPanel_Landscape: {fileID: 1866573239}
+  hatCollectionPanel_Portrait: {fileID: 895955766}
+  hatCollectionPanel_Landscape: {fileID: 1996456545}
+  upgradesPanel_Portrait: {fileID: 946971745}
+  ugradesPanel_Landscape: {fileID: 1866573239}
+  upgradesManager: {fileID: 1517087945}
 --- !u!114 &1113215526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27770,6 +28023,7 @@ GameObject:
   - component: {fileID: 1153685654}
   - component: {fileID: 1153685653}
   - component: {fileID: 1153685652}
+  - component: {fileID: 1153685655}
   m_Layer: 5
   m_Name: Strength_button
   m_TagString: Untagged
@@ -27843,7 +28097,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1153685653}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1153685655}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1153685653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27882,6 +28148,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153685650}
   m_CullTransparentMesh: 1
+--- !u!114 &1153685655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153685650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4beda2ce0e7ab9a42ac5f5a8f3fd20f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Strength
+  UpgradeIcon: {fileID: 21300000, guid: dbf3475c9aba50b4182298fa96f12447, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &1153894524
 GameObject:
   m_ObjectHideFlags: 0
@@ -28440,6 +28721,7 @@ GameObject:
   - component: {fileID: 1164306617}
   - component: {fileID: 1164306616}
   - component: {fileID: 1164306615}
+  - component: {fileID: 1164306618}
   m_Layer: 5
   m_Name: GoldGain_button
   m_TagString: Untagged
@@ -28513,7 +28795,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1164306616}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1164306618}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1164306616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28552,6 +28846,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164306613}
   m_CullTransparentMesh: 1
+--- !u!114 &1164306618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164306613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f49b79c1fc9cf04daeb579e1fff20c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Gold Gain
+  UpgradeIcon: {fileID: 21300000, guid: a06d3cc4d8925174a8bc47521c62f239, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &1170442829
 GameObject:
   m_ObjectHideFlags: 0
@@ -30395,6 +30704,7 @@ GameObject:
   - component: {fileID: 1260204189}
   - component: {fileID: 1260204188}
   - component: {fileID: 1260204187}
+  - component: {fileID: 1260204190}
   m_Layer: 5
   m_Name: MaxHealth_button
   m_TagString: Untagged
@@ -30468,7 +30778,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1260204188}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1260204190}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1260204188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30507,6 +30829,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260204185}
   m_CullTransparentMesh: 1
+--- !u!114 &1260204190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260204185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 651c0322685f9c2469e1073af9ba74ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Max Health
+  UpgradeIcon: {fileID: 21300000, guid: 7758fa887187a3f418aee07ded1b9e71, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &1266033563
 GameObject:
   m_ObjectHideFlags: 0
@@ -36075,6 +36412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1517087943}
   - component: {fileID: 1517087944}
+  - component: {fileID: 1517087945}
   m_Layer: 5
   m_Name: MainMenu_panel
   m_TagString: Untagged
@@ -36127,6 +36465,24 @@ MonoBehaviour:
   ConformX: 1
   ConformY: 1
   Logging: 0
+--- !u!114 &1517087945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517087942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3652d7a8102b1f64fa6a8bcc301fb971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtons_Portrait: {fileID: 190117481}
+  upgradeButtons_Landscape: {fileID: 1100565291}
+  selectionOutline_Portrait: {fileID: 1114769145}
+  selectionOutline_Landscape: {fileID: 339078303}
+  upgradeInfoPanel_Portrait: {fileID: 304173595}
+  upgradeInfoPanel_Landscape: {fileID: 347108143}
 --- !u!1 &1522525311
 GameObject:
   m_ObjectHideFlags: 0
@@ -37375,6 +37731,7 @@ GameObject:
   - component: {fileID: 1569162843}
   - component: {fileID: 1569162842}
   - component: {fileID: 1569162841}
+  - component: {fileID: 1569162844}
   m_Layer: 5
   m_Name: MoveSpeed_button
   m_TagString: Untagged
@@ -37448,7 +37805,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1569162842}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1569162844}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1569162842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37487,6 +37856,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1569162839}
   m_CullTransparentMesh: 1
+--- !u!114 &1569162844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569162839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5caaac612de160549aeb1b00955f343e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Move Speed
+  UpgradeIcon: {fileID: 21300000, guid: fb92edef70e9fe34c8dd5bbca68ce8a5, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &1570230785
 GameObject:
   m_ObjectHideFlags: 0
@@ -38060,6 +38444,7 @@ GameObject:
   - component: {fileID: 1590719900}
   - component: {fileID: 1590719899}
   - component: {fileID: 1590719898}
+  - component: {fileID: 1590719901}
   m_Layer: 5
   m_Name: Regeneration_button
   m_TagString: Untagged
@@ -38087,7 +38472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 517.5, y: -117.5}
+  m_AnchoredPosition: {x: 117.5, y: -317.5}
   m_SizeDelta: {x: 185, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1590719898
@@ -38133,7 +38518,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1590719899}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 919247131}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1590719899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38172,6 +38569,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590719896}
   m_CullTransparentMesh: 1
+--- !u!114 &1590719901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590719896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69489502936ce24408575c5c3b9bbb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Regeneration
+  UpgradeIcon: {fileID: 21300000, guid: 945bf13df666d1341acfa006e89241ea, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &1601487494
 GameObject:
   m_ObjectHideFlags: 0
@@ -43159,6 +43571,7 @@ GameObject:
   - component: {fileID: 1835951757}
   - component: {fileID: 1835951756}
   - component: {fileID: 1835951755}
+  - component: {fileID: 1835951758}
   m_Layer: 5
   m_Name: MaxArmor_button
   m_TagString: Untagged
@@ -43186,7 +43599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 317.5, y: -117.5}
+  m_AnchoredPosition: {x: 517.5, y: -117.5}
   m_SizeDelta: {x: 185, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1835951755
@@ -43232,7 +43645,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1835951756}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 733387329}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1835951756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43271,6 +43696,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835951753}
   m_CullTransparentMesh: 1
+--- !u!114 &1835951758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835951753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d988ca14a1913744ae54e7c553ff475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Max Armor
+  UpgradeIcon: {fileID: 21300000, guid: 3beedbbe2169ca54c9980a2c5a7ab40c, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &1842656724
 GameObject:
   m_ObjectHideFlags: 0
@@ -43767,6 +44207,7 @@ GameObject:
   - component: {fileID: 1876070286}
   - component: {fileID: 1876070285}
   - component: {fileID: 1876070284}
+  - component: {fileID: 1876070287}
   m_Layer: 5
   m_Name: XPGain_button
   m_TagString: Untagged
@@ -43840,7 +44281,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1876070285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 978418316}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1876070285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43879,6 +44332,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876070282}
   m_CullTransparentMesh: 1
+--- !u!114 &1876070287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876070282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6846d622b125ec14283c53efceb10b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: XP Gain
+  UpgradeIcon: {fileID: 21300000, guid: cc2267d50c17d0d4d8aa4fbcfe686cf4, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &1879755286
 GameObject:
   m_ObjectHideFlags: 0
@@ -47982,6 +48450,7 @@ GameObject:
   - component: {fileID: 2051969590}
   - component: {fileID: 2051969589}
   - component: {fileID: 2051969588}
+  - component: {fileID: 2051969591}
   m_Layer: 5
   m_Name: GoldGain_button
   m_TagString: Untagged
@@ -48009,7 +48478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 517.5, y: -317.5}
+  m_AnchoredPosition: {x: 117.5, y: -517.5}
   m_SizeDelta: {x: 185, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051969588
@@ -48055,7 +48524,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2051969589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1164306618}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2051969589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48094,6 +48575,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051969586}
   m_CullTransparentMesh: 1
+--- !u!114 &2051969591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051969586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f49b79c1fc9cf04daeb579e1fff20c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Gold Gain
+  UpgradeIcon: {fileID: 21300000, guid: a06d3cc4d8925174a8bc47521c62f239, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &2055378518
 GameObject:
   m_ObjectHideFlags: 0
@@ -49930,6 +50426,7 @@ GameObject:
   - component: {fileID: 2119833038}
   - component: {fileID: 2119833037}
   - component: {fileID: 2119833036}
+  - component: {fileID: 2119833039}
   m_Layer: 5
   m_Name: Strength_button
   m_TagString: Untagged
@@ -49957,7 +50454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117.5, y: -317.5}
+  m_AnchoredPosition: {x: 317.5, y: -317.5}
   m_SizeDelta: {x: 185, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2119833036
@@ -50003,7 +50500,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119833037}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087945}
+        m_TargetAssemblyTypeName: UpgradesManager, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1153685655}
+          m_ObjectArgumentAssemblyTypeName: UpgradeButton, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2119833037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50042,6 +50551,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119833034}
   m_CullTransparentMesh: 1
+--- !u!114 &2119833039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119833034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4beda2ce0e7ab9a42ac5f5a8f3fd20f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeName: Strength
+  UpgradeIcon: {fileID: 21300000, guid: dbf3475c9aba50b4182298fa96f12447, type: 3}
+  UpgradeLevel: 1
 --- !u!1 &2126631531
 GameObject:
   m_ObjectHideFlags: 0
