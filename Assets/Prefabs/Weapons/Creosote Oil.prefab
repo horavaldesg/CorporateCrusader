@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7126747491684613898}
   - component: {fileID: 6405570130435422346}
   - component: {fileID: 4989146257510620500}
-  - component: {fileID: 8210074289210609923}
+  - component: {fileID: -6283399342552172760}
   m_Layer: 0
-  m_Name: Pepper Spray
+  m_Name: Creosote Oil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.75332755, b: 0, a: 0.27058825}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &8210074289210609923
+--- !u!114 &-6283399342552172760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,13 +130,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3036507252920697432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 590da3333c6961a4aa97738723899fde, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cf92dfb2159ce24da68feccd91bd20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attribute: 2
-  damage: 4
-  level: 1
-  coolDown: 0.5
+  damage: 0
+  level: 0
+  coolDown: 0
   instantiatedObject: {fileID: 0}
   radius: 5
   slowDownMultiplier: 1
