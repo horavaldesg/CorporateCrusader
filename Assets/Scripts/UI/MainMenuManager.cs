@@ -12,6 +12,7 @@ public class MainMenuManager : MonoBehaviour
 
     private Animator _anim;
     private bool _pastSplashScreen = false;
+    private ScreenOrientation currentOrientation;
     
     private enum ScreenType { StageSelect, Hats, Upgrades };
     private ScreenType currentScreen;
@@ -19,44 +20,26 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         _anim = GetComponent<Animator>();
+
+        currentOrientation = Screen.orientation;
     }
 
     private void Update()
     {
+        //check if past splash screen
         if(!_pastSplashScreen) return;
-
-        switch(Screen.orientation)
+        
+        //check if screen orientation changed
+        if(currentOrientation != Screen.orientation)
         {
-            case ScreenOrientation.Portrait:
-            case ScreenOrientation.PortraitUpsideDown:
-                hatsButtonBtm.parent.gameObject.SetActive(true);
-                hatsButtonLeft.parent.gameObject.SetActive(false);
-                if(currentScreen == ScreenType.Hats)
-                {
-                    HatCollectionPanel_Portrait.SetActive(true);
-                    HatCollectionPanel_Landscape.SetActive(false);
-                }
-                else if(currentScreen == ScreenType.Upgrades)
-                {
-                    UpgradesPanel_Portrait.SetActive(true);
-                    UpgradesPanel_Landscape.SetActive(false);
-                }
-                break;
-            case ScreenOrientation.LandscapeLeft:
-            case ScreenOrientation.LandscapeRight:
-                hatsButtonLeft.parent.gameObject.SetActive(true);
-                hatsButtonBtm.parent.gameObject.SetActive(false);
-                if(currentScreen == ScreenType.Hats)
-                {
-                    HatCollectionPanel_Landscape.SetActive(true);
-                    HatCollectionPanel_Portrait.SetActive(false);
-                }
-                else if(currentScreen == ScreenType.Upgrades)
-                {
-                    UpgradesPanel_Landscape.SetActive(true);
-                    UpgradesPanel_Portrait.SetActive(false);
-                }
-                break;
+            //update screen orientation
+            currentOrientation = Screen.orientation;
+
+            //update screen selection buttons
+            UpdateScreenButtons();
+
+            //update panels based on screen orientation
+            UpdateScreenPanels();
         }
     }
 
@@ -65,6 +48,9 @@ public class MainMenuManager : MonoBehaviour
         _pastSplashScreen = true;
         _anim.SetTrigger("SplashScreenToStageSelect");
         currentScreen = ScreenType.StageSelect;
+
+        //update screen selection buttons
+        UpdateScreenButtons();
     }
 
     public void HatsButton()
@@ -89,8 +75,9 @@ public class MainMenuManager : MonoBehaviour
         if(currentScreen == ScreenType.StageSelect) _anim.SetTrigger("StageSelectToHats");
         else if(currentScreen == ScreenType.Upgrades) _anim.SetTrigger("UpgradesToHats");
 
-        //update current screen type
+        //update current screen type and panels
         currentScreen = ScreenType.Hats;
+        UpdateScreenPanels();
     }
 
     public void BattleButton()
@@ -117,6 +104,7 @@ public class MainMenuManager : MonoBehaviour
 
         //update current screen type
         currentScreen = ScreenType.StageSelect;
+        UpdateScreenPanels();
     }
 
     public void UpgradeButton()
@@ -143,5 +131,57 @@ public class MainMenuManager : MonoBehaviour
 
         //update current screen type
         currentScreen = ScreenType.Upgrades;
+        UpdateScreenPanels();
+    }
+
+    private void UpdateScreenButtons()
+    {
+        switch(Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                hatsButtonBtm.parent.gameObject.SetActive(true);
+                hatsButtonLeft.parent.gameObject.SetActive(false);
+                break;
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                hatsButtonLeft.parent.gameObject.SetActive(true);
+                hatsButtonBtm.parent.gameObject.SetActive(false);
+                break;
+        }
+    }
+
+    private void UpdateScreenPanels()
+    {
+        //update panels based on screen orientation
+        switch(Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                if(currentScreen == ScreenType.Hats)
+                {
+                    HatCollectionPanel_Portrait.SetActive(true);
+                    HatCollectionPanel_Landscape.SetActive(false);
+                }
+                else if(currentScreen == ScreenType.Upgrades)
+                {
+                    UpgradesPanel_Portrait.SetActive(true);
+                    UpgradesPanel_Landscape.SetActive(false);
+                }
+                break;
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                if(currentScreen == ScreenType.Hats)
+                {
+                    HatCollectionPanel_Landscape.SetActive(true);
+                    HatCollectionPanel_Portrait.SetActive(false);
+                }
+                else if(currentScreen == ScreenType.Upgrades)
+                {
+                    UpgradesPanel_Landscape.SetActive(true);
+                    UpgradesPanel_Portrait.SetActive(false);
+                }
+                break;
+        }
     }
 }
