@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float timeAlive;
     [HideInInspector] public Transform whereToShoot;
     
-    private void Awake()
+    protected virtual void Awake()
     {
         Destroy(gameObject, timeAlive);
     }

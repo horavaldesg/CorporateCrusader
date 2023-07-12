@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
@@ -17,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
    private EnemyContainer _enemyContainer;
    private ZoneManager _zoneManager;
    
-   [SerializeField] private List<GameObject> _enemiesSpawnedList = new();
+   public List<GameObject> enemiesSpawnedList = new();
    private int _phaseIndex;
    private int _enemiesSpawned;
    private bool _enemiesSpawning;
@@ -119,12 +120,12 @@ public class EnemySpawner : MonoBehaviour
    public void RemoveEnemyFromList(GameObject enemy)
    {
       if (enemy)
-         _enemiesSpawnedList.Remove(enemy);
+         enemiesSpawnedList.Remove(enemy);
    }
 
    private bool WaveCheck()
    {
-      return _enemiesSpawnedList.Count <= 5; // change to percentage
+      return enemiesSpawnedList.Count <= 5; // change to percentage
    }
 
    private void Spawn()
@@ -132,7 +133,7 @@ public class EnemySpawner : MonoBehaviour
       _t = 0;
       var go = Instantiate(GetRandomEnemy());
       go.transform.position = GetRadius();
-      _enemiesSpawnedList.Add(go);
+      enemiesSpawnedList.Add(go);
       _enemiesSpawned++;
    }
 
