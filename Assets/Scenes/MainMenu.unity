@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 4111139}
   - component: {fileID: 4111138}
   - component: {fileID: 4111137}
+  - component: {fileID: 4111140}
   m_Layer: 5
   m_Name: Pilot_button
   m_TagString: Untagged
@@ -162,7 +163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 506, y: -551}
+  m_AnchoredPosition: {x: 300, y: -551}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4111137
@@ -208,7 +209,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4111138}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4111136}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4111138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +260,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4111135}
   m_CullTransparentMesh: 1
+--- !u!114 &4111140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4111135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Pilot
+  HatIcon: {fileID: 21300000, guid: 71efa577fdfaf4f4f9268489945800e2, type: 3}
+  HatTier: 1
+  HatDescription: This is what the pilot hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &8290528
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +323,7 @@ GameObject:
   - component: {fileID: 14994610}
   - component: {fileID: 14994609}
   - component: {fileID: 14994608}
+  - component: {fileID: 14994611}
   m_Layer: 5
   m_Name: Pilot_button
   m_TagString: Untagged
@@ -363,7 +397,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 14994609}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 14994607}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &14994609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +448,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14994606}
   m_CullTransparentMesh: 1
+--- !u!114 &14994611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14994606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Pilot
+  HatIcon: {fileID: 21300000, guid: 71efa577fdfaf4f4f9268489945800e2, type: 3}
+  HatTier: 1
+  HatDescription: This is what the pilot hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &17624746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1290,7 @@ GameObject:
   - component: {fileID: 64173910}
   - component: {fileID: 64173909}
   - component: {fileID: 64173908}
+  - component: {fileID: 64173911}
   m_Layer: 5
   m_Name: Pirate_button
   m_TagString: Untagged
@@ -1297,7 +1364,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 64173909}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 64173907}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &64173909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,6 +1415,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64173906}
   m_CullTransparentMesh: 1
+--- !u!114 &64173911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64173906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Pirate
+  HatIcon: {fileID: 21300000, guid: 39ac9fba88a53f347b0519846d416e20, type: 3}
+  HatTier: 1
+  HatDescription: This is what the pirate hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &65917681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,6 +1717,7 @@ GameObject:
   - component: {fileID: 78017295}
   - component: {fileID: 78017294}
   - component: {fileID: 78017293}
+  - component: {fileID: 78017296}
   m_Layer: 5
   m_Name: Florist_button
   m_TagString: Untagged
@@ -1691,7 +1791,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 78017294}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 78017292}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &78017294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1730,6 +1842,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78017291}
   m_CullTransparentMesh: 1
+--- !u!114 &78017296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78017291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Florist
+  HatIcon: {fileID: 21300000, guid: a96ba51ff2c421b4885433ee52f5a85a, type: 3}
+  HatTier: 1
+  HatDescription: This is what the florist hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &79565127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,8 +2111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130, y: -200}
-  m_SizeDelta: {x: 225, y: 60}
+  m_AnchoredPosition: {x: 145, y: -200}
+  m_SizeDelta: {x: 280, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &85802803
 MonoBehaviour:
@@ -2007,7 +2139,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2432,8 +2564,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1371454489}
   m_HandleRect: {fileID: 1371454488}
   m_Direction: 2
-  m_Value: 0.8737158
-  m_Size: 0.20776255
+  m_Value: 1
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3594,6 +3726,7 @@ GameObject:
   - component: {fileID: 141109959}
   - component: {fileID: 141109958}
   - component: {fileID: 141109957}
+  - component: {fileID: 141109960}
   m_Layer: 5
   m_Name: Lumberjack_button
   m_TagString: Untagged
@@ -3667,7 +3800,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 141109958}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 141109956}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &141109958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3706,6 +3851,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141109955}
   m_CullTransparentMesh: 1
+--- !u!114 &141109960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141109955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Lumberjack
+  HatIcon: {fileID: 21300000, guid: cb5b0f38deccc1445a899bf9a35c224b, type: 3}
+  HatTier: 1
+  HatDescription: This is what the lumberjack hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &142429981
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,6 +4018,7 @@ GameObject:
   - component: {fileID: 143497914}
   - component: {fileID: 143497913}
   - component: {fileID: 143497912}
+  - component: {fileID: 143497915}
   m_Layer: 5
   m_Name: Astronaut_button
   m_TagString: Untagged
@@ -3880,7 +4046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94, y: -769}
+  m_AnchoredPosition: {x: 506, y: -551}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &143497912
@@ -3926,7 +4092,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 143497913}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 143497911}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &143497913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3965,6 +4143,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143497910}
   m_CullTransparentMesh: 1
+--- !u!114 &143497915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143497910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Astronaut
+  HatIcon: {fileID: 21300000, guid: 0c536e3c0c644b74994eb0a05f3390ae, type: 3}
+  HatTier: 1
+  HatDescription: This is what the astronaut helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &150092157
 GameObject:
   m_ObjectHideFlags: 0
@@ -4247,6 +4445,7 @@ GameObject:
   - component: {fileID: 160708740}
   - component: {fileID: 160708739}
   - component: {fileID: 160708738}
+  - component: {fileID: 160708741}
   m_Layer: 5
   m_Name: Astronaut_button
   m_TagString: Untagged
@@ -4320,7 +4519,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 160708739}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 160708737}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &160708739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4359,6 +4570,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160708736}
   m_CullTransparentMesh: 1
+--- !u!114 &160708741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160708736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Astronaut
+  HatIcon: {fileID: 21300000, guid: 0c536e3c0c644b74994eb0a05f3390ae, type: 3}
+  HatTier: 1
+  HatDescription: This is what the astronaut helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &169226248
 GameObject:
   m_ObjectHideFlags: 0
@@ -4678,6 +4909,7 @@ GameObject:
   - component: {fileID: 177893856}
   - component: {fileID: 177893855}
   - component: {fileID: 177893854}
+  - component: {fileID: 177893857}
   m_Layer: 5
   m_Name: Welder_button
   m_TagString: Untagged
@@ -4751,7 +4983,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 177893855}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 177893853}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &177893855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4790,6 +5034,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177893852}
   m_CullTransparentMesh: 1
+--- !u!114 &177893857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177893852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Welder
+  HatIcon: {fileID: 21300000, guid: ea02ce7b73553f045a256461ad4c52e1, type: 3}
+  HatTier: 1
+  HatDescription: This is what the welder mask does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &181665630
 GameObject:
   m_ObjectHideFlags: 0
@@ -4893,6 +5157,7 @@ GameObject:
   - component: {fileID: 183886690}
   - component: {fileID: 183886689}
   - component: {fileID: 183886688}
+  - component: {fileID: 183886691}
   m_Layer: 5
   m_Name: Viking_button
   m_TagString: Untagged
@@ -4966,7 +5231,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 183886689}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 183886687}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &183886689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5005,6 +5282,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183886686}
   m_CullTransparentMesh: 1
+--- !u!114 &183886691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183886686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Viking
+  HatIcon: {fileID: 21300000, guid: 35a7ced0d15cd2145b4ad1be9d12aa47, type: 3}
+  HatTier: 1
+  HatDescription: This is what the viking helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &187004337
 GameObject:
   m_ObjectHideFlags: 0
@@ -5017,6 +5314,7 @@ GameObject:
   - component: {fileID: 187004341}
   - component: {fileID: 187004340}
   - component: {fileID: 187004339}
+  - component: {fileID: 187004342}
   m_Layer: 5
   m_Name: Fisherman_button
   m_TagString: Untagged
@@ -5044,7 +5342,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -769}
+  m_AnchoredPosition: {x: 94, y: -769}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &187004339
@@ -5090,7 +5388,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 187004340}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 187004338}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &187004340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5129,6 +5439,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187004337}
   m_CullTransparentMesh: 1
+--- !u!114 &187004342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187004337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Fisherman
+  HatIcon: {fileID: 21300000, guid: abc9111e248558740a2e9604f390f54e, type: 3}
+  HatTier: 1
+  HatDescription: This is what the fisherman hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &190117480
 GameObject:
   m_ObjectHideFlags: 0
@@ -5327,6 +5657,7 @@ GameObject:
   - component: {fileID: 198935061}
   - component: {fileID: 198935060}
   - component: {fileID: 198935059}
+  - component: {fileID: 198935062}
   m_Layer: 5
   m_Name: Cowboy_button
   m_TagString: Untagged
@@ -5354,7 +5685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94, y: -551}
+  m_AnchoredPosition: {x: 506, y: -333}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &198935059
@@ -5400,7 +5731,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 198935060}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 198935058}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &198935060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5439,6 +5782,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198935057}
   m_CullTransparentMesh: 1
+--- !u!114 &198935062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198935057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Cowboy
+  HatIcon: {fileID: 21300000, guid: 00a8bfe71210ab947a7f5fac041372ab, type: 3}
+  HatTier: 1
+  HatDescription: This is what the cowboy hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &218475556
 GameObject:
   m_ObjectHideFlags: 0
@@ -5528,6 +5891,7 @@ GameObject:
   - component: {fileID: 222329381}
   - component: {fileID: 222329380}
   - component: {fileID: 222329379}
+  - component: {fileID: 222329382}
   m_Layer: 5
   m_Name: Army_button
   m_TagString: Untagged
@@ -5601,7 +5965,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 222329380}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 222329378}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &222329380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5640,6 +6016,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222329377}
   m_CullTransparentMesh: 1
+--- !u!114 &222329382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222329377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Army
+  HatIcon: {fileID: 21300000, guid: af7533e3c2135294ab44171cf622315d, type: 3}
+  HatTier: 1
+  HatDescription: This is what the army hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &224304979
 GameObject:
   m_ObjectHideFlags: 0
@@ -5955,7 +6351,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrade (10 )
+  m_text: Upgrade (10<sprite=0>)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 465659efe22c70645852c0307ca7460d, type: 2}
   m_sharedMaterial: {fileID: -5409344503717323155, guid: 465659efe22c70645852c0307ca7460d, type: 2}
@@ -5974,7 +6370,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: f888aac3a42b33d478f180e62fa1a529, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -5982,7 +6378,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.25
+  m_fontSize: 46.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6677,6 +7073,7 @@ GameObject:
   - component: {fileID: 281994259}
   - component: {fileID: 281994258}
   - component: {fileID: 281994257}
+  - component: {fileID: 281994260}
   m_Layer: 5
   m_Name: Farmer_button
   m_TagString: Untagged
@@ -6750,7 +7147,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 281994258}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 281994256}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &281994258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6789,6 +7198,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281994255}
   m_CullTransparentMesh: 1
+--- !u!114 &281994260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281994255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Farmer
+  HatIcon: {fileID: 21300000, guid: 194c07cbe3907ad4e98c0cb868ed06ea, type: 3}
+  HatTier: 1
+  HatDescription: This is what the farmer hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &283343930
 GameObject:
   m_ObjectHideFlags: 0
@@ -7282,6 +7711,7 @@ GameObject:
   - component: {fileID: 292126783}
   - component: {fileID: 292126782}
   - component: {fileID: 292126781}
+  - component: {fileID: 292126784}
   m_Layer: 5
   m_Name: Construction_button
   m_TagString: Untagged
@@ -7304,6 +7734,7 @@ RectTransform:
   - {fileID: 1224950932}
   - {fileID: 1783662907}
   - {fileID: 1326089589}
+  - {fileID: 1148062838}
   m_Father: {fileID: 831700193}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7355,7 +7786,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 292126782}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 292126780}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &292126782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7394,6 +7837,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292126779}
   m_CullTransparentMesh: 1
+--- !u!114 &292126784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292126779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Construction
+  HatIcon: {fileID: 21300000, guid: d3d64c41e58e16b49b9ef9f6fd9afdee, type: 3}
+  HatTier: 1
+  HatDescription: This is what the construction hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &296708500
 GameObject:
   m_ObjectHideFlags: 0
@@ -7482,6 +7945,7 @@ GameObject:
   - component: {fileID: 300061541}
   - component: {fileID: 300061540}
   - component: {fileID: 300061539}
+  - component: {fileID: 300061542}
   m_Layer: 5
   m_Name: TopHat_button
   m_TagString: Untagged
@@ -7509,7 +7973,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -551}
+  m_AnchoredPosition: {x: 94, y: -551}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &300061539
@@ -7555,7 +8019,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 300061540}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 300061538}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &300061540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7594,6 +8070,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300061537}
   m_CullTransparentMesh: 1
+--- !u!114 &300061542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300061537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Top Hat
+  HatIcon: {fileID: 21300000, guid: 747791e6fb5b030498ea1602c605e89d, type: 3}
+  HatTier: 1
+  HatDescription: This is what the top hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &304173594
 GameObject:
   m_ObjectHideFlags: 0
@@ -8184,6 +8680,7 @@ GameObject:
   - component: {fileID: 326053700}
   - component: {fileID: 326053699}
   - component: {fileID: 326053698}
+  - component: {fileID: 326053701}
   m_Layer: 5
   m_Name: Trucker_button
   m_TagString: Untagged
@@ -8257,7 +8754,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 326053699}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 326053697}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &326053699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8296,6 +8805,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326053696}
   m_CullTransparentMesh: 1
+--- !u!114 &326053701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326053696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Trucker
+  HatIcon: {fileID: 21300000, guid: 462d9dc512ff7624abdd48a187675216, type: 3}
+  HatTier: 1
+  HatDescription: This is what the trucker hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &327328849
 GameObject:
   m_ObjectHideFlags: 0
@@ -12263,6 +12792,7 @@ GameObject:
   - component: {fileID: 526263353}
   - component: {fileID: 526263352}
   - component: {fileID: 526263351}
+  - component: {fileID: 526263354}
   m_Layer: 5
   m_Name: Fisherman_button
   m_TagString: Untagged
@@ -12336,7 +12866,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 526263352}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 526263350}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &526263352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12375,6 +12917,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526263349}
   m_CullTransparentMesh: 1
+--- !u!114 &526263354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526263349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Fisherman
+  HatIcon: {fileID: 21300000, guid: abc9111e248558740a2e9604f390f54e, type: 3}
+  HatTier: 1
+  HatDescription: This is what the fisherman hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &543479684
 GameObject:
   m_ObjectHideFlags: 0
@@ -12927,6 +13489,7 @@ GameObject:
   - component: {fileID: 565229823}
   - component: {fileID: 565229822}
   - component: {fileID: 565229821}
+  - component: {fileID: 565229824}
   m_Layer: 5
   m_Name: Jester_button
   m_TagString: Untagged
@@ -13000,7 +13563,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 565229822}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 565229820}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &565229822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13039,6 +13614,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565229819}
   m_CullTransparentMesh: 1
+--- !u!114 &565229824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565229819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Jester
+  HatIcon: {fileID: 21300000, guid: d8e297d7f0d7675418641d645e3fa6e5, type: 3}
+  HatTier: 1
+  HatDescription: This is what the jester hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &568011493
 GameObject:
   m_ObjectHideFlags: 0
@@ -13473,6 +14068,7 @@ GameObject:
   - component: {fileID: 578882737}
   - component: {fileID: 578882736}
   - component: {fileID: 578882735}
+  - component: {fileID: 578882738}
   m_Layer: 5
   m_Name: Fireman_button
   m_TagString: Untagged
@@ -13546,7 +14142,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 578882736}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 578882734}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &578882736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13585,6 +14193,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578882733}
   m_CullTransparentMesh: 1
+--- !u!114 &578882738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578882733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Fireman
+  HatIcon: {fileID: 21300000, guid: e64ef63cb7e4cda4d8dfdf13a68fb812, type: 3}
+  HatTier: 1
+  HatDescription: This is what the fireman hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &579196889
 GameObject:
   m_ObjectHideFlags: 0
@@ -14712,6 +15340,7 @@ GameObject:
   - component: {fileID: 610921377}
   - component: {fileID: 610921376}
   - component: {fileID: 610921375}
+  - component: {fileID: 610921378}
   m_Layer: 5
   m_Name: Sailor_button
   m_TagString: Untagged
@@ -14785,7 +15414,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 610921376}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 610921374}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &610921376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14824,6 +15465,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610921373}
   m_CullTransparentMesh: 1
+--- !u!114 &610921378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610921373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Sailor
+  HatIcon: {fileID: 21300000, guid: dd0e57f1f8e1ac846bc25a02bafe146f, type: 3}
+  HatTier: 1
+  HatDescription: This is what the sailor hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &611931999
 GameObject:
   m_ObjectHideFlags: 0
@@ -14857,8 +15518,8 @@ RectTransform:
   m_Father: {fileID: 1485451627}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.74305177}
-  m_AnchorMax: {x: 1, y: 0.9987595}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15395,6 +16056,7 @@ GameObject:
   - component: {fileID: 626646013}
   - component: {fileID: 626646012}
   - component: {fileID: 626646011}
+  - component: {fileID: 626646014}
   m_Layer: 5
   m_Name: Florist_button
   m_TagString: Untagged
@@ -15468,7 +16130,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 626646012}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 626646010}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &626646012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15507,6 +16181,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626646009}
   m_CullTransparentMesh: 1
+--- !u!114 &626646014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626646009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Florist
+  HatIcon: {fileID: 21300000, guid: a96ba51ff2c421b4885433ee52f5a85a, type: 3}
+  HatTier: 1
+  HatDescription: This is what the florist hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &630920410
 GameObject:
   m_ObjectHideFlags: 0
@@ -15921,6 +16615,7 @@ GameObject:
   - component: {fileID: 646936554}
   - component: {fileID: 646936553}
   - component: {fileID: 646936552}
+  - component: {fileID: 646936555}
   m_Layer: 5
   m_Name: Knight_button
   m_TagString: Untagged
@@ -15994,7 +16689,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 646936553}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 646936551}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &646936553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16033,6 +16740,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646936550}
   m_CullTransparentMesh: 1
+--- !u!114 &646936555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646936550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Knight
+  HatIcon: {fileID: 21300000, guid: f02e6c83e13026e40bf3e2f8d634a566, type: 3}
+  HatTier: 1
+  HatDescription: This is what the knight helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &646962429
 GameObject:
   m_ObjectHideFlags: 0
@@ -16315,6 +17042,7 @@ GameObject:
   - component: {fileID: 666290200}
   - component: {fileID: 666290199}
   - component: {fileID: 666290198}
+  - component: {fileID: 666290201}
   m_Layer: 5
   m_Name: Cowboy_button
   m_TagString: Untagged
@@ -16388,7 +17116,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 666290199}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 666290197}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &666290199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16427,6 +17167,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666290196}
   m_CullTransparentMesh: 1
+--- !u!114 &666290201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666290196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Cowboy
+  HatIcon: {fileID: 21300000, guid: 00a8bfe71210ab947a7f5fac041372ab, type: 3}
+  HatTier: 1
+  HatDescription: This is what the cowboy hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &668534248
 GameObject:
   m_ObjectHideFlags: 0
@@ -16570,7 +17330,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 7027282
+    rgba: 4285217362
   m_fontColor: {r: 0.32156864, g: 0.22745098, b: 0.41960785, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -17266,6 +18026,7 @@ GameObject:
   - component: {fileID: 688480773}
   - component: {fileID: 688480772}
   - component: {fileID: 688480771}
+  - component: {fileID: 688480774}
   m_Layer: 5
   m_Name: Trucker_button
   m_TagString: Untagged
@@ -17339,7 +18100,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 688480772}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 688480770}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &688480772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17378,6 +18151,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688480769}
   m_CullTransparentMesh: 1
+--- !u!114 &688480774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688480769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Trucker
+  HatIcon: {fileID: 21300000, guid: 462d9dc512ff7624abdd48a187675216, type: 3}
+  HatTier: 1
+  HatDescription: This is what the trucker hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &693262395
 GameObject:
   m_ObjectHideFlags: 0
@@ -17964,6 +18757,7 @@ GameObject:
   - component: {fileID: 713520677}
   - component: {fileID: 713520676}
   - component: {fileID: 713520675}
+  - component: {fileID: 713520678}
   m_Layer: 5
   m_Name: Safari_button
   m_TagString: Untagged
@@ -17991,7 +18785,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94, y: -115}
+  m_AnchoredPosition: {x: 300, y: -987}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713520675
@@ -18037,7 +18831,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 713520676}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 713520674}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &713520676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18076,6 +18882,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713520673}
   m_CullTransparentMesh: 1
+--- !u!114 &713520678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713520673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Safari
+  HatIcon: {fileID: 21300000, guid: d3eedb99dc9773e4489c73106c74bb41, type: 3}
+  HatTier: 1
+  HatDescription: This is what the safari hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &717929988
 GameObject:
   m_ObjectHideFlags: 0
@@ -18939,6 +19765,7 @@ GameObject:
   - component: {fileID: 737784814}
   - component: {fileID: 737784813}
   - component: {fileID: 737784812}
+  - component: {fileID: 737784815}
   m_Layer: 5
   m_Name: TopHat_button
   m_TagString: Untagged
@@ -19012,7 +19839,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 737784813}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 737784811}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &737784813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19051,6 +19890,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737784810}
   m_CullTransparentMesh: 1
+--- !u!114 &737784815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737784810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Top Hat
+  HatIcon: {fileID: 21300000, guid: 747791e6fb5b030498ea1602c605e89d, type: 3}
+  HatTier: 1
+  HatDescription: This is what the top hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &743045940
 GameObject:
   m_ObjectHideFlags: 0
@@ -19063,6 +19922,7 @@ GameObject:
   - component: {fileID: 743045944}
   - component: {fileID: 743045943}
   - component: {fileID: 743045942}
+  - component: {fileID: 743045945}
   m_Layer: 5
   m_Name: Knight_button
   m_TagString: Untagged
@@ -19136,7 +19996,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 743045943}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 743045941}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &743045943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19175,6 +20047,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743045940}
   m_CullTransparentMesh: 1
+--- !u!114 &743045945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743045940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Knight
+  HatIcon: {fileID: 21300000, guid: f02e6c83e13026e40bf3e2f8d634a566, type: 3}
+  HatTier: 1
+  HatDescription: This is what the knight helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &748048043
 GameObject:
   m_ObjectHideFlags: 0
@@ -19938,6 +20830,7 @@ GameObject:
   - component: {fileID: 776011126}
   - component: {fileID: 776011125}
   - component: {fileID: 776011124}
+  - component: {fileID: 776011127}
   m_Layer: 5
   m_Name: Artist_button
   m_TagString: Untagged
@@ -20011,7 +20904,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 776011125}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 776011123}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &776011125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20050,6 +20955,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776011122}
   m_CullTransparentMesh: 1
+--- !u!114 &776011127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776011122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Artist
+  HatIcon: {fileID: 21300000, guid: 9072182704f973c479aa2d1233e7c0ed, type: 3}
+  HatTier: 1
+  HatDescription: This is what the artist hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &788989545
 GameObject:
   m_ObjectHideFlags: 0
@@ -20062,6 +20987,7 @@ GameObject:
   - component: {fileID: 788989549}
   - component: {fileID: 788989548}
   - component: {fileID: 788989547}
+  - component: {fileID: 788989550}
   m_Layer: 5
   m_Name: Grad_button
   m_TagString: Untagged
@@ -20135,7 +21061,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 788989548}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 788989546}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &788989548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20174,6 +21112,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788989545}
   m_CullTransparentMesh: 1
+--- !u!114 &788989550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788989545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Grad
+  HatIcon: {fileID: 21300000, guid: 082a3bd3535b21c4389f4ea1a7635504, type: 3}
+  HatTier: 1
+  HatDescription: This is what the grad cap does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &795649882
 GameObject:
   m_ObjectHideFlags: 0
@@ -21001,6 +21959,7 @@ GameObject:
   - component: {fileID: 831456501}
   - component: {fileID: 831456500}
   - component: {fileID: 831456499}
+  - component: {fileID: 831456502}
   m_Layer: 5
   m_Name: Miner_button
   m_TagString: Untagged
@@ -21074,7 +22033,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 831456500}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 831456498}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &831456500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21113,6 +22084,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831456497}
   m_CullTransparentMesh: 1
+--- !u!114 &831456502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831456497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Miner
+  HatIcon: {fileID: 21300000, guid: 61912eb49f5579b4c9979ff730de291a, type: 3}
+  HatTier: 1
+  HatDescription: This is what the miner helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &831700192
 GameObject:
   m_ObjectHideFlags: 0
@@ -21124,7 +22115,7 @@ GameObject:
   - component: {fileID: 831700193}
   - component: {fileID: 831700194}
   m_Layer: 5
-  m_Name: Content
+  m_Name: HatButtons-landscape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21177,7 +22168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 15, y: 0}
+  m_AnchoredPosition: {x: 15, y: 253.82835}
   m_SizeDelta: {x: -15, y: 2190}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &831700194
@@ -21216,6 +22207,7 @@ GameObject:
   - component: {fileID: 839965903}
   - component: {fileID: 839965902}
   - component: {fileID: 839965901}
+  - component: {fileID: 839965904}
   m_Layer: 5
   m_Name: Football_button
   m_TagString: Untagged
@@ -21289,7 +22281,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 839965902}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 839965900}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &839965902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21328,6 +22332,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839965899}
   m_CullTransparentMesh: 1
+--- !u!114 &839965904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839965899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Football
+  HatIcon: {fileID: 21300000, guid: 81d0bdf2712a36442a45cb6e1d1691c1, type: 3}
+  HatTier: 1
+  HatDescription: This is what the football helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &846697838
 GameObject:
   m_ObjectHideFlags: 0
@@ -21768,6 +22792,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861530002}
   m_CullTransparentMesh: 1
+--- !u!1 &867081973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 867081974}
+  - component: {fileID: 867081976}
+  - component: {fileID: 867081975}
+  m_Layer: 5
+  m_Name: Selection_outline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &867081974
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867081973}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1958651433}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &867081975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867081973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.56078434, b: 0.30588236, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 8be70db0ae44d9f4393069d301e23e68, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 7
+--- !u!222 &867081976
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867081973}
+  m_CullTransparentMesh: 1
 --- !u!1 &877143000
 GameObject:
   m_ObjectHideFlags: 0
@@ -21780,6 +22880,7 @@ GameObject:
   - component: {fileID: 877143004}
   - component: {fileID: 877143003}
   - component: {fileID: 877143002}
+  - component: {fileID: 877143005}
   m_Layer: 5
   m_Name: Jester_button
   m_TagString: Untagged
@@ -21853,7 +22954,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 877143003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 877143001}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &877143003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21892,6 +23005,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877143000}
   m_CullTransparentMesh: 1
+--- !u!114 &877143005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877143000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Jester
+  HatIcon: {fileID: 21300000, guid: d8e297d7f0d7675418641d645e3fa6e5, type: 3}
+  HatTier: 1
+  HatDescription: This is what the jester hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &878279496
 GameObject:
   m_ObjectHideFlags: 0
@@ -22026,7 +23159,7 @@ MonoBehaviour:
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
-  m_Inertia: 1
+  m_Inertia: 0
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 181665631}
@@ -22038,7 +23171,19 @@ MonoBehaviour:
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: OnScrollViewChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &878698255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22089,6 +23234,7 @@ GameObject:
   - component: {fileID: 888021005}
   - component: {fileID: 888021004}
   - component: {fileID: 888021003}
+  - component: {fileID: 888021006}
   m_Layer: 5
   m_Name: King_button
   m_TagString: Untagged
@@ -22162,7 +23308,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 888021004}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 888021002}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &888021004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22201,6 +23359,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888021001}
   m_CullTransparentMesh: 1
+--- !u!114 &888021006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888021001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: King
+  HatIcon: {fileID: 21300000, guid: 560655669c9b76c458519546a6331440, type: 3}
+  HatTier: 1
+  HatDescription: This is what the king hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &895955766
 GameObject:
   m_ObjectHideFlags: 0
@@ -23350,6 +24528,7 @@ GameObject:
   - component: {fileID: 959297322}
   - component: {fileID: 959297321}
   - component: {fileID: 959297320}
+  - component: {fileID: 959297323}
   m_Layer: 5
   m_Name: Policeman_button
   m_TagString: Untagged
@@ -23423,7 +24602,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 959297321}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 959297319}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &959297321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23462,6 +24653,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959297318}
   m_CullTransparentMesh: 1
+--- !u!114 &959297323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959297318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Policeman
+  HatIcon: {fileID: 21300000, guid: e5f055436c5a59348aa5ca42882c8c5d, type: 3}
+  HatTier: 1
+  HatDescription: This is what the policeman hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &960026596
 GameObject:
   m_ObjectHideFlags: 0
@@ -24073,8 +25284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130, y: -220}
-  m_SizeDelta: {x: 225, y: 60}
+  m_AnchoredPosition: {x: 160, y: -220}
+  m_SizeDelta: {x: 300, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997250956
 MonoBehaviour:
@@ -24101,7 +25312,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -25186,6 +26397,7 @@ GameObject:
   - component: {fileID: 1049465134}
   - component: {fileID: 1049465133}
   - component: {fileID: 1049465132}
+  - component: {fileID: 1049465135}
   m_Layer: 5
   m_Name: Racecar_button
   m_TagString: Untagged
@@ -25259,7 +26471,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1049465133}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1049465131}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1049465133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25298,6 +26522,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049465130}
   m_CullTransparentMesh: 1
+--- !u!114 &1049465135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049465130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Racecar
+  HatIcon: {fileID: 21300000, guid: 9a33d81b9d9b86b4cb3d4ef55287725b, type: 3}
+  HatTier: 1
+  HatDescription: This is what the racecar helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1051758924
 GameObject:
   m_ObjectHideFlags: 0
@@ -25791,6 +27035,7 @@ GameObject:
   - component: {fileID: 1068326836}
   - component: {fileID: 1068326835}
   - component: {fileID: 1068326834}
+  - component: {fileID: 1068326837}
   m_Layer: 5
   m_Name: Sombrero_button
   m_TagString: Untagged
@@ -25864,7 +27109,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1068326835}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1068326833}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1068326835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25903,6 +27160,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068326832}
   m_CullTransparentMesh: 1
+--- !u!114 &1068326837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068326832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Sombrero
+  HatIcon: {fileID: 21300000, guid: 622449a8b8a930642a4bc203e78c8bc4, type: 3}
+  HatTier: 1
+  HatDescription: This is what the sombrero hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1078349383
 GameObject:
   m_ObjectHideFlags: 0
@@ -26776,6 +28053,7 @@ GameObject:
   - component: {fileID: 1103538822}
   - component: {fileID: 1103538821}
   - component: {fileID: 1103538820}
+  - component: {fileID: 1103538823}
   m_Layer: 5
   m_Name: Viking_button
   m_TagString: Untagged
@@ -26849,7 +28127,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1103538821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1103538819}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1103538821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26888,6 +28178,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103538818}
   m_CullTransparentMesh: 1
+--- !u!114 &1103538823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103538818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Viking
+  HatIcon: {fileID: 21300000, guid: 35a7ced0d15cd2145b4ad1be9d12aa47, type: 3}
+  HatTier: 1
+  HatDescription: This is what the viking helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1112981308
 GameObject:
   m_ObjectHideFlags: 0
@@ -26900,7 +28210,7 @@ GameObject:
   - component: {fileID: 1112981311}
   - component: {fileID: 1112981310}
   m_Layer: 5
-  m_Name: UpgradeWithCoins_text
+  m_Name: UpgradeWithGold_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26946,7 +28256,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrade (500 )
+  m_text: Upgrade (500<sprite=0>)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 465659efe22c70645852c0307ca7460d, type: 2}
   m_sharedMaterial: {fileID: -5409344503717323155, guid: 465659efe22c70645852c0307ca7460d, type: 2}
@@ -26965,7 +28275,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: eb7db550662bfd245baea600895f0590, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -26973,7 +28283,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.85
+  m_fontSize: 41.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -27153,6 +28463,7 @@ MonoBehaviour:
   hatCollectionPanel_Landscape: {fileID: 1996456545}
   upgradesPanel_Portrait: {fileID: 946971745}
   ugradesPanel_Landscape: {fileID: 1866573239}
+  hatCollectionManager: {fileID: 1517087946}
   upgradesManager: {fileID: 1517087945}
 --- !u!114 &1113215526
 MonoBehaviour:
@@ -27359,6 +28670,7 @@ GameObject:
   - component: {fileID: 1119869183}
   - component: {fileID: 1119869182}
   - component: {fileID: 1119869181}
+  - component: {fileID: 1119869184}
   m_Layer: 5
   m_Name: Racecar_button
   m_TagString: Untagged
@@ -27432,7 +28744,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1119869182}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1119869180}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1119869182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27471,6 +28795,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119869179}
   m_CullTransparentMesh: 1
+--- !u!114 &1119869184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119869179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Racecar
+  HatIcon: {fileID: 21300000, guid: 9a33d81b9d9b86b4cb3d4ef55287725b, type: 3}
+  HatTier: 1
+  HatDescription: This is what the racecar helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1123952847
 GameObject:
   m_ObjectHideFlags: 0
@@ -28011,6 +29355,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145979146}
   m_CullTransparentMesh: 1
+--- !u!1 &1148062837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1148062838}
+  - component: {fileID: 1148062840}
+  - component: {fileID: 1148062839}
+  m_Layer: 5
+  m_Name: Selection_outline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1148062838
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148062837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 292126780}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1148062839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148062837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.56078434, b: 0.30588236, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 8be70db0ae44d9f4393069d301e23e68, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 7
+--- !u!222 &1148062840
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148062837}
+  m_CullTransparentMesh: 1
 --- !u!1 &1153685650
 GameObject:
   m_ObjectHideFlags: 0
@@ -28310,6 +29730,7 @@ GameObject:
   - component: {fileID: 1156885323}
   - component: {fileID: 1156885322}
   - component: {fileID: 1156885321}
+  - component: {fileID: 1156885324}
   m_Layer: 5
   m_Name: Army_button
   m_TagString: Untagged
@@ -28383,7 +29804,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1156885322}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1156885320}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1156885322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28422,6 +29855,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156885319}
   m_CullTransparentMesh: 1
+--- !u!114 &1156885324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156885319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Army
+  HatIcon: {fileID: 21300000, guid: af7533e3c2135294ab44171cf622315d, type: 3}
+  HatTier: 1
+  HatDescription: This is what the army hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1158042960
 GameObject:
   m_ObjectHideFlags: 0
@@ -29257,7 +30710,7 @@ MonoBehaviour:
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
-  m_Inertia: 1
+  m_Inertia: 0
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 1313089478}
@@ -29269,7 +30722,19 @@ MonoBehaviour:
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: OnScrollViewChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1196625006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31735,6 +33200,7 @@ GameObject:
   - component: {fileID: 1318101277}
   - component: {fileID: 1318101276}
   - component: {fileID: 1318101275}
+  - component: {fileID: 1318101278}
   m_Layer: 5
   m_Name: Miner_button
   m_TagString: Untagged
@@ -31808,7 +33274,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1318101276}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1318101274}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1318101276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31847,6 +33325,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318101273}
   m_CullTransparentMesh: 1
+--- !u!114 &1318101278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318101273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Miner
+  HatIcon: {fileID: 21300000, guid: 61912eb49f5579b4c9979ff730de291a, type: 3}
+  HatTier: 1
+  HatDescription: This is what the miner helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1326089588
 GameObject:
   m_ObjectHideFlags: 0
@@ -32205,6 +33703,7 @@ GameObject:
   - component: {fileID: 1328928391}
   - component: {fileID: 1328928390}
   - component: {fileID: 1328928389}
+  - component: {fileID: 1328928392}
   m_Layer: 5
   m_Name: Lumberjack_button
   m_TagString: Untagged
@@ -32278,7 +33777,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1328928390}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1328928388}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1328928390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32317,6 +33828,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328928387}
   m_CullTransparentMesh: 1
+--- !u!114 &1328928392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328928387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Lumberjack
+  HatIcon: {fileID: 21300000, guid: cb5b0f38deccc1445a899bf9a35c224b, type: 3}
+  HatTier: 1
+  HatDescription: This is what the lumberjack hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1335483896
 GameObject:
   m_ObjectHideFlags: 0
@@ -32329,6 +33860,7 @@ GameObject:
   - component: {fileID: 1335483900}
   - component: {fileID: 1335483899}
   - component: {fileID: 1335483898}
+  - component: {fileID: 1335483901}
   m_Layer: 5
   m_Name: Football_button
   m_TagString: Untagged
@@ -32402,7 +33934,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1335483899}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1335483897}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1335483899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32441,6 +33985,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335483896}
   m_CullTransparentMesh: 1
+--- !u!114 &1335483901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335483896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Football
+  HatIcon: {fileID: 21300000, guid: 81d0bdf2712a36442a45cb6e1d1691c1, type: 3}
+  HatTier: 1
+  HatDescription: This is what the football helmet does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1340253590
 GameObject:
   m_ObjectHideFlags: 0
@@ -32532,6 +34096,7 @@ GameObject:
   - component: {fileID: 1358698333}
   - component: {fileID: 1358698332}
   - component: {fileID: 1358698331}
+  - component: {fileID: 1358698334}
   m_Layer: 5
   m_Name: Nurse_button
   m_TagString: Untagged
@@ -32605,7 +34170,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1358698332}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1358698330}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1358698332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32644,6 +34221,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358698329}
   m_CullTransparentMesh: 1
+--- !u!114 &1358698334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358698329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Nurse
+  HatIcon: {fileID: 21300000, guid: d4b0bcb8f9011094a85d771d09fd7de1, type: 3}
+  HatTier: 1
+  HatDescription: This is what the nurse hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1361005015
 GameObject:
   m_ObjectHideFlags: 0
@@ -32874,6 +34471,7 @@ GameObject:
   - component: {fileID: 1369881002}
   - component: {fileID: 1369881001}
   - component: {fileID: 1369881000}
+  - component: {fileID: 1369881003}
   m_Layer: 5
   m_Name: Detective_button
   m_TagString: Untagged
@@ -32947,7 +34545,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1369881001}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1369880999}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1369881001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32986,6 +34596,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369880998}
   m_CullTransparentMesh: 1
+--- !u!114 &1369881003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369880998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Detective
+  HatIcon: {fileID: 21300000, guid: c45550611d51df540badb973b20e6d1f, type: 3}
+  HatTier: 1
+  HatDescription: This is what the detective hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1371454487
 GameObject:
   m_ObjectHideFlags: 0
@@ -33019,8 +34649,8 @@ RectTransform:
   m_Father: {fileID: 1544725857}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.6921904}
-  m_AnchorMax: {x: 1, y: 0.89995295}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -33479,7 +35109,7 @@ GameObject:
   - component: {fileID: 1401333062}
   - component: {fileID: 1401333061}
   m_Layer: 5
-  m_Name: UpgradeWithCoins_text
+  m_Name: UpgradeWithGold_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33525,7 +35155,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrade (500 )
+  m_text: Upgrade (500<sprite=0>)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 465659efe22c70645852c0307ca7460d, type: 2}
   m_sharedMaterial: {fileID: -5409344503717323155, guid: 465659efe22c70645852c0307ca7460d, type: 2}
@@ -33544,7 +35174,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: eb7db550662bfd245baea600895f0590, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -33552,7 +35182,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.85
+  m_fontSize: 38.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -34306,6 +35936,7 @@ GameObject:
   - component: {fileID: 1440520917}
   - component: {fileID: 1440520916}
   - component: {fileID: 1440520915}
+  - component: {fileID: 1440520918}
   m_Layer: 5
   m_Name: Chef_button
   m_TagString: Untagged
@@ -34379,7 +36010,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1440520916}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1440520914}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1440520916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34418,6 +36061,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440520913}
   m_CullTransparentMesh: 1
+--- !u!114 &1440520918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440520913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Chef
+  HatIcon: {fileID: 21300000, guid: defba2fec7f593041ad8ec3daab9e35d, type: 3}
+  HatTier: 1
+  HatDescription: This is what the chef hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1441457476
 GameObject:
   m_ObjectHideFlags: 0
@@ -36003,6 +37666,7 @@ GameObject:
   - component: {fileID: 1486985717}
   - component: {fileID: 1486985716}
   - component: {fileID: 1486985715}
+  - component: {fileID: 1486985718}
   m_Layer: 5
   m_Name: Sailor_button
   m_TagString: Untagged
@@ -36076,7 +37740,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1486985716}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1486985714}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1486985716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36115,6 +37791,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486985713}
   m_CullTransparentMesh: 1
+--- !u!114 &1486985718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486985713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Sailor
+  HatIcon: {fileID: 21300000, guid: dd0e57f1f8e1ac846bc25a02bafe146f, type: 3}
+  HatTier: 1
+  HatDescription: This is what the sailor hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1497294110
 GameObject:
   m_ObjectHideFlags: 0
@@ -36128,7 +37824,7 @@ GameObject:
   - component: {fileID: 1497294113}
   - component: {fileID: 1497294112}
   m_Layer: 5
-  m_Name: UpgradeWithCoins_button
+  m_Name: UpgradeWithGold_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36152,8 +37848,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -130, y: -220}
-  m_SizeDelta: {x: 225, y: 60}
+  m_AnchoredPosition: {x: -160, y: -220}
+  m_SizeDelta: {x: 300, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1497294112
 MonoBehaviour:
@@ -36180,7 +37876,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -36249,6 +37945,7 @@ GameObject:
   - component: {fileID: 1507406630}
   - component: {fileID: 1507406629}
   - component: {fileID: 1507406628}
+  - component: {fileID: 1507406631}
   m_Layer: 5
   m_Name: Chef_button
   m_TagString: Untagged
@@ -36276,7 +37973,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 506, y: -115}
+  m_AnchoredPosition: {x: 300, y: -115}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1507406628
@@ -36322,7 +38019,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1507406629}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1507406627}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1507406629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36361,6 +38070,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507406626}
   m_CullTransparentMesh: 1
+--- !u!114 &1507406631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507406626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Chef
+  HatIcon: {fileID: 21300000, guid: defba2fec7f593041ad8ec3daab9e35d, type: 3}
+  HatTier: 1
+  HatDescription: This is what the chef hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1513798194
 GameObject:
   m_ObjectHideFlags: 0
@@ -36412,6 +38141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1517087943}
   - component: {fileID: 1517087944}
+  - component: {fileID: 1517087946}
   - component: {fileID: 1517087945}
   m_Layer: 5
   m_Name: MainMenu_panel
@@ -36483,6 +38213,26 @@ MonoBehaviour:
   selectionOutline_Landscape: {fileID: 339078303}
   upgradeInfoPanel_Portrait: {fileID: 304173595}
   upgradeInfoPanel_Landscape: {fileID: 347108143}
+--- !u!114 &1517087946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517087942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b0486c1cb632e4084b88f12336aa00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hatScrollRect_Portrait: {fileID: 1196625005}
+  hatScrollRect_Landscape: {fileID: 878698254}
+  hatButtons_Portrait: {fileID: 1588747676}
+  hatButtons_Landscape: {fileID: 831700193}
+  selectionOutline_Portrait: {fileID: 867081974}
+  selectionOutline_Landscape: {fileID: 1148062838}
+  hatInfoPanel_Portrait: {fileID: 1361005016}
+  hatInfoPanel_Landscape: {fileID: 737452691}
 --- !u!1 &1522525311
 GameObject:
   m_ObjectHideFlags: 0
@@ -36752,7 +38502,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrade (10 )
+  m_text: Upgrade (10<sprite=0>)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 465659efe22c70645852c0307ca7460d, type: 2}
   m_sharedMaterial: {fileID: -5409344503717323155, guid: 465659efe22c70645852c0307ca7460d, type: 2}
@@ -36771,7 +38521,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: f888aac3a42b33d478f180e62fa1a529, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -36779,7 +38529,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.25
+  m_fontSize: 42.65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -36841,6 +38591,7 @@ GameObject:
   - component: {fileID: 1527186907}
   - component: {fileID: 1527186906}
   - component: {fileID: 1527186905}
+  - component: {fileID: 1527186908}
   m_Layer: 5
   m_Name: Artist_button
   m_TagString: Untagged
@@ -36914,7 +38665,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1527186906}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1527186904}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1527186906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36953,6 +38716,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527186903}
   m_CullTransparentMesh: 1
+--- !u!114 &1527186908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527186903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Artist
+  HatIcon: {fileID: 21300000, guid: 9072182704f973c479aa2d1233e7c0ed, type: 3}
+  HatTier: 1
+  HatDescription: This is what the artist hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1529001723
 GameObject:
   m_ObjectHideFlags: 0
@@ -37272,6 +39055,7 @@ GameObject:
   - component: {fileID: 1547877877}
   - component: {fileID: 1547877876}
   - component: {fileID: 1547877875}
+  - component: {fileID: 1547877878}
   m_Layer: 5
   m_Name: Farmer_button
   m_TagString: Untagged
@@ -37345,7 +39129,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1547877876}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1547877874}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1547877876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37384,6 +39180,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547877873}
   m_CullTransparentMesh: 1
+--- !u!114 &1547877878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547877873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Farmer
+  HatIcon: {fileID: 21300000, guid: 194c07cbe3907ad4e98c0cb868ed06ea, type: 3}
+  HatTier: 1
+  HatDescription: This is what the farmer hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1558936607
 GameObject:
   m_ObjectHideFlags: 0
@@ -37531,6 +39347,7 @@ GameObject:
   - component: {fileID: 1562119275}
   - component: {fileID: 1562119274}
   - component: {fileID: 1562119273}
+  - component: {fileID: 1562119276}
   m_Layer: 5
   m_Name: Pirate_button
   m_TagString: Untagged
@@ -37604,7 +39421,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1562119274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1562119272}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1562119274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37643,6 +39472,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562119271}
   m_CullTransparentMesh: 1
+--- !u!114 &1562119276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562119271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Pirate
+  HatIcon: {fileID: 21300000, guid: 39ac9fba88a53f347b0519846d416e20, type: 3}
+  HatTier: 1
+  HatDescription: This is what the pirate hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1568459249
 GameObject:
   m_ObjectHideFlags: 0
@@ -38018,6 +39867,7 @@ GameObject:
   - component: {fileID: 1571054103}
   - component: {fileID: 1571054102}
   - component: {fileID: 1571054101}
+  - component: {fileID: 1571054104}
   m_Layer: 5
   m_Name: Policeman_button
   m_TagString: Untagged
@@ -38045,7 +39895,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94, y: -333}
+  m_AnchoredPosition: {x: 506, y: -115}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571054101
@@ -38091,7 +39941,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1571054102}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1571054100}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1571054102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38130,6 +39992,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571054099}
   m_CullTransparentMesh: 1
+--- !u!114 &1571054104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571054099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Policeman
+  HatIcon: {fileID: 21300000, guid: e5f055436c5a59348aa5ca42882c8c5d, type: 3}
+  HatTier: 1
+  HatDescription: This is what the policeman hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1572513391
 GameObject:
   m_ObjectHideFlags: 0
@@ -38217,7 +40099,7 @@ GameObject:
   - component: {fileID: 1588747676}
   - component: {fileID: 1588747677}
   m_Layer: 5
-  m_Name: Content
+  m_Name: HatButtons-portrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38235,7 +40117,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 713520674}
   - {fileID: 1958651433}
   - {fileID: 1507406627}
   - {fileID: 1571054100}
@@ -38249,6 +40130,7 @@ RectTransform:
   - {fileID: 2006476454}
   - {fileID: 2070042965}
   - {fileID: 1756148344}
+  - {fileID: 713520674}
   - {fileID: 1547877874}
   - {fileID: 222329378}
   - {fileID: 326053697}
@@ -38270,7 +40152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 15, y: 0}
+  m_AnchoredPosition: {x: 15, y: 516.66754}
   m_SizeDelta: {x: -15, y: 2190}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1588747677
@@ -38597,7 +40479,7 @@ GameObject:
   - component: {fileID: 1601487497}
   - component: {fileID: 1601487496}
   m_Layer: 5
-  m_Name: UpgradeWithCoins_button
+  m_Name: UpgradeWithGold_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38621,8 +40503,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -130, y: -200}
-  m_SizeDelta: {x: 225, y: 60}
+  m_AnchoredPosition: {x: -145, y: -200}
+  m_SizeDelta: {x: 280, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1601487496
 MonoBehaviour:
@@ -38649,7 +40531,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -42054,6 +43936,7 @@ GameObject:
   - component: {fileID: 1756148347}
   - component: {fileID: 1756148346}
   - component: {fileID: 1756148345}
+  - component: {fileID: 1756148348}
   m_Layer: 5
   m_Name: Detective_button
   m_TagString: Untagged
@@ -42081,7 +43964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -987}
+  m_AnchoredPosition: {x: 94, y: -987}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1756148345
@@ -42127,7 +44010,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1756148346}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1756148344}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1756148346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42166,6 +44061,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756148343}
   m_CullTransparentMesh: 1
+--- !u!114 &1756148348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756148343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Detective
+  HatIcon: {fileID: 21300000, guid: c45550611d51df540badb973b20e6d1f, type: 3}
+  HatTier: 1
+  HatDescription: This is what the detective hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1762010385
 GameObject:
   m_ObjectHideFlags: 0
@@ -42384,8 +44299,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 611932001}
   m_HandleRect: {fileID: 611932000}
   m_Direction: 2
-  m_Value: 0.9983334
-  m_Size: 0.25570777
+  m_Value: 1
+  m_Size: 0.54464287
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -45114,7 +47029,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3e29cfa851c4d54dbc033cd05726bce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 677fcf2b83899884abe98a445dca729a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -45612,6 +47527,7 @@ GameObject:
   - component: {fileID: 1940396430}
   - component: {fileID: 1940396429}
   - component: {fileID: 1940396428}
+  - component: {fileID: 1940396431}
   m_Layer: 5
   m_Name: Nurse_button
   m_TagString: Untagged
@@ -45639,7 +47555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 506, y: -333}
+  m_AnchoredPosition: {x: 300, y: -333}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1940396428
@@ -45685,7 +47601,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1940396429}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1940396427}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1940396429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45724,6 +47652,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940396426}
   m_CullTransparentMesh: 1
+--- !u!114 &1940396431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940396426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Nurse
+  HatIcon: {fileID: 21300000, guid: d4b0bcb8f9011094a85d771d09fd7de1, type: 3}
+  HatTier: 1
+  HatDescription: This is what the nurse hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1955027130
 GameObject:
   m_ObjectHideFlags: 0
@@ -45736,6 +47684,7 @@ GameObject:
   - component: {fileID: 1955027134}
   - component: {fileID: 1955027133}
   - component: {fileID: 1955027132}
+  - component: {fileID: 1955027135}
   m_Layer: 5
   m_Name: Fireman_button
   m_TagString: Untagged
@@ -45763,7 +47712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -333}
+  m_AnchoredPosition: {x: 94, y: -333}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1955027132
@@ -45809,7 +47758,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1955027133}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1955027131}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1955027133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45848,6 +47809,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955027130}
   m_CullTransparentMesh: 1
+--- !u!114 &1955027135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955027130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Fireman
+  HatIcon: {fileID: 21300000, guid: e64ef63cb7e4cda4d8dfdf13a68fb812, type: 3}
+  HatTier: 1
+  HatDescription: This is what the fireman hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1956964017
 GameObject:
   m_ObjectHideFlags: 0
@@ -45995,6 +47976,7 @@ GameObject:
   - component: {fileID: 1958651436}
   - component: {fileID: 1958651435}
   - component: {fileID: 1958651434}
+  - component: {fileID: 1958651437}
   m_Layer: 5
   m_Name: Construction_button
   m_TagString: Untagged
@@ -46017,12 +47999,13 @@ RectTransform:
   - {fileID: 1684982181}
   - {fileID: 1476934078}
   - {fileID: 1426076123}
+  - {fileID: 867081974}
   m_Father: {fileID: 1588747676}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -115}
+  m_AnchoredPosition: {x: 94, y: -115}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1958651434
@@ -46068,7 +48051,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1958651435}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1958651433}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1958651435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46107,6 +48102,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958651432}
   m_CullTransparentMesh: 1
+--- !u!114 &1958651437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958651432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Construction
+  HatIcon: {fileID: 21300000, guid: d3d64c41e58e16b49b9ef9f6fd9afdee, type: 3}
+  HatTier: 1
+  HatDescription: This is what the construction hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &1966403629
 GameObject:
   m_ObjectHideFlags: 0
@@ -47353,7 +49368,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 7027282
+    rgba: 4285217362
   m_fontColor: {r: 0.32156864, g: 0.22745098, b: 0.41960785, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -47433,6 +49448,7 @@ GameObject:
   - component: {fileID: 2006476457}
   - component: {fileID: 2006476456}
   - component: {fileID: 2006476455}
+  - component: {fileID: 2006476458}
   m_Layer: 5
   m_Name: Grad_button
   m_TagString: Untagged
@@ -47460,7 +49476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 506, y: -769}
+  m_AnchoredPosition: {x: 300, y: -769}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2006476455
@@ -47506,7 +49522,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2006476456}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2006476454}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2006476456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47545,6 +49573,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006476453}
   m_CullTransparentMesh: 1
+--- !u!114 &2006476458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006476453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Grad
+  HatIcon: {fileID: 21300000, guid: 082a3bd3535b21c4389f4ea1a7635504, type: 3}
+  HatTier: 1
+  HatDescription: This is what the grad cap does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &2009010807
 GameObject:
   m_ObjectHideFlags: 0
@@ -48326,6 +50374,7 @@ GameObject:
   - component: {fileID: 2049826471}
   - component: {fileID: 2049826470}
   - component: {fileID: 2049826469}
+  - component: {fileID: 2049826472}
   m_Layer: 5
   m_Name: Welder_button
   m_TagString: Untagged
@@ -48399,7 +50448,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2049826470}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2049826468}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2049826470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48438,6 +50499,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049826467}
   m_CullTransparentMesh: 1
+--- !u!114 &2049826472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049826467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Welder
+  HatIcon: {fileID: 21300000, guid: ea02ce7b73553f045a256461ad4c52e1, type: 3}
+  HatTier: 1
+  HatDescription: This is what the welder mask does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &2051969586
 GameObject:
   m_ObjectHideFlags: 0
@@ -48737,6 +50818,7 @@ GameObject:
   - component: {fileID: 2055432017}
   - component: {fileID: 2055432016}
   - component: {fileID: 2055432015}
+  - component: {fileID: 2055432018}
   m_Layer: 5
   m_Name: King_button
   m_TagString: Untagged
@@ -48810,7 +50892,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2055432016}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2055432014}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2055432016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48849,6 +50943,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055432013}
   m_CullTransparentMesh: 1
+--- !u!114 &2055432018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055432013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: King
+  HatIcon: {fileID: 21300000, guid: 560655669c9b76c458519546a6331440, type: 3}
+  HatTier: 1
+  HatDescription: This is what the king hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &2062749274
 GameObject:
   m_ObjectHideFlags: 0
@@ -49207,6 +51321,7 @@ GameObject:
   - component: {fileID: 2070042968}
   - component: {fileID: 2070042967}
   - component: {fileID: 2070042966}
+  - component: {fileID: 2070042969}
   m_Layer: 5
   m_Name: Sombrero_button
   m_TagString: Untagged
@@ -49234,7 +51349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94, y: -987}
+  m_AnchoredPosition: {x: 506, y: -769}
   m_SizeDelta: {x: 188, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2070042966
@@ -49280,7 +51395,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2070042967}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2070042965}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2070042967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49319,6 +51446,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070042964}
   m_CullTransparentMesh: 1
+--- !u!114 &2070042969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070042964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Sombrero
+  HatIcon: {fileID: 21300000, guid: 622449a8b8a930642a4bc203e78c8bc4, type: 3}
+  HatTier: 1
+  HatDescription: This is what the sombrero hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
 --- !u!1 &2074073835
 GameObject:
   m_ObjectHideFlags: 0
@@ -50868,6 +53015,7 @@ GameObject:
   - component: {fileID: 2144474041}
   - component: {fileID: 2144474040}
   - component: {fileID: 2144474039}
+  - component: {fileID: 2144474042}
   m_Layer: 5
   m_Name: Safari_button
   m_TagString: Untagged
@@ -50941,7 +53089,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2144474040}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1517087946}
+        m_TargetAssemblyTypeName: HatCollectionManager, Assembly-CSharp
+        m_MethodName: HatCollectionButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2144474038}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2144474040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50980,3 +53140,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144474037}
   m_CullTransparentMesh: 1
+--- !u!114 &2144474042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144474037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatName: Safari
+  HatIcon: {fileID: 21300000, guid: d3eedb99dc9773e4489c73106c74bb41, type: 3}
+  HatTier: 1
+  HatDescription: This is what the safari hat does.
+  Tier1Description: 'Tier 1: This is what tier 1 does.'
+  Tier2Description: 'Tier 2: This is what tier 2 does.'
+  Tier3Description: 'Tier 3: This is what tier 3 does.'
+  Tier4Description: 'Tier 4: This is what tier 4 does.'
