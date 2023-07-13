@@ -147,6 +147,16 @@ public class MainMenuManager : MonoBehaviour
         UpdateScreenPanels();
     }
 
+    public void StageSelectButton()
+    {
+        _anim.SetTrigger("StageSelectToHatSelect");   
+    }
+
+    public void BackButton()
+    {
+        _anim.SetTrigger("HatSelectToStageSelect");
+    }
+
     private void UpdateScreenButtons()
     {
         switch(Screen.orientation)
