@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [Tooltip("Change in every script to name in Resources/EnemyStats/")]public string enemyName;
     
     private EnemyStats _enemyStats;
+    private BossStats _bossStats;
     [HideInInspector] public float health;
     private float _baseHealth;
     [HideInInspector]  public float _damage;
@@ -28,6 +29,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackCooldown;
     
     [SerializeField] private GameObject xpObject;
+
+    [SerializeField] private bool isBoss;
     
     public Rigidbody2D _rb;
     private Collider2D _collider;
@@ -37,16 +40,31 @@ public class Enemy : MonoBehaviour
     
     public virtual void Awake()
     {
+        (isBoss ? (Action)LoadBossStats : LoadEnemyStats)();
+
+        TryGetComponent(out _rb);
+        TryGetComponent(out _collider);
+    }
+
+    private void LoadBossStats()
+    {
+        _bossStats = Resources.Load<BossStats>("EnemyStats/" + enemyName);
+        health = _bossStats.health;
+        speed = _bossStats.movespeed;
+        _baseHealth = health;
+        _damage = _bossStats.damage;
+        _attackTime = _bossStats.cooldown;
+    }
+
+    private void LoadEnemyStats()
+    {
         _enemyStats = Resources.Load<EnemyStats>("EnemyStats/" + enemyName);
-        
         health = _enemyStats.health;
         speed = _enemyStats.speed;
         baseSpeed = speed;
         _baseHealth = health;
         _damage = _enemyStats.damage;
         _attackTime = _enemyStats.attackTime;
-        TryGetComponent(out _rb);
-        TryGetComponent(out _collider);
     }
 
     private void Start()
@@ -107,7 +125,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void OnDestroy()
     {
-        EnemySpawner.Instance.RemoveEnemyFromList(gameObject);
+        //EnemySpawner.Instance.RemoveEnemyFromList(gameObject);
     }
 
     public void TakeDamage(float damage)

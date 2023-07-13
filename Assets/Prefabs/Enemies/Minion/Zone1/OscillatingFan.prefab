@@ -1444,7 +1444,11 @@ MonoBehaviour:
   _damage: 0
   healthBar: {fileID: 4518051293378505328}
   amountOfXpToDrop: 7
+  speed: 0
+  baseSpeed: 0
+  takingDamage: 0
   attackRange: 0
   attackCooldown: 0
   xpObject: {fileID: 1039156588135131732, guid: b76e62c8302ceef428fb7deed61f1527, type: 3}
-  playerDist: {fileID: 0}
+  isBoss: 0
+  _rb: {fileID: 0}
