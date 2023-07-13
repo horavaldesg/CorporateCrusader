@@ -32,7 +32,7 @@ public class SpiderVac : Enemy
             FollowPoints();
         } else
         {
-            StartCoroutine(Charge());
+            //StartCoroutine(Charge());
         }
     }
 
