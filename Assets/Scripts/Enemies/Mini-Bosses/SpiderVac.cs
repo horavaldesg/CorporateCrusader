@@ -33,6 +33,7 @@ public class SpiderVac : Enemy
         } else
         {
             //StartCoroutine(Charge());
+            Invoke("Charge", f_ChargeDelay);
         }
     }
 
@@ -91,47 +92,54 @@ public class SpiderVac : Enemy
             {
                 isCharging = true;
                 _rb.velocity = Vector3.zero;
-                Invoke("Charge", f_ChargeDelay);
             }
         }
 
-        //Debug.Log(i_NextPoint);
     }
 
-/*    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Player"))
         {
             isCharging = true;
         }
-    }*/
+    }
 
 /*    IEnumerator Charge()
     {
-        Debug.Log("Test");
         _rb.velocity = Vector3.zero;
+
         yield return new WaitForSeconds(f_ChargeDelay);
         var chargePosition = PlayerController.Instance.CurrentPlayerTransform().position;
         _rb.velocity = (Vector2)(chargePosition - this.transform.position).normalized * 10;
 
         yield return new WaitForSeconds(f_ChargeDuration);
-        _rb.velocity = Vector3.zero;
 
         if (i_NextPoint < 7)
         {
             i_NextPoint++;
-        } else
+        }
+        else
         {
             i_NextPoint = 0;
         }
 
         i_PointsReached = 0;
         isCharging = false;
+        StopCoroutine(Charge());
     }*/
 
     private void Charge()
     {
         var chargePosition = PlayerController.Instance.CurrentPlayerTransform().position;
         _rb.velocity = (Vector2)(chargePosition - this.transform.position).normalized * 10;
+        Invoke("Reset", f_ChargeDuration);
+    }
+
+    private void Reset()
+    {
+        i_NextPoint = 0;
+        i_PointsReached = 0;
+        isCharging = false;
     }
 }
