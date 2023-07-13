@@ -64,16 +64,18 @@ public class Robovac : Enemy
         rb.velocity = Vector2.zero;
         go_Holder_AttackSignal.SetActive(true);
         tr_trailRenderer.enabled = true;
+
         yield return new WaitForSeconds(f_PrepTime); //2 for preptime seened good
         var playerPosition = PlayerController.Instance.CurrentPlayerTransform().position;
+
         yield return new WaitForSeconds(0.25f);
         rb.velocity = (Vector2)(playerPosition + new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0) - this.transform.position).normalized * 10;
+
         yield return new WaitForSeconds(f_ChargeDuration); //1.5 for chargeduration seemed good
         go_Holder_AttackSignal.SetActive(false);
         tr_trailRenderer.enabled = false;
         isCharging = false;
         f_timer = 0f;
-        Debug.Log("End");
     }
 
     IEnumerator Detonation()
