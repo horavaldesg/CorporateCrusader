@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     private float _health;
     private const string BulletTag = "Bullet";
     private const string EnemyTag = "Enemy";
+    public float healAmount;
+    public float healTime;
 
     private const int XpMaxCollection = 150;
     public List<GameObject> xpToCollect = new List<GameObject>();
@@ -149,6 +151,13 @@ public class PlayerController : MonoBehaviour
         healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
     }
 
+    public void HealPlayer()
+    {
+        if(_health >= _baseHealth) return;
+        _health += healAmount;
+        healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
+    }
+    
     private IEnumerator ResetXpCollected()
     {
         yield return new WaitForSeconds(0.15f);

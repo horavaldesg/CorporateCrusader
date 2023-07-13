@@ -345,7 +345,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c5eb601b6b5e72c42b38afab9b87d63c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8513d023ec657b0459cf2f2a704051f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -925,6 +925,8 @@ MonoBehaviour:
   gunRotationSpeed: 5
   rotationThreshold: 0.75
   bodyTransform: {fileID: 6076901445116773778}
+  healAmount: 0
+  healTime: 0
   xpToCollect: []
 --- !u!114 &731509817785867039
 MonoBehaviour:

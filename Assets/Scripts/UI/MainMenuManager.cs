@@ -20,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject ugradesPanel_Landscape;
 
     [Header("Script References")]
+    [SerializeField] private HatCollectionManager hatCollectionManager;
     [SerializeField] private UpgradesManager upgradesManager;
 
     private Animator _anim;
@@ -174,6 +175,7 @@ public class MainMenuManager : MonoBehaviour
                 {
                     hatCollectionPanel_Portrait.SetActive(true);
                     hatCollectionPanel_Landscape.SetActive(false);
+                    hatCollectionManager.UpdateSelection();
                 }
                 else if(currentScreen == ScreenType.Upgrades)
                 {
@@ -188,6 +190,7 @@ public class MainMenuManager : MonoBehaviour
                 {
                     hatCollectionPanel_Landscape.SetActive(true);
                     hatCollectionPanel_Portrait.SetActive(false);
+                    hatCollectionManager.UpdateSelection();
                 }
                 else if(currentScreen == ScreenType.Upgrades)
                 {
