@@ -73,6 +73,7 @@ public class HatCollectionManager : MonoBehaviour
         infoPanel.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = button.HatName;
         infoPanel.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = "Tier " + button.HatTier;
         infoPanel.GetChild(0).GetChild(2).GetComponent<TMP_Text>().text = button.HatDescription;
+        infoPanel.GetChild(0).GetChild(3).GetComponent<Image>().sprite = button.HatIcon;
 
         //set tier descriptions
         infoPanel.GetChild(1).GetComponent<TMP_Text>().text = button.Tier1Description;
