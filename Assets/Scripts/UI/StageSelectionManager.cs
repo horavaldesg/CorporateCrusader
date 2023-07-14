@@ -67,9 +67,11 @@ public class StageSelectionManager : MonoBehaviour
         prevStageButton.interactable = currentStage != 0;
         nextStageButton.interactable = currentStage != stageNames.Count - 1;
 
-        //check whether stage is locked or not
         int playerLevel = 5; //<-NOTE: reference global player level variable here in the future
-        stageLockedPanel.SetActive(playerLevel < currentStage * 5); //every 5 player levels unlocks a new stage
+
+        //set locked status of stage (every 5 player levels unlocks a new stage)
+        stageLockedPanel.SetActive(playerLevel < currentStage * 5);
+        stageSelectButton.interactable = playerLevel >= currentStage * 5;
 
         //fade in stage name and background image
         while(a < 1)
