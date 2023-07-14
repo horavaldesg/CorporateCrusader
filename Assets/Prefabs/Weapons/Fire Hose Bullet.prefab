@@ -127,5 +127,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   rb: {fileID: 0}
-  timeAlive: 5
+  timeAlive: 2
   whereToShoot: {fileID: 0}

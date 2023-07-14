@@ -1,18 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Minigun : MonoBehaviour
+public class Minigun : SelectedWeapon
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float bulletSpread;
+    
+    protected override void Activate()
     {
-        
+        Shoot();
+        base.Activate();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        var gunPos = PlayerController.Instance.GunPosition();
+        var gunRotation = PlayerController.Instance.GunRotation();
+        transform.position = gunPos;
+        transform.rotation = gunRotation;
+    }
+
+    private void Shoot()
+    {
+        var go = Instantiate(instantiatedObject);
+        go.transform.position = PlayerController.Instance.GunPosition();
+        go.transform.eulerAngles = RandomRotation();
+    }
+
+    private Vector3 RandomRotation()
+    {
+        return new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - Random.Range(-bulletSpread, bulletSpread));
     }
 }

@@ -121,6 +121,11 @@ public class PlayerController : MonoBehaviour
         return gunRotate.rotation;
     }
 
+    public Vector3 GunPosition()
+    {
+        return gunRotate.transform.position;
+    }
+
     [NotNull]
     public Transform CurrentPlayerTransform()
     {
