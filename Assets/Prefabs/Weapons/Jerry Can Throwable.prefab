@@ -125,3 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56623e88155f7304da4b3f2adc547424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
+  rb: {fileID: 0}
+  timeAlive: 4
+  whereToShoot: {fileID: 0}

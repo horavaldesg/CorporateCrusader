@@ -7,14 +7,37 @@ using Random = UnityEngine.Random;
 public class Minigun : SelectedWeapon
 {
     [SerializeField] private float bulletSpread;
-    
-    protected override void Activate()
+
+    private PlayerControls _controller;
+
+    private void Awake()
     {
-        Shoot();
-        base.Activate();
+        _controller = new PlayerControls();
+        _controller.Player.Space.performed += tgb => Place();
     }
 
-    private void FixedUpdate()
+    private void OnEnable()
+    {
+        _controller.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _controller.Disable();
+    }
+
+    protected override void Start()
+    {
+        var gunPos = PlayerController.Instance.GunPosition();
+        var gunRotation = PlayerController.Instance.GunRotation();
+        transform.position = gunPos;
+        transform.rotation = gunRotation;
+        base.Start();
+    }
+    //360 rotation 
+    // Change to place and then cooldown and then place again
+
+    private void Place()
     {
         var gunPos = PlayerController.Instance.GunPosition();
         var gunRotation = PlayerController.Instance.GunRotation();
@@ -22,10 +45,24 @@ public class Minigun : SelectedWeapon
         transform.rotation = gunRotation;
     }
 
+    protected override void Activate()
+    {
+        Shoot();
+        base.Activate();
+    }
+
+    /*private void FixedUpdate()
+    {
+        var gunPos = PlayerController.Instance.GunPosition();
+        var gunRotation = PlayerController.Instance.GunRotation();
+        transform.position = gunPos;
+        transform.rotation = gunRotation;
+    }*/
+
     private void Shoot()
     {
         var go = Instantiate(instantiatedObject);
-        go.transform.position = PlayerController.Instance.GunPosition();
+        go.transform.position = transform.position;
         go.transform.eulerAngles = RandomRotation();
     }
 
