@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
     public float Damage { get; set; }
@@ -13,6 +14,7 @@ public class Bullet : MonoBehaviour
     
     protected virtual void Awake()
     {
+        TryGetComponent(out rb);
         Destroy(gameObject, timeAlive);
     }
 
