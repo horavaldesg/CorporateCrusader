@@ -51530,11 +51530,11 @@ MonoBehaviour:
   - The Farm
   - The Beach
   stageBGSprites:
-  - {fileID: 21300000, guid: 1c0643d7de9293c458d3f9900031510b, type: 3}
+  - {fileID: 21300000, guid: 21c3809bc259dc54696f14e974e65aec, type: 3}
   - {fileID: 21300000, guid: caa7779d1208ca747b6c7b35ba8d50d4, type: 3}
-  - {fileID: 21300000, guid: 1c0643d7de9293c458d3f9900031510b, type: 3}
+  - {fileID: 21300000, guid: 21c3809bc259dc54696f14e974e65aec, type: 3}
   - {fileID: 21300000, guid: caa7779d1208ca747b6c7b35ba8d50d4, type: 3}
-  - {fileID: 21300000, guid: 1c0643d7de9293c458d3f9900031510b, type: 3}
+  - {fileID: 21300000, guid: 21c3809bc259dc54696f14e974e65aec, type: 3}
   stageNameText: {fileID: 1615312470}
   stageBGImage: {fileID: 1675571496}
   stageLockedPanel: {fileID: 1475585235}
@@ -56302,7 +56302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1c0643d7de9293c458d3f9900031510b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21c3809bc259dc54696f14e974e65aec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
