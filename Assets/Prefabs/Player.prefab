@@ -816,6 +816,7 @@ GameObject:
   - component: {fileID: 768815417141885660}
   - component: {fileID: 5056472810428508656}
   - component: {fileID: 731509817785867039}
+  - component: {fileID: 1778006132897799076}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -942,6 +943,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPositions:
   - {fileID: 8848285956899719887}
+--- !u!114 &1778006132897799076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056472810428508620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5941f7b8f7484b244b5d08fc0d60c28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chosenHats: 
 --- !u!1 &5541413408973786608
 GameObject:
   m_ObjectHideFlags: 0

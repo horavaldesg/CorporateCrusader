@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class HatCollectionButton : MonoBehaviour
 {
+    public Hat.ChosenHat chosenHat;
     public string HatName;
     public Sprite HatIcon;
     public int HatTier;

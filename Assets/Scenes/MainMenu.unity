@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Pilot
   HatIcon: {fileID: 21300000, guid: 71efa577fdfaf4f4f9268489945800e2, type: 3}
   HatTier: 1
@@ -595,6 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Pilot
   HatIcon: {fileID: 21300000, guid: 71efa577fdfaf4f4f9268489945800e2, type: 3}
   HatTier: 1
@@ -1603,6 +1605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 12
   HatName: Detective
   HatIcon: {fileID: 21300000, guid: c45550611d51df540badb973b20e6d1f, type: 3}
   HatTier: 1
@@ -1760,6 +1763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 26
   HatName: Florist
   HatIcon: {fileID: 21300000, guid: a96ba51ff2c421b4885433ee52f5a85a, type: 3}
   HatTier: 1
@@ -1917,6 +1921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 1
   HatName: Chef
   HatIcon: {fileID: 21300000, guid: defba2fec7f593041ad8ec3daab9e35d, type: 3}
   HatTier: 1
@@ -2168,6 +2173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Pirate
   HatIcon: {fileID: 21300000, guid: 39ac9fba88a53f347b0519846d416e20, type: 3}
   HatTier: 1
@@ -2882,6 +2888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Florist
   HatIcon: {fileID: 21300000, guid: a96ba51ff2c421b4885433ee52f5a85a, type: 3}
   HatTier: 1
@@ -3098,6 +3105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 11
   HatName: Sombrero
   HatIcon: {fileID: 21300000, guid: 622449a8b8a930642a4bc203e78c8bc4, type: 3}
   HatTier: 1
@@ -3390,6 +3398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 28
   HatName: Knight
   HatIcon: {fileID: 21300000, guid: f02e6c83e13026e40bf3e2f8d634a566, type: 3}
   HatTier: 1
@@ -5686,6 +5695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Lumberjack
   HatIcon: {fileID: 21300000, guid: cb5b0f38deccc1445a899bf9a35c224b, type: 3}
   HatTier: 1
@@ -5978,6 +5988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Astronaut
   HatIcon: {fileID: 21300000, guid: 0c536e3c0c644b74994eb0a05f3390ae, type: 3}
   HatTier: 1
@@ -6623,6 +6634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Astronaut
   HatIcon: {fileID: 21300000, guid: 0c536e3c0c644b74994eb0a05f3390ae, type: 3}
   HatTier: 1
@@ -7087,6 +7099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Welder
   HatIcon: {fileID: 21300000, guid: ea02ce7b73553f045a256461ad4c52e1, type: 3}
   HatTier: 1
@@ -7335,6 +7348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Viking
   HatIcon: {fileID: 21300000, guid: 35a7ced0d15cd2145b4ad1be9d12aa47, type: 3}
   HatTier: 1
@@ -7492,6 +7506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Fisherman
   HatIcon: {fileID: 21300000, guid: abc9111e248558740a2e9604f390f54e, type: 3}
   HatTier: 1
@@ -7835,6 +7850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Cowboy
   HatIcon: {fileID: 21300000, guid: 00a8bfe71210ab947a7f5fac041372ab, type: 3}
   HatTier: 1
@@ -8069,6 +8085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Army
   HatIcon: {fileID: 21300000, guid: af7533e3c2135294ab44171cf622315d, type: 3}
   HatTier: 1
@@ -9425,6 +9442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 8
   HatName: Astronaut
   HatIcon: {fileID: 21300000, guid: 0c536e3c0c644b74994eb0a05f3390ae, type: 3}
   HatTier: 1
@@ -10022,6 +10040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Farmer
   HatIcon: {fileID: 21300000, guid: 194c07cbe3907ad4e98c0cb868ed06ea, type: 3}
   HatTier: 1
@@ -10806,6 +10825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Construction
   HatIcon: {fileID: 21300000, guid: d3d64c41e58e16b49b9ef9f6fd9afdee, type: 3}
   HatTier: 1
@@ -11039,6 +11059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Top Hat
   HatIcon: {fileID: 21300000, guid: 747791e6fb5b030498ea1602c605e89d, type: 3}
   HatTier: 1
@@ -11985,6 +12006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Trucker
   HatIcon: {fileID: 21300000, guid: 462d9dc512ff7624abdd48a187675216, type: 3}
   HatTier: 1
@@ -12985,6 +13007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 25
   HatName: Racecar
   HatIcon: {fileID: 21300000, guid: 9a33d81b9d9b86b4cb3d4ef55287725b, type: 3}
   HatTier: 1
@@ -13142,6 +13165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 18
   HatName: Artist
   HatIcon: {fileID: 21300000, guid: 9072182704f973c479aa2d1233e7c0ed, type: 3}
   HatTier: 1
@@ -15215,6 +15239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 19
   HatName: Pirate
   HatIcon: {fileID: 21300000, guid: 39ac9fba88a53f347b0519846d416e20, type: 3}
   HatTier: 1
@@ -15871,6 +15896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 9
   HatName: Fisherman
   HatIcon: {fileID: 21300000, guid: abc9111e248558740a2e9604f390f54e, type: 3}
   HatTier: 1
@@ -17997,6 +18023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Fisherman
   HatIcon: {fileID: 21300000, guid: abc9111e248558740a2e9604f390f54e, type: 3}
   HatTier: 1
@@ -18831,6 +18858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Jester
   HatIcon: {fileID: 21300000, guid: d8e297d7f0d7675418641d645e3fa6e5, type: 3}
   HatTier: 1
@@ -19410,6 +19438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Fireman
   HatIcon: {fileID: 21300000, guid: e64ef63cb7e4cda4d8dfdf13a68fb812, type: 3}
   HatTier: 1
@@ -20723,6 +20752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 20
   HatName: Football
   HatIcon: {fileID: 21300000, guid: 81d0bdf2712a36442a45cb6e1d1691c1, type: 3}
   HatTier: 1
@@ -20974,6 +21004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Sailor
   HatIcon: {fileID: 21300000, guid: dd0e57f1f8e1ac846bc25a02bafe146f, type: 3}
   HatTier: 1
@@ -21690,6 +21721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Florist
   HatIcon: {fileID: 21300000, guid: a96ba51ff2c421b4885433ee52f5a85a, type: 3}
   HatTier: 1
@@ -22384,6 +22416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Knight
   HatIcon: {fileID: 21300000, guid: f02e6c83e13026e40bf3e2f8d634a566, type: 3}
   HatTier: 1
@@ -22945,6 +22978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Cowboy
   HatIcon: {fileID: 21300000, guid: 00a8bfe71210ab947a7f5fac041372ab, type: 3}
   HatTier: 1
@@ -24199,6 +24233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Trucker
   HatIcon: {fileID: 21300000, guid: 462d9dc512ff7624abdd48a187675216, type: 3}
   HatTier: 1
@@ -25043,6 +25078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Safari
   HatIcon: {fileID: 21300000, guid: d3eedb99dc9773e4489c73106c74bb41, type: 3}
   HatTier: 1
@@ -25722,6 +25758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 24
   HatName: Lumberjack
   HatIcon: {fileID: 21300000, guid: cb5b0f38deccc1445a899bf9a35c224b, type: 3}
   HatTier: 1
@@ -26032,6 +26069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Construction
   HatIcon: {fileID: 21300000, guid: d3d64c41e58e16b49b9ef9f6fd9afdee, type: 3}
   HatTier: 1
@@ -26366,6 +26404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Top Hat
   HatIcon: {fileID: 21300000, guid: 747791e6fb5b030498ea1602c605e89d, type: 3}
   HatTier: 1
@@ -26523,6 +26562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Knight
   HatIcon: {fileID: 21300000, guid: f02e6c83e13026e40bf3e2f8d634a566, type: 3}
   HatTier: 1
@@ -27642,6 +27682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Artist
   HatIcon: {fileID: 21300000, guid: 9072182704f973c479aa2d1233e7c0ed, type: 3}
   HatTier: 1
@@ -27799,6 +27840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Grad
   HatIcon: {fileID: 21300000, guid: 082a3bd3535b21c4389f4ea1a7635504, type: 3}
   HatTier: 1
@@ -28985,6 +29027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Miner
   HatIcon: {fileID: 21300000, guid: 61912eb49f5579b4c9979ff730de291a, type: 3}
   HatTier: 1
@@ -29233,6 +29276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Football
   HatIcon: {fileID: 21300000, guid: 81d0bdf2712a36442a45cb6e1d1691c1, type: 3}
   HatTier: 1
@@ -30117,6 +30161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Jester
   HatIcon: {fileID: 21300000, guid: d8e297d7f0d7675418641d645e3fa6e5, type: 3}
   HatTier: 1
@@ -30547,6 +30592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: King
   HatIcon: {fileID: 21300000, guid: 560655669c9b76c458519546a6331440, type: 3}
   HatTier: 1
@@ -32052,6 +32098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Policeman
   HatIcon: {fileID: 21300000, guid: e5f055436c5a59348aa5ca42882c8c5d, type: 3}
   HatTier: 1
@@ -34325,6 +34372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Racecar
   HatIcon: {fileID: 21300000, guid: 9a33d81b9d9b86b4cb3d4ef55287725b, type: 3}
   HatTier: 1
@@ -35173,6 +35221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Sombrero
   HatIcon: {fileID: 21300000, guid: 622449a8b8a930642a4bc203e78c8bc4, type: 3}
   HatTier: 1
@@ -35658,6 +35707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 16
   HatName: Trucker
   HatIcon: {fileID: 21300000, guid: 462d9dc512ff7624abdd48a187675216, type: 3}
   HatTier: 1
@@ -36635,6 +36685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Viking
   HatIcon: {fileID: 21300000, guid: 35a7ced0d15cd2145b4ad1be9d12aa47, type: 3}
   HatTier: 1
@@ -37540,6 +37591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Racecar
   HatIcon: {fileID: 21300000, guid: 9a33d81b9d9b86b4cb3d4ef55287725b, type: 3}
   HatTier: 1
@@ -38869,6 +38921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Army
   HatIcon: {fileID: 21300000, guid: af7533e3c2135294ab44171cf622315d, type: 3}
   HatTier: 1
@@ -40036,6 +40089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 17
   HatName: King
   HatIcon: {fileID: 21300000, guid: 560655669c9b76c458519546a6331440, type: 3}
   HatTier: 1
@@ -40738,6 +40792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 14
   HatName: Farmer
   HatIcon: {fileID: 21300000, guid: 194c07cbe3907ad4e98c0cb868ed06ea, type: 3}
   HatTier: 1
@@ -41935,6 +41990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 2
   HatName: Policeman
   HatIcon: {fileID: 21300000, guid: e5f055436c5a59348aa5ca42882c8c5d, type: 3}
   HatTier: 1
@@ -42225,6 +42281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 22
   HatName: Sailor
   HatIcon: {fileID: 21300000, guid: dd0e57f1f8e1ac846bc25a02bafe146f, type: 3}
   HatTier: 1
@@ -44295,6 +44352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Miner
   HatIcon: {fileID: 21300000, guid: 61912eb49f5579b4c9979ff730de291a, type: 3}
   HatTier: 1
@@ -44798,6 +44856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Lumberjack
   HatIcon: {fileID: 21300000, guid: cb5b0f38deccc1445a899bf9a35c224b, type: 3}
   HatTier: 1
@@ -44861,6 +44920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 29
   HatName: Jester
   HatIcon: {fileID: 21300000, guid: d8e297d7f0d7675418641d645e3fa6e5, type: 3}
   HatTier: 1
@@ -45112,6 +45172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Football
   HatIcon: {fileID: 21300000, guid: 81d0bdf2712a36442a45cb6e1d1691c1, type: 3}
   HatTier: 1
@@ -45425,6 +45486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Nurse
   HatIcon: {fileID: 21300000, guid: d4b0bcb8f9011094a85d771d09fd7de1, type: 3}
   HatTier: 1
@@ -45800,6 +45862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Detective
   HatIcon: {fileID: 21300000, guid: c45550611d51df540badb973b20e6d1f, type: 3}
   HatTier: 1
@@ -47095,6 +47158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 13
   HatName: Safari
   HatIcon: {fileID: 21300000, guid: d3eedb99dc9773e4489c73106c74bb41, type: 3}
   HatTier: 1
@@ -47692,6 +47756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Chef
   HatIcon: {fileID: 21300000, guid: defba2fec7f593041ad8ec3daab9e35d, type: 3}
   HatTier: 1
@@ -48927,6 +48992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 10
   HatName: Grad
   HatIcon: {fileID: 21300000, guid: 082a3bd3535b21c4389f4ea1a7635504, type: 3}
   HatTier: 1
@@ -50348,6 +50414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Sailor
   HatIcon: {fileID: 21300000, guid: dd0e57f1f8e1ac846bc25a02bafe146f, type: 3}
   HatTier: 1
@@ -50698,6 +50765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 5
   HatName: Cowboy
   HatIcon: {fileID: 21300000, guid: 00a8bfe71210ab947a7f5fac041372ab, type: 3}
   HatTier: 1
@@ -51282,6 +51350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Chef
   HatIcon: {fileID: 21300000, guid: defba2fec7f593041ad8ec3daab9e35d, type: 3}
   HatTier: 1
@@ -52036,6 +52105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Artist
   HatIcon: {fileID: 21300000, guid: 9072182704f973c479aa2d1233e7c0ed, type: 3}
   HatTier: 1
@@ -52314,6 +52384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 4
   HatName: Nurse
   HatIcon: {fileID: 21300000, guid: d4b0bcb8f9011094a85d771d09fd7de1, type: 3}
   HatTier: 1
@@ -52737,6 +52808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Farmer
   HatIcon: {fileID: 21300000, guid: 194c07cbe3907ad4e98c0cb868ed06ea, type: 3}
   HatTier: 1
@@ -53029,6 +53101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Pirate
   HatIcon: {fileID: 21300000, guid: 39ac9fba88a53f347b0519846d416e20, type: 3}
   HatTier: 1
@@ -53819,6 +53892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Policeman
   HatIcon: {fileID: 21300000, guid: e5f055436c5a59348aa5ca42882c8c5d, type: 3}
   HatTier: 1
@@ -57202,6 +57276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 7
   HatName: Pilot
   HatIcon: {fileID: 21300000, guid: 71efa577fdfaf4f4f9268489945800e2, type: 3}
   HatTier: 1
@@ -57570,6 +57645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 27
   HatName: Viking
   HatIcon: {fileID: 21300000, guid: 35a7ced0d15cd2145b4ad1be9d12aa47, type: 3}
   HatTier: 1
@@ -58182,6 +58258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 23
   HatName: Welder
   HatIcon: {fileID: 21300000, guid: ea02ce7b73553f045a256461ad4c52e1, type: 3}
   HatTier: 1
@@ -58654,7 +58731,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1727593217}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1113215525}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ProgrammingPlayground
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1727593217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59608,6 +59697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Detective
   HatIcon: {fileID: 21300000, guid: c45550611d51df540badb973b20e6d1f, type: 3}
   HatTier: 1
@@ -61847,6 +61937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 6
   HatName: Top Hat
   HatIcon: {fileID: 21300000, guid: 747791e6fb5b030498ea1602c605e89d, type: 3}
   HatTier: 1
@@ -62232,6 +62323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 15
   HatName: Army
   HatIcon: {fileID: 21300000, guid: af7533e3c2135294ab44171cf622315d, type: 3}
   HatTier: 1
@@ -65300,6 +65392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Nurse
   HatIcon: {fileID: 21300000, guid: d4b0bcb8f9011094a85d771d09fd7de1, type: 3}
   HatTier: 1
@@ -65457,6 +65550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Fireman
   HatIcon: {fileID: 21300000, guid: e64ef63cb7e4cda4d8dfdf13a68fb812, type: 3}
   HatTier: 1
@@ -65750,6 +65844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Construction
   HatIcon: {fileID: 21300000, guid: d3d64c41e58e16b49b9ef9f6fd9afdee, type: 3}
   HatTier: 1
@@ -65813,6 +65908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 3
   HatName: Fireman
   HatIcon: {fileID: 21300000, guid: e64ef63cb7e4cda4d8dfdf13a68fb812, type: 3}
   HatTier: 1
@@ -65970,6 +66066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 21
   HatName: Miner
   HatIcon: {fileID: 21300000, guid: 61912eb49f5579b4c9979ff730de291a, type: 3}
   HatTier: 1
@@ -67747,6 +67844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Grad
   HatIcon: {fileID: 21300000, guid: 082a3bd3535b21c4389f4ea1a7635504, type: 3}
   HatTier: 1
@@ -69019,6 +69117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Welder
   HatIcon: {fileID: 21300000, guid: ea02ce7b73553f045a256461ad4c52e1, type: 3}
   HatTier: 1
@@ -69463,6 +69562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: King
   HatIcon: {fileID: 21300000, guid: 560655669c9b76c458519546a6331440, type: 3}
   HatTier: 1
@@ -70177,6 +70277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Sombrero
   HatIcon: {fileID: 21300000, guid: 622449a8b8a930642a4bc203e78c8bc4, type: 3}
   HatTier: 1
@@ -72811,6 +72912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2b6b476aa59b8468a402f836c026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenHat: 0
   HatName: Safari
   HatIcon: {fileID: 21300000, guid: d3eedb99dc9773e4489c73106c74bb41, type: 3}
   HatTier: 1
