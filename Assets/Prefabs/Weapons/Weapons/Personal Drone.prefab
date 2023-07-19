@@ -129,9 +129,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88945c8952a0ae84181402cc56ec6360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Personal Drone
+  weaponDescription: 
+  weaponSprite: {fileID: 21300000, guid: 0564f8ebeeff6fb4fa9991d093457be9, type: 3}
   attribute: 0
   damage: 15
-  level: 1
+  level: 0
   coolDown: 2
   instantiatedObject: {fileID: 2270193297461226290, guid: ac662e450cc2a5f4d9d7783ee563544a, type: 3}
   bulletSpeed: 5

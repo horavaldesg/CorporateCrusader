@@ -9,13 +9,7 @@ public class Minigun : SelectedWeapon
     [SerializeField] private float bulletSpread;
 
     private PlayerControls _controller;
-
-    private void Awake()
-    {
-        _controller = new PlayerControls();
-        _controller.Player.Space.performed += tgb => Place();
-    }
-
+    
     private void OnEnable()
     {
         _controller.Enable();
@@ -26,13 +20,13 @@ public class Minigun : SelectedWeapon
         _controller.Disable();
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         var gunPos = PlayerController.Instance.GunPosition();
         var gunRotation = PlayerController.Instance.GunRotation();
         transform.position = gunPos;
         transform.rotation = gunRotation;
-        base.Start();
+        base.Awake();
     }
     //360 rotation 
     // Change to place and then cooldown and then place again

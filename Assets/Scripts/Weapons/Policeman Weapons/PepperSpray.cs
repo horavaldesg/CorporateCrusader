@@ -9,7 +9,7 @@ public class PepperSpray : SelectedWeapon
     public float radius;
     public float slowDownMultiplier;
 
-    protected override void Start()
+    protected override void Awake()
     {
         transform.localScale = new Vector3(radius,radius, 1);
     }

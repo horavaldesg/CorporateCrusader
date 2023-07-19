@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -152,9 +152,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3442901580360328493}
-  - component: {fileID: 5747199357043651324}
+  - component: {fileID: -8297033139374446264}
   m_Layer: 0
-  m_Name: Cane
+  m_Name: Pickaxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,9 +174,9 @@ Transform:
   m_Children:
   - {fileID: 4323136670018085462}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5747199357043651324
+--- !u!114 &-8297033139374446264
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,13 +185,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8629887728062351546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b08d9ca264348ce4888072179068ad95, type: 3}
+  m_Script: {fileID: 11500000, guid: 49064fbf94ddb0e43a11b73b6ac8f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attribute: 1
-  damage: 2
+  weaponName: Pickaxe
+  weaponDescription: 
+  weaponSprite: {fileID: 21300000, guid: 2bc4ccd16a7483c47bc5cd4759fecd6b, type: 3}
+  attribute: 0
+  damage: 4
   level: 1
   coolDown: 0
   instantiatedObject: {fileID: 0}
-  rotateSpeed: 3
+  rotateSpeed: 2
   length: 3

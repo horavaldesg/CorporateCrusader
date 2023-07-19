@@ -21,7 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform invRow1;
     [SerializeField] private Transform invRow2;
     [SerializeField] private List<Transform> last3InvItems;
-    
+
+    [SerializeField] private GameObject levelUpScreen;
     private PlayerControls _controls;
     private Animator _anim;
     private bool _canAddLevel;
@@ -45,6 +46,8 @@ public class UIManager : MonoBehaviour
         EnemyDetector.EnemyDied += UpdateKills;
         CloudSaveManager.AddKills += UpdateKills;
         GameManager.LevelIncreased += LevelUpdated;
+        GameManager.LevelChanged += ToggleLevelUpScreen;
+        LevelUpUpgradeManager.UpgradeEnded += ToggleLevelUpScreen;
         OrientationManager.orientationChangedEvent += ScreenOrientationChanged;
     }
 
@@ -56,6 +59,8 @@ public class UIManager : MonoBehaviour
         CloudSaveManager.AddKills -= UpdateKills;
         GameManager.XpAdded -= UpdateXpBar;
         GameManager.LevelIncreased -= LevelUpdated;
+        GameManager.LevelChanged -= ToggleLevelUpScreen;
+        LevelUpUpgradeManager.UpgradeEnded -= ToggleLevelUpScreen;
         OrientationManager.orientationChangedEvent -= ScreenOrientationChanged;
     }
 
@@ -122,6 +127,13 @@ public class UIManager : MonoBehaviour
     }
 
     public void ToggleOptions() => _anim.SetTrigger("ToggleOptions");
+    
+    public void ToggleLevelUpScreen()
+    {
+        levelUpScreen.SetActive(!levelUpScreen.activeSelf);
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+    } 
+    
     public void ToggleInventory()
     {
         //update inventory open bool and fix rows if inventory opened

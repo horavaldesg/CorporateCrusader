@@ -12,16 +12,20 @@ public class SelectedWeapon : MonoBehaviour
         Chemical,
     }
 
+    public string weaponName;
+    public string weaponDescription;
+    public Sprite weaponSprite;
+    
     public Attributes attribute;
 
     public float damage;
-    public float level;
+    public int level;
 
     public float coolDown;
     
     public GameObject instantiatedObject;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         Activate();
     }
@@ -35,5 +39,10 @@ public class SelectedWeapon : MonoBehaviour
     {
         yield return new WaitForSeconds(coolDown);
         Activate();
+    }
+
+    public void UpgradeWeapon()
+    {
+        level++;
     }
 }

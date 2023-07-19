@@ -6,4 +6,5 @@ using UnityEngine;
 public class WeaponsList : ScriptableObject
 {
     public List<GameObject> weaponList = new ();
+    public List<GameObject> equipmentList = new ();
 }

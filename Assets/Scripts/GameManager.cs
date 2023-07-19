@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static event Action<int> XpAdded;
     public static event Action<int> LevelIncreased;
     public static event Action ChangePhase;
+    public static event Action LevelChanged;
     private float _timeAlive;
 
     public int TotalXp
@@ -95,5 +96,6 @@ public class GameManager : MonoBehaviour
     {
         CurrentLevel++;
         LevelIncreased?.Invoke(CurrentLevel);
+        LevelChanged?.Invoke();
     }
 }

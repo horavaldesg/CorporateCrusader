@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6506243257936257826
+--- !u!1 &4759078439028529731
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3116433866904310012}
-  - component: {fileID: 2423691060873608009}
+  - component: {fileID: 2971921292369725936}
+  - component: {fileID: 8621644820658410700}
   m_Layer: 0
-  m_Name: Fire Hose
+  m_Name: MiniGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3116433866904310012
+--- !u!4 &2971921292369725936
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6506243257936257826}
+  m_GameObject: {fileID: 4759078439028529731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,22 +32,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2423691060873608009
+--- !u!114 &8621644820658410700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6506243257936257826}
+  m_GameObject: {fileID: 4759078439028529731}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3f97ffa78e01e24aa4c59bb35e27982, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ee7023851ed12f41bc6069bec48766e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Minigun
+  weaponDescription: This is temporary this is minigun description
+  weaponSprite: {fileID: 0}
   attribute: 0
   damage: 0
   level: 0
-  coolDown: 0.1
-  instantiatedObject: {fileID: 2430750321700695288, guid: 5b5cbad8e7bc9cd4ea2b2b4c1325a6f9, type: 3}
-  yOffset: 0
-  rotSpeed: 2.5
+  coolDown: 0.05
+  instantiatedObject: {fileID: 1039156588135131732, guid: 5e396229cfd7ba749842db4ca92cb4bc, type: 3}
+  bulletSpread: 4
