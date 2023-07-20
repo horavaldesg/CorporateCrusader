@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,18 +26,27 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private HatCollectionManager hatCollectionManager;
     [SerializeField] private UpgradesManager upgradesManager;
 
+
+    [SerializeField] private TextMeshProUGUI playerName;
     private Animator _anim;
     private bool _pastSplashScreen = false;
     private ScreenOrientation currentOrientation;
     
     private enum ScreenType { StageSelect, Hats, Upgrades };
     private ScreenType currentScreen;
+    private PlayerStats _playerStats;
+
+    private void Awake()
+    {
+        _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
+    }
 
     private void Start()
     {
         _anim = GetComponent<Animator>();
 
         currentOrientation = Screen.orientation;
+        playerName.SetText(_playerStats.playerName);
     }
 
     private void Update()

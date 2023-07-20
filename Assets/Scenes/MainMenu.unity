@@ -40391,6 +40391,7 @@ MonoBehaviour:
   ugradesPanel_Landscape: {fileID: 1866573239}
   hatCollectionManager: {fileID: 1517087946}
   upgradesManager: {fileID: 1517087945}
+  playerName: {fileID: 17624748}
 --- !u!114 &1113215526
 MonoBehaviour:
   m_ObjectHideFlags: 0
