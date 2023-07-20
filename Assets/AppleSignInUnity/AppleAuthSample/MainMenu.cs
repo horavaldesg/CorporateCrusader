@@ -4,6 +4,7 @@ using AppleAuth.Extensions;
 using AppleAuth.Interfaces;
 using AppleAuth.Native;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -126,6 +127,7 @@ public class MainMenu : MonoBehaviour
         this.LoginMenu.SetVisible(visible: false);
         this.GameMenu.SetVisible(visible: true);
         this.GameMenu.SetupAppleData(appleUserId, credential);
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void CheckCredentialStatusForUserId(string appleUserId)
