@@ -16,17 +16,15 @@ public class MainMenu : MonoBehaviour
 
     public LoginMenuHandler LoginMenu;
     public GameMenuHandler GameMenu;
-
-    private void Awake()
-    {
-        _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
-    }
+    
 
     private void Start()
     {
         // If the current platform is supported
         if (AppleAuthManager.IsCurrentPlatformSupported)
         {
+            _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
+
             // Creates a default JSON deserializer, to transform JSON Native responses to C# instances
             var deserializer = new PayloadDeserializer();
             // Creates an Apple Authentication manager with the deserializer
