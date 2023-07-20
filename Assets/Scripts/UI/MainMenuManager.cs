@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -26,33 +24,24 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private HatCollectionManager hatCollectionManager;
     [SerializeField] private UpgradesManager upgradesManager;
 
-
-    [SerializeField] private TextMeshProUGUI playerName;
     private Animator _anim;
-    private bool _pastSplashScreen = false;
+    private bool _pastLoginScreen = false;
     private ScreenOrientation currentOrientation;
     
     private enum ScreenType { StageSelect, Hats, Upgrades };
     private ScreenType currentScreen;
-    private PlayerStats _playerStats;
-
-    private void Awake()
-    {
-        _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
-    }
 
     private void Start()
     {
         _anim = GetComponent<Animator>();
 
         currentOrientation = Screen.orientation;
-        playerName.SetText(_playerStats.playerName);
     }
 
     private void Update()
     {
         //check if past splash screen
-        if(!_pastSplashScreen) return;
+        if(!_pastLoginScreen) return;
         
         //check if screen orientation changed
         if(currentOrientation != Screen.orientation)
@@ -67,10 +56,25 @@ public class MainMenuManager : MonoBehaviour
             UpdateScreenPanels();
         }
     }
-
-    public void SplashScreenButton()
+    
+    public void SplashScreenToLoginScreen()
     {
-        _pastSplashScreen = true;
+        _anim.SetTrigger("SplashScreenToLoginScreen");
+    }
+
+    public void LoginScreenToStageSelect()
+    {
+        _pastLoginScreen = true;
+        _anim.SetTrigger("LoginScreenToStageSelect");
+        currentScreen = ScreenType.StageSelect;
+
+        //update screen selection buttons
+        UpdateScreenButtons();
+    }
+
+    public void SplashScreenToStageSelect()
+    {
+        _pastLoginScreen = true;
         _anim.SetTrigger("SplashScreenToStageSelect");
         currentScreen = ScreenType.StageSelect;
 

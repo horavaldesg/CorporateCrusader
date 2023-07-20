@@ -5,12 +5,10 @@ using AppleAuth.Extensions;
 using AppleAuth.Interfaces;
 using AppleAuth.Native;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     private const string AppleUserIdKey = "AppleUserId";
-    private PlayerStats _playerStats;
     
     private IAppleAuthManager _appleAuthManager;
 
@@ -128,12 +126,9 @@ public class MainMenu : MonoBehaviour
     
     private void SetupGameMenu(string appleUserId, ICredential credential)
     {
-        /*this.LoginMenu.SetVisible(visible: false);
+        this.LoginMenu.SetVisible(visible: false);
         this.GameMenu.SetVisible(visible: true);
-        this.GameMenu.SetupAppleData(appleUserId, credential);*/
-        _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
-        _playerStats.playerName = credential.User;
-        SceneManager.LoadScene("MainMenu");
+        this.GameMenu.SetupAppleData(appleUserId, credential);
     }
 
     private void CheckCredentialStatusForUserId(string appleUserId)
