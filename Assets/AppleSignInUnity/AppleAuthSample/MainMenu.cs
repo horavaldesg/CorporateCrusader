@@ -23,7 +23,6 @@ public class MainMenu : MonoBehaviour
         // If the current platform is supported
         if (AppleAuthManager.IsCurrentPlatformSupported)
         {
-            _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
 
             // Creates a default JSON deserializer, to transform JSON Native responses to C# instances
             var deserializer = new PayloadDeserializer();
@@ -132,6 +131,7 @@ public class MainMenu : MonoBehaviour
         /*this.LoginMenu.SetVisible(visible: false);
         this.GameMenu.SetVisible(visible: true);
         this.GameMenu.SetupAppleData(appleUserId, credential);*/
+        _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
         _playerStats.playerName = credential.User;
         SceneManager.LoadScene("MainMenu");
     }
