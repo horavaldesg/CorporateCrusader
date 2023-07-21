@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static event Action ChangePhase;
     public static event Action LevelChanged;
     private float _timeAlive;
+    public List<GameObject> enemiesSpawnedList = new();
 
     public int TotalXp
     {

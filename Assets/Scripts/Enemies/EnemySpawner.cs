@@ -18,7 +18,6 @@ public class EnemySpawner : MonoBehaviour
    private EnemyContainer _enemyContainer;
    private ZoneManager _zoneManager;
    
-   public List<GameObject> enemiesSpawnedList = new();
    private int _phaseIndex;
    private int _enemiesSpawned;
    private bool _enemiesSpawning;
@@ -120,12 +119,12 @@ public class EnemySpawner : MonoBehaviour
    public void RemoveEnemyFromList(GameObject enemy)
    {
       if (enemy)
-         enemiesSpawnedList.Remove(enemy);
+         GameManager.Instance.enemiesSpawnedList.Remove(enemy);
    }
 
    private bool WaveCheck()
    {
-      return enemiesSpawnedList.Count <= 5; // change to percentage
+      return GameManager.Instance.enemiesSpawnedList.Count <= 5; // change to percentage
    }
 
    private void Spawn()
@@ -133,7 +132,7 @@ public class EnemySpawner : MonoBehaviour
       _t = 0;
       var go = Instantiate(GetRandomEnemy());
       go.transform.position = GetRadius();
-      enemiesSpawnedList.Add(go);
+      GameManager.Instance.enemiesSpawnedList.Add(go);
       _enemiesSpawned++;
    }
 

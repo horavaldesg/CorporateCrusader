@@ -14,7 +14,9 @@ public class PersonalDrone : SelectedWeapon
 
     private void TargetEnemy()
     {
+        Debug.Log("Test");
         if (!GetClosestEnemy()) return;
+        Debug.Log("After Test");
         var go = Instantiate(instantiatedObject);
         go.transform.position = transform.position;
         go.TryGetComponent(out DroneBullet droneBullet);
@@ -27,10 +29,14 @@ public class PersonalDrone : SelectedWeapon
 
     private Transform GetClosestEnemy()
     {
+        Debug.Log("Get Closest Enemy");
         Transform closest = null;
         var minDist = Mathf.Infinity;
         var currentPos = PlayerController.Instance.CurrentPlayerTransform().position;
-        foreach (var enemiesSpawned in EnemySpawner.Instance.enemiesSpawnedList)
+        Debug.Log("Player Pos: " + currentPos);
+        var enemies = GameManager.Instance.enemiesSpawnedList;
+        Debug.Log(enemies.Count);
+        foreach (var enemiesSpawned in enemies)
         {
             if (!enemiesSpawned) return null;
             var dist = Vector3.Distance(enemiesSpawned.transform.position, currentPos);
@@ -38,7 +44,7 @@ public class PersonalDrone : SelectedWeapon
             closest = enemiesSpawned.transform;
             minDist = dist;
         }
-        
+        Debug.Log("Closest: " + closest);
         return closest;
     }
 }

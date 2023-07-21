@@ -125,7 +125,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void OnDestroy()
     {
-        //EnemySpawner.Instance.RemoveEnemyFromList(gameObject);
+        EnemySpawner.Instance.RemoveEnemyFromList(gameObject);
     }
 
     public void TakeDamage(float damage)
