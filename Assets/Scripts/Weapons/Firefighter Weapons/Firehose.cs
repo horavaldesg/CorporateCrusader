@@ -15,7 +15,7 @@ public class Firehose : SelectedWeapon
     bool _rotating = false;
 
 
-    protected override void Awake()
+    protected override void Start()
     {
         _pointA = transform.eulerAngles + new Vector3(0f, 0, 90);
 
@@ -23,7 +23,7 @@ public class Firehose : SelectedWeapon
         transform.eulerAngles = new Vector3(0, 0, 45);
 
         _objectToRotate = gameObject;
-        base.Awake();
+        base.Start();
     }
 
     private void FixedUpdate()

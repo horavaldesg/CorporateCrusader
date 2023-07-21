@@ -8,7 +8,7 @@ public class Cane : SelectedWeapon
     public float rotateSpeed;
     public float length;
     
-    protected override void Awake()
+    protected override void Start()
     {
         transform.localScale = new Vector3(length, 1, 1);
     }

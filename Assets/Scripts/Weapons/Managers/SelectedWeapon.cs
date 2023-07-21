@@ -25,7 +25,7 @@ public class SelectedWeapon : MonoBehaviour
     
     public GameObject instantiatedObject;
 
-    protected virtual void Awake()
+    protected virtual void Start()
     {
         Activate();
     }

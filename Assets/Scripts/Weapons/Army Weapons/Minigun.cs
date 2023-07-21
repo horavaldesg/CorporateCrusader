@@ -20,13 +20,13 @@ public class Minigun : SelectedWeapon
         _controller.Disable();
     }
 
-    protected override void Awake()
+    protected override void Start()
     {
         var gunPos = PlayerController.Instance.GunPosition();
         var gunRotation = PlayerController.Instance.GunRotation();
         transform.position = gunPos;
         transform.rotation = gunRotation;
-        base.Awake();
+        base.Start();
     }
     //360 rotation 
     // Change to place and then cooldown and then place again
