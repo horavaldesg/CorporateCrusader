@@ -119,7 +119,13 @@ public class AuthenticationManager : MonoBehaviour
         appleAuthManager = new AppleAuthManager(deserializer);
     }
 
-    public void LoginWithAppleID()
+    public void AppleIDLoginButton()
+    {
+        string idToken = LoginWithAppleID();
+        SignInWithAppleAsync(idToken);
+    }
+
+    public string LoginWithAppleID()
     {
         //initialize Apple authentication manager if necessary
         if(appleAuthManager == null) InitializeAppleAuthManager();
@@ -128,6 +134,7 @@ public class AuthenticationManager : MonoBehaviour
         var loginArgs = new AppleAuthLoginArgs(LoginOptions.IncludeEmail | LoginOptions.IncludeFullName);
 
         //perform login
+        string idToken = null;
         appleAuthManager.LoginWithAppleId(
             loginArgs,
             credential => 
@@ -136,17 +143,17 @@ public class AuthenticationManager : MonoBehaviour
                 var appleIDCredential = credential as IAppleIDCredential;
                 if(appleIDCredential != null)
                 {
-                    //if AppleIDCredential exists, get idToken and use it to sign in
-                    var idToken = Encoding.UTF8.GetString(
+                    //if AppleIDCredential exists, get idToken and return it
+                    idToken = Encoding.UTF8.GetString(
                         appleIDCredential.IdentityToken,
                         0,
                         appleIDCredential.IdentityToken.Length);
-                    SignInWithAppleAsync(idToken);
                 }
                 else Debug.Log("Sign-in with Apple error. Message: appleIDCredential is null");
             },
             error => { Debug.Log("Sign-in with Apple error. Message: " + error); }
         );
+        return idToken;
     }
 
     private async void SignInWithAppleAsync(string idToken)
