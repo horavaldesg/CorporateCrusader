@@ -18,6 +18,7 @@ public class ProfileManager : MonoBehaviour
     [Header("Profile Screen UI References")]
     [SerializeField] private TMP_InputField profileNameInputField;
     [SerializeField] private Button editProfileNameButton;
+    [SerializeField] private CanvasGroup nameChangeErrorText;
     [SerializeField] private Button linkGooglePlayButton;
     [SerializeField] private Button linkAppleIDButton;
 
@@ -64,9 +65,53 @@ public class ProfileManager : MonoBehaviour
         //update and set profile name if given a new name
         if(name != profileName)
         {
-            profileName = await AuthenticationService.Instance.UpdatePlayerNameAsync(name);
+            try { profileName = await AuthenticationService.Instance.UpdatePlayerNameAsync(name); }
+            catch (AuthenticationException ex)
+            {
+                //compare error code to AuthenticationErrorCodes
+                //notify the player with the proper error message
+                ShowNameChangeError();
+                Debug.LogException(ex);
+            }
+            catch (RequestFailedException ex)
+            {
+                //compare error code to CommonErrorCodes
+                //notify the player with the proper error message
+                ShowNameChangeError();
+                Debug.LogException(ex);
+            } 
+            
             profileNameInputField.text = profileName;
             profileNameText_TB.text = profileName;
+        }
+    }
+
+    private void ShowNameChangeError() => StartCoroutine(NameChangeError());
+
+    private IEnumerator NameChangeError()
+    {
+        //set alpha to 0
+        float a = 0;
+        nameChangeErrorText.alpha = a;
+
+        //increase alpha to 1
+        while(a < 1)
+        {
+            a += Time.deltaTime * 0.9f;
+            nameChangeErrorText.alpha = a;
+            yield return null;
+        }
+
+        //set alpha to 1
+        a = 1;
+        nameChangeErrorText.alpha = a;
+
+        //decrease alpha to 0
+        while(a > 0)
+        {
+            a -= Time.deltaTime * 0.9f;
+            nameChangeErrorText.alpha = a;
+            yield return null;
         }
     }
 

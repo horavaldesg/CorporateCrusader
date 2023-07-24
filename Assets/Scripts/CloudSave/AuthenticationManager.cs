@@ -49,14 +49,14 @@ public class AuthenticationManager : MonoBehaviour
         try { await AuthenticationService.Instance.SignInAnonymouslyAsync(); }
         catch (AuthenticationException ex)
         {
-            // Compare error code to AuthenticationErrorCodes
-            // Notify the player with the proper error message
+            //compare error code to AuthenticationErrorCodes
+            //notify the player with the proper error message
             Debug.LogException(ex);
         }
         catch (RequestFailedException ex)
         {
-            // Compare error code to CommonErrorCodes
-            // Notify the player with the proper error message
+            //compare error code to CommonErrorCodes
+            //notify the player with the proper error message
             Debug.LogException(ex);
         } 
     }
