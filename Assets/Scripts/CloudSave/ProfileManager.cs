@@ -7,6 +7,7 @@ using TMPro;
 using Unity.Services.Core;
 using Unity.Services.Authentication;
 using AppleAuth;
+using GooglePlayGames.OurUtils;
 
 public class ProfileManager : MonoBehaviour
 {
@@ -36,6 +37,18 @@ public class ProfileManager : MonoBehaviour
         
         //set profile name text
         profileNameText_TB.text = profileName;
+    }
+
+    private async void UpdateProfileScreen()
+    {
+        profileNameInputField.text = profileName; //set profile name text
+
+        //get player info to check if account is linked to any platforms
+        PlayerInfo info = await AuthenticationService.Instance.GetPlayerInfoAsync();
+
+        //enable/disable link account buttons based on whether the player is on the correct platform and has previously signed in or not
+        if(PlatformUtils.Supported && info.GetGooglePlayGamesId() == null) linkGooglePlayButton.interactable = true;
+        if(AppleAuthManager.IsCurrentPlatformSupported && info.GetAppleId() == null) linkAppleIDButton.interactable = true;
     }
 
     public void ToggleProfileScreen()
@@ -115,23 +128,46 @@ public class ProfileManager : MonoBehaviour
         }
     }
 
-    public void LinkAppleIDButton()
+    public async void LinkGooglePlayButton()
+    {
+        string authCode = AuthenticationManager.Instance.LoginWithGooglePlay();
+        await LinkWithGooglePlayAsync(authCode);
+    }
+
+    public async void LinkAppleIDButton()
     {
         string idToken = AuthenticationManager.Instance.LoginWithAppleID();
-        LinkWithAppleAsync(idToken);
+        await LinkWithAppleAsync(idToken);
     }
 
-    private async void UpdateProfileScreen()
+    private async Task LinkWithGooglePlayAsync(string authCode)
     {
-        profileNameInputField.text = profileName; //set profile name text
-
-        //get player info to check if account is linked and enable/disable link account buttons
-        PlayerInfo info = await AuthenticationService.Instance.GetPlayerInfoAsync();
-
-        if(AppleAuthManager.IsCurrentPlatformSupported && info.GetAppleId() == null) linkAppleIDButton.interactable = true;
+        try
+        {
+            //link with Google Play Games and disable link button afterwards
+            await AuthenticationService.Instance.LinkWithGooglePlayGamesAsync(authCode);
+            linkGooglePlayButton.interactable = false;
+        }
+        catch (AuthenticationException ex) when (ex.ErrorCode == AuthenticationErrorCodes.AccountAlreadyLinked)
+        {
+            //prompt the player with an error message.
+            Debug.LogError("This user is already linked with another account. Log in instead.");
+        }
+        catch (AuthenticationException ex)
+        {
+            //compare error code to AuthenticationErrorCodes
+            //notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+        catch (RequestFailedException ex)
+        {
+            //compare error code to CommonErrorCodes
+            //notify the player with the proper error message
+            Debug.LogException(ex);
+        }
     }
 
-    private async void LinkWithAppleAsync(string idToken)
+    private async Task LinkWithAppleAsync(string idToken)
     {
         try
         {

@@ -9,6 +9,9 @@ using AppleAuth;
 using AppleAuth.Native;
 using AppleAuth.Interfaces;
 using AppleAuth.Enums;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using GooglePlayGames.OurUtils;
 
 public class AuthenticationManager : MonoBehaviour
 {
@@ -106,10 +109,11 @@ public class AuthenticationManager : MonoBehaviour
 
     private void InitializeLoginScreen()
     {
+        //check if on a Google Play supported platform and update interactability of login button
+        if(PlatformUtils.Supported) googlePlayLoginButton.interactable = true;
+
         //check if on an Apple supported platform and update interactability of login button
         if(AppleAuthManager.IsCurrentPlatformSupported) appleIDLoginButton.interactable = true;
-
-        //NOTE: Add check for android being supported and update button
     }
 
     private void InitializeAppleAuthManager()
@@ -119,10 +123,35 @@ public class AuthenticationManager : MonoBehaviour
         appleAuthManager = new AppleAuthManager(deserializer);
     }
 
+    public void GooglePlayLoginButton()
+    {
+        string authCode = LoginWithGooglePlay();
+        SignInWithGooglePlayAsync(authCode);
+    }
+
     public void AppleIDLoginButton()
     {
         string idToken = LoginWithAppleID();
         SignInWithAppleAsync(idToken);
+    }
+
+    public string LoginWithGooglePlay()
+    {
+        //initialize Google Play Games platform
+        PlayGamesPlatform.Activate();
+
+        //perform login
+        string authCode = null;
+        PlayGamesPlatform.Instance.Authenticate((success) =>
+        {
+            if (success == SignInStatus.Success)
+            {
+                //if login successful, get authorization code to return
+                PlayGamesPlatform.Instance.RequestServerSideAccess(true, code => { authCode = code; });
+            }
+            else Debug.Log("Login Unsuccessful - Failed to retrieve Google play games authorization code");
+        });
+        return authCode;
     }
 
     public string LoginWithAppleID()
@@ -154,6 +183,27 @@ public class AuthenticationManager : MonoBehaviour
             error => { Debug.Log("Sign-in with Apple error. Message: " + error); }
         );
         return idToken;
+    }
+
+    private async void SignInWithGooglePlayAsync(string authCode)
+    {
+        try
+        {
+            await AuthenticationService.Instance.SignInWithGooglePlayGamesAsync(authCode);
+            mainMenuManager.LoginScreenToStageSelect();
+        }
+        catch (AuthenticationException ex)
+        {
+            //compare error code to AuthenticationErrorCodes
+            //notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+        catch (RequestFailedException ex)
+        {
+            //compare error code to CommonErrorCodes
+            //notify the player with the proper error message
+            Debug.LogException(ex);
+        }
     }
 
     private async void SignInWithAppleAsync(string idToken)
