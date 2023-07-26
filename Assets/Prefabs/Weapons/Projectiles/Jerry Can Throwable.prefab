@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2583884184541085909}
   - component: {fileID: 133664826000963080}
   - component: {fileID: 1380751655864966856}
+  - component: {fileID: 2154484030989304937}
   m_Layer: 0
   m_Name: Jerry Can Throwable
   m_TagString: Untagged
@@ -125,7 +126,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56623e88155f7304da4b3f2adc547424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  rb: {fileID: 0}
-  timeAlive: 4
-  whereToShoot: {fileID: 0}
+--- !u!58 &2154484030989304937
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8380295068482268458}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

@@ -42,6 +42,8 @@ public class Firehose : SelectedWeapon
     private void SpawnObject()
     {
         var go = Instantiate(instantiatedObject);
+        go.TryGetComponent(out FireHoseBullet fireHoseBullet);
+        fireHoseBullet.Damage = damage;
         go.transform.position = transform.position;
         go.transform.eulerAngles = transform.eulerAngles;
     }

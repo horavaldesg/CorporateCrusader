@@ -21,6 +21,8 @@ public class JerryCan : SelectedWeapon
         go.transform.position = transform.position;
         go.transform.eulerAngles = transform.eulerAngles;
         go.TryGetComponent(out Rigidbody2D rb);
+        go.TryGetComponent(out JerryCanThrowable jerryCanThrowable);
+        jerryCanThrowable.Damage = damage;
         rb.AddForce(go.transform.right * (throwForce * 100));
     }
 

@@ -126,31 +126,44 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void ToggleOptions() => _anim.SetTrigger("ToggleOptions");
-    
+    public void ToggleOptions()
+    { 
+        _anim.SetTrigger("ToggleOptions");
+        StopTime();
+    }
+
     public void ToggleLevelUpScreen()
     {
         levelUpScreen.SetActive(!levelUpScreen.activeSelf);
+        StopTime();
+    }
+
+    private void StopTime()
+    {
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-    } 
+    }
     
     public void ToggleInventory()
     {
         //update inventory open bool and fix rows if inventory opened
         _inventoryOpen = !_inventoryOpen;
         if(_inventoryOpen) UpdateInventoryRows(orientation);
-
+        StopTime();
         _anim.SetTrigger("ToggleInventory");
     }
 
     public void Restart()
     {
         //Restarts Level
+        StopTime();
+        var currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
     }
 
     public void QuitToMainMenu()
     {
         //Returns to main menu
+        StopTime();
         SceneManager.LoadScene("MainMenu");
     }
 }

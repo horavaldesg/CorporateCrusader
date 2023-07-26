@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Nail Gun
-  weaponDescription: 
+  weaponDescription: A projectile weapon that fires a spray of nails in an arc in
+    the direction the player is aiming.
   weaponSprite: {fileID: 0}
   attribute: 0
   damage: 10

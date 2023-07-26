@@ -28,6 +28,8 @@ public class NailGun : SelectedWeapon
             var go = Instantiate(instantiatedObject);
             go.transform.position = position;
             go.transform.rotation = transform.rotation;
+            go.TryGetComponent(out NailGunProjectile nailGunProjectile);
+            nailGunProjectile.damage = damage;
             Destroy(go, 2);
         }
     }

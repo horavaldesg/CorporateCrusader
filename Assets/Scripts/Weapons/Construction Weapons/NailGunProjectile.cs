@@ -9,7 +9,7 @@ public class NailGunProjectile : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     [SerializeField] private float speed = 5;
     public PlayerController.PlayerDirection playerDirection;
-    
+    public float damage;
 
     private void Awake()
     {
@@ -26,5 +26,13 @@ public class NailGunProjectile : MonoBehaviour
         {
             _rigidbody2D.velocity = transform.right * speed;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(!other.CompareTag("Enemy"))return;
+        other.TryGetComponent(out Enemy enemy);
+        enemy.TakeDamage(damage);
+        Destroy(gameObject);
     }
 }
