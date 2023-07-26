@@ -12,6 +12,7 @@ public class LevelUpUpgradeManager : MonoBehaviour
     private WeaponsList _weaponsList;
     private List<Button> _buttons = new();
     private List<GameObject> _weaponsLists = new ();
+    [SerializeField] private List<int> chosenIndexes = new List<int>(3);
     public static event Action<SelectedWeapon> UpgradePlayer;
     public static event Action UpgradeEnded;
     
@@ -48,6 +49,9 @@ public class LevelUpUpgradeManager : MonoBehaviour
             _buttons.Remove(button);
             Destroy(button.transform.gameObject);
         }
+        
+        _weaponsLists.Clear();
+        chosenIndexes.Clear();
     }
 
     private void ButtonClicked(SelectedWeapon selectedWeapon)
@@ -74,6 +78,22 @@ public class LevelUpUpgradeManager : MonoBehaviour
 
     private GameObject RandomList()
     {
-        return _weaponsLists[Random.Range(0, _weaponsLists.Count)];
+        var i = GetRandomNumber();
+       
+        foreach (var index in chosenIndexes)
+        {
+            while (i == index)
+            {
+                i = GetRandomNumber();
+            }
+        }
+        
+        chosenIndexes.Add(i);
+        return _weaponsLists[i];
+    }
+
+    private int GetRandomNumber()
+    {
+        return Random.Range(0, _weaponsLists.Count);
     }
 }
