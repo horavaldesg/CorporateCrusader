@@ -155,11 +155,15 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         //Restarts Level
+        StopTime();
+        var currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
     }
 
     public void QuitToMainMenu()
     {
         //Returns to main menu
+        StopTime();
         SceneManager.LoadScene("MainMenu");
     }
 }
