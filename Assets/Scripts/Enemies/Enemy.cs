@@ -173,6 +173,17 @@ public class Enemy : MonoBehaviour
             go.transform.position = randomPos;
         }
     }
+
+    public void SlowDownEnemy()
+    {
+        StartCoroutine(SpeedUp());
+    }
+
+    private IEnumerator SpeedUp()
+    {
+        yield return new WaitForSeconds(1.5f);
+        speed = baseSpeed;
+    }
     
     private void OnTriggerEnter2D(Collider2D other)
     {

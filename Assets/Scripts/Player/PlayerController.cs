@@ -42,11 +42,13 @@ public class PlayerController : MonoBehaviour
 
     private const int XpMaxCollection = 150;
     public List<GameObject> xpToCollect = new List<GameObject>();
-
+    public CapsuleCollider2D playerCollider;
+    
     private void Awake()
     {
         Instance = this;
         _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
+        TryGetComponent(out playerCollider);
         _baseHealth = _playerStats.health;
         _health = _baseHealth;
         TryGetComponent(out _rb);
@@ -132,9 +134,9 @@ public class PlayerController : MonoBehaviour
         return gameObject.transform;
     }
 
-    public PlayerDirection DirectionOfPlayer()
+    public Vector2 DirectionOfPlayer()
     {
-        return _playerDirection;
+        return _rb.velocity;
     }
 
     private int XpCollected { get; set; }

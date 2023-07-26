@@ -315,7 +315,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2.13
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -348,9 +348,11 @@ MonoBehaviour:
   amountOfXpToDrop: 7
   speed: 0.75
   baseSpeed: 0
+  takingDamage: 0
   attackRange: 0
   attackCooldown: 0
   xpObject: {fileID: 1039156588135131732, guid: b76e62c8302ceef428fb7deed61f1527, type: 3}
+  isBoss: 0
   _rb: {fileID: 0}
 --- !u!1 &7849481968836427025
 GameObject:
