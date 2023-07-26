@@ -51,7 +51,7 @@ public class UpgradesManager : MonoBehaviour
         infoPanel.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = button.UpgradeName; //upgrade name
         infoPanel.GetChild(0).GetChild(2).GetComponent<TMP_Text>().text = "Level " + button.UpgradeLevel; //upgrade level
         infoPanel.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = button.UpgradeDescription(); //upgrade description
-        infoPanel.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.UpgradeCost() + ")"; //upgrade cost   <-NOTE: NEED TO ADD COIN ICON
+        infoPanel.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.UpgradeCost() + "<sprite=0>)"; //upgrade cost   <-NOTE: NEED TO ADD COIN ICON
         infoPanel.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = button.NextLevelText(); //next level effect
         infoPanel.GetChild(1).GetChild(2).GetComponent<TMP_Text>().text = "Requires Player Level " + button.LevelReq(); //level requirement
 

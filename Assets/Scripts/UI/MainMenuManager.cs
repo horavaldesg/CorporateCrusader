@@ -72,6 +72,12 @@ public class MainMenuManager : MonoBehaviour
         UpdateScreenButtons();
     }
 
+    public void StageSelectToLoginScreen()
+    {
+        _pastLoginScreen = false;
+        _anim.SetTrigger("StageSelectToLoginScreen");
+    }
+
     public void SplashScreenToStageSelect()
     {
         _pastLoginScreen = true;

@@ -82,8 +82,8 @@ public class HatCollectionManager : MonoBehaviour
         infoPanel.GetChild(4).GetComponent<TMP_Text>().text = button.Tier4Description;
         
         //set button costs
-        infoPanel.GetChild(5).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.GoldCost() + ")";
-        infoPanel.GetChild(6).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.GemCost() + ")";
+        infoPanel.GetChild(5).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.GoldCost() + "<sprite=0>)";
+        infoPanel.GetChild(6).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.GemCost() + "<sprite=0>)";
 
         //lock upgrade buttons if hat is max tier
         if(button.HatTier >= 4)

@@ -11,7 +11,8 @@ using GooglePlayGames.OurUtils;
 
 public class ProfileManager : MonoBehaviour
 {
-    [SerializeField] private GameObject profileScreenBG;
+    
+    [SerializeField] private MainMenuManager mainMenuManager;
 
     [Header("Top Bar UI References")]
     [SerializeField] private TMP_Text profileNameText_TB;
@@ -22,6 +23,8 @@ public class ProfileManager : MonoBehaviour
     [SerializeField] private CanvasGroup nameChangeErrorText;
     [SerializeField] private Button linkGooglePlayButton;
     [SerializeField] private Button linkAppleIDButton;
+    [SerializeField] private GameObject profileScreenBG;
+    [SerializeField] private GameObject logoutWarningBG;
 
     private string profileName;
 
@@ -139,6 +142,18 @@ public class ProfileManager : MonoBehaviour
         string idToken = AuthenticationManager.Instance.LoginWithAppleID();
         await LinkWithAppleAsync(idToken);
     }
+
+    public void LogoutButton() => logoutWarningBG.SetActive(true);
+
+    public void Logout()
+    {
+        logoutWarningBG.SetActive(false);
+        ToggleProfileScreen();
+        mainMenuManager.StageSelectToLoginScreen();
+        AuthenticationService.Instance.SignOut(true);
+    }
+
+    public void CancelLogout() => logoutWarningBG.SetActive(false);
 
     private async Task LinkWithGooglePlayAsync(string authCode)
     {
