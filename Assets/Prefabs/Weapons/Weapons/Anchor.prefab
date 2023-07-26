@@ -53,4 +53,4 @@ MonoBehaviour:
   level: 0
   coolDown: 2
   instantiatedObject: {fileID: 2503595341717690813, guid: 3347b57b912ddb945a5aabbf4bf0f0d2, type: 3}
-  throwForce: 6
+  throwForce: 3.5

@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject xpObject;
 
     [SerializeField] private bool isBoss;
+    private int _xpToAdd;
     
     public Rigidbody2D _rb;
     private Collider2D _collider;
@@ -65,6 +66,7 @@ public class Enemy : MonoBehaviour
         _baseHealth = health;
         _damage = _enemyStats.damage;
         _attackTime = _enemyStats.attackTime;
+        _xpToAdd = _enemyStats.xpToDrop;
     }
 
     private void Start()
@@ -171,6 +173,8 @@ public class Enemy : MonoBehaviour
             randomPos += transform.position;
             var go = Instantiate(xpObject, randomPos, Quaternion.identity);
             go.transform.position = randomPos;
+            go.TryGetComponent(out XpCollider xpCollider);
+            xpCollider.xpToAdd = _xpToAdd;
         }
     }
 

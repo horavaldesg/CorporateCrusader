@@ -18,4 +18,5 @@ public class EnemyStats : ScriptableObject
     public float damage;
     public float speed;
     public float attackTime;
+    public int xpToDrop;
 }
