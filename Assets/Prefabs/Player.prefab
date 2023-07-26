@@ -926,9 +926,10 @@ MonoBehaviour:
   gunRotationSpeed: 5
   rotationThreshold: 0.75
   bodyTransform: {fileID: 6076901445116773778}
-  healAmount: 0
+  healAmount: 2.2
   healTime: 0
   xpToCollect: []
+  playerCollider: {fileID: 0}
 --- !u!114 &731509817785867039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,6 +944,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPositions:
   - {fileID: 8848285956899719887}
+  weaponsAdded: []
+  localWeapons: []
 --- !u!114 &1778006132897799076
 MonoBehaviour:
   m_ObjectHideFlags: 0
