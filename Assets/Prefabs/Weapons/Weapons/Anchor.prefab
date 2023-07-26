@@ -47,7 +47,7 @@ MonoBehaviour:
   weaponName: Anchor
   weaponDescription: A tossed projectile that falls off the screen shortly after
     being thrown, damaging all enemies it hits.
-  weaponSprite: {fileID: 0}
+  weaponSprite: {fileID: 21300000, guid: 5a2e3cb96ed5ef745af798a4072644f3, type: 3}
   attribute: 1
   damage: 15
   level: 0

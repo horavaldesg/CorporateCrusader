@@ -2383,6 +2383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelUpButton: {fileID: 5666926050170141842, guid: c0132179df39efc46859266f2e198312, type: 3}
   levelUpButtonParent: {fileID: 8107495749280892361}
+  chosenIndexes: 
 --- !u!1 &2527908683472468550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2832,7 +2833,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 6c50db37a4dd7ea42a7e8fdfe8d39bca, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
