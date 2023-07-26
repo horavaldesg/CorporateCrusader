@@ -134,7 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Creosote Oil
-  weaponDescription: 
+  weaponDescription: A pool of creosote oil forms around the player. Although it
+    deals no damage, it slows enemies significantly.
   weaponSprite: {fileID: 0}
   attribute: 2
   damage: 0

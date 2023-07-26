@@ -47,7 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Nail Pile
-  weaponDescription: Temp Description This is Nail Piles
+  weaponDescription: Periodically, the player leaves behind a pile of nails on the
+    ground. These nails damage any enemy that touches them. Piles remain on the field
+    for as long as there are nails present. A nail is removed from the pile on each
+    hit.
   weaponSprite: {fileID: 21300000, guid: 2cc9cd53faf9a60429d0c779954d0922, type: 3}
   attribute: 0
   damage: 5

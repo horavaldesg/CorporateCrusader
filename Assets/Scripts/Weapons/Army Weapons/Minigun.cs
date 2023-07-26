@@ -1,4 +1,5 @@
 using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,40 +9,33 @@ public class Minigun : SelectedWeapon
 {
     [SerializeField] private float bulletSpread;
 
-    private PlayerControls _controller;
-    
-    private void OnEnable()
+    public float shootCoolDown;
+
+    private void Awake()
     {
-        _controller.Enable();
+        transform.parent = null;
     }
 
-    private void OnDisable()
-    {
-        _controller.Disable();
-    }
-
-    protected override void Start()
-    {
-        var gunPos = PlayerController.Instance.GunPosition();
-        var gunRotation = PlayerController.Instance.GunRotation();
-        transform.position = gunPos;
-        transform.rotation = gunRotation;
-        base.Start();
-    }
     //360 rotation 
     // Change to place and then cooldown and then place again
+    private void Update()
+    {
+        var rotation = transform.eulerAngles;
+        rotation.z += Time.deltaTime * -90;
+        transform.localEulerAngles = rotation;
+    }
 
     private void Place()
     {
-        var gunPos = PlayerController.Instance.GunPosition();
-        var gunRotation = PlayerController.Instance.GunRotation();
+        StopAllCoroutines();
+        var gunPos = PlayerController.Instance.CurrentPlayerTransform().position;
         transform.position = gunPos;
-        transform.rotation = gunRotation;
+        Shoot();
     }
 
     protected override void Activate()
     {
-        Shoot();
+        Place();
         base.Activate();
     }
 
@@ -55,9 +49,18 @@ public class Minigun : SelectedWeapon
 
     private void Shoot()
     {
+        StartCoroutine(WaitToShoot());
+    }
+
+    private IEnumerator WaitToShoot()
+    {
         var go = Instantiate(instantiatedObject);
+        go.TryGetComponent(out Bullet bullet);
+        bullet.Damage = damage;
         go.transform.position = transform.position;
         go.transform.eulerAngles = RandomRotation();
+        yield return new WaitForSeconds(shootCoolDown);
+        Shoot();
     }
 
     private Vector3 RandomRotation()

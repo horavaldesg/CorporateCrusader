@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Fire Hose
-  weaponDescription: 
+  weaponDescription: Projectiles are fired above the player character in a sweeping
+    arc akin to a garden sprinkler. Targets hit are damaged and pushed back slightly.
   weaponSprite: {fileID: 0}
-  attribute: 0
-  damage: 0
+  attribute: 1
+  damage: 5
   level: 0
   coolDown: 0.1
   instantiatedObject: {fileID: 2430750321700695288, guid: 5b5cbad8e7bc9cd4ea2b2b4c1325a6f9, type: 3}

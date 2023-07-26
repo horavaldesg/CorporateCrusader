@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Anchor
-  weaponDescription: 
+  weaponDescription: A tossed projectile that falls off the screen shortly after
+    being thrown, damaging all enemies it hits.
   weaponSprite: {fileID: 0}
-  attribute: 0
+  attribute: 1
   damage: 15
   level: 0
   coolDown: 2

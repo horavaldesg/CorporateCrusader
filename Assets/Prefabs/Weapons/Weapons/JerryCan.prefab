@@ -45,10 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Jerry Can
-  weaponDescription: 
+  weaponDescription: A thrown weapon launched in a random direction from the player
+    that arcs through the air slightly before falling off the screen. Projectiles
+    leave behind an oil spill that slows and damages enemies that touch it.
   weaponSprite: {fileID: 0}
   attribute: 0
-  damage: 0
+  damage: 5
   level: 0
   coolDown: 2
   instantiatedObject: {fileID: 8380295068482268458, guid: f7bc55127669fe54999e24a05a501f01, type: 3}
