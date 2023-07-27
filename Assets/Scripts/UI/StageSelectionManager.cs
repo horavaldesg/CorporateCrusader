@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class StageSelectionManager : MonoBehaviour
 {
     [SerializeField] private List<string> stageNames = new List<string>();
     [SerializeField] private List<Sprite> stageBGSprites = new List<Sprite>();
+    [SerializeField] private List<LevelLoader> stageLevelLoaders = new ();
 
     [Header("UI References")]
     [SerializeField] private TMP_Text stageNameText;
@@ -17,7 +19,14 @@ public class StageSelectionManager : MonoBehaviour
     [SerializeField] private Button nextStageButton;
     [SerializeField] private Button stageSelectButton;
 
+    private InGameLevelLoader _inGameLevelLoader;
+    
     private int currentStage;
+
+    private void Awake()
+    {
+        _inGameLevelLoader = Resources.Load<InGameLevelLoader>("InGameLevel");
+    }
 
     private void Start()
     {
@@ -25,6 +34,7 @@ public class StageSelectionManager : MonoBehaviour
         prevStageButton.interactable = false;
         stageNameText.text = "Stage " + (currentStage + 1) + ":\n" + stageNames[currentStage];
         stageBGImage.sprite = stageBGSprites[currentStage];
+        SetStage();
     }
 
     public void PreviousStageButton()
@@ -39,8 +49,14 @@ public class StageSelectionManager : MonoBehaviour
         StartCoroutine(SwitchStage());
     }
 
+    private void SetStage()
+    {
+        _inGameLevelLoader.levelLoader = stageLevelLoaders[currentStage];
+    }
+
     private IEnumerator SwitchStage()
     {
+        SetStage();
         //disable previous stage, next stage, and stage select buttons
         prevStageButton.enabled = false;
         nextStageButton.enabled = false;

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 885141a2ae541a54bab883c287f799d7, type: 3}
-  m_Name: Level1
+  m_Name: Level 3
   m_EditorClassIdentifier: 
-  level: 1
+  level: 3
   levelBackground: {fileID: 21300000, guid: 69101f137a30a3149bf64b6c445bd0bd, type: 3}
   enemiesThatSpawn: {fileID: 11400000, guid: 4a5d77cb805224544b2d0e87f30a2e55, type: 2}

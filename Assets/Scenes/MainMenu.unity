@@ -57327,6 +57327,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 21c3809bc259dc54696f14e974e65aec, type: 3}
   - {fileID: 21300000, guid: caa7779d1208ca747b6c7b35ba8d50d4, type: 3}
   - {fileID: 21300000, guid: 21c3809bc259dc54696f14e974e65aec, type: 3}
+  stageLevelLoaders:
+  - {fileID: 11400000, guid: e2940061bfca7034b92c5017cb99283a, type: 2}
+  - {fileID: 11400000, guid: 54ba531212aa6864e9f9881c450eb216, type: 2}
+  - {fileID: 11400000, guid: af29b3e5a7a5ea34badd0632fd7401e2, type: 2}
+  - {fileID: 11400000, guid: 720a62586c1a813469eac223825ae490, type: 2}
+  - {fileID: 11400000, guid: a18149aeab6ece34ba233cecbf289adc, type: 2}
   stageNameText: {fileID: 1615312470}
   stageBGImage: {fileID: 1675571496}
   stageLockedPanel: {fileID: 1475585235}
