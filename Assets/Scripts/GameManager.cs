@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
     public static event Action LevelChanged;
     private float _timeAlive;
     public List<GameObject> enemiesSpawnedList = new();
-
+    private InGameLevelLoader _levelLoader;
+    public SpriteRenderer levelBackground;
+    public EnemySpawner enemySpawner;
+    
     public int TotalXp
     {
         get;
@@ -35,6 +38,13 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         TotalXp = 250;
+        _levelLoader = Resources.Load<InGameLevelLoader>("InGameLevel");
+    }
+
+    private void Start()
+    {
+        levelBackground.sprite = _levelLoader.levelLoader.levelBackground;
+        levelBackground.size = new Vector2(1000, 1000);
     }
 
     private void Update()

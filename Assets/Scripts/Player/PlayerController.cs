@@ -119,6 +119,11 @@ public class PlayerController : MonoBehaviour
             gunRotationSpeed * Time.deltaTime * 100);
     }
 
+    public Transform GunTransform()
+    {
+        return gunRotate;
+    }
+
     public Quaternion GunRotation()
     {
         return gunRotate.rotation;
