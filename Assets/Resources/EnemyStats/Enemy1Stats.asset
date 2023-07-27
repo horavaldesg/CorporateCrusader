@@ -17,3 +17,4 @@ MonoBehaviour:
   damage: 5
   speed: 2.5
   attackTime: 0
+  xpToDrop: 15
