@@ -109,12 +109,12 @@ public class AuthenticationManager : MonoBehaviour
 
     private void InitializeLoginScreen()
     {
-        PlayGamesPlatform.Activate();
         //check if on a Google Play supported platform and update interactability of login button
-        if(PlatformUtils.Supported) googlePlayLoginButton.interactable = true;
+        //NOTE: FIX THIS EVENTUALLY
 
         //check if on an Apple supported platform and update interactability of login button
         if(AppleAuthManager.IsCurrentPlatformSupported) appleIDLoginButton.interactable = true;
+        else googlePlayLoginButton.interactable = true;
     }
 
     private void InitializeAppleAuthManager()

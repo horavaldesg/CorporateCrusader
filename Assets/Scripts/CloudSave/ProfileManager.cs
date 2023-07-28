@@ -11,11 +11,23 @@ using GooglePlayGames.OurUtils;
 
 public class ProfileManager : MonoBehaviour
 {
-    
+    public static ProfileManager Instance;
+
     [SerializeField] private MainMenuManager mainMenuManager;
 
+    public ProfileInfo ProfileInfo;
+
+    [Header("Profile XP Settings")]
+    [SerializeField] private float xpReqIncreaseRate = 0.25f;
+
     [Header("Top Bar UI References")]
-    [SerializeField] private TMP_Text profileNameText_TB;
+    [SerializeField] private TMP_Text profileNameText;
+    [SerializeField] private Image profileXPBar_TB;
+    [SerializeField] private TMP_Text profileXPReqText_TB;
+    [SerializeField] private TMP_Text profileLevelText_TB;
+    [SerializeField] private TMP_Text energyText;
+    [SerializeField] private TMP_Text gemsText;
+    [SerializeField] private TMP_Text coinsText;
 
     [Header("Profile Screen UI References")]
     [SerializeField] private TMP_InputField profileNameInputField;
@@ -26,25 +38,36 @@ public class ProfileManager : MonoBehaviour
     [SerializeField] private GameObject profileScreenBG;
     [SerializeField] private GameObject logoutWarningBG;
 
-    private string profileName;
+    private void Awake() => Instance = this;
 
-    private void Start()
+    public void UpdateTopBarUI()
     {
-        AuthenticationService.Instance.SignedIn += InitializeTopBarUI;
-    }
-
-    private async void InitializeTopBarUI()
-    {
-        //get profile name
-        profileName = await AuthenticationService.Instance.GetPlayerNameAsync();
+        //set profile name
+        profileNameText.text = ProfileInfo.profileName;
         
-        //set profile name text
-        profileNameText_TB.text = profileName;
+        //get profile level and set text
+        int totalXP = ProfileInfo.profileXP;
+        ProfileInfo.profileLevel = Mathf.FloorToInt((xpReqIncreaseRate * Mathf.Sqrt(totalXP)) + 1);
+        profileLevelText_TB.text = "Lvl " + ProfileInfo.profileLevel;
+
+        //get profile xp requirements and set text and xp bar
+        int xpForCurrentLevel = (int) Mathf.Pow((ProfileInfo.profileLevel - 1) / xpReqIncreaseRate, 2);
+        int xpForNextLevel = (int) Mathf.Pow(ProfileInfo.profileLevel / xpReqIncreaseRate, 2);
+        int levelXP = totalXP - xpForCurrentLevel;
+        int levelXPNeeded = xpForNextLevel - xpForCurrentLevel;
+        profileXPReqText_TB.text = levelXP + "/" + levelXPNeeded;
+        profileXPBar_TB.fillAmount = levelXP / levelXPNeeded;
+
+        //set energy, gems, and coins
+        energyText.text = ProfileInfo.energy + "/30";
+        gemsText.text = ProfileInfo.gems.ToString();
+        coinsText.text = ProfileInfo.coins.ToString();
     }
 
     private async void UpdateProfileScreen()
     {
-        profileNameInputField.text = profileName; //set profile name text
+        //set profile name
+        profileNameInputField.text = ProfileInfo.profileName;
 
         //get player info to check if account is linked to any platforms
         PlayerInfo info = await AuthenticationService.Instance.GetPlayerInfoAsync();
@@ -52,6 +75,22 @@ public class ProfileManager : MonoBehaviour
         //enable/disable link account buttons based on whether the player is on the correct platform and has previously signed in or not
         if(PlatformUtils.Supported && info.GetGooglePlayGamesId() == null) linkGooglePlayButton.interactable = true;
         if(AppleAuthManager.IsCurrentPlatformSupported && info.GetAppleId() == null) linkAppleIDButton.interactable = true;
+    }
+
+    public void ChangeNumCoins(int amount)
+    {
+        int coins = ProfileInfo.coins + amount; //get and change amount of coins
+        ProfileInfo.coins = coins; //set new coins value
+        SaveManager.Instance.SaveSomeData("Coins", coins.ToString()); //save new coins value
+        coinsText.text = coins.ToString(); //update top bar UI
+    }
+
+    public void ChangeNumGems(int amount)
+    {
+        int gems = ProfileInfo.gems + amount; //get and change amount of gems
+        ProfileInfo.gems = gems; //set new gems value
+        SaveManager.Instance.SaveSomeData("Gems", gems.ToString()); //save new gems value
+        gemsText.text = gems.ToString(); //update top bar UI
     }
 
     public void ToggleProfileScreen()
@@ -79,9 +118,9 @@ public class ProfileManager : MonoBehaviour
         editProfileNameButton.interactable = true;
 
         //update and set profile name if given a new name
-        if(name != profileName)
+        if(name != ProfileInfo.profileName)
         {
-            try { profileName = await AuthenticationService.Instance.UpdatePlayerNameAsync(name); }
+            try { ProfileInfo.profileName = await AuthenticationService.Instance.UpdatePlayerNameAsync(name); }
             catch (AuthenticationException ex)
             {
                 //compare error code to AuthenticationErrorCodes
@@ -97,8 +136,8 @@ public class ProfileManager : MonoBehaviour
                 Debug.LogException(ex);
             } 
             
-            profileNameInputField.text = profileName;
-            profileNameText_TB.text = profileName;
+            profileNameInputField.text = ProfileInfo.profileName;
+            profileNameText.text = ProfileInfo.profileName;
         }
     }
 

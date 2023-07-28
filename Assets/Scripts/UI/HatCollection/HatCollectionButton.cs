@@ -14,7 +14,7 @@ public class HatCollectionButton : MonoBehaviour
     public string Tier3Description;
     public string Tier4Description;
 
-    public int GoldCost()
+    public int CoinCost()
     {
         int cost = 100 + (HatTier * 200);
         return cost;

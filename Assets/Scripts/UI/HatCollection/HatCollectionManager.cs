@@ -82,7 +82,7 @@ public class HatCollectionManager : MonoBehaviour
         infoPanel.GetChild(4).GetComponent<TMP_Text>().text = button.Tier4Description;
         
         //set button costs
-        infoPanel.GetChild(5).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.GoldCost() + "<sprite=0>)";
+        infoPanel.GetChild(5).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.CoinCost() + "<sprite=0>)";
         infoPanel.GetChild(6).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.GemCost() + "<sprite=0>)";
 
         //lock upgrade buttons if hat is max tier
@@ -91,5 +91,45 @@ public class HatCollectionManager : MonoBehaviour
             infoPanel.GetChild(5).GetComponent<Button>().interactable = false;
             infoPanel.GetChild(6).GetComponent<Button>().interactable = false;
         }
+    }
+
+    public void UpgradeWithCoins()
+    {
+        //get currently selected button
+        HatCollectionButton button;
+        hatButtons_Portrait.GetChild(selection).TryGetComponent<HatCollectionButton>(out button);
+        hatButtons_Landscape.GetChild(selection).TryGetComponent<HatCollectionButton>(out button);
+
+        //retrieve num coins and check if possible to upgrade
+        int coins = ProfileManager.Instance.ProfileInfo.coins;
+        if(coins < button.CoinCost()) return;
+
+        //upgrade hat tier with coins
+        ProfileManager.Instance.ChangeNumCoins(-button.CoinCost());
+        button.HatTier++;
+
+        //update upgrade info panels
+        UpdateInfoPanel(hatInfoPanel_Portrait, button);
+        UpdateInfoPanel(hatInfoPanel_Landscape, button);
+    }
+
+    public void UpgradeWithGems()
+    {
+        //get currently selected button
+        HatCollectionButton button;
+        hatButtons_Portrait.GetChild(selection).TryGetComponent<HatCollectionButton>(out button);
+        hatButtons_Landscape.GetChild(selection).TryGetComponent<HatCollectionButton>(out button);
+
+        //retrieve num gems and check if possible to upgrade
+        int gems = ProfileManager.Instance.ProfileInfo.gems;
+        if(gems < button.GemCost()) return;
+
+        //upgrade hat tier with coins
+        ProfileManager.Instance.ChangeNumGems(-button.GemCost());
+        button.HatTier++;
+
+        //update upgrade info panels
+        UpdateInfoPanel(hatInfoPanel_Portrait, button);
+        UpdateInfoPanel(hatInfoPanel_Landscape, button);
     }
 }
