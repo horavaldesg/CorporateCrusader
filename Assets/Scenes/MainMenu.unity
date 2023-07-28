@@ -41575,6 +41575,7 @@ MonoBehaviour:
   hatCollectionPanel_Landscape: {fileID: 1996456545}
   upgradesPanel_Portrait: {fileID: 946971745}
   ugradesPanel_Landscape: {fileID: 1866573239}
+  stageSelectionManager: {fileID: 1517087947}
   hatCollectionManager: {fileID: 1517087946}
   upgradesManager: {fileID: 1517087945}
 --- !u!114 &1113215526
@@ -57764,6 +57765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f24be87a090b734da1131bcffa0980a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canSelectStage: 1
   stageNames:
   - The House
   - The Yard

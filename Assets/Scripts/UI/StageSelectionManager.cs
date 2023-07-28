@@ -7,6 +7,8 @@ using TMPro;
 
 public class StageSelectionManager : MonoBehaviour
 {
+    public bool canSelectStage = true;
+
     [SerializeField] private List<string> stageNames = new List<string>();
     [SerializeField] private List<Sprite> stageBGSprites = new List<Sprite>();
     [SerializeField] private List<LevelLoader> stageLevelLoaders = new ();
@@ -57,10 +59,11 @@ public class StageSelectionManager : MonoBehaviour
     private IEnumerator SwitchStage()
     {
         SetStage();
+
         //disable previous stage, next stage, and stage select buttons
         prevStageButton.enabled = false;
         nextStageButton.enabled = false;
-        stageSelectButton.enabled = false;
+        canSelectStage = false;
 
         //fade out stage name and background image
         float a = 1;
@@ -104,6 +107,6 @@ public class StageSelectionManager : MonoBehaviour
         //enable previous stage, next stage, and stage select buttons
         prevStageButton.enabled = true;
         nextStageButton.enabled = true;
-        stageSelectButton.enabled = true;
+        canSelectStage = true;
     }
 }

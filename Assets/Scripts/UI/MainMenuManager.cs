@@ -21,6 +21,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject ugradesPanel_Landscape;
 
     [Header("Script References")]
+    [SerializeField] private StageSelectionManager stageSelectionManager;
     [SerializeField] private HatCollectionManager hatCollectionManager;
     [SerializeField] private UpgradesManager upgradesManager;
 
@@ -171,6 +172,9 @@ public class MainMenuManager : MonoBehaviour
 
     public void StageSelectButton()
     {
+        //check if you can select a stage
+        if(!stageSelectionManager.canSelectStage) return;
+
         _anim.SetTrigger("StageSelectToHatSelect");   
     }
 
