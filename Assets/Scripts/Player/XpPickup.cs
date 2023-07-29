@@ -6,7 +6,7 @@ using UnityEngine;
 public class XpPickup : MonoBehaviour
 {
     private const string XpCollider = "XPCollider";
-    private const string Gold = "CoinCollider";
+    private const string Coins = "CoinCollider";
     private void OnTriggerEnter2D(Collider2D other)
     {
         switch (other.tag)
@@ -14,8 +14,8 @@ public class XpPickup : MonoBehaviour
             case XpCollider:
                 CollectXp(other);
                 break;
-            case Gold:
-                CollectGold(other);
+            case Coins:
+                CollectCoins(other);
                 break;
         }
     }
@@ -26,7 +26,7 @@ public class XpPickup : MonoBehaviour
         xpCollider.CollectXp();
     }
 
-    private void CollectGold(Collider2D other)
+    private void CollectCoins(Collider2D other)
     {
         other.TryGetComponent(out CoinCollider coinCollider);
         coinCollider.CollectXp();

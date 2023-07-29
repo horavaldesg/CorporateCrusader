@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackCooldown;
     
     [SerializeField] private GameObject xpObject;
-    [SerializeField] private GameObject goldDrop;
+    [SerializeField] private GameObject coinDrop;
 
     [SerializeField] private bool isBoss;
     private int _xpToAdd;
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
         _attackTime = _enemyStats.attackTime;
         _xpToAdd = _enemyStats.xpToDrop;
         _coinsToAdd = _enemyStats.coinsToDrop;
-        goldDrop = _enemyStats.coinObject;
+        coinDrop = _enemyStats.coinObject;
         xpObject = _enemyStats.xpObject;
     }
 
@@ -193,7 +193,7 @@ public class Enemy : MonoBehaviour
 
     private void DropCoins()
     {
-        var go = Instantiate(goldDrop);
+        var go = Instantiate(coinDrop);
         var randomPos = RandomCirclePos();
         randomPos += transform.position;
         go.transform.position = randomPos;
