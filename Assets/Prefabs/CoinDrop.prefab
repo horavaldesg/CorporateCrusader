@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2421652751449971765}
   m_Layer: 0
   m_Name: CoinDrop
-  m_TagString: GoldCollider
+  m_TagString: CoinCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
