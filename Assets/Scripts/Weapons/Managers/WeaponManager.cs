@@ -13,11 +13,16 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private List<Transform> weaponPositions = new ();
     [SerializeField] private List<SelectedWeapon> weaponsAdded = new ();
     [SerializeField] private List<GameObject> localWeapons = new ();
-    
+
     private void Awake()
     {
         Instance = this;
         _weaponsList = Resources.Load<WeaponsList>("Weapons/WeaponsList");
+    }
+
+    private void Start()
+    {
+        throw new NotImplementedException();
     }
 
     private void OnEnable()
@@ -61,6 +66,7 @@ public class WeaponManager : MonoBehaviour
 
     private void LoadWeaponUpgrade(SelectedWeapon selectedWeapon)
     {
+        if(weaponsAdded.Count == 6) return; 
         foreach (var weapon in _weaponsList.weaponList)
         {
             weapon.TryGetComponent(out SelectedWeapon selectedWeaponFromList);
