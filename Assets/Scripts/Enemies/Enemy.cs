@@ -29,9 +29,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackCooldown;
     
     [SerializeField] private GameObject xpObject;
+    [SerializeField] private GameObject goldDrop;
 
     [SerializeField] private bool isBoss;
     private int _xpToAdd;
+    private int _goldToAdd;
     
     public Rigidbody2D _rb;
     private Collider2D _collider;
@@ -67,6 +69,9 @@ public class Enemy : MonoBehaviour
         _damage = _enemyStats.damage;
         _attackTime = _enemyStats.attackTime;
         _xpToAdd = _enemyStats.xpToDrop;
+        _goldToAdd = _enemyStats.goldToDrop;
+        goldDrop = _enemyStats.goldObject;
+        xpObject = _enemyStats.xpObject;
     }
 
     private void Start()
@@ -166,16 +171,34 @@ public class Enemy : MonoBehaviour
 
     private void DropXp()
     {
+        var randomNum = Random.Range(0, 11);
+        if(randomNum % 2 == 0) DropGold();
+        
         for (var i = 0; i < amountOfXpToDrop; i++)
         {
-            var radius = 0.75f;
-            var randomPos = Random.insideUnitSphere * radius;
+            var randomPos = RandomCirclePos();
             randomPos += transform.position;
             var go = Instantiate(xpObject, randomPos, Quaternion.identity);
             go.transform.position = randomPos;
             go.TryGetComponent(out XpCollider xpCollider);
             xpCollider.xpToAdd = _xpToAdd;
         }
+    }
+
+    private Vector3 RandomCirclePos()
+    {
+        var radius = 0.75f;
+        return Random.insideUnitSphere * radius;
+    }
+
+    private void DropGold()
+    {
+        var go = Instantiate(goldDrop);
+        var randomPos = RandomCirclePos();
+        randomPos += transform.position;
+        go.transform.position = randomPos;
+        go.TryGetComponent(out GoldCollider goldCollider);
+        goldCollider.goldToAdd = _goldToAdd;
     }
 
     public void SlowDownEnemy()

@@ -33,6 +33,12 @@ public class GameManager : MonoBehaviour
         get;
         set;
     }
+
+    public int CurrentGold
+    {
+        get;
+        set;
+    }
     
     private void Awake()
     {
@@ -89,6 +95,12 @@ public class GameManager : MonoBehaviour
         
         UIManager.UpdateXpBar(Instance.CurrentXp);
         //XpAdded?.Invoke(Instance.CurrentXp);
+    }
+
+    public static void AddGold(int gold)
+    {
+        Instance.CurrentGold += gold;
+        UIManager.UpdateGold(Instance.CurrentGold);
     }
 
     private bool CheckLevelUpgrade()

@@ -2,17 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rockets : MonoBehaviour
+public class Rockets : SelectedWeapon
 {
-    // Start is called before the first frame update
-    void Start()
+    private Camera _mainCamera;
+    public float velocity;
+    
+    protected override void Start()
     {
-        
+        _mainCamera = Camera.main;
+        base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Activate()
     {
-        
+        LaunchRockets();
+        base.Activate();
+    }
+
+    private void LaunchRockets()
+    {
+        var go = Instantiate(instantiatedObject);
+        go.transform.position = RandomPos();
+        go.TryGetComponent(out RocketProjectile rocketProjectile);
+        rocketProjectile.damage = damage;
+        rocketProjectile.moveSpeed = velocity;
+    }
+
+    private Vector3 RandomPos()
+    {
+        return _mainCamera.ScreenToWorldPoint(
+            new Vector3(Random.Range(25, Screen.width - 25), -100, 10));
     }
 }

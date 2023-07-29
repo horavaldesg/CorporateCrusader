@@ -1,18 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class MaracaToss : MonoBehaviour
+public class MaracaToss : SelectedWeapon
 {
-    // Start is called before the first frame update
-    void Start()
+    public float throwForce;
+    
+    protected override void Activate()
     {
-        
+        Throw();
+        base.Activate();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Throw()
     {
+        transform.eulerAngles = RandomRotation();
+        var go = Instantiate(instantiatedObject);
+        var playerPos = transform.position;
+
+        go.transform.position = playerPos;
+        go.TryGetComponent(out Rigidbody2D rb);
+        go.TryGetComponent(out MaracaProjectile maracaProjectile);
         
+        maracaProjectile.damage = damage;
+        
+        var force = transform.right * (throwForce * 100);
+        
+        rb.AddForce(force, ForceMode2D.Force);
+    }
+
+    private Vector3 RandomRotation()
+    {
+        return new Vector3(0,0, Random.Range(0,360));
     }
 }

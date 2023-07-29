@@ -16,7 +16,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text enemiesKilledText;
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private Image xpBarFill;
-
+    [SerializeField] private TMP_Text goldText;
+    
     [Header("Inventory References")]
     [SerializeField] private Transform invRow1;
     [SerializeField] private Transform invRow2;
@@ -46,6 +47,7 @@ public class UIManager : MonoBehaviour
         EnemyDetector.EnemyDied += UpdateKills;
         CloudSaveManager.AddKills += UpdateKills;
         GameManager.LevelIncreased += LevelUpdated;
+        GameManager.XpAdded += UpdateXpBar;
         GameManager.LevelChanged += ToggleLevelUpScreen;
         LevelUpUpgradeManager.UpgradeEnded += ToggleLevelUpScreen;
         OrientationManager.orientationChangedEvent += ScreenOrientationChanged;
@@ -68,6 +70,7 @@ public class UIManager : MonoBehaviour
     {
         UpdateKills(0);
         UpdateXpBar(0);
+        UpdateGold(0);
         LevelUpdated(GameManager.Instance.CurrentLevel = 1);
 
         orientation = GetComponent<OrientationManager>().orientation;
@@ -87,6 +90,11 @@ public class UIManager : MonoBehaviour
         {
             Instance.xpBarFill.fillAmount = 0;
         }
+    }
+
+    public static void UpdateGold(int goldCollected)
+    {
+        Instance.goldText.SetText(goldCollected == 0 ? "0" : goldCollected.ToString("##"));
     }
 
     private void LevelUpdated(int level)

@@ -13,10 +13,14 @@ public class EnemyStats : ScriptableObject
         None
     }
 
+    public GameObject xpObject;
+    public GameObject goldObject;
+    
     public Weakness weakness;
     public float health;
     public float damage;
     public float speed;
     public float attackTime;
     public int xpToDrop;
+    public int goldToDrop;
 }

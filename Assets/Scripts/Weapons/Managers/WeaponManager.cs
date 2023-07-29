@@ -19,12 +19,7 @@ public class WeaponManager : MonoBehaviour
         Instance = this;
         _weaponsList = Resources.Load<WeaponsList>("Weapons/WeaponsList");
     }
-
-    private void Start()
-    {
-        throw new NotImplementedException();
-    }
-
+    
     private void OnEnable()
     {
         LevelUpUpgradeManager.UpgradePlayer += LoadWeaponUpgrade;
