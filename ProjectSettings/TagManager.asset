@@ -9,7 +9,7 @@ TagManager:
   - XPPickUpCollider
   - XPCollider
   - EnemyTrigger
-  - GoldCollider
+  - CoinCollider
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7428088476218861024}
   - component: {fileID: 2421652751449971765}
   m_Layer: 0
-  m_Name: GoldDrop
+  m_Name: CoinDrop
   m_TagString: GoldCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,4 +133,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227a490435298e347ac24a37d2ad142c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldToAdd: 0
+  coinsToAdd: 0

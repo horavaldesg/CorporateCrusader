@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         set;
     }
 
-    public int CurrentGold
+    public int CurrentCoins
     {
         get;
         set;
@@ -97,10 +97,10 @@ public class GameManager : MonoBehaviour
         //XpAdded?.Invoke(Instance.CurrentXp);
     }
 
-    public static void AddGold(int gold)
+    public static void AddCoins(int coinsToAdd)
     {
-        Instance.CurrentGold += gold;
-        UIManager.UpdateGold(Instance.CurrentGold);
+        Instance.CurrentCoins += coinsToAdd;
+        UIManager.UpdateCoins(Instance.CurrentCoins);
     }
 
     private bool CheckLevelUpgrade()

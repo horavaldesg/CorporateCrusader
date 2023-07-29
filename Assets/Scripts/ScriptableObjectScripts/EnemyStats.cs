@@ -14,7 +14,7 @@ public class EnemyStats : ScriptableObject
     }
 
     public GameObject xpObject;
-    public GameObject goldObject;
+    public GameObject coinObject;
     
     public Weakness weakness;
     public float health;
@@ -22,5 +22,5 @@ public class EnemyStats : ScriptableObject
     public float speed;
     public float attackTime;
     public int xpToDrop;
-    public int goldToDrop;
+    public int coinsToDrop;
 }

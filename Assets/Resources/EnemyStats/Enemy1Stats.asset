@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Enemy1Stats
   m_EditorClassIdentifier: 
   xpObject: {fileID: 1039156588135131732, guid: b76e62c8302ceef428fb7deed61f1527, type: 3}
-  goldObject: {fileID: 6546047790249129761, guid: 3ab6091aba7d5ff448b748c3382928ea, type: 3}
+  coinObject: {fileID: 6546047790249129761, guid: 3ab6091aba7d5ff448b748c3382928ea, type: 3}
   weakness: 0
   health: 100
   damage: 5
   speed: 2.5
   attackTime: 0
   xpToDrop: 15
-  goldToDrop: 1
+  coinsToDrop: 1

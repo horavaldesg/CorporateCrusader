@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldCollider : MonoBehaviour
+public class CoinCollider : MonoBehaviour
 {
-    public int goldToAdd;
+    public int coinsToAdd;
     private bool _moveTowardsPlayer;
     private bool _canCollect;
     private SpriteRenderer _spriteRenderer;
@@ -26,7 +26,7 @@ public class GoldCollider : MonoBehaviour
         if (!(Vector3.Distance(transform.position, playerPosition) < 0.1f)) return;
         if (_canCollect)
         {
-            GameManager.AddGold(goldToAdd);
+            GameManager.AddCoins(coinsToAdd);
             _canCollect = false;
         }
         

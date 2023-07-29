@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private bool isBoss;
     private int _xpToAdd;
-    private int _goldToAdd;
+    private int _coinsToAdd;
     
     public Rigidbody2D _rb;
     private Collider2D _collider;
@@ -69,8 +69,8 @@ public class Enemy : MonoBehaviour
         _damage = _enemyStats.damage;
         _attackTime = _enemyStats.attackTime;
         _xpToAdd = _enemyStats.xpToDrop;
-        _goldToAdd = _enemyStats.goldToDrop;
-        goldDrop = _enemyStats.goldObject;
+        _coinsToAdd = _enemyStats.coinsToDrop;
+        goldDrop = _enemyStats.coinObject;
         xpObject = _enemyStats.xpObject;
     }
 
@@ -172,7 +172,7 @@ public class Enemy : MonoBehaviour
     private void DropXp()
     {
         var randomNum = Random.Range(0, 11);
-        if(randomNum % 2 == 0) DropGold();
+        if(randomNum % 2 == 0) DropCoins();
         
         for (var i = 0; i < amountOfXpToDrop; i++)
         {
@@ -191,14 +191,14 @@ public class Enemy : MonoBehaviour
         return Random.insideUnitSphere * radius;
     }
 
-    private void DropGold()
+    private void DropCoins()
     {
         var go = Instantiate(goldDrop);
         var randomPos = RandomCirclePos();
         randomPos += transform.position;
         go.transform.position = randomPos;
-        go.TryGetComponent(out GoldCollider goldCollider);
-        goldCollider.goldToAdd = _goldToAdd;
+        go.TryGetComponent(out CoinCollider coinCollider);
+        coinCollider.coinsToAdd = _coinsToAdd;
     }
 
     public void SlowDownEnemy()

@@ -2802,7 +2802,7 @@ MonoBehaviour:
   enemiesKilledText: {fileID: 5449608342889674189}
   levelText: {fileID: 8014577600071319110}
   xpBarFill: {fileID: 8834633577208988103}
-  goldText: {fileID: 2483217651938963386}
+  coinsText: {fileID: 2483217651938963386}
   invRow1: {fileID: 9094283490133835376}
   invRow2: {fileID: 5557645323211470605}
   last3InvItems:
