@@ -9,12 +9,10 @@ using Unity.Services.Authentication;
     using GooglePlayGames.BasicApi;
 #endif
 
-#if UNITY_IOS
-    using AppleAuth;
-    using AppleAuth.Native;
-    using AppleAuth.Interfaces;
-    using AppleAuth.Enums;
-#endif
+using AppleAuth;
+using AppleAuth.Native;
+using AppleAuth.Interfaces;
+using AppleAuth.Enums;
 
 public class AuthenticationManager : MonoBehaviour
 {
@@ -28,9 +26,7 @@ public class AuthenticationManager : MonoBehaviour
     [SerializeField] private Button appleIDLoginButton;
     [SerializeField] private Button guestLoginButton;
 
-#if UNITY_IOS
     private IAppleAuthManager appleAuthManager;
-#endif
 
     private async void Awake()
     {
@@ -72,10 +68,8 @@ public class AuthenticationManager : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_IOS
         //update Apple authentication manager if possible
         if(appleAuthManager != null) appleAuthManager.Update();
-#endif
     }
 
     public void SplashScreenButton()
@@ -129,20 +123,17 @@ public class AuthenticationManager : MonoBehaviour
         googlePlayLoginButton.interactable = true;
 #endif
         
-#if UNITY_IOS
         //if on IOS, update interactability of login button
-        appleIDLoginButton.interactable = true;
-#endif
+        if(AppleAuthManager.IsCurrentPlatformSupported) appleIDLoginButton.interactable = true;
     }
 
-#if UNITY_IOS
     private void InitializeAppleAuthManager()
     {
         //initialize Apple authentication manager
         var deserializer = new PayloadDeserializer();
         appleAuthManager = new AppleAuthManager(deserializer);
     }
-#endif
+
 
 #if UNITY_ANDROID
     public void GooglePlayLoginButton()
@@ -153,14 +144,12 @@ public class AuthenticationManager : MonoBehaviour
     }
 #endif
 
-#if UNITY_IOS
     public void AppleIDLoginButton()
     {
         appleIDLoginButton.enabled = false;
         string idToken = LoginWithAppleID();
         SignInWithAppleAsync(idToken);
     }
-#endif
 
 #if UNITY_ANDROID
     public string LoginWithGooglePlay()
@@ -187,7 +176,6 @@ public class AuthenticationManager : MonoBehaviour
     }
 #endif
 
-#if UNITY_IOS
     public string LoginWithAppleID()
     {
         //initialize Apple authentication manager if necessary
@@ -226,7 +214,6 @@ public class AuthenticationManager : MonoBehaviour
         );
         return idToken;
     }
-#endif
 
 #if UNITY_ANDROID
     private async void SignInWithGooglePlayAsync(string authCode)
@@ -253,7 +240,6 @@ public class AuthenticationManager : MonoBehaviour
     }
 #endif
 
-#if UNITY_IOS
     private async void SignInWithAppleAsync(string idToken)
     {
         try
@@ -277,5 +263,4 @@ public class AuthenticationManager : MonoBehaviour
             appleIDLoginButton.enabled = true;
         }
     }
-#endif
 }
