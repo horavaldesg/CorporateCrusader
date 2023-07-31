@@ -1,17 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.Services.Core;
 using Unity.Services.Authentication;
-using AppleAuth;
-using AppleAuth.Native;
-using AppleAuth.Interfaces;
-using AppleAuth.Enums;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
-using GooglePlayGames.OurUtils;
+
+#if UNITY_ANDROID
+    using GooglePlayGames;
+    using GooglePlayGames.BasicApi;
+#endif
+
+#if UNITY_IOS
+    using AppleAuth;
+    using AppleAuth.Native;
+    using AppleAuth.Interfaces;
+    using AppleAuth.Enums;
+#endif
 
 public class AuthenticationManager : MonoBehaviour
 {
@@ -24,7 +26,9 @@ public class AuthenticationManager : MonoBehaviour
     [SerializeField] private Button googlePlayLoginButton;
     [SerializeField] private Button appleIDLoginButton;
 
+#if UNITY_IOS
     private IAppleAuthManager appleAuthManager;
+#endif
 
     private async void Awake()
     {
@@ -66,8 +70,10 @@ public class AuthenticationManager : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_IOS
         //update Apple authentication manager if possible
         if(appleAuthManager != null) appleAuthManager.Update();
+#endif
     }
 
     public void SplashScreenButton()
@@ -109,33 +115,43 @@ public class AuthenticationManager : MonoBehaviour
 
     private void InitializeLoginScreen()
     {
-        //check if on a Google Play supported platform and update interactability of login button
-        //NOTE: FIX THIS EVENTUALLY
-
-        //check if on an Apple supported platform and update interactability of login button
-        if(AppleAuthManager.IsCurrentPlatformSupported) appleIDLoginButton.interactable = true;
-        else googlePlayLoginButton.interactable = true;
+#if UNITY_ANDROID
+        //if on Android, update interactability of login button
+        googlePlayLoginButton.interactable = true;
+#endif
+        
+#if UNITY_IOS
+        //if on IOS, update interactability of login button
+        appleIDLoginButton.interactable = true;
+#endif
     }
 
+#if UNITY_IOS
     private void InitializeAppleAuthManager()
     {
         //initialize Apple authentication manager
         var deserializer = new PayloadDeserializer();
         appleAuthManager = new AppleAuthManager(deserializer);
     }
+#endif
 
+#if UNITY_ANDROID
     public void GooglePlayLoginButton()
     {
         string authCode = LoginWithGooglePlay();
         SignInWithGooglePlayAsync(authCode);
     }
+#endif
 
+#if UNITY_IOS
     public void AppleIDLoginButton()
     {
         string idToken = LoginWithAppleID();
         SignInWithAppleAsync(idToken);
     }
+#endif
 
+#if UNITY_ANDROID
     public string LoginWithGooglePlay()
     {
         //initialize Google Play Games platform
@@ -154,7 +170,9 @@ public class AuthenticationManager : MonoBehaviour
         });
         return authCode;
     }
+#endif
 
+#if UNITY_IOS
     public string LoginWithAppleID()
     {
         //initialize Apple authentication manager if necessary
@@ -185,7 +203,9 @@ public class AuthenticationManager : MonoBehaviour
         );
         return idToken;
     }
+#endif
 
+#if UNITY_ANDROID
     private async void SignInWithGooglePlayAsync(string authCode)
     {
         try
@@ -206,7 +226,9 @@ public class AuthenticationManager : MonoBehaviour
             Debug.LogException(ex);
         }
     }
+#endif
 
+#if UNITY_IOS
     private async void SignInWithAppleAsync(string idToken)
     {
         try
@@ -228,4 +250,5 @@ public class AuthenticationManager : MonoBehaviour
             Debug.LogException(ex);
         }
     }
+#endif
 }

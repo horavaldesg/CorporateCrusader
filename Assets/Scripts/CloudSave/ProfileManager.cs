@@ -1,13 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.Services.Core;
 using Unity.Services.Authentication;
-using AppleAuth;
-using GooglePlayGames.OurUtils;
+
+#if UNITY_IOS
+    using AppleAuth;
+#endif
 
 public class ProfileManager : MonoBehaviour
 {
@@ -73,8 +74,13 @@ public class ProfileManager : MonoBehaviour
         PlayerInfo info = await AuthenticationService.Instance.GetPlayerInfoAsync();
 
         //enable/disable link account buttons based on whether the player is on the correct platform and has previously signed in or not
-        if(PlatformUtils.Supported && info.GetGooglePlayGamesId() == null) linkGooglePlayButton.interactable = true;
-        if(AppleAuthManager.IsCurrentPlatformSupported && info.GetAppleId() == null) linkAppleIDButton.interactable = true;
+#if UNITY_ANDROID
+        if(info.GetGooglePlayGamesId() == null) linkGooglePlayButton.interactable = true;
+#endif
+
+#if UNITY_IOS
+        if(info.GetAppleId() == null) linkAppleIDButton.interactable = true;
+#endif
     }
 
     public void ChangeNumCoins(int amount)
@@ -170,17 +176,21 @@ public class ProfileManager : MonoBehaviour
         }
     }
 
+#if UNITY_ANDROID
     public async void LinkGooglePlayButton()
     {
         string authCode = AuthenticationManager.Instance.LoginWithGooglePlay();
         await LinkWithGooglePlayAsync(authCode);
     }
+#endif
 
+#if UNITY_IOS
     public async void LinkAppleIDButton()
     {
         string idToken = AuthenticationManager.Instance.LoginWithAppleID();
         await LinkWithAppleAsync(idToken);
     }
+#endif
 
     public void LogoutButton() => logoutWarningBG.SetActive(true);
 
@@ -194,6 +204,7 @@ public class ProfileManager : MonoBehaviour
 
     public void CancelLogout() => logoutWarningBG.SetActive(false);
 
+#if UNITY_ANDROID
     private async Task LinkWithGooglePlayAsync(string authCode)
     {
         try
@@ -220,7 +231,9 @@ public class ProfileManager : MonoBehaviour
             Debug.LogException(ex);
         }
     }
+#endif
 
+#if UNITY_IOS
     private async Task LinkWithAppleAsync(string idToken)
     {
         try
@@ -247,4 +260,5 @@ public class ProfileManager : MonoBehaviour
             Debug.LogException(ex);
         }
     }
+#endif
 }
