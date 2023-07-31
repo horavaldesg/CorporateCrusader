@@ -11,16 +11,39 @@ public class CameraController : MonoBehaviour
     private Camera _camera;
     private const float MinZoom = 6;
     private const float MaxZoom = 15;
+    private const float PortraitZoom = 10;
 
     private void Awake()
     {
         TryGetComponent(out _camera);
-        _camera.orthographicSize = MinZoom;
+        ChangeZoom(MinZoom);
     }
 
     private void FixedUpdate()
     {
         FollowPlayer();
+        CheckOrientation();
+    }
+
+    private bool IsPortrait()
+    {
+        return Screen.orientation == ScreenOrientation.Portrait;
+    }
+
+    private void CheckOrientation()
+    {
+        Debug.Log(Screen.orientation);
+        switch (Screen.orientation)
+        {
+            case ScreenOrientation.Portrait:
+            case ScreenOrientation.PortraitUpsideDown:
+                ChangeZoom(PortraitZoom);
+                break;
+            case ScreenOrientation.LandscapeLeft:
+            case ScreenOrientation.LandscapeRight:
+                ChangeZoom(MinZoom);
+                break;
+        }
     }
 
     private void OnEnable()
@@ -35,17 +58,24 @@ public class CameraController : MonoBehaviour
 
     private void ZoomControl()
     {
+        if (IsPortrait()) return;
         if (enemiesVisible.Count >= 5)
         {
-            var lerpZoom = Mathf.Lerp(_camera.orthographicSize, _camera.orthographicSize + 0.1f, Time.deltaTime * 0.5f);
-            _camera.orthographicSize = Mathf.Clamp(lerpZoom, MinZoom, MaxZoom);
+            var lerpZoom = Mathf.Lerp(_camera.orthographicSize, _camera.orthographicSize + 0.5f, Time.deltaTime * 0.5f);
+            var zoomVal = Mathf.Clamp(lerpZoom, MinZoom, MaxZoom);
+            ChangeZoom(zoomVal);
         }
         else if (enemiesVisible.Count < 5)
         {
-            var lerpZoom = Mathf.Lerp(_camera.orthographicSize, _camera.orthographicSize - 0.1f, Time.deltaTime * 0.5f);
-            
-            _camera.orthographicSize = Mathf.Clamp(lerpZoom, MinZoom, MaxZoom);
+            var lerpZoom = Mathf.Lerp(_camera.orthographicSize, _camera.orthographicSize - 0.5f, Time.deltaTime * 0.5f);
+            var zoomVal = Mathf.Clamp(lerpZoom, MinZoom, MaxZoom);
+            ChangeZoom(zoomVal);
         }
+    }
+
+    private void ChangeZoom(float zoomVal)
+    {
+        _camera.orthographicSize = zoomVal;
     }
 
     private void FollowPlayer()
