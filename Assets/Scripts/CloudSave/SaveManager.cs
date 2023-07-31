@@ -17,8 +17,17 @@ public class SaveManager : MonoBehaviour
     }
 
     private void Start()
-    {
+    { 
         AuthenticationService.Instance.SignedIn += LoadProfileInfo;
+    }
+
+    private async void InitializeProfileInfo()
+    {
+        //initialize data values
+        SaveSomeData("ProfileXP", "0"); //start with 0 profile XP
+        SaveSomeData("Energy", "30"); //start with 30 energy
+        SaveSomeData("Gems", "10"); //start with 10 gems
+        SaveSomeData("Coins", "0"); //start with 0 coins
     }
 
     private async void LoadProfileInfo()
@@ -49,7 +58,7 @@ public class SaveManager : MonoBehaviour
         }
         catch(KeyNotFoundException ex)
         {
-            Debug.LogException(ex);
+            //Debug.LogException(ex);
             return 0;
         }
     }

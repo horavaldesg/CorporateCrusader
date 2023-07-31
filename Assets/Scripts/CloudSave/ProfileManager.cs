@@ -34,6 +34,9 @@ public class ProfileManager : MonoBehaviour
     [SerializeField] private TMP_InputField profileNameInputField;
     [SerializeField] private Button editProfileNameButton;
     [SerializeField] private CanvasGroup nameChangeErrorText;
+    [SerializeField] private Image profileXPBar_PS;
+    [SerializeField] private TMP_Text profileXPReqText_PS;
+    [SerializeField] private TMP_Text profileLevelText_PS;
     [SerializeField] private Button linkGooglePlayButton;
     [SerializeField] private Button linkAppleIDButton;
     [SerializeField] private GameObject profileScreenBG;
@@ -57,7 +60,7 @@ public class ProfileManager : MonoBehaviour
         int levelXP = totalXP - xpForCurrentLevel;
         int levelXPNeeded = xpForNextLevel - xpForCurrentLevel;
         profileXPReqText_TB.text = levelXP + "/" + levelXPNeeded;
-        profileXPBar_TB.fillAmount = levelXP / levelXPNeeded;
+        profileXPBar_TB.fillAmount = (float) levelXP / levelXPNeeded;
 
         //set energy, gems, and coins
         energyText.text = ProfileInfo.energy + "/30";
@@ -69,6 +72,23 @@ public class ProfileManager : MonoBehaviour
     {
         //set profile name
         profileNameInputField.text = ProfileInfo.profileName;
+
+        //get profile level and set text
+        int totalXP = ProfileInfo.profileXP;
+        ProfileInfo.profileLevel = Mathf.FloorToInt((xpReqIncreaseRate * Mathf.Sqrt(totalXP)) + 1);
+        profileLevelText_PS.text = "Lvl " + ProfileInfo.profileLevel;
+
+        //get profile xp requirements and set text and xp bar
+        int xpForCurrentLevel = (int) Mathf.Pow((ProfileInfo.profileLevel - 1) / xpReqIncreaseRate, 2);
+        int xpForNextLevel = (int) Mathf.Pow(ProfileInfo.profileLevel / xpReqIncreaseRate, 2);
+        int levelXP = totalXP - xpForCurrentLevel;
+        int levelXPNeeded = xpForNextLevel - xpForCurrentLevel;
+        profileXPReqText_PS.text = levelXP + "/" + levelXPNeeded;
+        profileXPBar_PS.fillAmount = (float) levelXP / levelXPNeeded;
+
+#if UNITY_EDITOR
+        return; //skip link buttons if in editor
+#endif
 
         //get player info to check if account is linked to any platforms
         PlayerInfo info = await AuthenticationService.Instance.GetPlayerInfoAsync();
@@ -83,12 +103,21 @@ public class ProfileManager : MonoBehaviour
 #endif
     }
 
-    public void ChangeNumCoins(int amount)
+    public void AddProfileXP(int amount)
     {
-        int coins = ProfileInfo.coins + amount; //get and change amount of coins
-        ProfileInfo.coins = coins; //set new coins value
-        SaveManager.Instance.SaveSomeData("Coins", coins.ToString()); //save new coins value
-        coinsText.text = coins.ToString(); //update top bar UI
+        int totalXP = ProfileInfo.profileXP + amount; //get and change amount of profile XP
+        ProfileInfo.profileXP = totalXP; //set new profile XP value
+        SaveManager.Instance.SaveSomeData("ProfileXP", totalXP.ToString()); //save new profile XP value
+        UpdateTopBarUI(); //update top bar UI
+        Debug.Log("yepppp");
+    }
+
+    public void ChangeNumEnergy(int amount)
+    {
+        int energy = ProfileInfo.energy + amount; //get and change amount of energy
+        ProfileInfo.energy = energy; //set new energy value
+        SaveManager.Instance.SaveSomeData("Energy", energy.ToString());
+        energyText.text = energy + "/30";
     }
 
     public void ChangeNumGems(int amount)
@@ -97,6 +126,14 @@ public class ProfileManager : MonoBehaviour
         ProfileInfo.gems = gems; //set new gems value
         SaveManager.Instance.SaveSomeData("Gems", gems.ToString()); //save new gems value
         gemsText.text = gems.ToString(); //update top bar UI
+    }
+
+    public void ChangeNumCoins(int amount)
+    {
+        int coins = ProfileInfo.coins + amount; //get and change amount of coins
+        ProfileInfo.coins = coins; //set new coins value
+        SaveManager.Instance.SaveSomeData("Coins", coins.ToString()); //save new coins value
+        coinsText.text = coins.ToString(); //update top bar UI
     }
 
     public void ToggleProfileScreen()

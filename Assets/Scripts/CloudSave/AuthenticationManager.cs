@@ -25,6 +25,7 @@ public class AuthenticationManager : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private Button googlePlayLoginButton;
     [SerializeField] private Button appleIDLoginButton;
+    [SerializeField] private Button guestLoginButton;
 
 #if UNITY_IOS
     private IAppleAuthManager appleAuthManager;
@@ -93,6 +94,7 @@ public class AuthenticationManager : MonoBehaviour
 
     public async void SignInAsGuestAsync()
     {
+        guestLoginButton.enabled = false;
         try
         {
             //sign in anonymously as guest
@@ -104,17 +106,23 @@ public class AuthenticationManager : MonoBehaviour
             //compare error code to AuthenticationErrorCodes
             //notify the player with the proper error message
             Debug.LogException(ex);
+            guestLoginButton.enabled = true;
         }
         catch (RequestFailedException ex)
         {
             //compare error code to CommonErrorCodes
             //notify the player with the proper error message
             Debug.LogException(ex);
+            guestLoginButton.enabled = true;
         }
     }
 
     private void InitializeLoginScreen()
     {
+#if UNITY_EDITOR
+        return; //keep- login buttons disabled if in editor
+#endif
+
 #if UNITY_ANDROID
         //if on Android, update interactability of login button
         googlePlayLoginButton.interactable = true;
@@ -138,6 +146,7 @@ public class AuthenticationManager : MonoBehaviour
 #if UNITY_ANDROID
     public void GooglePlayLoginButton()
     {
+        googlePlayLoginButton.enabled = false;
         string authCode = LoginWithGooglePlay();
         SignInWithGooglePlayAsync(authCode);
     }
@@ -146,6 +155,7 @@ public class AuthenticationManager : MonoBehaviour
 #if UNITY_IOS
     public void AppleIDLoginButton()
     {
+        appleIDLoginButton.enabled = false;
         string idToken = LoginWithAppleID();
         SignInWithAppleAsync(idToken);
     }
@@ -166,7 +176,11 @@ public class AuthenticationManager : MonoBehaviour
                 //if login successful, get authorization code to return
                 PlayGamesPlatform.Instance.RequestServerSideAccess(true, code => { authCode = code; });
             }
-            else Debug.Log("Login Unsuccessful - Failed to retrieve Google play games authorization code");
+            else 
+            {
+                Debug.Log("Login Unsuccessful - Failed to retrieve Google play games authorization code");
+                googlePlayLoginButton.enabled = true;
+            }
         });
         return authCode;
     }
@@ -197,9 +211,17 @@ public class AuthenticationManager : MonoBehaviour
                         0,
                         appleIDCredential.IdentityToken.Length);
                 }
-                else Debug.Log("Sign-in with Apple error. Message: appleIDCredential is null");
+                else
+                {
+                    Debug.Log("Sign-in with Apple error. Message: appleIDCredential is null");
+                    appleIDLoginButton.enabled = true;
+                }
             },
-            error => { Debug.Log("Sign-in with Apple error. Message: " + error); }
+            error => 
+            { 
+                Debug.Log("Sign-in with Apple error. Message: " + error);
+                appleIDLoginButton.enabled = true;
+            }
         );
         return idToken;
     }
@@ -218,12 +240,14 @@ public class AuthenticationManager : MonoBehaviour
             //compare error code to AuthenticationErrorCodes
             //notify the player with the proper error message
             Debug.LogException(ex);
+            googlePlayLoginButton.enabled = true;
         }
         catch (RequestFailedException ex)
         {
             //compare error code to CommonErrorCodes
             //notify the player with the proper error message
             Debug.LogException(ex);
+            googlePlayLoginButton.enabled = true;
         }
     }
 #endif
@@ -242,12 +266,14 @@ public class AuthenticationManager : MonoBehaviour
             //compare error code to AuthenticationErrorCodes
             //notify the player with the proper error message
             Debug.LogException(ex);
+            appleIDLoginButton.enabled = true;
         }
         catch (RequestFailedException ex)
         {
             //compare error code to CommonErrorCodes
             //notify the player with the proper error message
             Debug.LogException(ex);
+            appleIDLoginButton.enabled = true;
         }
     }
 #endif
