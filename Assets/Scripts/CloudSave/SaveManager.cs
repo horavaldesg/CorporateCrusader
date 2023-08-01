@@ -32,14 +32,14 @@ public class SaveManager : MonoBehaviour
 
     private async void LoadProfileInfo()
     {
-        ProfileInfo profileInfo = new ProfileInfo();
-        profileInfo.profileName = await AuthenticationService.Instance.GetPlayerNameAsync();
-        profileInfo.profileXP = await LoadSomeInt("ProfileXP");
-        profileInfo.energy = await LoadSomeInt("Energy");
-        profileInfo.gems = await LoadSomeInt("Gems");
-        profileInfo.coins = await LoadSomeInt("Coins");
+        // ProfileInfo profileInfo = ScriptableObject.CreateInstance<ProfileInfo>();
+        ProfileManager.Instance.ProfileInfo.profileName = await AuthenticationService.Instance.GetPlayerNameAsync();
+        ProfileManager.Instance.ProfileInfo.profileXP = await LoadSomeInt("ProfileXP");
+        ProfileManager.Instance.ProfileInfo.energy = await LoadSomeInt("Energy");
+        ProfileManager.Instance.ProfileInfo.gems = await LoadSomeInt("Gems");
+        ProfileManager.Instance.ProfileInfo.coins = await LoadSomeInt("Coins");
 
-        ProfileManager.Instance.ProfileInfo = profileInfo;
+        /*ProfileManager.Instance.ProfileInfo = profileInfo;*/
         ProfileManager.Instance.UpdateTopBarUI();
     }
 

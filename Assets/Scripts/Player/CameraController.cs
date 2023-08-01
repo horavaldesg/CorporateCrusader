@@ -32,7 +32,6 @@ public class CameraController : MonoBehaviour
 
     private void CheckOrientation()
     {
-        Debug.Log(Screen.orientation);
         switch (Screen.orientation)
         {
             case ScreenOrientation.Portrait:
