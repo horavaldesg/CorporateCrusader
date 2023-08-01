@@ -21,15 +21,6 @@ public class SaveManager : MonoBehaviour
         AuthenticationService.Instance.SignedIn += LoadProfileInfo;
     }
 
-    private async void InitializeProfileInfo()
-    {
-        //initialize data values
-        SaveSomeData("ProfileXP", "0"); //start with 0 profile XP
-        SaveSomeData("Energy", "30"); //start with 30 energy
-        SaveSomeData("Gems", "10"); //start with 10 gems
-        SaveSomeData("Coins", "0"); //start with 0 coins
-    }
-
     private async void LoadProfileInfo()
     {
         // ProfileInfo profileInfo = ScriptableObject.CreateInstance<ProfileInfo>();

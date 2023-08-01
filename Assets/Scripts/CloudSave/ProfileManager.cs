@@ -109,7 +109,6 @@ public class ProfileManager : MonoBehaviour
         ProfileInfo.profileXP = totalXP; //set new profile XP value
         SaveManager.Instance.SaveSomeData("ProfileXP", totalXP.ToString()); //save new profile XP value
         UpdateTopBarUI(); //update top bar UI
-        Debug.Log("yepppp");
     }
 
     public void ChangeNumEnergy(int amount)
@@ -237,6 +236,7 @@ public class ProfileManager : MonoBehaviour
         ToggleProfileScreen();
         mainMenuManager.StageSelectToLoginScreen();
         AuthenticationService.Instance.SignOut(true);
+        PlayerPrefs.SetInt("InitialEnergyGiven", -1);
     }
 
     public void CancelLogout() => logoutWarningBG.SetActive(false);
