@@ -105,6 +105,10 @@ public class HatCollectionManager : MonoBehaviour
         infoPanel.GetChild(5).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.CoinCost() + "<sprite=0>)";
         infoPanel.GetChild(6).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.GemCost() + "<sprite=0>)";
 
+        //set button interactability based on player currency
+        infoPanel.GetChild(5).GetComponent<Button>().interactable = ProfileManager.Instance.ProfileInfo.coins >= button.CoinCost();
+        infoPanel.GetChild(6).GetComponent<Button>().interactable = ProfileManager.Instance.ProfileInfo.gems >= button.GemCost();
+
         //show/hide upgrade buttons depending on hat tier (hide buttons if max tier)
         infoPanel.GetChild(5).GetChild(0).gameObject.SetActive(button.HatTier < 4);
         infoPanel.GetChild(6).GetChild(0).gameObject.SetActive(button.HatTier < 4);
