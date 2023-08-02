@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Services.Authentication;
 
 public class HatCollectionManager : MonoBehaviour
 {
@@ -21,6 +22,25 @@ public class HatCollectionManager : MonoBehaviour
     [SerializeField] private RectTransform hatInfoPanel_Landscape;
 
     private int selection = 0;
+
+    private void Start()
+    { 
+        AuthenticationService.Instance.SignedIn += LoadHatTiers;
+    }
+
+    private async void LoadHatTiers()
+    {
+        //loop through 30 hat buttons
+        for(int i = 0; i < 30; i++)
+        {
+            //load saved hat tier for each button
+            int tier = await SaveManager.Instance.LoadSomeInt("Button" + i + "HatTier");
+            if(tier == 0) tier = 1; //set minimum of hat tier 1
+            
+            //update button with hat tier
+            UpdateButtonHatTier(i, tier);
+        }
+    }
 
     public void OnScrollViewChanged(Vector2 value)
     {
@@ -85,12 +105,20 @@ public class HatCollectionManager : MonoBehaviour
         infoPanel.GetChild(5).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.CoinCost() + "<sprite=0>)";
         infoPanel.GetChild(6).GetChild(0).GetComponent<TMP_Text>().text = "Upgrade (" + button.GemCost() + "<sprite=0>)";
 
-        //lock upgrade buttons if hat is max tier
-        if(button.HatTier >= 4)
-        {
-            infoPanel.GetChild(5).GetComponent<Button>().interactable = false;
-            infoPanel.GetChild(6).GetComponent<Button>().interactable = false;
-        }
+        //show/hide upgrade buttons depending on hat tier (hide buttons if max tier)
+        infoPanel.GetChild(5).GetChild(0).gameObject.SetActive(button.HatTier < 4);
+        infoPanel.GetChild(6).GetChild(0).gameObject.SetActive(button.HatTier < 4);
+        infoPanel.GetChild(5).GetComponent<Image>().enabled = button.HatTier < 4;
+        infoPanel.GetChild(6).GetComponent<Image>().enabled = button.HatTier < 4;
+    }
+
+    private void UpdateButtonHatTier(int index, int hatTier)
+    {
+        hatButtons_Portrait.GetChild(index).GetComponent<HatCollectionButton>().HatTier = hatTier;
+        hatButtons_Landscape.GetChild(index).GetComponent<HatCollectionButton>().HatTier = hatTier;
+        hatButtons_Portrait.GetChild(index).GetChild(2).GetComponent<TMP_Text>().text = "Tier " + hatTier;
+        hatButtons_Landscape.GetChild(index).GetChild(2).GetComponent<TMP_Text>().text = "Tier " + hatTier;
+        SaveManager.Instance.SaveSomeData("Button" + index + "HatTier", hatTier.ToString());
     }
 
     public void UpgradeWithCoins()
@@ -107,6 +135,7 @@ public class HatCollectionManager : MonoBehaviour
         //upgrade hat tier with coins
         ProfileManager.Instance.ChangeNumCoins(-button.CoinCost());
         button.HatTier++;
+        UpdateButtonHatTier(selection, button.HatTier);
 
         //update upgrade info panels
         UpdateInfoPanel(hatInfoPanel_Portrait, button);
@@ -127,9 +156,21 @@ public class HatCollectionManager : MonoBehaviour
         //upgrade hat tier with coins
         ProfileManager.Instance.ChangeNumGems(-button.GemCost());
         button.HatTier++;
+        UpdateButtonHatTier(selection, button.HatTier);
 
         //update upgrade info panels
         UpdateInfoPanel(hatInfoPanel_Portrait, button);
         UpdateInfoPanel(hatInfoPanel_Landscape, button);
+    }
+
+    //Dev Option to reset player progress
+    public void ResetAllHatTiers()
+    {
+        //loop through all 30 hat buttons
+        for(int i = 0; i < 30; i++)
+        {
+            //update button with default hat tier of 1
+            UpdateButtonHatTier(i, 1);
+        }
     }
 }

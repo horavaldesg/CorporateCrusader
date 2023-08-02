@@ -34,13 +34,13 @@ public class SaveManager : MonoBehaviour
         ProfileManager.Instance.UpdateTopBarUI();
     }
 
-    private async Task<string> LoadSomeString(string key)
+    public async Task<string> LoadSomeString(string key)
     {
         Dictionary<string, string> savedData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string>{key});
         return savedData[key];
     }
 
-    private async Task<int> LoadSomeInt(string key)
+    public async Task<int> LoadSomeInt(string key)
     {
         try
         {
