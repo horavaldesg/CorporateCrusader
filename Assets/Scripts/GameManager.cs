@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private InGameLevelLoader _levelLoader;
     public SpriteRenderer levelBackground;
     public EnemySpawner enemySpawner;
+    public bool ToggleLevelUpScreen;
     
     public int TotalXp
     {
@@ -55,6 +56,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (ToggleLevelUpScreen)
+        {
+            LevelChanged?.Invoke();
+            ToggleLevelUpScreen = false;
+        }
+        
         // Play time keeper
         _timeAlive += Time.deltaTime;
         //Converts time alive to minutes and seconds

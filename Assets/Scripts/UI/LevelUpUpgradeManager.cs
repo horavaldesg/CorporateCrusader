@@ -11,11 +11,13 @@ public class LevelUpUpgradeManager : MonoBehaviour
     [SerializeField] private Transform levelUpButtonParent;
     private WeaponsList _weaponsList;
     private List<Button> _buttons = new();
-    private List<GameObject> _weaponsLists = new ();
+    private List<GameObject> _weaponsLists = new();
+    private List<GameObject> _equipmentList = new();
+    private Dictionary<string, int> equipmentAdded = new Dictionary<string, int>();
     [SerializeField] private List<int> chosenIndexes = new List<int>(3);
     public static event Action<SelectedWeapon> UpgradePlayer;
     public static event Action UpgradeEnded;
-    
+
     private void OnEnable()
     {
         _weaponsList = Resources.Load<WeaponsList>("Weapons/WeaponsList");
@@ -23,33 +25,61 @@ public class LevelUpUpgradeManager : MonoBehaviour
         {
             _weaponsLists.Add(weapon);
         }
-        
-        for (var i = 0; i < 3; i++)
+
+        foreach (var weapon in _weaponsList.equipmentList)
         {
-            ChooseUpgrade();
+            _equipmentList.Add(weapon);
+            equipmentAdded.TryAdd(weapon.name, 0);
+            if (equipmentAdded[weapon.name] == 5)
+            {
+                _equipmentList.Remove(weapon);
+            }
         }
-        
+
+        for (var i = 0; i < 2; i++)
+        {
+            ChooseWeaponUpgrade();
+        }
+
+        ChooseEquipmentUpgrade();
+
         foreach (var button in _buttons)
         {
-            if(!button) return;
+            if (!button) return;
             button.transform.TryGetComponent(out LevelUpLoader levelUpLoader);
-            button.onClick.AddListener(() =>ButtonClicked(levelUpLoader.selectedWeapon));
+            if (levelUpLoader.isEquipment)
+            {
+                button.onClick.AddListener(() => EquipmentClicked(levelUpLoader.selectedEquipment));
+            }
+            else
+            {
+                button.onClick.AddListener(() => ButtonClicked(levelUpLoader.selectedWeapon));
+            }
         }
     }
-    
+
     private void OnDisable()
     {
         var buttonListCopy = new Button[3];
         _buttons.CopyTo(buttonListCopy);
         foreach (var button in buttonListCopy)
         {
-            if(!button) return;
+            if (!button) return;
             button.transform.TryGetComponent(out LevelUpLoader levelUpLoader);
-            button.onClick.RemoveListener(() =>ButtonClicked(levelUpLoader.selectedWeapon));
+            if (levelUpLoader.isEquipment)
+            {
+                button.onClick.RemoveListener(() => EquipmentClicked(levelUpLoader.selectedEquipment));
+            }
+            else
+            {
+                button.onClick.RemoveListener(() => ButtonClicked(levelUpLoader.selectedWeapon));
+            }
+
             _buttons.Remove(button);
             Destroy(button.transform.gameObject);
         }
         
+        _equipmentList.Clear();
         _weaponsLists.Clear();
         chosenIndexes.Clear();
     }
@@ -60,12 +90,23 @@ public class LevelUpUpgradeManager : MonoBehaviour
         UpgradeEnded?.Invoke();
     }
 
-    private void ChooseUpgrade()
+    private void EquipmentClicked(Equipment equipment)
     {
-        var upgrade = RandomList();
+        var level = equipmentAdded[equipment.name];
+        level += 1;
+        EquipmentLevel = Mathf.Clamp(level, 0, 5);
+        equipmentAdded[equipment.name] = EquipmentLevel;
+        equipment.AffectPlayer(EquipmentLevel);
+       
+        UpgradeEnded?.Invoke();
+    }
+
+    private void ChooseWeaponUpgrade()
+    {
+        var upgrade = RandomList(_weaponsLists);
         _weaponsLists.Remove(upgrade);
         upgrade.TryGetComponent(out SelectedWeapon selectedWeapon);
-       
+
         var go = Instantiate(levelUpButton, levelUpButtonParent, true);
         go.TryGetComponent(out Button button);
         _buttons.Add(button);
@@ -76,24 +117,57 @@ public class LevelUpUpgradeManager : MonoBehaviour
         levelUpLoader.LoadUpgrade();
     }
 
-    private GameObject RandomList()
+    private void ChooseEquipmentUpgrade()
     {
-        var i = GetRandomNumber();
-       
+        if(_equipmentList.Count == 0) return;
+        var i = GetRandomNumber(_equipmentList);
+        SelectedEquipment = i;
+        
+        var upgrade = _equipmentList[i];
+        
+        upgrade.TryGetComponent(out Equipment equipment);
+        EquipmentLevel = equipmentAdded[equipment.name];
+
+        var go = Instantiate(levelUpButton, levelUpButtonParent, true);
+        go.TryGetComponent(out Button button);
+        _buttons.Add(button);
+        go.TryGetComponent(out LevelUpLoader levelUpLoader);
+        levelUpLoader.selectedEquipment = equipment;
+        levelUpLoader.level = EquipmentLevel;
+        levelUpLoader.isEquipment = true;
+        levelUpLoader.LoadEquipmentUpgrade();
+    }
+
+    private int SelectedEquipment
+    {
+        get;
+        set;
+    }
+    
+    private int EquipmentLevel
+    {
+        get;
+        set;
+    }
+
+    private GameObject RandomList(List<GameObject> list)
+    {
+        var i = GetRandomNumber(list);
+
         foreach (var index in chosenIndexes)
         {
             while (i == index)
             {
-                i = GetRandomNumber();
+                i = GetRandomNumber(list);
             }
         }
-        
+
         chosenIndexes.Add(i);
         return _weaponsLists[i];
     }
 
-    private int GetRandomNumber()
+    private int GetRandomNumber(List<GameObject> list)
     {
-        return Random.Range(0, _weaponsLists.Count);
+        return Random.Range(0, list.Count);
     }
 }

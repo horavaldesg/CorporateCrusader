@@ -12,6 +12,7 @@ public class WeaponManager : MonoBehaviour
     private WeaponsList _weaponsList;
     [SerializeField] private List<Transform> weaponPositions = new ();
     [SerializeField] private List<SelectedWeapon> weaponsAdded = new ();
+    [SerializeField] private List<Equipment> equipmentAdded = new ();
     [SerializeField] private List<GameObject> localWeapons = new ();
 
     private void Awake()
@@ -83,6 +84,12 @@ public class WeaponManager : MonoBehaviour
         return weaponsAdded.Any(weaponAdded => weaponAdded.weaponName == selectedWeapon.weaponName);
     }
 
+    public void AddEquipment(Equipment equipment)
+    {
+        if(equipmentAdded.Contains(equipment)) return;
+        equipmentAdded.Add(equipment);
+    }
+
     public int LevelOfLocalWeapon(SelectedWeapon selectedWeapon)
     {
         var level = 0;
@@ -92,6 +99,21 @@ public class WeaponManager : MonoBehaviour
             if (selectedWeapon.weaponName == localSelectedWeapon.weaponName)
             {
                 level = localSelectedWeapon.level;
+            }
+        }
+
+        return level;
+    }
+    
+    public int LevelOfLocalEquipment(Equipment selectedEquipment)
+    {
+        var level = 0;
+        foreach (var localWeapon in localWeapons)
+        {
+            localWeapon.TryGetComponent(out Equipment equipment);
+            if (selectedEquipment.equipmentName == equipment.equipmentName)
+            {
+                level = equipment.level;
             }
         }
 

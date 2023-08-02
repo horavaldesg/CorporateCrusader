@@ -171,9 +171,20 @@ public class PlayerController : MonoBehaviour
         healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
     }
     
+    
     private IEnumerator ResetXpCollected()
     {
         yield return new WaitForSeconds(0.15f);
         XpCollected = 0;
+    }
+
+    public void UpgradeBaseHealth(float newBaseHealth)
+    {
+        _baseHealth += newBaseHealth;
+    }
+
+    public void UpgradeSpeed(float speed)
+    {
+        playerSpeed += speed;
     }
 }

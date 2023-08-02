@@ -27,4 +27,6 @@ MonoBehaviour:
   - {fileID: 2338607955661815797, guid: 6bb91924d78d8024aaf74b4390912de4, type: 3}
   - {fileID: 7343062551437035978, guid: eec94dd97cbb0e5418b9326675ea82b0, type: 3}
   - {fileID: 66010235993298201, guid: 098711a1d0e78e949baf1270c8c805ec, type: 3}
-  equipmentList: []
+  equipmentList:
+  - {fileID: 4215760247474263370, guid: 04dc3e6e2141e1a46b35fcaf2ee2d617, type: 3}
+  - {fileID: 5555020624212728101, guid: 99eba9b80eb5e514587586069003b13b, type: 3}

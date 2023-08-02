@@ -2955,6 +2955,7 @@ MonoBehaviour:
   enemiesSpawnedList: []
   levelBackground: {fileID: 551703165}
   enemySpawner: {fileID: 0}
+  ToggleLevelUpScreen: 0
 --- !u!1 &1773185238
 GameObject:
   m_ObjectHideFlags: 0
