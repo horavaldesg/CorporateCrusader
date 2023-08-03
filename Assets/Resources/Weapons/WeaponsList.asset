@@ -30,3 +30,4 @@ MonoBehaviour:
   equipmentList:
   - {fileID: 4215760247474263370, guid: 04dc3e6e2141e1a46b35fcaf2ee2d617, type: 3}
   - {fileID: 5555020624212728101, guid: 99eba9b80eb5e514587586069003b13b, type: 3}
+  - {fileID: 1097410699188273053, guid: 9ef8347181984294195933b1ef97bdf3, type: 3}

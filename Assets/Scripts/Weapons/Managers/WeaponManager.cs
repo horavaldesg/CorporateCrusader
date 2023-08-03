@@ -62,7 +62,6 @@ public class WeaponManager : MonoBehaviour
 
     private void LoadWeaponUpgrade(SelectedWeapon selectedWeapon)
     {
-        if(weaponsAdded.Count == 6) return; 
         foreach (var weapon in _weaponsList.weaponList)
         {
             weapon.TryGetComponent(out SelectedWeapon selectedWeaponFromList);
@@ -73,6 +72,7 @@ public class WeaponManager : MonoBehaviour
             }
             else
             {
+                if(weaponsAdded.Count == 6) return; 
                 ChooseWeapon(weapon);
                 weaponsAdded.Add(selectedWeapon);
             }
@@ -99,21 +99,6 @@ public class WeaponManager : MonoBehaviour
             if (selectedWeapon.weaponName == localSelectedWeapon.weaponName)
             {
                 level = localSelectedWeapon.level;
-            }
-        }
-
-        return level;
-    }
-    
-    public int LevelOfLocalEquipment(Equipment selectedEquipment)
-    {
-        var level = 0;
-        foreach (var localWeapon in localWeapons)
-        {
-            localWeapon.TryGetComponent(out Equipment equipment);
-            if (selectedEquipment.equipmentName == equipment.equipmentName)
-            {
-                level = equipment.level;
             }
         }
 

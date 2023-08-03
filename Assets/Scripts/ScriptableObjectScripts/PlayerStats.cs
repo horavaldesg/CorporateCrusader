@@ -7,6 +7,7 @@ public class PlayerStats : ScriptableObject
 {
    public string playerName;
    public float health;
+   public float armor;
    public float damage;
    public float speed;
    public float regenTime;

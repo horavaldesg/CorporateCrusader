@@ -12,5 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9f71a48e2b407478670e652c3fb46d, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
+  playerName: 
   health: 100
+  armor: 50
   damage: 20
+  speed: 0
+  regenTime: 0
+  attackSpeed: 0
+  criticalDamage: 0
+  criticalSpeed: 0
+  pickupRadius: 1
+  xpMultiplier: 0

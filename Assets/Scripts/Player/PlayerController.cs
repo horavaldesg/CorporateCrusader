@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed;
     [SerializeField] private Transform gunRotate;
     [SerializeField] private RectTransform healthBar;
+    [SerializeField] private RectTransform armorBar;
     [SerializeField] [Range(0, 1)] private float smoothMovement;
     [SerializeField] private float gunRotationSpeed;
     [SerializeField] private float rotationThreshold;
@@ -35,11 +36,14 @@ public class PlayerController : MonoBehaviour
     private PlayerStats _playerStats;
     private float _baseHealth;
     private float _health;
+    private float _armor;
+    private float _baseArmor;
     private const string BulletTag = "Bullet";
     private const string EnemyTag = "Enemy";
     public float healAmount;
     public float healTime;
-
+    private float _pickupRadius;
+    
     private const int XpMaxCollection = 150;
     public List<GameObject> xpToCollect = new List<GameObject>();
     public CapsuleCollider2D playerCollider;
@@ -51,6 +55,9 @@ public class PlayerController : MonoBehaviour
         TryGetComponent(out playerCollider);
         _baseHealth = _playerStats.health;
         _health = _baseHealth;
+        _armor = _playerStats.armor;
+        _baseArmor = _armor;
+        _pickupRadius = _playerStats.pickupRadius;
         TryGetComponent(out _rb);
         gunRotate.TryGetComponent(out gunRenderer);
         _controls = new PlayerControls();
@@ -59,6 +66,11 @@ public class PlayerController : MonoBehaviour
         _controls.Player.Move.canceled += tgb => { _move = Vector2.zero; };
       //  _controls.Player.Space.performed += async tgb => await CloudSaveManager.Instance.SaveData();
        // _controls.Player.Fire.performed +=  tgb => WeaponManager.Instance.ChooseWeapon(0);
+    }
+
+    private void Start()
+    {
+        XpPickup.Instance.IncreasePickupRadius(_pickupRadius);
     }
 
     private void OnEnable()
@@ -77,7 +89,7 @@ public class PlayerController : MonoBehaviour
     {
         //Move Function
         Move();
-        HealPlayer();
+        if(!HasArmor())HealPlayer();
         if(_move.magnitude is > -0.1f and < 0.1f) return;
         RotateGun();
     }
@@ -159,9 +171,8 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(ResetXpCollected());
         }
-
-        _health -= damage;
-        healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
+        
+        (HasArmor() ? (Action<float>)TakeArmorDamage : TakeBaseDamage)(damage);
     }
 
     private void HealPlayer()
@@ -169,6 +180,30 @@ public class PlayerController : MonoBehaviour
         if(_health >= _baseHealth) return;
         _health += healAmount * Time.deltaTime;
         healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
+    }
+
+    private void TakeArmorDamage(float damage)
+    {
+        _armor -= damage;
+        Debug.Log(_armor);
+        armorBar.localScale = new Vector3(Mathf.Clamp(_armor / _baseArmor, 0, 1), 1, 1);
+    }
+
+    private void RestoreHealth(float health)
+    {
+        _health = health;
+        healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
+    }
+
+    private void TakeBaseDamage(float damage)
+    {
+        _health -= damage;
+        healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
+    }
+    
+    private bool HasArmor()
+    {
+        return _armor > 0;
     }
     
     
@@ -181,10 +216,17 @@ public class PlayerController : MonoBehaviour
     public void UpgradeBaseHealth(float newBaseHealth)
     {
         _baseHealth += newBaseHealth;
+        RestoreHealth(_baseHealth);
     }
 
     public void UpgradeSpeed(float speed)
     {
         playerSpeed += speed;
+    }
+
+    public void IncreaseRange(float radius)
+    {
+        _pickupRadius += radius;
+        XpPickup.Instance.IncreasePickupRadius(_pickupRadius);
     }
 }
