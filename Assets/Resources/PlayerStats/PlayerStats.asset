@@ -22,4 +22,4 @@ MonoBehaviour:
   criticalDamage: 0
   criticalSpeed: 0
   pickupRadius: 1
-  xpMultiplier: 0
+  xpMultiplier: 1
