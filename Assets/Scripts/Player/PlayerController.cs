@@ -247,4 +247,9 @@ public class PlayerController : MonoBehaviour
     {
         _baseArmor += armor;
     }
+
+    public void IncreaseRegenTime(float regen)
+    {
+        healAmount += regen;
+    }
 }
