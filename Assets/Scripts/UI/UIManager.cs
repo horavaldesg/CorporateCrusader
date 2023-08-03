@@ -81,7 +81,7 @@ public class UIManager : MonoBehaviour
         enemiesKilledText.SetText(enemiesKilled == 0 ? "0" : enemiesKilled.ToString("##"));
     }
 
-    public static void UpdateXpBar(int coinsCollected)
+    public static void UpdateXpBar(float coinsCollected)
     {
         var xpToAdd = (float)coinsCollected / GameManager.Instance.TotalXp;
         var xpBarXScaler = Mathf.Clamp(xpToAdd, 0, 1);

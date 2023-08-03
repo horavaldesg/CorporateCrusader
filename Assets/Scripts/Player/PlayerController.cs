@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     };
 
     public PlayerDirection _playerDirection;
-    
+
     [SerializeField] private float playerSpeed;
     [SerializeField] private Transform gunRotate;
     [SerializeField] private RectTransform healthBar;
@@ -43,11 +43,12 @@ public class PlayerController : MonoBehaviour
     public float healAmount;
     public float healTime;
     private float _pickupRadius;
-    
+    public float xPMultiplier;
+
     private const int XpMaxCollection = 150;
     public List<GameObject> xpToCollect = new List<GameObject>();
     public CapsuleCollider2D playerCollider;
-    
+
     private void Awake()
     {
         Instance = this;
@@ -57,6 +58,7 @@ public class PlayerController : MonoBehaviour
         _health = _baseHealth;
         _armor = _playerStats.armor;
         _baseArmor = _armor;
+        xPMultiplier = _playerStats.xpMultiplier;
         _pickupRadius = _playerStats.pickupRadius;
         TryGetComponent(out _rb);
         gunRotate.TryGetComponent(out gunRenderer);
@@ -64,8 +66,8 @@ public class PlayerController : MonoBehaviour
         //Movement Player Input
         _controls.Player.Move.performed += tgb => { _move = tgb.ReadValue<Vector2>(); };
         _controls.Player.Move.canceled += tgb => { _move = Vector2.zero; };
-      //  _controls.Player.Space.performed += async tgb => await CloudSaveManager.Instance.SaveData();
-       // _controls.Player.Fire.performed +=  tgb => WeaponManager.Instance.ChooseWeapon(0);
+        //  _controls.Player.Space.performed += async tgb => await CloudSaveManager.Instance.SaveData();
+        // _controls.Player.Fire.performed +=  tgb => WeaponManager.Instance.ChooseWeapon(0);
     }
 
     private void Start()
@@ -84,21 +86,21 @@ public class PlayerController : MonoBehaviour
         //Disables Player Input
         _controls.Player.Disable();
     }
-    
+
     private void FixedUpdate()
     {
         //Move Function
         Move();
-        if(!HasArmor())HealPlayer();
-        if(_move.magnitude is > -0.1f and < 0.1f) return;
+        if (!HasArmor()) HealPlayer();
+        if (_move.magnitude is > -0.1f and < 0.1f) return;
         RotateGun();
     }
 
     private void Move()
     {
         //Worlds Space of player
-        var movement = _move.magnitude < rotationThreshold ? Vector3.zero: transform.TransformDirection(_move);
-        
+        var movement = _move.magnitude < rotationThreshold ? Vector3.zero : transform.TransformDirection(_move);
+
         //Speed damp
         _currentVelocity = Vector3.SmoothDamp
         (
@@ -118,7 +120,7 @@ public class PlayerController : MonoBehaviour
         };
 
         if (_rb.velocity.magnitude is > -0.1f and < 0.1f) return;
-        
+
         bodyTransform.rotation = Quaternion.Euler(0, _move.x < 0 ? 180 : 0, 0);
     }
 
@@ -171,13 +173,13 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(ResetXpCollected());
         }
-        
+
         (HasArmor() ? (Action<float>)TakeArmorDamage : TakeBaseDamage)(damage);
     }
 
     private void HealPlayer()
     {
-        if(_health >= _baseHealth) return;
+        if (_health >= _baseHealth) return;
         _health += healAmount * Time.deltaTime;
         healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
     }
@@ -195,18 +197,24 @@ public class PlayerController : MonoBehaviour
         healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
     }
 
+    private void RestoreArmor(float armor)
+    {
+        _armor = armor;
+        armorBar.localScale = new Vector3(Mathf.Clamp(_armor / _baseArmor, 0, 1), 1, 1);
+    }
+
     private void TakeBaseDamage(float damage)
     {
         _health -= damage;
         healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
     }
-    
+
     private bool HasArmor()
     {
         return _armor > 0;
     }
-    
-    
+
+
     private IEnumerator ResetXpCollected()
     {
         yield return new WaitForSeconds(0.15f);
@@ -228,5 +236,15 @@ public class PlayerController : MonoBehaviour
     {
         _pickupRadius += radius;
         XpPickup.Instance.IncreasePickupRadius(_pickupRadius);
+    }
+
+    public void IncreaseXpGain(float xp)
+    {
+        xPMultiplier += xp;
+    }
+
+    public void IncreaseArmor(float armor)
+    {
+        _baseArmor += armor;
     }
 }

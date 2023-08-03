@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public static event Action<int> XpAdded;
+    public static event Action<float> XpAdded;
     public static event Action<int> LevelIncreased;
     public static event Action ChangePhase;
     public static event Action LevelChanged;
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         private set;
     }
     
-    private int CurrentXp
+    private float CurrentXp
     {
         get;
         set;
@@ -94,7 +94,10 @@ public class GameManager : MonoBehaviour
     public static void AddXp(int xp)
     {
         //Adds Xp
-        Instance.CurrentXp += xp;
+        var xpMulti = PlayerController.Instance.xPMultiplier;
+        var xpToAdd = xp * xpMulti;
+        xpToAdd += xp;
+        Instance.CurrentXp += xpToAdd;
         if (Instance.CheckLevelUpgrade())
         {
             Instance.UpgradeLevel();
