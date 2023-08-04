@@ -41,6 +41,7 @@ public class Weapon : MonoBehaviour
     private protected void Start()
     {
         transform.root.TryGetComponent(out PlayerController);
+        damage = PlayerController.damage;
     }
 
     private void EndShoot()

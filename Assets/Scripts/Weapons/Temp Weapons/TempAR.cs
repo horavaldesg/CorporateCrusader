@@ -14,7 +14,7 @@ public class TempAR : Weapon
         );
         go.TryGetComponent(out Bullet bulletComp);
         
-        bulletComp.Damage = damage;
+        bulletComp.Damage = PlayerController.Instance.damage;
         bulletComp.whereToShoot = barrelTransform;
         //bulletComp.rb.AddForce(barrelTransform.right.normalized * (bulletForce * Time.deltaTime * 1000));
         return base.Shoot();

@@ -109,7 +109,9 @@ public class GameManager : MonoBehaviour
 
     public static void AddCoins(int coinsToAdd)
     {
-        Instance.CurrentCoins += coinsToAdd;
+        var playerCoins = PlayerController.Instance.coinMultiplier;
+        var coinGain = coinsToAdd + playerCoins;
+        Instance.CurrentCoins += coinGain;
         UIManager.UpdateCoins(Instance.CurrentCoins);
     }
 

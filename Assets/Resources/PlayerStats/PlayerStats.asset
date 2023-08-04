@@ -15,7 +15,7 @@ MonoBehaviour:
   playerName: 
   health: 100
   armor: 50
-  damage: 20
+  damage: 15
   speed: 0
   regenTime: 0
   attackSpeed: 0
@@ -23,3 +23,4 @@ MonoBehaviour:
   criticalSpeed: 0
   pickupRadius: 1
   xpMultiplier: 1
+  coinMultiplier: 0

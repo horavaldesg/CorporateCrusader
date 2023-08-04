@@ -42,9 +42,10 @@ public class PlayerController : MonoBehaviour
     private const string EnemyTag = "Enemy";
     public float healAmount;
     public float healTime;
+    public float damage;
     private float _pickupRadius;
     public float xPMultiplier;
-
+    public int coinMultiplier;
     private const int XpMaxCollection = 150;
     public List<GameObject> xpToCollect = new List<GameObject>();
     public CapsuleCollider2D playerCollider;
@@ -54,11 +55,13 @@ public class PlayerController : MonoBehaviour
         Instance = this;
         _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
         TryGetComponent(out playerCollider);
+        damage = _playerStats.damage;
         _baseHealth = _playerStats.health;
         _health = _baseHealth;
         _armor = _playerStats.armor;
         _baseArmor = _armor;
         xPMultiplier = _playerStats.xpMultiplier;
+        coinMultiplier = _playerStats.coinMultiplier;
         _pickupRadius = _playerStats.pickupRadius;
         TryGetComponent(out _rb);
         gunRotate.TryGetComponent(out gunRenderer);
@@ -221,6 +224,22 @@ public class PlayerController : MonoBehaviour
         XpCollected = 0;
     }
 
+    [NotNull]
+    private List<Enemy> NearbyEnemies()
+    {
+        var enemies = new List<Enemy>();
+        foreach (var enemy in GameManager.Instance.enemiesSpawnedList)
+        {
+            enemy.TryGetComponent(out Enemy enemyComp);
+            if (Vector3.Distance(transform.position, enemy.transform.position) < 15)
+            {
+                enemies.Add(enemyComp);
+            }
+        }
+
+        return enemies;
+    }
+
     public void UpgradeBaseHealth(float newBaseHealth)
     {
         _baseHealth += newBaseHealth;
@@ -251,5 +270,20 @@ public class PlayerController : MonoBehaviour
     public void IncreaseRegenTime(float regen)
     {
         healAmount += regen;
+    }
+
+    public void IncreaseCoinGain(int coinGain)
+    {
+        coinMultiplier += coinGain;
+    }
+
+    public void IncreaseDamage(float damageMulti)
+    {
+        damage += damageMulti;
+    }
+
+    private void Shield()
+    {
+        
     }
 }

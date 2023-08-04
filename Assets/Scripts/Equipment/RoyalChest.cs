@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class RoyalChest : MonoBehaviour
+public class RoyalChest : Equipment
 {
-    // Start is called before the first frame update
-    void Start()
+    public int coinMultiplier;
+    
+    public override void Level1()
     {
-        
+        base.Level1();
+        PlayerController.Instance.IncreaseCoinGain(coinMultiplier);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Level2()
     {
-        
+        base.Level2();
+        PlayerController.Instance.IncreaseCoinGain(coinMultiplier);
+    }
+
+    public override void Level3()
+    {
+        base.Level3();
+        PlayerController.Instance.IncreaseCoinGain(coinMultiplier);
+    }
+
+    public override void Level4()
+    {
+        base.Level4();
+        PlayerController.Instance.IncreaseCoinGain(coinMultiplier);
+    }
+
+    public override void Level5()
+    {
+        base.Level5();
+        PlayerController.Instance.IncreaseCoinGain(coinMultiplier);
     }
 }
