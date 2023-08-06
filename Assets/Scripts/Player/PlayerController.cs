@@ -41,15 +41,16 @@ public class PlayerController : MonoBehaviour
     private const string BulletTag = "Bullet";
     private const string EnemyTag = "Enemy";
     public float healAmount;
-    public float healTime;
-    public float damage;
+    [HideInInspector] public float healTime;
+    [HideInInspector] public float damage;
     private float _pickupRadius;
-    public float xPMultiplier;
-    public float attackSpeed;
-    public int coinMultiplier;
+    [HideInInspector] public float xPMultiplier;
+    [HideInInspector] public float attackSpeed;
+    [HideInInspector] public int coinMultiplier;
     private const int XpMaxCollection = 150;
     public List<GameObject> xpToCollect = new List<GameObject>();
     public CapsuleCollider2D playerCollider;
+    [HideInInspector] public List<Enemy> nearbyEnemies = new();
 
     private void Awake()
     {
@@ -226,22 +227,6 @@ public class PlayerController : MonoBehaviour
         XpCollected = 0;
     }
 
-    [NotNull]
-    private List<Enemy> NearbyEnemies()
-    {
-        var enemies = new List<Enemy>();
-        foreach (var enemy in GameManager.Instance.enemiesSpawnedList)
-        {
-            enemy.TryGetComponent(out Enemy enemyComp);
-            if (Vector3.Distance(transform.position, enemy.transform.position) < 15)
-            {
-                enemies.Add(enemyComp);
-            }
-        }
-
-        return enemies;
-    }
-
     public void UpgradeBaseHealth(float newBaseHealth)
     {
         _baseHealth += newBaseHealth;
@@ -284,9 +269,53 @@ public class PlayerController : MonoBehaviour
         damage += damageMulti;
     }
 
-    private void Shield()
+    public bool HasShield
     {
-        
+        get;
+        set;
+    }
+    
+    public bool HaseBinoculars
+    {
+        get;
+        set;
+    }
+
+    private float EnemyHealthReduction
+    {
+        get;
+        set;
+    }
+    
+     private float EnemyDamageReduction
+    {
+        get;
+        set;
+    }
+    
+    public void Shield(float damageReduction)
+    {
+        //Affects Nearby enemy damage
+        if(!HasShield) return;
+        EnemyDamageReduction = damageReduction;
+    }
+
+    public void Binoculars(float healthReduction)
+    {
+        if(!HaseBinoculars) return;
+        EnemyHealthReduction = healthReduction;
+    }
+
+    public float NewEnemyHealth(Enemy enemy)
+    {
+        var newHealth = enemy.health - EnemyHealthReduction;
+        return newHealth;
+    }
+
+    public float NewEnemyDamage(Enemy enemy)
+    {
+        var newDamage = enemy._damage - EnemyDamageReduction;
+        return newDamage;
     }
 
     public void IncreaseAttackSpeed(float attackIncrease)
