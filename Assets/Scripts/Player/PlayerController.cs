@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public float damage;
     private float _pickupRadius;
     public float xPMultiplier;
+    public float attackSpeed;
     public int coinMultiplier;
     private const int XpMaxCollection = 150;
     public List<GameObject> xpToCollect = new List<GameObject>();
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
         xPMultiplier = _playerStats.xpMultiplier;
         coinMultiplier = _playerStats.coinMultiplier;
         _pickupRadius = _playerStats.pickupRadius;
+        attackSpeed = _playerStats.attackSpeed;
         TryGetComponent(out _rb);
         gunRotate.TryGetComponent(out gunRenderer);
         _controls = new PlayerControls();
@@ -285,5 +287,10 @@ public class PlayerController : MonoBehaviour
     private void Shield()
     {
         
+    }
+
+    public void IncreaseAttackSpeed(float attackIncrease)
+    {
+        attackSpeed -= attackIncrease;
     }
 }

@@ -18,7 +18,7 @@ MonoBehaviour:
   damage: 15
   speed: 0
   regenTime: 0
-  attackSpeed: 0
+  attackSpeed: 3
   criticalDamage: 0
   criticalSpeed: 0
   pickupRadius: 1

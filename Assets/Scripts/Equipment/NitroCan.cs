@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class NitroCan : MonoBehaviour
+public class NitroCan : Equipment
 {
-    // Start is called before the first frame update
-    void Start()
+    public float attackDecrease;
+    
+    public override void Level1()
     {
-        
+        base.Level1();
+        PlayerController.Instance.IncreaseAttackSpeed(attackDecrease);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Level2()
     {
-        
+        base.Level2();
+        PlayerController.Instance.IncreaseAttackSpeed(attackDecrease);
+    }
+
+    public override void Level3()
+    {
+        base.Level3();
+        PlayerController.Instance.IncreaseAttackSpeed(attackDecrease);
+    }
+
+    public override void Level4()
+    {
+        base.Level4();
+        PlayerController.Instance.IncreaseAttackSpeed(attackDecrease);
+    }
+
+    public override void Level5()
+    {
+        base.Level5();
+        PlayerController.Instance.IncreaseAttackSpeed(attackDecrease);
     }
 }
