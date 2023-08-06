@@ -13,6 +13,7 @@ using AppleAuth;
 using AppleAuth.Native;
 using AppleAuth.Interfaces;
 using AppleAuth.Enums;
+using AppleAuth.Extensions;
 
 public class AuthenticationManager : MonoBehaviour
 {
@@ -20,13 +21,14 @@ public class AuthenticationManager : MonoBehaviour
 
     [SerializeField] private MainMenuManager mainMenuManager;
     [SerializeField] private bool deleteSessionToken = false;
+    private const string AppleUserIdKey = "AppleUser";
 
     [Header("UI References")]
     [SerializeField] private Button googlePlayLoginButton;
     [SerializeField] private Button appleIDLoginButton;
     [SerializeField] private Button guestLoginButton;
 
-    private IAppleAuthManager appleAuthManager;
+    private IAppleAuthManager _appleAuthManager;
 
     private async void Awake()
     {
@@ -37,12 +39,24 @@ public class AuthenticationManager : MonoBehaviour
 
     private void Start()
     {
+        if (AppleAuthManager.IsCurrentPlatformSupported)
+        {
+
+            // Creates a default JSON deserializer, to transform JSON Native responses to C# instances
+            var deserializer = new PayloadDeserializer();
+            // Creates an Apple Authentication manager with the deserializer
+            this._appleAuthManager = new AppleAuthManager(deserializer);    
+        }
+        
+        InitializeLoginMenu();
+        /*
         //setup sign-in event
         AuthenticationService.Instance.SignedIn += () => {
             Debug.Log("Signed In Successfully...");
             // Shows how to get a playerID
             Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
         };
+        */
 
         //dev option to delete session token
         if(deleteSessionToken) AuthenticationService.Instance.ClearSessionToken();
@@ -65,11 +79,120 @@ public class AuthenticationManager : MonoBehaviour
             Debug.LogException(ex);
         } 
     }
-
+   
     private void Update()
     {
         //update Apple authentication manager if possible
-        if(appleAuthManager != null) appleAuthManager.Update();
+        if(_appleAuthManager != null) _appleAuthManager.Update();
+    }
+    
+    private void InitializeLoginMenu()
+    {
+        // Check if the current platform supports Sign In With Apple
+        if (this._appleAuthManager == null)
+        {
+            appleIDLoginButton.interactable = false;
+            return;
+        }
+        
+        // If at any point we receive a credentials revoked notification, we delete the stored User ID, and go back to login
+        this._appleAuthManager.SetCredentialsRevokedCallback(result =>
+        {
+            Debug.Log("Received revoked callback " + result);
+            //this.SetupLoginMenuForSignInWithApple();
+            PlayerPrefs.DeleteKey(AppleUserIdKey);
+        });
+
+        // If we have an Apple User Id available, get the credential status for it
+        if (PlayerPrefs.HasKey(AppleUserIdKey))
+        {
+            var storedAppleUserId = PlayerPrefs.GetString(AppleUserIdKey);
+            this.CheckCredentialStatusForUserId(storedAppleUserId);
+        }
+        // If we do not have an stored Apple User Id, attempt a quick login
+        else
+        {
+            this.AttemptQuickLogin();
+        }
+    }
+    
+    private void CheckCredentialStatusForUserId(string appleUserId)
+    {
+        // If there is an apple ID available, we should check the credential state
+        this._appleAuthManager.GetCredentialState(
+            appleUserId,
+            state =>
+            {
+                switch (state)
+                {
+                    // If it's authorized, login with that user id
+                    case CredentialState.Authorized:
+                        mainMenuManager.SplashScreenToStageSelect(); //skip login screen
+                        return;
+                    
+                    // If it was revoked, or not found, we need a new sign in with apple attempt
+                    // Discard previous apple user id
+                    case CredentialState.Revoked:
+                    case CredentialState.NotFound:
+                       // this.SetupLoginMenuForSignInWithApple();
+                        PlayerPrefs.DeleteKey(AppleUserIdKey);
+                        return;
+                }
+            },
+            error =>
+            {
+                var authorizationErrorCode = error.GetAuthorizationErrorCode();
+                Debug.LogWarning("Error while trying to get credential state " + authorizationErrorCode.ToString() + " " + error.ToString());
+                mainMenuManager.SplashScreenToLoginScreen(); //go to login screen
+            });
+    }
+    
+    private void AttemptQuickLogin()
+    {
+        var quickLoginArgs = new AppleAuthQuickLoginArgs();
+        
+        // Quick login should succeed if the credential was authorized before and not revoked
+        this._appleAuthManager.QuickLogin(
+            quickLoginArgs,
+            credential =>
+            {
+                // If it's an Apple credential, save the user ID, for later logins
+                var appleIdCredential = credential as IAppleIDCredential;
+                if (appleIdCredential != null)
+                {
+                    PlayerPrefs.SetString(AppleUserIdKey, credential.User);    
+                }
+            },
+            error =>
+            {
+                // If Quick Login fails, we should show the normal sign in with apple menu, to allow for a normal Sign In with apple
+                var authorizationErrorCode = error.GetAuthorizationErrorCode();
+                Debug.LogWarning("Quick Login Failed " + authorizationErrorCode.ToString() + " " + error.ToString());
+            });
+    }
+    
+    public void SignInWithAppleButtonPressed()
+    {
+        this.SignInWithApple();
+    }
+    
+    private void SignInWithApple()
+    {
+        var loginArgs = new AppleAuthLoginArgs(LoginOptions.IncludeEmail | LoginOptions.IncludeFullName);
+        
+        this._appleAuthManager.LoginWithAppleId(
+            loginArgs,
+            credential =>
+            {
+                // If a sign in with apple succeeds, we should have obtained the credential with the user id, name, and email, save it
+                PlayerPrefs.SetString(AppleUserIdKey, credential.User);
+               
+            },
+            error =>
+            {
+                var authorizationErrorCode = error.GetAuthorizationErrorCode();
+                Debug.LogWarning("Sign in with Apple failed " + authorizationErrorCode.ToString() + " " + error.ToString());
+            });
     }
 
     public void SplashScreenButton()
@@ -82,7 +205,7 @@ public class AuthenticationManager : MonoBehaviour
         }
         else
         {
-            InitializeLoginScreen(); //initialize login screen
+            //InitializeLoginScreen(); //initialize login screen
             mainMenuManager.SplashScreenToLoginScreen(); //go to login screen
         }
     }
@@ -111,7 +234,7 @@ public class AuthenticationManager : MonoBehaviour
             guestLoginButton.enabled = true;
         }
     }
-
+/*
     private void InitializeLoginScreen()
     {
 #if UNITY_EDITOR
@@ -131,7 +254,7 @@ public class AuthenticationManager : MonoBehaviour
     {
         //initialize Apple authentication manager
         var deserializer = new PayloadDeserializer();
-        appleAuthManager = new AppleAuthManager(deserializer);
+        _appleAuthManager = new AppleAuthManager(deserializer);
     }
 
 
@@ -179,14 +302,14 @@ public class AuthenticationManager : MonoBehaviour
     public string LoginWithAppleID()
     {
         //initialize Apple authentication manager if necessary
-        if(appleAuthManager == null) InitializeAppleAuthManager();
+        if(_appleAuthManager == null) InitializeAppleAuthManager();
 
         //set the login arguments
         var loginArgs = new AppleAuthLoginArgs(LoginOptions.IncludeEmail | LoginOptions.IncludeFullName);
 
         //perform login
         string idToken = null;
-        appleAuthManager.LoginWithAppleId(
+        _appleAuthManager.LoginWithAppleId(
             loginArgs,
             credential => 
             {
@@ -263,4 +386,5 @@ public class AuthenticationManager : MonoBehaviour
             appleIDLoginButton.enabled = true;
         }
     }
+    */
 }

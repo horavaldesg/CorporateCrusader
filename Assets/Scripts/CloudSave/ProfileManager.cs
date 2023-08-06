@@ -215,8 +215,8 @@ public class ProfileManager : MonoBehaviour
 #if UNITY_ANDROID
     public async void LinkGooglePlayButton()
     {
-        string authCode = AuthenticationManager.Instance.LoginWithGooglePlay();
-        await LinkWithGooglePlayAsync(authCode);
+      //  string authCode = AuthenticationManager.Instance.LoginWithGooglePlay();
+       // await LinkWithGooglePlayAsync(authCode);
     }
 #endif
 
