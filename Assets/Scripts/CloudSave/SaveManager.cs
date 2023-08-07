@@ -21,7 +21,7 @@ public class SaveManager : MonoBehaviour
         AuthenticationService.Instance.SignedIn += LoadProfileInfo;
     }
 
-    private async void LoadProfileInfo()
+    public async void LoadProfileInfo()
     {
         // ProfileInfo profileInfo = ScriptableObject.CreateInstance<ProfileInfo>();
         ProfileManager.Instance.ProfileInfo.profileName = await AuthenticationService.Instance.GetPlayerNameAsync();

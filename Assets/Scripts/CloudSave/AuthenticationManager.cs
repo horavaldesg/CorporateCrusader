@@ -107,7 +107,6 @@ public class AuthenticationManager : MonoBehaviour
                     Debug.Log("Sign-in with Apple successfully done. IDToken: " + idToken);
                     Token = idToken;
                     SignInWithApple(Token);
-                    SetPlayerName(appleIDCredential);
                     mainMenuManager.LoginScreenToStageSelect();
                 }
                 else
@@ -149,8 +148,8 @@ public class AuthenticationManager : MonoBehaviour
                         appleIDCredential.IdentityToken.Length);
                     Debug.Log("Sign-in with Apple successfully done. IDToken: " + idToken);
                     Token = idToken;
+                    AppleIDCredential = appleIDCredential;
                     SignInWithApple(Token);
-                    SetPlayerName(appleIDCredential);
                     mainMenuManager.LoginScreenToStageSelect();
                 }
                 else
@@ -168,14 +167,15 @@ public class AuthenticationManager : MonoBehaviour
         return Token;
     }
 
+    public IAppleIDCredential AppleIDCredential
+    {
+        get;
+        private set;
+    }
+
     private async void SignInWithApple(string idToken)
     {
         await SignInWithAppleAsync(idToken);
-    }
-    
-    private async void SetPlayerName(IAppleIDCredential appleIDCredential)
-    {
-        await SetPlayerNameAsync(appleIDCredential);
     }
     
     private async Task SignInWithAppleAsync(string idToken)
@@ -183,6 +183,7 @@ public class AuthenticationManager : MonoBehaviour
         try
         {
             await AuthenticationService.Instance.SignInWithAppleAsync(idToken);
+            await SetPlayerNameAsync(AppleIDCredential);
             Debug.Log("SignIn is successful.");
         }
         catch (AuthenticationException ex)
@@ -201,7 +202,8 @@ public class AuthenticationManager : MonoBehaviour
     
     private async Task SetPlayerNameAsync(IAppleIDCredential appleIDCredential)
     {
-        await AuthenticationService.Instance.UpdatePlayerNameAsync(appleIDCredential.FullName.GivenName);
+        var playerName = appleIDCredential.FullName.GivenName;
+        await AuthenticationService.Instance.UpdatePlayerNameAsync(playerName);
     }
     
 
