@@ -106,7 +106,7 @@ public class AuthenticationManager : MonoBehaviour
                         appleIDCredential.IdentityToken.Length);
                     Debug.Log("Sign-in with Apple successfully done. IDToken: " + idToken);
                     Token = idToken;
-                    AuthenticationService.Instance.UpdatePlayerNameAsync(appleIDCredential.FullName.GivenName);
+                    SetPlayerName(appleIDCredential);
                     mainMenuManager.LoginScreenToStageSelect();
                 }
                 else
@@ -121,6 +121,11 @@ public class AuthenticationManager : MonoBehaviour
                 Error = "Retrieving Apple Id Token failed.";
             }
         );
+    }
+
+    private async void SetPlayerName(IAppleIDCredential appleIDCredential)
+    {
+        await AuthenticationService.Instance.UpdatePlayerNameAsync(appleIDCredential.FullName.GivenName);
     }
     
 
