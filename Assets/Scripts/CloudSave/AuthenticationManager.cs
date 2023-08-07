@@ -48,6 +48,10 @@ public class AuthenticationManager : MonoBehaviour
 
     private void Start()
     {
+        #if UNITY_IOS
+        appleIDLoginButton.enabled = true;
+
+        #endif
         //dev option to delete session token
         if(deleteSessionToken) AuthenticationService.Instance.ClearSessionToken();
     }
