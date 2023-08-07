@@ -30,12 +30,12 @@ public class AuthenticationManager : MonoBehaviour
 
     private IAppleAuthManager _appleAuthManager;
 
-    private async void Awake()
+    /*private async void Awake()
     {
         Instance = this;
 
         await UnityServices.InitializeAsync();
-    }
+    }*/
 
     private void Start()
     {
@@ -112,7 +112,7 @@ public class AuthenticationManager : MonoBehaviour
         // If we do not have an stored Apple User Id, attempt a quick login
         else
         {
-            this.AttemptQuickLogin();
+            //this.AttemptQuickLogin();
         }
     }
     
