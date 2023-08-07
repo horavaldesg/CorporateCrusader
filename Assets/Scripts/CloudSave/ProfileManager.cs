@@ -231,6 +231,7 @@ public class ProfileManager : MonoBehaviour
 //#if UNITY_IOS
     public void LinkAppleIDButton()
     {
+        Logout();
         AuthenticationManager.Instance.AsyncLogin();
     }
 //#endif

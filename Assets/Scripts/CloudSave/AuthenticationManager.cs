@@ -138,8 +138,7 @@ public class AuthenticationManager : MonoBehaviour
 
         // Perform the login
         _appleAuthManager?.LoginWithAppleId(
-            loginArgs,
-            credential =>
+            loginArgs, async credential =>
             {
                 var appleIDCredential = credential as IAppleIDCredential;
                 if (appleIDCredential != null)
@@ -151,6 +150,7 @@ public class AuthenticationManager : MonoBehaviour
                     Debug.Log("Sign-in with Apple successfully done. IDToken: " + idToken);
                     Token = idToken;
                     AppleIDCredential = appleIDCredential;
+                    await ProfileManager.Instance.LinkWithAppleAsync(Token);
                 }
                 else
                 {
@@ -164,7 +164,6 @@ public class AuthenticationManager : MonoBehaviour
                 Error = "Retrieving Apple Id Token failed.";
             }
         );
-        await ProfileManager.Instance.LinkWithAppleAsync(Token);
     }
 
     public async void SetPlayerName(IAppleIDCredential playerName)
