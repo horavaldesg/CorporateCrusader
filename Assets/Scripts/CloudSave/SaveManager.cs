@@ -19,6 +19,7 @@ public class SaveManager : MonoBehaviour
     private void Start()
     { 
         AuthenticationService.Instance.SignedIn += LoadProfileInfo;
+        AuthenticationManager.UpdatePlayerName += LoadProfileInfo;
     }
 
     public async void LoadProfileInfo()

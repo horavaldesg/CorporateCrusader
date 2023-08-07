@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -19,7 +20,8 @@ using AppleAuth.Extensions;
 public class AuthenticationManager : MonoBehaviour
 {
     public static AuthenticationManager Instance;
-
+    public static event Action UpdatePlayerName;
+    
     [SerializeField] private MainMenuManager mainMenuManager;
     [SerializeField] private bool deleteSessionToken = false;
     private const string AppleUserIdKey = "AppleUserLogin";
@@ -204,6 +206,7 @@ public class AuthenticationManager : MonoBehaviour
     {
         var playerName = appleIDCredential.FullName.GivenName;
         await AuthenticationService.Instance.UpdatePlayerNameAsync(playerName);
+        UpdatePlayerName?.Invoke();
     }
     
 

@@ -229,10 +229,11 @@ public class ProfileManager : MonoBehaviour
 #endif
 
 //#if UNITY_IOS
-    public async void LinkAppleIDButton()
+    public void LinkAppleIDButton()
     {
-        var idToken = AuthenticationManager.Instance.GetIDToken();
-        await LinkWithAppleAsync(idToken);
+        //var idToken = AuthenticationManager.Instance.GetIDToken();
+        AuthenticationManager.Instance.SignInWithAppleButtonPressed();
+       //await LinkWithAppleAsync(idToken);
     }
 //#endif
 
