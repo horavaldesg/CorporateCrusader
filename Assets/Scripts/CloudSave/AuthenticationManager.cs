@@ -49,7 +49,7 @@ public class AuthenticationManager : MonoBehaviour
     private void Start()
     {
         #if UNITY_IOS
-        appleIDLoginButton.enabled = true;
+        appleIDLoginButton.interactable = true;
 
         #endif
         //dev option to delete session token
