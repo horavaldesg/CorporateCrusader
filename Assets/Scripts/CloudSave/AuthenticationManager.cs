@@ -124,6 +124,50 @@ public class AuthenticationManager : MonoBehaviour
         );
     }
 
+    public string GetIDToken()
+    {
+        // Initialize the Apple Auth Manager
+        if (_appleAuthManager == null)
+        {
+            Initialize();
+        }
+
+        // Set the login arguments
+        var loginArgs = new AppleAuthLoginArgs(LoginOptions.IncludeEmail | LoginOptions.IncludeFullName);
+
+        // Perform the login
+        _appleAuthManager?.LoginWithAppleId(
+            loginArgs,
+            credential =>
+            {
+                var appleIDCredential = credential as IAppleIDCredential;
+                if (appleIDCredential != null)
+                {
+                    var idToken = Encoding.UTF8.GetString(
+                        appleIDCredential.IdentityToken,
+                        0,
+                        appleIDCredential.IdentityToken.Length);
+                    Debug.Log("Sign-in with Apple successfully done. IDToken: " + idToken);
+                    Token = idToken;
+                    SignInWithApple(Token);
+                    SetPlayerName(appleIDCredential);
+                    mainMenuManager.LoginScreenToStageSelect();
+                }
+                else
+                {
+                    Debug.Log("Sign-in with Apple error. Message: appleIDCredential is null");
+                    Error = "Retrieving Apple Id Token failed.";
+                }
+            },
+            error =>
+            {
+                Debug.Log("Sign-in with Apple error. Message: " + error);
+                Error = "Retrieving Apple Id Token failed.";
+            }
+        );
+        return Token;
+    }
+
     private async void SignInWithApple(string idToken)
     {
         await SignInWithAppleAsync(idToken);

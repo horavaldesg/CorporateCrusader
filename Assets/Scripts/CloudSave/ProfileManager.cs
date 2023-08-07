@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -43,6 +44,13 @@ public class ProfileManager : MonoBehaviour
     [SerializeField] private GameObject logoutWarningBG;
 
     private void Awake() => Instance = this;
+
+    private void Start()
+    {
+        #if UNITY_IOS
+        linkAppleIDButton.interactable = true;
+        #endif
+    }
 
     public void UpdateTopBarUI()
     {
@@ -220,13 +228,13 @@ public class ProfileManager : MonoBehaviour
     }
 #endif
 
-#if UNITY_IOS
+//#if UNITY_IOS
     public async void LinkAppleIDButton()
     {
-        string idToken = AuthenticationManager.Instance.LoginWithAppleID();
+        var idToken = AuthenticationManager.Instance.GetIDToken();
         await LinkWithAppleAsync(idToken);
     }
-#endif
+//#endif
 
     public void LogoutButton() => logoutWarningBG.SetActive(true);
 
@@ -270,7 +278,7 @@ public class ProfileManager : MonoBehaviour
     }
 #endif
 
-#if UNITY_IOS
+//#if UNITY_IOS
     private async Task LinkWithAppleAsync(string idToken)
     {
         try
@@ -297,5 +305,5 @@ public class ProfileManager : MonoBehaviour
             Debug.LogException(ex);
         }
     }
-#endif
+//#endif
 }
