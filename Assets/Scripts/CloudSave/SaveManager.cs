@@ -26,6 +26,7 @@ public class SaveManager : MonoBehaviour
     {
         // ProfileInfo profileInfo = ScriptableObject.CreateInstance<ProfileInfo>();
         ProfileManager.Instance.ProfileInfo.profileName = await AuthenticationService.Instance.GetPlayerNameAsync();
+        ProfileManager.Instance.SetName(ProfileManager.Instance.ProfileInfo.profileName);
         ProfileManager.Instance.ProfileInfo.profileXP = await LoadSomeInt("ProfileXP");
         ProfileManager.Instance.ProfileInfo.energy = await LoadSomeInt("Energy");
         ProfileManager.Instance.ProfileInfo.gems = await LoadSomeInt("Gems");

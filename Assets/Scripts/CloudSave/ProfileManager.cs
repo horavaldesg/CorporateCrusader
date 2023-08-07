@@ -170,7 +170,11 @@ public class ProfileManager : MonoBehaviour
         //update and set profile name if given a new name
         if(name != ProfileInfo.profileName)
         {
-            try { ProfileInfo.profileName = await AuthenticationService.Instance.UpdatePlayerNameAsync(name); }
+            try
+            {
+                ProfileInfo.profileName = await AuthenticationService.Instance.UpdatePlayerNameAsync(name); 
+                SetName(ProfileInfo.profileName);
+            }
             catch (AuthenticationException ex)
             {
                 //compare error code to AuthenticationErrorCodes
@@ -189,6 +193,11 @@ public class ProfileManager : MonoBehaviour
             profileNameInputField.text = ProfileInfo.profileName;
             profileNameText.text = ProfileInfo.profileName;
         }
+    }
+
+    public void SetName(string playerName)
+    {
+        SaveManager.Instance.SaveSomeData("ProfileName", playerName);
     }
 
     private void ShowNameChangeError() => StartCoroutine(NameChangeError());
