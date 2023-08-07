@@ -31,7 +31,7 @@ public class AuthenticationManager : MonoBehaviour
     [SerializeField] private Button appleIDLoginButton;
     [SerializeField] private Button guestLoginButton;
 
-    private IAppleAuthManager _appleAuthManager;
+    public IAppleAuthManager _appleAuthManager;
     public string Token { get; private set; }
     public string Error { get; private set; }
 
@@ -125,7 +125,7 @@ public class AuthenticationManager : MonoBehaviour
         );
     }
 
-    public string GetIDToken()
+    public async void AsyncLogin()
     {
         // Initialize the Apple Auth Manager
         if (_appleAuthManager == null)
@@ -166,7 +166,7 @@ public class AuthenticationManager : MonoBehaviour
                 Error = "Retrieving Apple Id Token failed.";
             }
         );
-        return Token;
+        await ProfileManager.Instance.LinkWithAppleAsync(Token);
     }
 
     public IAppleIDCredential AppleIDCredential
