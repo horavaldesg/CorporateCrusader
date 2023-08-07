@@ -284,9 +284,7 @@ public class ProfileManager : MonoBehaviour
         {
             //link with Apple ID and disable link button afterwards
             await AuthenticationService.Instance.LinkWithAppleAsync(idToken);
-            var playerName = AuthenticationManager.Instance.AppleIDCredential.FullName.GivenName;
-            await AuthenticationService.Instance.UpdatePlayerNameAsync(playerName);
-            SaveManager.Instance.LoadProfileInfo();
+            AuthenticationManager.Instance.SetPlayerName(AuthenticationManager.Instance.AppleIDCredential);
             linkAppleIDButton.interactable = false;
         }
         catch (AuthenticationException ex) when (ex.ErrorCode == AuthenticationErrorCodes.AccountAlreadyLinked)

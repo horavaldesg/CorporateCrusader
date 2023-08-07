@@ -151,8 +151,6 @@ public class AuthenticationManager : MonoBehaviour
                     Debug.Log("Sign-in with Apple successfully done. IDToken: " + idToken);
                     Token = idToken;
                     AppleIDCredential = appleIDCredential;
-                    SignInWithApple(Token);
-                    mainMenuManager.LoginScreenToStageSelect();
                 }
                 else
                 {
@@ -169,6 +167,11 @@ public class AuthenticationManager : MonoBehaviour
         await ProfileManager.Instance.LinkWithAppleAsync(Token);
     }
 
+    public async void SetPlayerName(IAppleIDCredential playerName)
+    {
+        await SetPlayerNameAsync(playerName);
+    }
+    
     public IAppleIDCredential AppleIDCredential
     {
         get;
