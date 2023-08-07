@@ -106,6 +106,7 @@ public class AuthenticationManager : MonoBehaviour
                         appleIDCredential.IdentityToken.Length);
                     Debug.Log("Sign-in with Apple successfully done. IDToken: " + idToken);
                     Token = idToken;
+                    AuthenticationService.Instance.UpdatePlayerNameAsync(appleIDCredential.FullName.GivenName);
                     mainMenuManager.LoginScreenToStageSelect();
                 }
                 else
