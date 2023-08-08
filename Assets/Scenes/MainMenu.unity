@@ -31084,7 +31084,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 147064224}
         m_TargetAssemblyTypeName: AuthenticationManager, Assembly-CSharp
-        m_MethodName: AppleIDLoginButton
+        m_MethodName: SignInWithAppleButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

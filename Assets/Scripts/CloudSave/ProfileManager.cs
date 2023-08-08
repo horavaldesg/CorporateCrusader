@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -43,6 +44,13 @@ public class ProfileManager : MonoBehaviour
     [SerializeField] private GameObject logoutWarningBG;
 
     private void Awake() => Instance = this;
+
+    private void Start()
+    {
+        #if UNITY_IOS
+        linkAppleIDButton.interactable = true;
+        #endif
+    }
 
     public void UpdateTopBarUI()
     {
@@ -162,7 +170,11 @@ public class ProfileManager : MonoBehaviour
         //update and set profile name if given a new name
         if(name != ProfileInfo.profileName)
         {
-            try { ProfileInfo.profileName = await AuthenticationService.Instance.UpdatePlayerNameAsync(name); }
+            try
+            {
+                ProfileInfo.profileName = await AuthenticationService.Instance.UpdatePlayerNameAsync(name); 
+                SetName(ProfileInfo.profileName);
+            }
             catch (AuthenticationException ex)
             {
                 //compare error code to AuthenticationErrorCodes
@@ -181,6 +193,11 @@ public class ProfileManager : MonoBehaviour
             profileNameInputField.text = ProfileInfo.profileName;
             profileNameText.text = ProfileInfo.profileName;
         }
+    }
+
+    public void SetName(string playerName)
+    {
+        SaveManager.Instance.SaveSomeData("ProfileName", playerName);
     }
 
     private void ShowNameChangeError() => StartCoroutine(NameChangeError());
@@ -215,18 +232,17 @@ public class ProfileManager : MonoBehaviour
 #if UNITY_ANDROID
     public async void LinkGooglePlayButton()
     {
-        string authCode = AuthenticationManager.Instance.LoginWithGooglePlay();
-        await LinkWithGooglePlayAsync(authCode);
+      //  string authCode = AuthenticationManager.Instance.LoginWithGooglePlay();
+       // await LinkWithGooglePlayAsync(authCode);
     }
 #endif
 
-#if UNITY_IOS
-    public async void LinkAppleIDButton()
+//#if UNITY_IOS
+    public void LinkAppleIDButton()
     {
-        string idToken = AuthenticationManager.Instance.LoginWithAppleID();
-        await LinkWithAppleAsync(idToken);
+        AuthenticationManager.Instance.AsyncLogin();
     }
-#endif
+//#endif
 
     public void LogoutButton() => logoutWarningBG.SetActive(true);
 
@@ -270,13 +286,14 @@ public class ProfileManager : MonoBehaviour
     }
 #endif
 
-#if UNITY_IOS
-    private async Task LinkWithAppleAsync(string idToken)
+//#if UNITY_IOS
+    public async Task LinkWithAppleAsync(string idToken)
     {
         try
         {
             //link with Apple ID and disable link button afterwards
             await AuthenticationService.Instance.LinkWithAppleAsync(idToken);
+            AuthenticationManager.Instance.SetPlayerName(AuthenticationManager.Instance.AppleIDCredential);
             linkAppleIDButton.interactable = false;
         }
         catch (AuthenticationException ex) when (ex.ErrorCode == AuthenticationErrorCodes.AccountAlreadyLinked)
@@ -297,5 +314,5 @@ public class ProfileManager : MonoBehaviour
             Debug.LogException(ex);
         }
     }
-#endif
+//#endif
 }

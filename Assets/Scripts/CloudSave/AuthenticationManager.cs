@@ -1,4 +1,6 @@
+using System;
 using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.Services.Core;
@@ -13,45 +15,66 @@ using AppleAuth;
 using AppleAuth.Native;
 using AppleAuth.Interfaces;
 using AppleAuth.Enums;
+using AppleAuth.Extensions;
 
 public class AuthenticationManager : MonoBehaviour
 {
     public static AuthenticationManager Instance;
-
+    public static event Action UpdatePlayerName;
+    
     [SerializeField] private MainMenuManager mainMenuManager;
     [SerializeField] private bool deleteSessionToken = false;
+    private const string AppleUserIdKey = "AppleUserLogin";
 
     [Header("UI References")]
     [SerializeField] private Button googlePlayLoginButton;
     [SerializeField] private Button appleIDLoginButton;
     [SerializeField] private Button guestLoginButton;
 
-    private IAppleAuthManager appleAuthManager;
+    public IAppleAuthManager _appleAuthManager;
+    public string Token { get; private set; }
+    public string Error { get; private set; }
 
+    public void Initialize()
+    {
+        var deserializer = new PayloadDeserializer();
+        _appleAuthManager = new AppleAuthManager(deserializer);
+    }
+    
     private async void Awake()
     {
         Instance = this;
-
+#if UNITY_ANDROID
+        PlayGamesPlatform.Activate();
+#endif
         await UnityServices.InitializeAsync();
     }
 
     private void Start()
     {
-        //setup sign-in event
-        AuthenticationService.Instance.SignedIn += () => {
-            Debug.Log("Signed In Successfully...");
-            // Shows how to get a playerID
-            Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
-        };
+        #if UNITY_IOS
+        appleIDLoginButton.interactable = true;
 
+        #endif
+        #if UNITY_ANDROID
+        googlePlayLoginButton.interactable = true;
+        #endif
+        
         //dev option to delete session token
         if(deleteSessionToken) AuthenticationService.Instance.ClearSessionToken();
     }
-
+    
     private async void SignInCachedUserAsync()
     {
         //sign in cached user
-        try { await AuthenticationService.Instance.SignInAnonymouslyAsync(); }
+        try
+        {
+            #if UNITY_IOS
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            #elif UNITY_ANDROID
+            await SignInWithGooglePlayGamesAsync(Token);
+            #endif
+        }
         catch (AuthenticationException ex)
         {
             //compare error code to AuthenticationErrorCodes
@@ -69,8 +92,209 @@ public class AuthenticationManager : MonoBehaviour
     private void Update()
     {
         //update Apple authentication manager if possible
-        if(appleAuthManager != null) appleAuthManager.Update();
+        if(_appleAuthManager != null) _appleAuthManager.Update();
     }
+    
+#if UNITY_ANDROID
+    public void GooglePlayLoginButton()
+    {
+        googlePlayLoginButton.enabled = false;
+        LoginGooglePlayGames();
+    }
+    
+    public void LoginGooglePlayGames()
+    {
+        PlayGamesPlatform.Instance.Authenticate( (success) =>
+        {
+            if (success == SignInStatus.Success)
+            {
+                Debug.Log("Login with Google Play games successful.");
+
+                PlayGamesPlatform.Instance.RequestServerSideAccess(true,  code =>
+                {
+                    Debug.Log("Authorization code: " + code);
+                    Token = code;
+                    SignInWithGoogle(Token);
+// This token serves as an example to be used for SignInWithGooglePlayGames
+                });
+            }
+            else
+            {
+                Error = "Failed to retrieve Google play games authorization code";
+                Debug.Log("Login Unsuccessful");
+            }
+        });
+    }
+    
+    private async void SetGooglePlayerName(string playerName)
+    {
+        await SetPlayerNameGoogle(playerName);
+    }
+
+    private async void SignInWithGoogle(string code)
+    {
+        await SignInWithGooglePlayGamesAsync(code);
+    }
+    
+    private async Task SignInWithGooglePlayGamesAsync(string authCode)
+    {
+        try
+        {
+            await AuthenticationService.Instance.SignInWithGooglePlayGamesAsync(authCode);
+            var userName = PlayGamesPlatform.Instance.localUser.userName;
+            SetGooglePlayerName(userName);
+            mainMenuManager.LoginScreenToStageSelect();
+            Debug.Log("SignIn is successful.");
+        }
+        catch (AuthenticationException ex)
+        {
+            // Compare error code to AuthenticationErrorCodes
+            // Notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+        catch (RequestFailedException ex)
+        {
+            // Compare error code to CommonErrorCodes
+            // Notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+    }
+#endif
+    
+    public void SignInWithAppleButtonPressed()
+    {
+        // Initialize the Apple Auth Manager
+        if (_appleAuthManager == null)
+        {
+            Initialize();
+        }
+
+        // Set the login arguments
+        var loginArgs = new AppleAuthLoginArgs(LoginOptions.IncludeEmail | LoginOptions.IncludeFullName);
+
+        // Perform the login
+        _appleAuthManager?.LoginWithAppleId(
+            loginArgs,
+            credential =>
+            {
+                var appleIDCredential = credential as IAppleIDCredential;
+                if (appleIDCredential != null)
+                {
+                    var idToken = Encoding.UTF8.GetString(
+                        appleIDCredential.IdentityToken,
+                        0,
+                        appleIDCredential.IdentityToken.Length);
+                    Debug.Log("Sign-in with Apple successfully done. IDToken: " + idToken);
+                    Token = idToken;
+                    SignInWithApple(Token);
+                    mainMenuManager.LoginScreenToStageSelect();
+                }
+                else
+                {
+                    Debug.Log("Sign-in with Apple error. Message: appleIDCredential is null");
+                    Error = "Retrieving Apple Id Token failed.";
+                }
+            },
+            error =>
+            {
+                Debug.Log("Sign-in with Apple error. Message: " + error);
+                Error = "Retrieving Apple Id Token failed.";
+            }
+        );
+    }
+
+    public async void AsyncLogin()
+    {
+        // Initialize the Apple Auth Manager
+        if (_appleAuthManager == null)
+        {
+            Initialize();
+        }
+
+        // Set the login arguments
+        var loginArgs = new AppleAuthLoginArgs(LoginOptions.IncludeEmail | LoginOptions.IncludeFullName);
+
+        // Perform the login
+        _appleAuthManager?.LoginWithAppleId(
+            loginArgs, async credential =>
+            {
+                var appleIDCredential = credential as IAppleIDCredential;
+                if (appleIDCredential != null)
+                {
+                    var idToken = Encoding.UTF8.GetString(
+                        appleIDCredential.IdentityToken,
+                        0,
+                        appleIDCredential.IdentityToken.Length);
+                    Debug.Log("Sign-in with Apple successfully done. IDToken: " + idToken);
+                    Token = idToken;
+                    AppleIDCredential = appleIDCredential;
+                    await ProfileManager.Instance.LinkWithAppleAsync(Token);
+                }
+                else
+                {
+                    Debug.Log("Sign-in with Apple error. Message: appleIDCredential is null");
+                    Error = "Retrieving Apple Id Token failed.";
+                }
+            },
+            error =>
+            {
+                Debug.Log("Sign-in with Apple error. Message: " + error);
+                Error = "Retrieving Apple Id Token failed.";
+            }
+        );
+    }
+
+    public async void SetPlayerName(IAppleIDCredential playerName)
+    {
+        await SetPlayerNameAsync(playerName);
+    }
+    
+    public IAppleIDCredential AppleIDCredential
+    {
+        get;
+        private set;
+    }
+
+    private async void SignInWithApple(string idToken)
+    {
+        await SignInWithAppleAsync(idToken);
+    }
+    
+    private async Task SignInWithAppleAsync(string idToken)
+    {
+        try
+        {
+            await AuthenticationService.Instance.SignInWithAppleAsync(idToken);
+            await SetPlayerNameAsync(AppleIDCredential);
+            Debug.Log("SignIn is successful.");
+        }
+        catch (AuthenticationException ex)
+        {
+            // Compare error code to AuthenticationErrorCodes
+            // Notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+        catch (RequestFailedException ex)
+        {
+            // Compare error code to CommonErrorCodes
+            // Notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+    }
+    
+    private async Task SetPlayerNameAsync(IAppleIDCredential appleIDCredential)
+    {
+        var playerName = appleIDCredential.FullName.GivenName;
+        await AuthenticationService.Instance.UpdatePlayerNameAsync(playerName);
+        UpdatePlayerName?.Invoke();
+    }
+
+    private async Task SetPlayerNameGoogle(string userName)
+    {
+        await AuthenticationService.Instance.UpdatePlayerNameAsync(userName);
+        UpdatePlayerName?.Invoke();
+    }
+    
 
     public void SplashScreenButton()
     {
@@ -82,7 +306,7 @@ public class AuthenticationManager : MonoBehaviour
         }
         else
         {
-            InitializeLoginScreen(); //initialize login screen
+            //InitializeLoginScreen(); //initialize login screen
             mainMenuManager.SplashScreenToLoginScreen(); //go to login screen
         }
     }
@@ -112,6 +336,9 @@ public class AuthenticationManager : MonoBehaviour
         }
     }
 
+    #region OldShit
+
+/*
     private void InitializeLoginScreen()
     {
 #if UNITY_EDITOR
@@ -131,7 +358,7 @@ public class AuthenticationManager : MonoBehaviour
     {
         //initialize Apple authentication manager
         var deserializer = new PayloadDeserializer();
-        appleAuthManager = new AppleAuthManager(deserializer);
+        _appleAuthManager = new AppleAuthManager(deserializer);
     }
 
 
@@ -179,14 +406,14 @@ public class AuthenticationManager : MonoBehaviour
     public string LoginWithAppleID()
     {
         //initialize Apple authentication manager if necessary
-        if(appleAuthManager == null) InitializeAppleAuthManager();
+        if(_appleAuthManager == null) InitializeAppleAuthManager();
 
         //set the login arguments
         var loginArgs = new AppleAuthLoginArgs(LoginOptions.IncludeEmail | LoginOptions.IncludeFullName);
 
         //perform login
         string idToken = null;
-        appleAuthManager.LoginWithAppleId(
+        _appleAuthManager.LoginWithAppleId(
             loginArgs,
             credential => 
             {
@@ -263,4 +490,6 @@ public class AuthenticationManager : MonoBehaviour
             appleIDLoginButton.enabled = true;
         }
     }
+    */
+    #endregion
 }
