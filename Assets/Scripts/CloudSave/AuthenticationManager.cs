@@ -44,7 +44,9 @@ public class AuthenticationManager : MonoBehaviour
     private async void Awake()
     {
         Instance = this;
-
+#if UNITY_ANDROID
+        PlayGamesPlatform.Activate();
+#endif
         await UnityServices.InitializeAsync();
     }
 
@@ -54,14 +56,25 @@ public class AuthenticationManager : MonoBehaviour
         appleIDLoginButton.interactable = true;
 
         #endif
+        #if UNITY_ANDROID
+        googlePlayLoginButton.interactable = true;
+        #endif
+        
         //dev option to delete session token
         if(deleteSessionToken) AuthenticationService.Instance.ClearSessionToken();
     }
-
+    
     private async void SignInCachedUserAsync()
     {
         //sign in cached user
-        try { await AuthenticationService.Instance.SignInAnonymouslyAsync(); }
+        try
+        {
+            #if UNITY_IOS
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            #elif UNITY_ANDROID
+            await SignInWithGooglePlayGamesAsync(Token);
+            #endif
+        }
         catch (AuthenticationException ex)
         {
             //compare error code to AuthenticationErrorCodes
@@ -75,13 +88,78 @@ public class AuthenticationManager : MonoBehaviour
             Debug.LogException(ex);
         } 
     }
-   
+
     private void Update()
     {
         //update Apple authentication manager if possible
         if(_appleAuthManager != null) _appleAuthManager.Update();
     }
     
+#if UNITY_ANDROID
+    public void GooglePlayLoginButton()
+    {
+        googlePlayLoginButton.enabled = false;
+        LoginGooglePlayGames();
+    }
+    
+    public void LoginGooglePlayGames()
+    {
+        PlayGamesPlatform.Instance.Authenticate( (success) =>
+        {
+            if (success == SignInStatus.Success)
+            {
+                Debug.Log("Login with Google Play games successful.");
+
+                PlayGamesPlatform.Instance.RequestServerSideAccess(true,  code =>
+                {
+                    Debug.Log("Authorization code: " + code);
+                    Token = code;
+                    SignInWithGoogle(Token);
+// This token serves as an example to be used for SignInWithGooglePlayGames
+                });
+            }
+            else
+            {
+                Error = "Failed to retrieve Google play games authorization code";
+                Debug.Log("Login Unsuccessful");
+            }
+        });
+    }
+    
+    private async void SetGooglePlayerName(string playerName)
+    {
+        await SetPlayerNameGoogle(playerName);
+    }
+
+    private async void SignInWithGoogle(string code)
+    {
+        await SignInWithGooglePlayGamesAsync(code);
+    }
+    
+    private async Task SignInWithGooglePlayGamesAsync(string authCode)
+    {
+        try
+        {
+            await AuthenticationService.Instance.SignInWithGooglePlayGamesAsync(authCode);
+            var userName = PlayGamesPlatform.Instance.localUser.userName;
+            SetGooglePlayerName(userName);
+            mainMenuManager.LoginScreenToStageSelect();
+            Debug.Log("SignIn is successful.");
+        }
+        catch (AuthenticationException ex)
+        {
+            // Compare error code to AuthenticationErrorCodes
+            // Notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+        catch (RequestFailedException ex)
+        {
+            // Compare error code to CommonErrorCodes
+            // Notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+    }
+#endif
     
     public void SignInWithAppleButtonPressed()
     {
@@ -208,6 +286,12 @@ public class AuthenticationManager : MonoBehaviour
     {
         var playerName = appleIDCredential.FullName.GivenName;
         await AuthenticationService.Instance.UpdatePlayerNameAsync(playerName);
+        UpdatePlayerName?.Invoke();
+    }
+
+    private async Task SetPlayerNameGoogle(string userName)
+    {
+        await AuthenticationService.Instance.UpdatePlayerNameAsync(userName);
         UpdatePlayerName?.Invoke();
     }
     
