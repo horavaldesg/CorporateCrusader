@@ -71,6 +71,8 @@ public class AuthenticationManager : MonoBehaviour
         {
             #if UNITY_IOS
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            #elif UNITY_EDITOR
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
             #elif UNITY_ANDROID
             await SignInWithGooglePlayGamesAsync(Token);
             #endif

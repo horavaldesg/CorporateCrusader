@@ -82,7 +82,7 @@ public class HatCollectionManager : MonoBehaviour
         hatButtons_Portrait.GetChild(selection).TryGetComponent<HatCollectionButton>(out button);
         hatButtons_Landscape.GetChild(selection).TryGetComponent<HatCollectionButton>(out button);
         
-        //update upgrade info panels
+        //update hat info panels
         UpdateInfoPanel(hatInfoPanel_Portrait, button);
         UpdateInfoPanel(hatInfoPanel_Landscape, button);
     }
@@ -141,7 +141,7 @@ public class HatCollectionManager : MonoBehaviour
         button.HatTier++;
         UpdateButtonHatTier(selection, button.HatTier);
 
-        //update upgrade info panels
+        //update hat info panels
         UpdateInfoPanel(hatInfoPanel_Portrait, button);
         UpdateInfoPanel(hatInfoPanel_Landscape, button);
     }
@@ -162,15 +162,15 @@ public class HatCollectionManager : MonoBehaviour
         button.HatTier++;
         UpdateButtonHatTier(selection, button.HatTier);
 
-        //update upgrade info panels
+        //update hat info panels
         UpdateInfoPanel(hatInfoPanel_Portrait, button);
         UpdateInfoPanel(hatInfoPanel_Landscape, button);
     }
 
-    //Dev Option to reset player progress
+    //Dev Option to reset player progress for all 30 hats
     public void ResetAllHatTiers()
     {
-        //loop through all 30 hat buttons
+        //loop through 30 hat buttons
         for(int i = 0; i < 30; i++)
         {
             //update button with default hat tier of 1

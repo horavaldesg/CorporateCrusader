@@ -30,13 +30,15 @@ public class EnergyManager : MonoBehaviour
         ProfileManager.Instance.ChangeNumEnergy(energyToChange);
     }
 
-    private void LoadEnergy()
+    private async void LoadEnergy()
     {
         //check if need to give initial 30 energy
-        if(PlayerPrefs.GetInt("InitialEnergyGiven", -1) == -1)
+        int initialEnergyGiven = await SaveManager.Instance.LoadSomeInt("InitialEnergyGiven");
+        if(initialEnergyGiven == 0)
         {
             ProfileManager.Instance.ChangeNumEnergy(maxEnergy - ProfileManager.Instance.ProfileInfo.energy);
-            PlayerPrefs.SetInt("InitialEnergyGiven", 1);
+            SaveManager.Instance.SaveSomeData("InitialEnergyGiven", "1");
+            StartCoroutine(AttemptRecharge()); //start attempting to recharge
         }
         else
         {
