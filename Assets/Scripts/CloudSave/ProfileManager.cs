@@ -43,6 +43,9 @@ public class ProfileManager : MonoBehaviour
     [SerializeField] private GameObject profileScreenBG;
     [SerializeField] private GameObject logoutWarningBG;
 
+    public event Action OnEnergyChanged;
+    public event Action OnProfileXPChanged;
+
     private void Awake() => Instance = this;
 
     private void Start()
@@ -117,6 +120,7 @@ public class ProfileManager : MonoBehaviour
         ProfileInfo.profileXP = totalXP; //set new profile XP value
         SaveManager.Instance.SaveSomeData("ProfileXP", totalXP.ToString()); //save new profile XP value
         UpdateTopBarUI(); //update top bar UI
+        OnProfileXPChanged.Invoke(); //invoke event
     }
 
     public void ChangeNumEnergy(int amount)
@@ -124,7 +128,8 @@ public class ProfileManager : MonoBehaviour
         int energy = ProfileInfo.energy + amount; //get and change amount of energy
         ProfileInfo.energy = energy; //set new energy value
         SaveManager.Instance.SaveSomeData("Energy", energy.ToString());
-        energyText.text = energy + "/30";
+        energyText.text = energy + "/30"; //update top bar UI
+        OnEnergyChanged.Invoke(); //invoke event
     }
 
     public void ChangeNumGems(int amount)

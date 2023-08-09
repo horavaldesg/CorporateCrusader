@@ -25,7 +25,11 @@ public class HatCollectionManager : MonoBehaviour
 
     private void Start()
     { 
+        //subscribe to signed in event
         AuthenticationService.Instance.SignedIn += LoadHatTiers;
+
+        //if already signed in, load hat tiers
+        if(AuthenticationService.Instance.IsSignedIn) LoadHatTiers();
     }
 
     private async void LoadHatTiers()

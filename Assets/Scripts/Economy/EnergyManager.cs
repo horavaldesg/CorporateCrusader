@@ -19,7 +19,11 @@ public class EnergyManager : MonoBehaviour
 
     private void Start()
     { 
+        //subscribe to signed in event
         AuthenticationService.Instance.SignedIn += LoadEnergy;
+
+        //if already signed in, load energy
+        if(AuthenticationService.Instance.IsSignedIn) LoadEnergy();
     }
 
     public void ChangeEnergyDevButton(int amount)

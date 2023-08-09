@@ -13,6 +13,7 @@ public class HatSelectionManager : MonoBehaviour
     [SerializeField] private RectTransform hatSelectionOutline;
     [SerializeField] private RectTransform hatInfoPanel;
     [SerializeField] private Button startButton;
+    [SerializeField] private GameObject energyReqPanel;
     private Hat _chosenHats;
 
     private int currentHatSlot;
@@ -27,6 +28,7 @@ public class HatSelectionManager : MonoBehaviour
         selectedHats = new HatCollectionButton[6];
         foreach(Image i in selectedHatIcons) i.sprite = questionMarkIcon;
         startButton.interactable = false;
+        energyReqPanel.SetActive(false);
     }
 
     public void SelectedHatButton(int index)
@@ -95,7 +97,11 @@ public class HatSelectionManager : MonoBehaviour
             if(selectedHats[i] == null) break;
 
             //enable start button after checking last slot
-            if(i == selectedHats.Length - 1) startButton.interactable = true;
+            if(i == selectedHats.Length - 1)
+            {
+                startButton.interactable = true;
+                energyReqPanel.SetActive(true); //also enable energy req panel
+            }
         }
         
         _chosenHats.chosenHats.Add(currentHat.chosenHat);

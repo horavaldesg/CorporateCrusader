@@ -24,8 +24,12 @@ public class UpgradesManager : MonoBehaviour
     private int selection = 0;
 
     private void Start()
-    { 
+    {
+        //subscribe to signed in event
         AuthenticationService.Instance.SignedIn += LoadUpgrades;
+
+        //if already signed in, load upgrades
+        if(AuthenticationService.Instance.IsSignedIn) LoadUpgrades();
     }
 
     private async void LoadUpgrades()

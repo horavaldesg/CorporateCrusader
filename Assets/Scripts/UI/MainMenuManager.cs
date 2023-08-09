@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.Services.Authentication;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -37,6 +38,20 @@ public class MainMenuManager : MonoBehaviour
         _anim = GetComponent<Animator>();
 
         currentOrientation = Screen.orientation;
+
+        //check if already signed in and just returning to main menu from game scene, to skip splash screen and sign in
+        if(AuthenticationService.Instance.IsSignedIn)
+        {
+            //skip to stage select screen
+            _pastLoginScreen = true;
+            _anim.SetTrigger("AlreadySignedIn");
+            currentScreen = ScreenType.StageSelect;
+
+            //update screen selection buttons
+            UpdateScreenButtons();
+
+            Debug.Log("Already signed in as user: " + ProfileManager.Instance.ProfileInfo.profileName);
+        }
     }
 
     private void Update()
@@ -238,7 +253,16 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
-    public void LoadScene(string sceneName)
+    public void StartGameButton()
+    {
+        //use 5 energy to play
+        ProfileManager.Instance.ChangeNumEnergy(-5);
+
+        //load game scene
+        LoadScene("ProgrammingPlayground");
+    }
+
+    private void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }

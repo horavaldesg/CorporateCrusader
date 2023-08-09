@@ -13,6 +13,8 @@ public class StageSelectionManager : MonoBehaviour
     [SerializeField] private List<Sprite> stageBGSprites = new List<Sprite>();
     [SerializeField] private List<LevelLoader> stageLevelLoaders = new ();
 
+    [SerializeField] private int energyReqPerLevel = 5;
+
     [Header("UI References")]
     [SerializeField] private TMP_Text stageNameText;
     [SerializeField] private Image stageBGImage;
@@ -28,6 +30,10 @@ public class StageSelectionManager : MonoBehaviour
     private void Awake()
     {
         _inGameLevelLoader = Resources.Load<InGameLevelLoader>("InGameLevel");
+
+        //subscribe to energy changed and profile XP changed events
+        ProfileManager.Instance.OnEnergyChanged += UpdateStageSelectButton;
+        ProfileManager.Instance.OnProfileXPChanged += UpdateStageSelectButton;
     }
 
     private void Start()
@@ -86,11 +92,8 @@ public class StageSelectionManager : MonoBehaviour
         prevStageButton.interactable = currentStage != 0;
         nextStageButton.interactable = currentStage != stageNames.Count - 1;
 
-        int playerLevel = 5; //<-NOTE: reference global player level variable here in the future
-
-        //set locked status of stage (every 5 player levels unlocks a new stage)
-        stageLockedPanel.SetActive(playerLevel < currentStage * 5);
-        stageSelectButton.interactable = playerLevel >= currentStage * 5;
+        //update interactability of stage select button
+        UpdateStageSelectButton();
 
         //fade in stage name and background image
         while(a < 1)
@@ -108,5 +111,20 @@ public class StageSelectionManager : MonoBehaviour
         prevStageButton.enabled = true;
         nextStageButton.enabled = true;
         canSelectStage = true;
+    }
+
+    private void UpdateStageSelectButton()
+    {
+        //set locked status of stage (every 5 player levels unlocks a new stage)
+        int profileLevel = ProfileManager.Instance.ProfileInfo.profileLevel;
+        stageLockedPanel.SetActive(profileLevel < currentStage * 5);
+        stageSelectButton.interactable = profileLevel >= currentStage * 5;
+
+        //don't check energy if stage is locked
+        if(!stageSelectButton.interactable) return;
+
+        //check if enough energy to play stage and enable/disable button
+        int energy = ProfileManager.Instance.ProfileInfo.energy;
+        stageSelectButton.interactable = energy >= energyReqPerLevel;
     }
 }

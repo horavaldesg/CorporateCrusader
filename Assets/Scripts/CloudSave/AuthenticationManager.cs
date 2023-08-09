@@ -54,8 +54,8 @@ public class AuthenticationManager : MonoBehaviour
     {
         #if UNITY_IOS
         appleIDLoginButton.interactable = true;
-
         #endif
+
         #if UNITY_ANDROID
         googlePlayLoginButton.interactable = true;
         #endif
