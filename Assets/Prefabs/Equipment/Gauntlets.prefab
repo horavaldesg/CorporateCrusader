@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2613ef4f1aed1c04c924bd27f6569a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hat: 28
   equipmentName: Gauntlets
   equipmentDescription: Increased strength and damage
   equipmentSprite: {fileID: 21300000, guid: 61479ba8277455f459adff1dae1d80c2, type: 3}

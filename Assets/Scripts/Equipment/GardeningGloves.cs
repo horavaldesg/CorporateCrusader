@@ -30,7 +30,7 @@ public class GardeningGloves : Equipment
         PlayerController.Instance.IncreaseProjectileSpeed(bulletSpeedIncrease);
     }
 
-    public override void Level5()
+    protected override void Level5()
     {
         base.Level5();
         PlayerController.Instance.IncreaseProjectileSpeed(bulletSpeedIncrease);

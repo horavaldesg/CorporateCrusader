@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4846ab03957e64895ba4b894ce00b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hat: 13
   equipmentName: Binoculars
   equipmentDescription: 'Nearby enemies have less health
 

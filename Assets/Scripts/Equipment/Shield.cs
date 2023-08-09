@@ -31,7 +31,7 @@ public class Shield : Equipment
         PlayerController.Instance.Shield(enemyDamageReduction);
     }
 
-    public override void Level5()
+    protected override void Level5()
     {
         base.Level5();
         PlayerController.Instance.Shield(enemyDamageReduction);

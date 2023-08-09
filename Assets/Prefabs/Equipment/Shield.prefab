@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 941ac8be38bd77b48a5f2d75984ff387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hat: 27
   equipmentName: Shield
   equipmentDescription: Nearby enemies do less damage
   equipmentSprite: {fileID: 21300000, guid: ffd9c718b81be814e88c81c230856697, type: 3}

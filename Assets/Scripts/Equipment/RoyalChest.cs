@@ -31,7 +31,7 @@ public class RoyalChest : Equipment
         PlayerController.Instance.IncreaseCoinGain(coinMultiplier);
     }
 
-    public override void Level5()
+    protected override void Level5()
     {
         base.Level5();
         PlayerController.Instance.IncreaseCoinGain(coinMultiplier);

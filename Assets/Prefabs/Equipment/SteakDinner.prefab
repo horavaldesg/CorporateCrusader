@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e88396ee259bc4fafb43d2497da6de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hat: 1
   equipmentName: Steak Dinner
   equipmentDescription: Faster health regeneration
   equipmentSprite: {fileID: 21300000, guid: ee1ecc0bb01114643a9ba7393656e55a, type: 3}

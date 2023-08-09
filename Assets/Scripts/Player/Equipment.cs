@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Equipment : MonoBehaviour
 {
+    public Hat.ChosenHat hat;
     public string equipmentName;
     [TextArea(5,10)]public string equipmentDescription;
     public Sprite equipmentSprite;
@@ -37,6 +39,9 @@ public class Equipment : MonoBehaviour
             case 5:
                 Level5();
                 break;
+            case 6:
+                Evolve();
+                break;
         }
     }
 
@@ -55,8 +60,30 @@ public class Equipment : MonoBehaviour
     public virtual void Level4()
     {
     }
-    
-    public virtual void Level5()
+
+    protected virtual void Level5()
     {
+        if (HatMatches())
+        {
+            Evolve();
+        }
+    }
+    
+    protected virtual void Evolve()
+    {
+        level = 5;
+        if (!HatMatches()) return;
+        // Equipment Evolution
+    }
+
+    private bool HatMatches()
+    {
+        var matches = false;
+        foreach (var unused in PlayerController.Instance.ChosenHat().Where(currentHat => currentHat == hat))
+        {
+            matches = true;
+        }
+        
+        return matches;
     }
 }

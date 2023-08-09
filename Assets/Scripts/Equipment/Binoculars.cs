@@ -31,7 +31,7 @@ public class Binoculars :  Equipment
         PlayerController.Instance.Binoculars(enemyHealthReduction);
     }
 
-    public override void Level5()
+    protected override void Level5()
     {
         base.Level5();
         PlayerController.Instance.Binoculars(enemyHealthReduction);

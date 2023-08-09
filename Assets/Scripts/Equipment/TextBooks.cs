@@ -29,8 +29,8 @@ public class TextBooks : Equipment
       base.Level4();
       PlayerController.Instance.IncreaseXpGain(xpMultiplier);
    }
-   
-   public override void Level5()
+
+   protected override void Level5()
    {
       base.Level5();
       PlayerController.Instance.IncreaseXpGain(xpMultiplier);

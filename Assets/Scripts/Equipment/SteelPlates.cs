@@ -30,7 +30,7 @@ public class SteelPlates : Equipment
         PlayerController.Instance.IncreaseArmor(armorIncrease);
     }
 
-    public override void Level5()
+    protected override void Level5()
     {
         base.Level5();
         PlayerController.Instance.IncreaseArmor(armorIncrease);

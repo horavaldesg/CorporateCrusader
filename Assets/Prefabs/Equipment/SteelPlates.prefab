@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f77bd8bd8de3d644851f90cbaad32ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hat: 23
   equipmentName: Steel Plates
   equipmentDescription: Max Armor
   equipmentSprite: {fileID: 21300000, guid: edf59e84fd412b349ada14980fc310fc, type: 3}

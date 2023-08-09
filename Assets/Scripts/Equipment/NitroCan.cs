@@ -31,7 +31,7 @@ public class NitroCan : Equipment
         PlayerController.Instance.IncreaseAttackSpeed(attackDecrease);
     }
 
-    public override void Level5()
+    protected override void Level5()
     {
         base.Level5();
         PlayerController.Instance.IncreaseAttackSpeed(attackDecrease);

@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _dampSpeed;
     private Vector3 _currentVelocity;
     private SpriteRenderer gunRenderer;
-
+    private List<Hat.ChosenHat> _chosenHats = new ();
+    
     private PlayerStats _playerStats;
     private float _baseHealth;
     private float _health;
@@ -57,6 +58,8 @@ public class PlayerController : MonoBehaviour
     {
         Instance = this;
         _playerStats = Resources.Load<PlayerStats>("PlayerStats/PlayerStats");
+        TryGetComponent(out HatSelection hatSelection);
+        _chosenHats = hatSelection.chosenHats;
         TryGetComponent(out playerCollider);
         damage = _playerStats.damage;
         _baseHealth = _playerStats.health;
@@ -282,6 +285,11 @@ public class PlayerController : MonoBehaviour
     {
         get;
         set;
+    }
+
+    public List<Hat.ChosenHat> ChosenHat()
+    {
+        return _chosenHats;
     }
 
     private float EnemyHealthReduction

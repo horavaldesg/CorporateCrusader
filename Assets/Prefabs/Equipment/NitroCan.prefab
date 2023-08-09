@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78836fdac2391cb4390f3beb9ddb034f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hat: 25
   equipmentName: Nitro Can
   equipmentDescription: Increased attack rate
   equipmentSprite: {fileID: 21300000, guid: 8d6c7734104eb6049b10d861f5c6bf14, type: 3}

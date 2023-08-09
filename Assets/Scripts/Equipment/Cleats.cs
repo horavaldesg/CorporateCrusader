@@ -30,7 +30,7 @@ public class Cleats : Equipment
         PlayerController.Instance.UpgradeSpeed(speedMultiplier);
     }
 
-    public override void Level5()
+    protected override void Level5()
     {
         base.Level5();
         PlayerController.Instance.UpgradeSpeed(speedMultiplier);

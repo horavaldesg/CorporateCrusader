@@ -30,7 +30,7 @@ public class SteakDinner : Equipment
         PlayerController.Instance.IncreaseRegenTime(regenAmount);
     }
 
-    public override void Level5()
+    protected override void Level5()
     {
         base.Level5();
         PlayerController.Instance.IncreaseRegenTime(regenAmount);

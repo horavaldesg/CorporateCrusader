@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7fd1c522cfe9347962cb8d08561724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hat: 4
   equipmentName: Syringe
   equipmentDescription: Upgrade Health
   equipmentSprite: {fileID: 21300000, guid: 7eafa078ab60c254fa9d18f50833a1b9, type: 3}

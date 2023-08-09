@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bfbc715b418cbf4e8b1a630cafec334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hat: 17
   equipmentName: Royal Chest
   equipmentDescription: Increased gold gain
   equipmentSprite: {fileID: 21300000, guid: 4198fc6b237e98a44a2c5a12e9f715fd, type: 3}

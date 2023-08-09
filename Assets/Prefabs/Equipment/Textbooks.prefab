@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7208563f188004d87349233877ffaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hat: 10
   equipmentName: Textbooks
   equipmentDescription: Increased XP gain
   equipmentSprite: {fileID: 21300000, guid: 1d3d39ad6c9fc7747bcaf296d6708fc0, type: 3}

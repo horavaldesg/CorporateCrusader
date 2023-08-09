@@ -30,7 +30,7 @@ public class Gauntlets : Equipment
         PlayerController.Instance.IncreaseDamage(damageMultiplier);
     }
 
-    public override void Level5()
+    protected override void Level5()
     {
         base.Level5();
         PlayerController.Instance.IncreaseDamage(damageMultiplier);
