@@ -253,7 +253,7 @@ public class PlayerController : MonoBehaviour
 
     public void IncreaseArmor(float armor)
     {
-        //_baseArmor += armor;
+        _baseArmor += armor;
         RestoreArmor(_baseArmor);
     }
 
