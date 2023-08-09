@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private protected Transform barrelTransform;
     [SerializeField] private protected GameObject bullet;
     [SerializeField] private protected float damage;
-    [SerializeField] private protected float bulletForce;
+    [SerializeField] public float bulletForce;
 
     private protected EnemyDetector EnemyDetector;
     private protected PlayerController PlayerController;

@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentName: Fish Net
   equipmentDescription: Increased pickup range.
-  equipmentSprite: {fileID: 0}
+  equipmentSprite: {fileID: 21300000, guid: ea7707ac9b4d18245b6a5dec4577ac96, type: 3}
   level: 0
   range: 0.75

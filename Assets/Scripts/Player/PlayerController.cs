@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> xpToCollect = new List<GameObject>();
     public CapsuleCollider2D playerCollider;
     [HideInInspector] public List<Enemy> nearbyEnemies = new();
+    public float bulletSpeed;
 
     private void Awake()
     {
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
         coinMultiplier = _playerStats.coinMultiplier;
         _pickupRadius = _playerStats.pickupRadius;
         attackSpeed = _playerStats.attackSpeed;
+        bulletSpeed = _playerStats.bulletSpeed;
         TryGetComponent(out _rb);
         gunRotate.TryGetComponent(out gunRenderer);
         _controls = new PlayerControls();
@@ -251,7 +253,8 @@ public class PlayerController : MonoBehaviour
 
     public void IncreaseArmor(float armor)
     {
-        _baseArmor += armor;
+        //_baseArmor += armor;
+        RestoreArmor(_baseArmor);
     }
 
     public void IncreaseRegenTime(float regen)
@@ -321,5 +324,10 @@ public class PlayerController : MonoBehaviour
     public void IncreaseAttackSpeed(float attackIncrease)
     {
         attackSpeed -= attackIncrease;
+    }
+
+    public void IncreaseProjectileSpeed(float speedIncrease)
+    {
+        bulletSpeed += speedIncrease;
     }
 }

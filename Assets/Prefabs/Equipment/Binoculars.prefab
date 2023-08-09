@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentName: Binoculars
-  equipmentDescription: 
-  equipmentSprite: {fileID: 0}
+  equipmentDescription: 'Nearby enemies have less health
+
+'
+  equipmentSprite: {fileID: 21300000, guid: b2b416a2b445fe840a6343d22f4cff90, type: 3}
   level: 0
   enemyHealthReduction: 2

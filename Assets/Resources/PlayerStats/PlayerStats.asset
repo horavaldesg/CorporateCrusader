@@ -24,3 +24,4 @@ MonoBehaviour:
   pickupRadius: 1
   xpMultiplier: 1
   coinMultiplier: 0
+  bulletSpeed: 20

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentName: Royal Chest
-  equipmentDescription: 
-  equipmentSprite: {fileID: 0}
+  equipmentDescription: Increased gold gain
+  equipmentSprite: {fileID: 21300000, guid: 4198fc6b237e98a44a2c5a12e9f715fd, type: 3}
   level: 0
   coinMultiplier: 1

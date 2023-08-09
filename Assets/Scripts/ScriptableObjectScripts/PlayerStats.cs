@@ -17,4 +17,5 @@ public class PlayerStats : ScriptableObject
    public float pickupRadius;
    public float xpMultiplier;
    public int coinMultiplier;
+   public float bulletSpeed;
 }

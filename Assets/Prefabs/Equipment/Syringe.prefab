@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentName: Syringe
   equipmentDescription: Upgrade Health
-  equipmentSprite: {fileID: 21300000, guid: 7758fa887187a3f418aee07ded1b9e71, type: 3}
+  equipmentSprite: {fileID: 21300000, guid: 7eafa078ab60c254fa9d18f50833a1b9, type: 3}
   level: 0
   baseHealthUpgrade: 10

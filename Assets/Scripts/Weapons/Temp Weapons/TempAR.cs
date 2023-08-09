@@ -16,6 +16,7 @@ public class TempAR : Weapon
         
         bulletComp.Damage = PlayerController.Instance.damage;
         bulletComp.whereToShoot = barrelTransform;
+        bulletComp.speed = PlayerController.Instance.bulletSpeed;
         //bulletComp.rb.AddForce(barrelTransform.right.normalized * (bulletForce * Time.deltaTime * 1000));
         return base.Shoot();
     }
