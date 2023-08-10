@@ -133,7 +133,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 0.2.4
+  bundleVersion: 0.2.5
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
@@ -164,15 +164,15 @@ PlayerSettings:
     Android: com.LittleLoaf.CorporateCrusaders
     Lumin: com.DefaultCompany.com.unity.template.mobile2D
     Standalone: com.DefaultCompany.com.unity.template.mobile2D
-    iPhone: com.DefaultCompany.com.unity.template.mobile2D
+    iPhone: com.LittleLoaf.CorporateCrusaders
     tvOS: com.DefaultCompany.com.unity.template.mobile2D
   buildNumber:
     Bratwurst: 0
     Standalone: 0
-    iPhone: 0
+    iPhone: 20
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 19
+  AndroidBundleVersionCode: 20
   AndroidMinSdkVersion: 30
   AndroidTargetSdkVersion: 33
   AndroidPreferredInstallLocation: 1
