@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
         _pickupRadius = _playerStats.pickupRadius;
         attackSpeed = _playerStats.attackSpeed;
         bulletSpeed = _playerStats.bulletSpeed;
+        _hatCoolDown = _playerStats.hatCooldown;
         TryGetComponent(out _rb);
         gunRotate.TryGetComponent(out gunRenderer);
         _controls = new PlayerControls();
