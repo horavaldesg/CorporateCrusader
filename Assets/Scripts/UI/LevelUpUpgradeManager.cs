@@ -14,7 +14,9 @@ public class LevelUpUpgradeManager : MonoBehaviour
     private List<GameObject> _weaponsLists = new();
     private List<GameObject> _equipmentList = new();
     private Dictionary<string, int> equipmentAdded = new Dictionary<string, int>();
+    private Dictionary<string, int> weaponsAdded = new Dictionary<string, int>();
     [SerializeField] private List<int> chosenIndexes = new List<int>(3);
+    [SerializeField] private List<int> chosenIndexesEquipment = new List<int>(3);
     public static event Action<SelectedWeapon> UpgradePlayer;
     public static event Action UpgradeEnded;
 
@@ -24,24 +26,28 @@ public class LevelUpUpgradeManager : MonoBehaviour
         foreach (var weapon in _weaponsList.weaponList)
         {
             _weaponsLists.Add(weapon);
-        }
-
-        foreach (var weapon in _weaponsList.equipmentList)
-        {
-            _equipmentList.Add(weapon);
-            equipmentAdded.TryAdd(weapon.name, 0);
-            if (equipmentAdded[weapon.name] == 5)
+            weaponsAdded.TryAdd(weapon.name, 0);
+            if (weaponsAdded[weapon.name] == 5)
             {
                 _equipmentList.Remove(weapon);
             }
         }
 
-        for (var i = 0; i < 2; i++)
+        foreach (var equipment in _weaponsList.equipmentList)
         {
-            ChooseWeaponUpgrade();
+            _equipmentList.Add(equipment);
+            equipmentAdded.TryAdd(equipment.name, 0);
+            if (equipmentAdded[equipment.name] == 5)
+            {
+                _equipmentList.Remove(equipment);
+            }
         }
 
-        ChooseEquipmentUpgrade();
+        for (var i = 0; i < 3; i++)
+        {
+            var r = Random.Range(0, 11);
+            (r % 2 == 0 ? (Action)ChooseEquipmentUpgrade : ChooseWeaponUpgrade)();
+        }
 
         foreach (var button in _buttons)
         {
@@ -120,10 +126,9 @@ public class LevelUpUpgradeManager : MonoBehaviour
     private void ChooseEquipmentUpgrade()
     {
         if(_equipmentList.Count == 0) return;
-        var i = GetRandomNumber(_equipmentList);
-        SelectedEquipment = i;
+       // var i = GetRandomNumber(_equipmentList);
         
-        var upgrade = _equipmentList[i];
+        var upgrade = RandomListEquipment(_equipmentList);
         
         upgrade.TryGetComponent(out Equipment equipment);
         EquipmentLevel = equipmentAdded[equipment.name];
@@ -137,12 +142,7 @@ public class LevelUpUpgradeManager : MonoBehaviour
         levelUpLoader.isEquipment = true;
         levelUpLoader.LoadEquipmentUpgrade();
     }
-
-    private int SelectedEquipment
-    {
-        get;
-        set;
-    }
+    
     
     private int EquipmentLevel
     {
@@ -164,6 +164,22 @@ public class LevelUpUpgradeManager : MonoBehaviour
 
         chosenIndexes.Add(i);
         return _weaponsLists[i];
+    }
+
+    private GameObject RandomListEquipment(List<GameObject> list)
+    {
+        var i = GetRandomNumber(list);
+
+        foreach (var index in chosenIndexesEquipment)
+        {
+            while (i == index)
+            {
+                i = GetRandomNumber(list);
+            }
+        }
+
+        chosenIndexesEquipment.Add(i);
+        return _equipmentList[i];
     }
 
     private int GetRandomNumber(List<GameObject> list)

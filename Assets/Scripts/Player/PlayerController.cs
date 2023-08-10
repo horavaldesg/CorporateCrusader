@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _currentVelocity;
     private SpriteRenderer gunRenderer;
     private List<Hat.ChosenHat> _chosenHats = new ();
+    private float _hatCoolDown;
     
     private PlayerStats _playerStats;
     private float _baseHealth;
@@ -337,5 +338,10 @@ public class PlayerController : MonoBehaviour
     public void IncreaseProjectileSpeed(float speedIncrease)
     {
         bulletSpeed += speedIncrease;
+    }
+
+    public void AbilityCoolDown(float coolDown)
+    {
+        _hatCoolDown -= coolDown;
     }
 }
