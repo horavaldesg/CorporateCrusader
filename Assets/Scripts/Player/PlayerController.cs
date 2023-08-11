@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour
         attackSpeed = _playerStats.attackSpeed;
         bulletSpeed = _playerStats.bulletSpeed;
         _hatCoolDown = _playerStats.hatCooldown;
+        ProjectileSizeMultiplier = 1;
         TryGetComponent(out _rb);
         gunRotate.TryGetComponent(out _gunRenderer);
         
@@ -387,6 +388,17 @@ public class PlayerController : MonoBehaviour
     public void AbilityCoolDown(float coolDown)
     {
         _hatCoolDown -= coolDown;
+    }
+
+    public void IncreaseProjectileSize(float sizeIncrease)
+    {
+        ProjectileSizeMultiplier += sizeIncrease;
+    }
+
+    public float ProjectileSizeMultiplier
+    {
+        get;
+        set;
     }
     
     #endregion

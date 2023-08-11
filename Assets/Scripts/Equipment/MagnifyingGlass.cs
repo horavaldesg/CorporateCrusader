@@ -2,17 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagnifyingGlass : MonoBehaviour
+public class MagnifyingGlass : Equipment
 {
-    // Start is called before the first frame update
-    void Start()
+    public float sizeMultiplier;
+    
+    public override void Level1()
     {
-        
+        base.Level1();
+        PlayerController.Instance.IncreaseProjectileSize(sizeMultiplier);
+    }
+   
+    public override void Level2()
+    {
+        base.Level2();
+        PlayerController.Instance.IncreaseProjectileSize(sizeMultiplier);
+    }
+   
+    public override void Level3()
+    {
+        base.Level3();
+        PlayerController.Instance.IncreaseProjectileSize(sizeMultiplier);
+    }
+   
+    public override void Level4()
+    {
+        base.Level4();
+        PlayerController.Instance.IncreaseProjectileSize(sizeMultiplier);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Level5()
     {
-        
+        base.Level5();
+        PlayerController.Instance.IncreaseProjectileSize(sizeMultiplier);
     }
 }
