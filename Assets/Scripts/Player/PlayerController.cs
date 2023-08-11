@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
+    #region variables
+
     public static PlayerController Instance;
 
     public enum PlayerDirection
@@ -16,32 +18,55 @@ public class PlayerController : MonoBehaviour
         Stopped
     };
 
-    public PlayerDirection _playerDirection;
+    public PlayerDirection playerDirection;
 
-    [SerializeField] private float playerSpeed;
-    [SerializeField] private Transform gunRotate;
+    #region Player Transforms
+
+    //Player Transforms
     [SerializeField] private RectTransform healthBar;
     [SerializeField] private RectTransform armorBar;
-    [SerializeField] [Range(0, 1)] private float smoothMovement;
+    [SerializeField] private Transform gunRotate;
+    [SerializeField] private Transform bodyTransform;
+    
+    #endregion
+
+    #region Player Movement
+
+    //Player Movement
+    [SerializeField] private float playerSpeed;
     [SerializeField] private float gunRotationSpeed;
     [SerializeField] private float rotationThreshold;
-    [SerializeField] private Transform bodyTransform;
-    private PlayerControls _controls;
+    [SerializeField] [Range(0, 1)] private float smoothMovement;
+    
+    #endregion
+
+    #region Private Fields
+    
+    //Private Fields
     private Vector2 _move;
-    private Rigidbody2D _rb;
     private Vector3 _dampSpeed;
     private Vector3 _currentVelocity;
-    private SpriteRenderer gunRenderer;
-    private List<Hat.ChosenHat> _chosenHats = new ();
-    private float _hatCoolDown;
+   
+    #endregion
+
+    #region Player Components
+
+    //Player Components
+    private PlayerControls _controls;
+    private Rigidbody2D _rb;
+    private SpriteRenderer _gunRenderer;
+    public CapsuleCollider2D playerCollider;
+
+    #endregion
     
+    #region Player Stats
+
+    //Player Stats
     private PlayerStats _playerStats;
     private float _baseHealth;
     private float _health;
     private float _armor;
     private float _baseArmor;
-    private const string BulletTag = "Bullet";
-    private const string EnemyTag = "Enemy";
     public float healAmount;
     [HideInInspector] public float healTime;
     [HideInInspector] public float damage;
@@ -49,12 +74,28 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public float xPMultiplier;
     [HideInInspector] public float attackSpeed;
     [HideInInspector] public int coinMultiplier;
-    private const int XpMaxCollection = 150;
-    public List<GameObject> xpToCollect = new List<GameObject>();
-    public CapsuleCollider2D playerCollider;
-    [HideInInspector] public List<Enemy> nearbyEnemies = new();
     public float bulletSpeed;
+    private float _hatCoolDown;
+    private const int XpMaxCollection = 150;
+    
+    #endregion
 
+    #region Hat List
+    
+    //Hat List
+    private List<Hat.ChosenHat> _chosenHats = new();
+  
+    #endregion
+
+    #region Enemy Manager
+    
+    //Enemy Manager
+    [HideInInspector] public List<Enemy> nearbyEnemies = new();
+    
+    #endregion
+
+    #endregion
+    
     private void Awake()
     {
         Instance = this;
@@ -62,6 +103,7 @@ public class PlayerController : MonoBehaviour
         TryGetComponent(out HatSelection hatSelection);
         _chosenHats = hatSelection.chosenHats;
         TryGetComponent(out playerCollider);
+        //Player Stats
         damage = _playerStats.damage;
         _baseHealth = _playerStats.health;
         _health = _baseHealth;
@@ -74,13 +116,13 @@ public class PlayerController : MonoBehaviour
         bulletSpeed = _playerStats.bulletSpeed;
         _hatCoolDown = _playerStats.hatCooldown;
         TryGetComponent(out _rb);
-        gunRotate.TryGetComponent(out gunRenderer);
+        gunRotate.TryGetComponent(out _gunRenderer);
+        
+        //Player Input
         _controls = new PlayerControls();
         //Movement Player Input
         _controls.Player.Move.performed += tgb => { _move = tgb.ReadValue<Vector2>(); };
         _controls.Player.Move.canceled += tgb => { _move = Vector2.zero; };
-        //  _controls.Player.Space.performed += async tgb => await CloudSaveManager.Instance.SaveData();
-        // _controls.Player.Fire.performed +=  tgb => WeaponManager.Instance.ChooseWeapon(0);
     }
 
     private void Start()
@@ -109,6 +151,8 @@ public class PlayerController : MonoBehaviour
         RotateGun();
     }
 
+    #region Player Movement
+    
     private void Move()
     {
         //Worlds Space of player
@@ -125,11 +169,11 @@ public class PlayerController : MonoBehaviour
 
         //Moves Player
         _rb.velocity = _currentVelocity;
-        _playerDirection = _rb.velocity.normalized.x switch
+        playerDirection = _rb.velocity.normalized.x switch
         {
             > 0.1f => PlayerDirection.Right,
             < -0.1f => PlayerDirection.Left,
-            _ => _playerDirection
+            _ => playerDirection
         };
 
         if (_rb.velocity.magnitude is > -0.1f and < 0.1f) return;
@@ -140,12 +184,16 @@ public class PlayerController : MonoBehaviour
     private void RotateGun()
     {
         var moveDir = new Vector2(-_move.y, _move.x);
-        gunRenderer.flipY = moveDir.y < 0;
+        _gunRenderer.flipY = moveDir.y < 0;
         var rotation = Quaternion.LookRotation(Vector3.forward, moveDir);
         gunRotate.rotation = Quaternion.RotateTowards(gunRotate.transform.rotation, rotation,
             gunRotationSpeed * Time.deltaTime * 100);
     }
+    
+    #endregion
 
+    #region Player Transforms
+    
     public Transform GunTransform()
     {
         return gunRotate;
@@ -172,14 +220,11 @@ public class PlayerController : MonoBehaviour
         return _rb.velocity;
     }
 
-    private int XpCollected { get; set; }
+    #endregion
+    
+    #region Player Health Managers
 
-    public bool CanCollect()
-    {
-        return XpCollected <= XpMaxCollection;
-    }
-
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damageToTake)
     {
         //Takes Damage
         if (XpCollected >= XpMaxCollection)
@@ -187,9 +232,9 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ResetXpCollected());
         }
 
-        (HasArmor() ? (Action<float>)TakeArmorDamage : TakeBaseDamage)(damage);
+        (HasArmor() ? (Action<float>)TakeArmorDamage : TakeBaseDamage)(damageToTake);
     }
-
+    
     private void HealPlayer()
     {
         if (_health >= _baseHealth) return;
@@ -197,9 +242,9 @@ public class PlayerController : MonoBehaviour
         healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
     }
 
-    private void TakeArmorDamage(float damage)
+    private void TakeArmorDamage(float damageToTake)
     {
-        _armor -= damage;
+        _armor -= damageToTake;
         Debug.Log(_armor);
         armorBar.localScale = new Vector3(Mathf.Clamp(_armor / _baseArmor, 0, 1), 1, 1);
     }
@@ -216,9 +261,9 @@ public class PlayerController : MonoBehaviour
         armorBar.localScale = new Vector3(Mathf.Clamp(_armor / _baseArmor, 0, 1), 1, 1);
     }
 
-    private void TakeBaseDamage(float damage)
+    private void TakeBaseDamage(float damageToTake)
     {
-        _health -= damage;
+        _health -= damageToTake;
         healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
     }
 
@@ -226,14 +271,28 @@ public class PlayerController : MonoBehaviour
     {
         return _armor > 0;
     }
+    
+    #endregion
 
-
+    #region Player XP Managers
+    
     private IEnumerator ResetXpCollected()
     {
         yield return new WaitForSeconds(0.15f);
         XpCollected = 0;
     }
 
+    public bool CanCollect()
+    {
+        return XpCollected <= XpMaxCollection;
+    }
+    
+    private int XpCollected { get; set; }
+    
+    #endregion
+
+    #region Player Upgrades
+    
     public void UpgradeBaseHealth(float newBaseHealth)
     {
         _baseHealth += newBaseHealth;
@@ -277,55 +336,39 @@ public class PlayerController : MonoBehaviour
         damage += damageMulti;
     }
 
-    public bool HasShield
-    {
-        get;
-        set;
-    }
-    
-    public bool HaseBinoculars
-    {
-        get;
-        set;
-    }
+    public bool HasShield { get; set; }
+
+    public bool HaseBinoculars { get; set; }
 
     public List<Hat.ChosenHat> ChosenHat()
     {
         return _chosenHats;
     }
 
-    private float EnemyHealthReduction
-    {
-        get;
-        set;
-    }
-    
-     private float EnemyDamageReduction
-    {
-        get;
-        set;
-    }
-    
+    private float EnemyHealthReduction { get; set; }
+
+    private float EnemyDamageReduction { get; set; }
+
     public void Shield(float damageReduction)
     {
         //Affects Nearby enemy damage
-        if(!HasShield) return;
+        if (!HasShield) return;
         EnemyDamageReduction = damageReduction;
     }
 
     public void Binoculars(float healthReduction)
     {
-        if(!HaseBinoculars) return;
+        if (!HaseBinoculars) return;
         EnemyHealthReduction = healthReduction;
     }
 
-    public float NewEnemyHealth(Enemy enemy)
+    public float NewEnemyHealth([NotNull] Enemy enemy)
     {
         var newHealth = enemy.health - EnemyHealthReduction;
         return newHealth;
     }
 
-    public float NewEnemyDamage(Enemy enemy)
+    public float NewEnemyDamage([NotNull] Enemy enemy)
     {
         var newDamage = enemy._damage - EnemyDamageReduction;
         return newDamage;
@@ -345,4 +388,6 @@ public class PlayerController : MonoBehaviour
     {
         _hatCoolDown -= coolDown;
     }
+    
+    #endregion
 }
