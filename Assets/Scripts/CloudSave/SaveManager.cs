@@ -40,8 +40,16 @@ public class SaveManager : MonoBehaviour
 
     public async Task<string> LoadSomeString(string key)
     {
-        Dictionary<string, string> savedData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string>{key});
-        return savedData[key];
+        try
+        {
+            Dictionary<string, string> savedData = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string>{key});
+            return savedData[key];
+        }
+        catch(KeyNotFoundException ex)
+        {
+            //Debug.LogException(ex);
+            return null;
+        }
     }
 
     public async Task<int> LoadSomeInt(string key)
