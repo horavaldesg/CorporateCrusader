@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
     public static event Action<int> LevelIncreased;
     public static event Action ChangePhase;
     public static event Action LevelChanged;
+    public static event Action<EnemyContainer> EnemiesLoaded;
     private float _timeAlive;
     public List<GameObject> enemiesSpawnedList = new();
     private InGameLevelLoader _levelLoader;
     public SpriteRenderer levelBackground;
-    public EnemySpawner enemySpawner;
+    
     public bool ToggleLevelUpScreen;
     
     public int TotalXp
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         TotalXp = 250;
         _levelLoader = Resources.Load<InGameLevelLoader>("InGameLevel");
+        EnemiesLoaded?.Invoke(_levelLoader.levelLoader.enemiesThatSpawn);
     }
 
     private void Start()

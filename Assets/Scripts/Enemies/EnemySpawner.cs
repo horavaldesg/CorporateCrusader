@@ -16,13 +16,12 @@ public class EnemySpawner : MonoBehaviour
    
    //Separate this by enemy type/zone/level
    private EnemyContainer _enemyContainer;
-   private ZoneManager _zoneManager;
    
    private int _phaseIndex;
    private int _enemiesSpawned;
    private bool _enemiesSpawning;
    private float _t;
-
+   private bool _enemiesLoaded;
    private bool BossPhase
    {
       get;
@@ -32,34 +31,28 @@ public class EnemySpawner : MonoBehaviour
    private void Awake()
    {
       Instance = this;
-      _zoneManager = Resources.Load<ZoneManager>("EnemyContainer/ChosenZone");
-      _enemyContainer = _zoneManager.chosenZone switch
-      {
-         ZoneManager.ChosenZone.AlleyZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/AlleyZoneEnemies"),
-         ZoneManager.ChosenZone.BeachZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/BeachZoneEnemies"),
-         ZoneManager.ChosenZone.ClinicZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/ClinicZoneEnemies"),
-         ZoneManager.ChosenZone.FarmZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/FarmZoneEnemies"),
-         ZoneManager.ChosenZone.ForestZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/ForestZoneEnemies"),
-         ZoneManager.ChosenZone.MouseZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/MouseZoneEnemies"),
-         ZoneManager.ChosenZone.WarehouseZone => Resources.Load<EnemyContainer>(
-            "EnemyContainer/Zones/WarehouseZoneEnemies"),
-         ZoneManager.ChosenZone.YardZone => Resources.Load<EnemyContainer>("EnemyContainer/Zones/YardZoneEnemies"),
-         _ => throw new ArgumentOutOfRangeException()
-      };
    }
 
    private void OnEnable()
    {
-      GameManager.ChangePhase += BossFight;
+      //GameManager.ChangePhase += BossFight;
       Boss.OnBossKilled += ChangePhase;
+      GameManager.EnemiesLoaded += StartSpawning;
    }
 
    private void OnDisable()
    {
-      GameManager.ChangePhase -= BossFight;
+      //GameManager.ChangePhase -= BossFight;
       Boss.OnBossKilled -= ChangePhase;
+      GameManager.EnemiesLoaded -= StartSpawning;
    }
 
+   private void StartSpawning(EnemyContainer enemyContainer)
+   {
+      _enemyContainer = enemyContainer;
+      _enemiesLoaded = true;
+   }
+   
    private void Start()
    {
       _phaseIndex = 1;
@@ -67,6 +60,7 @@ public class EnemySpawner : MonoBehaviour
 
    private void Update()
    {
+      if(!_enemiesLoaded) return;
       if (BossPhase) return;
       LinearSpawn();
    }
