@@ -1224,7 +1224,6 @@ GameObject:
   - component: {fileID: 6506909403746161673}
   - component: {fileID: 9102167538981460178}
   - component: {fileID: 5436084856487869753}
-  - component: {fileID: 3775620939198806379}
   m_Layer: 5
   m_Name: PlayerInput
   m_TagString: Untagged
@@ -1291,21 +1290,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3775620939198806379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994893094129727118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConformX: 1
-  ConformY: 1
-  Logging: 0
 --- !u!1 &1030041543995668629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1299,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4349652299367750716}
-  - component: {fileID: 8159829646176618452}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -1348,21 +1331,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8159829646176618452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030041543995668629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConformX: 1
-  ConformY: 1
-  Logging: 0
 --- !u!1 &1219367144060044457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,6 +2340,7 @@ MonoBehaviour:
   levelUpButton: {fileID: 5666926050170141842, guid: c0132179df39efc46859266f2e198312, type: 3}
   levelUpButtonParent: {fileID: 8107495749280892361}
   chosenIndexes: 
+  chosenIndexesEquipment: 
 --- !u!1 &2527908683472468550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2676,6 +2645,7 @@ GameObject:
   - component: {fileID: 4760168167043169563}
   - component: {fileID: 7917450503711090996}
   - component: {fileID: 8261173412419688511}
+  - component: {fileID: 5908250872660049086}
   m_Layer: 5
   m_Name: Main_canvas
   m_TagString: Untagged
@@ -2831,6 +2801,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5908250872660049086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451906790093342556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Panel:
+  - {fileID: 4349652299367750716}
+  - {fileID: 6506909403746161673}
+  - {fileID: 2851783577495717876}
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!1 &3516677476625470655
 GameObject:
   m_ObjectHideFlags: 0
@@ -3862,7 +3851,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2851783577495717876}
-  - component: {fileID: 9049142245331149342}
   m_Layer: 5
   m_Name: BlackBars
   m_TagString: Untagged
@@ -3894,21 +3882,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &9049142245331149342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4282518489536506616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConformX: 1
-  ConformY: 1
-  Logging: 0
 --- !u!1 &4284476258535678581
 GameObject:
   m_ObjectHideFlags: 0
