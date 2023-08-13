@@ -17,18 +17,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private Image xpBarFill;
     [SerializeField] private TMP_Text coinsText;
+    [SerializeField] private GameObject levelUpScreen;
     
     [Header("Inventory References")]
     [SerializeField] private Transform invRow1;
     [SerializeField] private Transform invRow2;
     [SerializeField] private List<Transform> last3InvItems;
 
-    [SerializeField] private GameObject levelUpScreen;
     private PlayerControls _controls;
     private Animator _anim;
     private bool _canAddLevel;
     private bool _inventoryOpen = false;
-    private ScreenOrientation orientation;
+    private ScreenOrientation currentOrientation;
     
     private void Awake()
     {
@@ -50,7 +50,6 @@ public class UIManager : MonoBehaviour
         GameManager.XpAdded += UpdateXpBar;
         GameManager.LevelChanged += ToggleLevelUpScreen;
         LevelUpUpgradeManager.UpgradeEnded += ToggleLevelUpScreen;
-        OrientationManager.orientationChangedEvent += ScreenOrientationChanged;
     }
 
     private void OnDisable()
@@ -63,7 +62,6 @@ public class UIManager : MonoBehaviour
         GameManager.LevelIncreased -= LevelUpdated;
         GameManager.LevelChanged -= ToggleLevelUpScreen;
         LevelUpUpgradeManager.UpgradeEnded -= ToggleLevelUpScreen;
-        OrientationManager.orientationChangedEvent -= ScreenOrientationChanged;
     }
 
     private void Start()
@@ -73,7 +71,20 @@ public class UIManager : MonoBehaviour
         UpdateCoins(0);
         LevelUpdated(GameManager.Instance.CurrentLevel = 1);
 
-        orientation = GetComponent<OrientationManager>().orientation;
+        currentOrientation = Screen.orientation;
+    }
+
+    private void Update()
+    {
+        //check if screen orientation changed
+        if(currentOrientation != Screen.orientation)
+        {
+            //update screen orientation
+            currentOrientation = Screen.orientation;
+
+            //update screen selection buttons
+            if(_inventoryOpen) UpdateInventoryRows(currentOrientation);
+        }
     }
 
     private void UpdateKills(int enemiesKilled)
@@ -100,12 +111,6 @@ public class UIManager : MonoBehaviour
     private void LevelUpdated(int level)
     {
         levelText.SetText(level == 0 ? "Level 0" : "Level "  + level);
-    }
-
-    private void ScreenOrientationChanged(ScreenOrientation orientation)
-    {
-        this.orientation = orientation;
-        if(_inventoryOpen) UpdateInventoryRows(orientation);
     }
 
     private void UpdateInventoryRows(ScreenOrientation orientation)
@@ -155,7 +160,7 @@ public class UIManager : MonoBehaviour
     {
         //update inventory open bool and fix rows if inventory opened
         _inventoryOpen = !_inventoryOpen;
-        if(_inventoryOpen) UpdateInventoryRows(orientation);
+        if(_inventoryOpen) UpdateInventoryRows(currentOrientation);
         StopTime();
         _anim.SetTrigger("ToggleInventory");
     }

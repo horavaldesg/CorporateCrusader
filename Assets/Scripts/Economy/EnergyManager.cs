@@ -199,8 +199,10 @@ public class EnergyManager : MonoBehaviour
         SaveManager.Instance.SaveSomeData("GemsForEnergyChancesLeft", "3");
     }
 
-    public void AdForEnergyButton(int amount)
+    public async void AdForEnergyButton(int amount)
     {
+        int adsChancesLeft = await SaveManager.Instance.LoadSomeInt("AdForEnergyChancesLeft") - 1; //get previous chances left and decrement by 1
+        SaveManager.Instance.SaveSomeData("AdForEnergyChancesLeft", adsChancesLeft.ToString()); //save chances left
         ProfileManager.Instance.ChangeNumEnergy(amount);
     }
 
