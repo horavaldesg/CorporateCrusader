@@ -21,7 +21,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
 #endif
 
         // Disable the button until the ad is ready to show:
-        _showAdButton.interactable = false;
+        //_showAdButton.interactable = false;
     }
  
     // Call this public method when you want to get an ad ready to show.
@@ -30,6 +30,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
         Debug.Log("Loading Ad: " + _adUnitId);
         Advertisement.Load(_adUnitId, this);
+        
     }
  
     // If the ad successfully loads, add a listener to the button and enable it:
@@ -40,9 +41,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         if (adUnitId.Equals(_adUnitId))
         {
             // Configure the button to call the ShowAd() method when clicked:
-            _showAdButton.onClick.AddListener(ShowAd);
+           // _showAdButton.onClick.AddListener(ShowAd);
+            ShowAd();
             // Enable the button for users to click:
-            _showAdButton.interactable = true;
+          //  _showAdButton.interactable = true;
         }
     }
  
@@ -62,6 +64,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         {
             Debug.Log("Unity Ads Rewarded Ad Completed");
             // Grant a reward.
+            EnergyManager.Instance.AdForEnergyButton(5);
         }
     }
  

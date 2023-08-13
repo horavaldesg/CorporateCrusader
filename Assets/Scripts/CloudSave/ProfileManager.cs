@@ -125,7 +125,7 @@ public class ProfileManager : MonoBehaviour
 
     public void ChangeNumEnergy(int amount)
     {
-        int energy = ProfileInfo.energy + amount; //get and change amount of energy
+        int energy = Mathf.Clamp(ProfileInfo.energy + amount, 0, 30); //get and change amount of energy
         ProfileInfo.energy = energy; //set new energy value
         SaveManager.Instance.SaveSomeData("Energy", energy.ToString());
         energyText.text = energy + "/30"; //update top bar UI

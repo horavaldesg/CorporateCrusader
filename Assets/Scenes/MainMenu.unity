@@ -1780,7 +1780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 572ea36c1c86ccc41b039dd772555ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showAdButton: {fileID: 0}
+  _showAdButton: {fileID: 72173996}
   _androidAdUnitId: Rewarded_Android
   _iOSAdUnitId: Rewarded_iOS
 --- !u!4 &42416324
@@ -3146,7 +3146,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 72173997}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 42416323}
+        m_TargetAssemblyTypeName: AdsManager, Assembly-CSharp
+        m_MethodName: LoadEnergyRewardAd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &72173997
 MonoBehaviour:
   m_ObjectHideFlags: 0

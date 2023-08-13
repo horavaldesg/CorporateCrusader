@@ -9,6 +9,8 @@ using Unity.Services.Authentication;
 
 public class EnergyManager : MonoBehaviour
 {
+    public static EnergyManager Instance;
+    
     [SerializeField] private int maxEnergy = 30;
     [SerializeField] private int energyEarnedPerTimespan = 5;
     [SerializeField] private float secondsToEarnEnergy = 300;
@@ -28,6 +30,11 @@ public class EnergyManager : MonoBehaviour
     [Header("Dev Info")]
     [SerializeField] private float rechargeTime = 0f;
     [SerializeField] private DateTime lastCheckDateTime;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     { 
@@ -192,9 +199,9 @@ public class EnergyManager : MonoBehaviour
         SaveManager.Instance.SaveSomeData("GemsForEnergyChancesLeft", "3");
     }
 
-    public void AdForEnergyButton()
+    public void AdForEnergyButton(int amount)
     {
-        
+        ProfileManager.Instance.ChangeNumEnergy(amount);
     }
 
     public async void CoinsForEnergyButton()
