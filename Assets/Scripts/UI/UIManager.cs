@@ -23,12 +23,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform invRow1;
     [SerializeField] private Transform invRow2;
     [SerializeField] private List<Transform> last3InvItems;
+    [SerializeField] private InventoryItem[] inventoryItems = new InventoryItem[6];
 
     private PlayerControls _controls;
     private Animator _anim;
     private bool _canAddLevel;
     private bool _inventoryOpen = false;
     private ScreenOrientation currentOrientation;
+
+    private enum InventoryDisplay { Weapons, Equipment, Hats };
+
+    private InventoryDisplay inventoryDisplay;
     
     private void Awake()
     {
@@ -72,6 +77,7 @@ public class UIManager : MonoBehaviour
         LevelUpdated(GameManager.Instance.CurrentLevel = 1);
 
         currentOrientation = Screen.orientation;
+        inventoryDisplay = InventoryDisplay.Weapons;
     }
 
     private void Update()
@@ -139,6 +145,51 @@ public class UIManager : MonoBehaviour
 
     }
 
+    private void UpdateInventoryDisplay()
+    {
+        switch(inventoryDisplay)
+        {
+            case InventoryDisplay.Weapons:
+                //loop through inventory items (6 inventory panels)
+                for(int i = 0; i < inventoryItems.Length; i++)
+                {
+                    SelectedWeapon weapon = null;
+
+                    //NOTE: GET CURRENT SELECTED WEAPON AT INDEX i
+                    //IF NO WEAPON AT INDEX i, LEAVE WEAPON = NULL
+
+                    //if no weapon, hide display, otherwise set weapon display
+                    if(weapon == null) inventoryItems[i].HideDisplay();
+                    else inventoryItems[i].SetWeaponDisplay(weapon);
+                }
+                break;
+            case InventoryDisplay.Equipment:
+                //loop through inventory items (6 inventory panels)
+                for(int i = 0; i < inventoryItems.Length; i++)
+                {
+                    Equipment equipment = null;
+
+                    //NOTE: GET CURRENT SELECTED EQUIPMENT AT INDEX i
+                    //IF NO EQUIPMENT AT INDEX i, LEAVE EQUIPMENT = NULL
+
+                    //if no equipment, hide display, otherwise set equipment display
+                    if(equipment == null) inventoryItems[i].HideDisplay();
+                    else inventoryItems[i].SetEquipmentDisplay(equipment);
+                }
+                break;
+            case InventoryDisplay.Hats:
+                //loop through inventory items (6 inventory panels)
+                for(int i = 0; i < inventoryItems.Length; i++)
+                {
+                    //NOTE: GET CURRENT SELECTED HAT AT INDEX i
+
+                    //set hat display
+                    inventoryItems[i].SetHatDisplay();
+                }
+                break;
+        }
+    }
+
     public void ToggleOptions()
     { 
         _anim.SetTrigger("ToggleOptions");
@@ -158,11 +209,47 @@ public class UIManager : MonoBehaviour
     
     public void ToggleInventory()
     {
-        //update inventory open bool and fix rows if inventory opened
+        //update inventory open bool
         _inventoryOpen = !_inventoryOpen;
-        if(_inventoryOpen) UpdateInventoryRows(currentOrientation);
+
+        //fix rows and update displayed items if inventory opened
+        if(_inventoryOpen)
+        {
+            UpdateInventoryRows(currentOrientation);
+            UpdateInventoryDisplay();
+        }
         StopTime();
         _anim.SetTrigger("ToggleInventory");
+    }
+
+    public void WeaponsDisplayButton()
+    {
+        //first check if already displaying this
+        if(inventoryDisplay == InventoryDisplay.Weapons) return;
+
+        //set and update current inventory display
+        inventoryDisplay = InventoryDisplay.Weapons;
+        UpdateInventoryDisplay();
+    }
+
+    public void EquipmentDisplayButton()
+    {
+        //first check if already displaying this
+        if(inventoryDisplay == InventoryDisplay.Equipment) return;
+
+        //set and update current inventory display
+        inventoryDisplay = InventoryDisplay.Equipment;
+        UpdateInventoryDisplay();
+    }
+
+    public void HatsDisplayButton()
+    {
+        //first check if already displaying this
+        if(inventoryDisplay == InventoryDisplay.Hats) return;
+
+        //set and update current inventory display
+        inventoryDisplay = InventoryDisplay.Hats;
+        UpdateInventoryDisplay();
     }
 
     public void Restart()
