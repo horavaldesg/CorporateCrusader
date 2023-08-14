@@ -12,8 +12,9 @@ public class WeaponManager : MonoBehaviour
     private WeaponsList _weaponsList;
     [SerializeField] private List<Transform> weaponPositions = new ();
     [SerializeField] public List<SelectedWeapon> weaponsAdded = new ();
-    [SerializeField] private List<Equipment> equipmentAdded = new ();
-    [SerializeField] private List<GameObject> localWeapons = new ();
+    [SerializeField] public List<Equipment> equipmentAdded = new ();
+    [SerializeField] public List<GameObject> localWeapons = new ();
+    [SerializeField] public List<GameObject> localEquipment = new ();
 
     private void Awake()
     {
@@ -41,6 +42,16 @@ public class WeaponManager : MonoBehaviour
         //weapon.transform.position = new Vector3(chosenPos.x, chosenPos.y, 1);
     }
 
+    public bool MaxWeaponLimitReached()
+    {
+        return weaponsAdded.Count == 6;
+    }
+
+    public bool MaxEquipmentLimitReached()
+    {
+        return equipmentAdded.Count == 6;
+    }
+
     private void UpgradeWeapon(SelectedWeapon selectedWeapon)
     {
         //Upgrade Sequence
@@ -59,7 +70,7 @@ public class WeaponManager : MonoBehaviour
     {
         return Random.Range(0, i);
     }
-
+    
     private void LoadWeaponUpgrade(SelectedWeapon selectedWeapon)
     {
         foreach (var weapon in _weaponsList.weaponList)
@@ -72,7 +83,7 @@ public class WeaponManager : MonoBehaviour
             }
             else
             {
-                if(weaponsAdded.Count == 6) return; 
+                if(MaxWeaponLimitReached()) return; 
                 ChooseWeapon(weapon);
                 weaponsAdded.Add(selectedWeapon);
             }
@@ -88,6 +99,14 @@ public class WeaponManager : MonoBehaviour
     {
         if(equipmentAdded.Contains(equipment)) return;
         equipmentAdded.Add(equipment);
+        foreach (var localEquipment in _weaponsList.equipmentList)
+        {
+            localEquipment.TryGetComponent(out Equipment equipmentComp);
+            if (equipmentComp.equipmentName == equipment.equipmentName)
+            {
+                this.localEquipment.Add(localEquipment);
+            }
+        }
     }
 
     public int LevelOfLocalWeapon(SelectedWeapon selectedWeapon)

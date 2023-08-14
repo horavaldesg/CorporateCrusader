@@ -151,7 +151,6 @@ public class UIManager : MonoBehaviour
         {
             case InventoryDisplay.Weapons:
                 //loop through inventory items (6 inventory panels)
-                var canShow = true;
                 for (var i = 0; i < WeaponManager.Instance.weaponsAdded.Count; i++)
                 {
                     inventoryItems[i].SetWeaponDisplay(WeaponManager.Instance.weaponsAdded[i]);
@@ -164,21 +163,28 @@ public class UIManager : MonoBehaviour
                     // if(!canShow) inventoryItems[i].HideDisplay();
                 }
 
+                for (var i = WeaponManager.Instance.weaponsAdded.Count + 1; i < inventoryItems.Length; i++)
+                {
+                    inventoryItems[i].HideDisplay();
+                }
+
                 break;
             case InventoryDisplay.Equipment:
                 //loop through inventory items (6 inventory panels)
-                for(int i = 0; i < inventoryItems.Length; i++)
+                for (var i = 0; i < WeaponManager.Instance.equipmentAdded.Count; i++)
                 {
-                    Equipment equipment = null;
-
+                    inventoryItems[i].SetEquipmentDisplay(WeaponManager.Instance.equipmentAdded[i]);
+                }
+                for (var i = WeaponManager.Instance.equipmentAdded.Count + 1; i < inventoryItems.Length; i++)
+                {
+                    inventoryItems[i].HideDisplay();
+                }
+               
                     //NOTE: GET CURRENT SELECTED EQUIPMENT AT INDEX i
                     //IF NO EQUIPMENT AT INDEX i, LEAVE EQUIPMENT = NULL
 
                     //if no equipment, hide display, otherwise set equipment display
-                    if(equipment == null) inventoryItems[i].HideDisplay();
-                    else inventoryItems[i].SetEquipmentDisplay(equipment);
-                    
-                }
+                  
                 break;
             case InventoryDisplay.Hats:
                 //loop through inventory items (6 inventory panels)

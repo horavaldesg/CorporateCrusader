@@ -194,7 +194,7 @@ MonoBehaviour:
   weaponSprite: {fileID: 21300000, guid: 2bc4ccd16a7483c47bc5cd4759fecd6b, type: 3}
   attribute: 0
   damage: 4
-  level: 1
+  level: 0
   coolDown: 0
   instantiatedObject: {fileID: 0}
   rotateSpeed: 2

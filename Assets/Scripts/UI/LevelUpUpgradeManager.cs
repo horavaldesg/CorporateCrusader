@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -23,25 +24,13 @@ public class LevelUpUpgradeManager : MonoBehaviour
     private void OnEnable()
     {
         _weaponsList = Resources.Load<WeaponsList>("Weapons/WeaponsList");
-        foreach (var weapon in _weaponsList.weaponList)
-        {
-            _weaponsLists.Add(weapon);
-            weaponsAdded.TryAdd(weapon.name, 0);
-            if (weaponsAdded[weapon.name] == 5)
-            {
-                _equipmentList.Remove(weapon);
-            }
-        }
+        LoadWeaponList(WeaponManager.Instance.MaxWeaponLimitReached()
+            ? WeaponManager.Instance.localWeapons
+            : _weaponsList.weaponList);
 
-        foreach (var equipment in _weaponsList.equipmentList)
-        {
-            _equipmentList.Add(equipment);
-            equipmentAdded.TryAdd(equipment.name, 0);
-            if (equipmentAdded[equipment.name] == 5)
-            {
-                _equipmentList.Remove(equipment);
-            }
-        }
+        LoadEquipmentList(WeaponManager.Instance.MaxEquipmentLimitReached()
+            ? WeaponManager.Instance.localEquipment
+            : _weaponsList.equipmentList);
 
         for (var i = 0; i < 3; i++)
         {
@@ -64,6 +53,33 @@ public class LevelUpUpgradeManager : MonoBehaviour
         }
     }
 
+    private void LoadWeaponList([NotNull] List<GameObject> weaponList)
+    {
+        foreach (var weapon in weaponList)
+        {
+            _weaponsLists.Add(weapon);
+            weaponsAdded.TryAdd(weapon.name, 0);
+            if (weaponsAdded[weapon.name] == 5)
+            {
+                _equipmentList.Remove(weapon);
+            }
+        }
+    }
+
+    private void LoadEquipmentList([NotNull] List<GameObject> equipmentList)
+    {
+        foreach (var equipment in equipmentList)
+        {
+            _equipmentList.Add(equipment);
+            equipmentAdded.TryAdd(equipment.name, 0);
+            if (equipmentAdded[equipment.name] == 5)
+            {
+                _equipmentList.Remove(equipment);
+            }
+        }
+    }
+    
+    
     private void OnDisable()
     {
         var buttonListCopy = new Button[3];
@@ -103,7 +119,7 @@ public class LevelUpUpgradeManager : MonoBehaviour
         EquipmentLevel = Mathf.Clamp(level, 0, 5);
         equipmentAdded[equipment.name] = EquipmentLevel;
         equipment.AffectPlayer(EquipmentLevel);
-       
+        WeaponManager.Instance.AddEquipment(equipment);
         UpgradeEnded?.Invoke();
     }
 
