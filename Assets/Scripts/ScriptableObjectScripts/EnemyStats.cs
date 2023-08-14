@@ -23,4 +23,6 @@ public class EnemyStats : ScriptableObject
     public float attackTime;
     public int xpToDrop;
     public int coinsToDrop;
+    public float attackRange;
+    public float attackCooldown;
 }

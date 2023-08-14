@@ -25,17 +25,17 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public float baseSpeed;
     [HideInInspector] public bool takingDamage;
     
-    [SerializeField] private float attackRange;
-    [SerializeField] private float attackCooldown;
+    private float _attackRange;
+    private float _attackCooldown;
     
-    [SerializeField] private GameObject xpObject;
-    [SerializeField] private GameObject coinDrop;
+    private GameObject _xpObject;
+    private GameObject _coinDrop;
 
     [SerializeField] private bool isBoss;
     private int _xpToAdd;
     private int _coinsToAdd;
     
-    public Rigidbody2D _rb;
+    [HideInInspector] public Rigidbody2D _rb;
     private Collider2D _collider;
     private float _attackTime;
     private readonly List<Transform> _nearbyEnemies = new List<Transform>();
@@ -68,11 +68,13 @@ public class Enemy : MonoBehaviour
         _baseHealth = health;
         _damage = _enemyStats.damage;
         _attackTime = _enemyStats.attackTime;
+        _attackRange = _enemyStats.attackRange;
+        _attackCooldown = _enemyStats.attackCooldown;
         _xpToAdd = _enemyStats.xpToDrop;
         _xpToAdd = Random.Range(_xpToAdd, _xpToAdd + 5);
         _coinsToAdd = _enemyStats.coinsToDrop;
-        coinDrop = _enemyStats.coinObject;
-        xpObject = _enemyStats.xpObject;
+        _coinDrop = _enemyStats.coinObject;
+        _xpObject = _enemyStats.xpObject;
     }
 
     private void Start()
@@ -179,7 +181,7 @@ public class Enemy : MonoBehaviour
         {
             var randomPos = RandomCirclePos();
             randomPos += transform.position;
-            var go = Instantiate(xpObject, randomPos, Quaternion.identity);
+            var go = Instantiate(_xpObject, randomPos, Quaternion.identity);
             go.transform.position = randomPos;
             go.TryGetComponent(out XpCollider xpCollider);
             xpCollider.xpToAdd = _xpToAdd;
@@ -194,7 +196,7 @@ public class Enemy : MonoBehaviour
 
     private void DropCoins()
     {
-        var go = Instantiate(coinDrop);
+        var go = Instantiate(_coinDrop);
         var randomPos = RandomCirclePos();
         randomPos += transform.position;
         go.transform.position = randomPos;
