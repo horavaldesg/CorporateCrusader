@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public int coinMultiplier;
     public float bulletSpeed;
     private float _hatCoolDown;
-    private const int XpMaxCollection = 150;
+    private const int XpMaxCollection = 350;
     
     #endregion
 

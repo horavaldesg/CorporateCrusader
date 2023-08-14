@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99ecbae696f90b409896885be76a7fc, type: 3}
   m_Name: Robovac
   m_EditorClassIdentifier: 
+  xpObject: {fileID: 1039156588135131732, guid: b76e62c8302ceef428fb7deed61f1527, type: 3}
+  coinObject: {fileID: 6546047790249129761, guid: 3ab6091aba7d5ff448b748c3382928ea, type: 3}
   weakness: 0
   health: 200
   damage: 10
   speed: 1
   attackTime: 2
+  xpToDrop: 5
+  coinsToDrop: 1

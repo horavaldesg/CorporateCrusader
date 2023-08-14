@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour
         _damage = _enemyStats.damage;
         _attackTime = _enemyStats.attackTime;
         _xpToAdd = _enemyStats.xpToDrop;
+        _xpToAdd = Random.Range(_xpToAdd, _xpToAdd + 5);
         _coinsToAdd = _enemyStats.coinsToDrop;
         coinDrop = _enemyStats.coinObject;
         xpObject = _enemyStats.xpObject;
