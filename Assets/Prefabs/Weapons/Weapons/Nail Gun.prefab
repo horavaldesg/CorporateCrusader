@@ -47,7 +47,7 @@ MonoBehaviour:
   weaponName: Nail Gun
   weaponDescription: A projectile weapon that fires a spray of nails in an arc in
     the direction the player is aiming.
-  weaponSprite: {fileID: 0}
+  weaponSprite: {fileID: 21300000, guid: 18f6f3f04e695ea49b63b5a9af58a854, type: 3}
   attribute: 0
   damage: 10
   level: 0

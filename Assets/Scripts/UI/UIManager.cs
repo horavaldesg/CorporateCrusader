@@ -163,7 +163,7 @@ public class UIManager : MonoBehaviour
                     // if(!canShow) inventoryItems[i].HideDisplay();
                 }
 
-                for (var i = WeaponManager.Instance.weaponsAdded.Count + 1; i < inventoryItems.Length; i++)
+                for (var i = WeaponManager.Instance.weaponsAdded.Count; i < inventoryItems.Length; i++)
                 {
                     inventoryItems[i].HideDisplay();
                 }
@@ -175,7 +175,7 @@ public class UIManager : MonoBehaviour
                 {
                     inventoryItems[i].SetEquipmentDisplay(WeaponManager.Instance.equipmentAdded[i]);
                 }
-                for (var i = WeaponManager.Instance.equipmentAdded.Count + 1; i < inventoryItems.Length; i++)
+                for (var i = WeaponManager.Instance.equipmentAdded.Count; i < inventoryItems.Length; i++)
                 {
                     inventoryItems[i].HideDisplay();
                 }
