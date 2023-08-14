@@ -11,7 +11,7 @@ public class WeaponManager : MonoBehaviour
     public static WeaponManager Instance;
     private WeaponsList _weaponsList;
     [SerializeField] private List<Transform> weaponPositions = new ();
-    [SerializeField] private List<SelectedWeapon> weaponsAdded = new ();
+    [SerializeField] public List<SelectedWeapon> weaponsAdded = new ();
     [SerializeField] private List<Equipment> equipmentAdded = new ();
     [SerializeField] private List<GameObject> localWeapons = new ();
 

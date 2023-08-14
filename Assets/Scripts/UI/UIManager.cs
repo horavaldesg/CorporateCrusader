@@ -151,17 +151,19 @@ public class UIManager : MonoBehaviour
         {
             case InventoryDisplay.Weapons:
                 //loop through inventory items (6 inventory panels)
-                for(int i = 0; i < inventoryItems.Length; i++)
+                var canShow = true;
+                for (var i = 0; i < WeaponManager.Instance.weaponsAdded.Count; i++)
                 {
-                    SelectedWeapon weapon = null;
-
+                    inventoryItems[i].SetWeaponDisplay(WeaponManager.Instance.weaponsAdded[i]);
+                   
+                   
                     //NOTE: GET CURRENT SELECTED WEAPON AT INDEX i
                     //IF NO WEAPON AT INDEX i, LEAVE WEAPON = NULL
 
                     //if no weapon, hide display, otherwise set weapon display
-                    if(weapon == null) inventoryItems[i].HideDisplay();
-                    else inventoryItems[i].SetWeaponDisplay(weapon);
+                    // if(!canShow) inventoryItems[i].HideDisplay();
                 }
+
                 break;
             case InventoryDisplay.Equipment:
                 //loop through inventory items (6 inventory panels)
@@ -175,6 +177,7 @@ public class UIManager : MonoBehaviour
                     //if no equipment, hide display, otherwise set equipment display
                     if(equipment == null) inventoryItems[i].HideDisplay();
                     else inventoryItems[i].SetEquipmentDisplay(equipment);
+                    
                 }
                 break;
             case InventoryDisplay.Hats:

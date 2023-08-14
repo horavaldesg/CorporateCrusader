@@ -30,7 +30,7 @@ public class InventoryItem : MonoBehaviour
             Image levelIcon = itemLevelPanel.GetChild(i).GetComponent<Image>();
 
             //set level icon color based on weapon level 
-            if(i + 1 <= weapon.level) levelIcon.color = weaponColor;
+            if(i + 1 <= WeaponManager.Instance.LevelOfLocalWeapon(weapon)) levelIcon.color = weaponColor;
             else levelIcon.color = Color.black;
         }
 
