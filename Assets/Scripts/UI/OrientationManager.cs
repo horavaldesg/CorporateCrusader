@@ -39,7 +39,7 @@ public class OrientationManager : MonoBehaviour
             orientation = Screen.orientation;
             OnOrientationChange?.Invoke(orientation);
             ToggleRefresh(false);
-            //OnOrientationChanged(orientation);
+            OnOrientationChanged(orientation);
         }
     }
 
