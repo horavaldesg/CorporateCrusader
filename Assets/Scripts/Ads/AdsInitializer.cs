@@ -18,7 +18,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     private void InitializeAds()
     {
 #if UNITY_IOS
-            _gameId = _iOSGameId;
+            _gameId = IOSGameId;
 #elif UNITY_ANDROID
         _gameId = AndroidGameId;
 #elif UNITY_EDITOR
