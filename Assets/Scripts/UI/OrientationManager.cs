@@ -19,6 +19,7 @@ public class OrientationManager : MonoBehaviour
         ToggleRefresh(true);
         Screen.autorotateToPortraitUpsideDown = false;
         orientation = Screen.orientation;
+        OnOrientationChange?.Invoke(orientation);
         InvokeRepeating("CheckForChange", 1, 1);
     }
 
