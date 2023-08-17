@@ -47,11 +47,11 @@ public class GameManager : MonoBehaviour
         Instance = this;
         TotalXp = 250;
         _levelLoader = Resources.Load<InGameLevelLoader>("InGameLevel");
-        EnemiesLoaded?.Invoke(_levelLoader.levelLoader.enemiesThatSpawn);
     }
 
     private void Start()
     {
+        EnemiesLoaded?.Invoke(_levelLoader.levelLoader.enemiesThatSpawn);
         levelBackground.sprite = _levelLoader.levelLoader.levelBackground;
         levelBackground.size = new Vector2(1000, 1000);
     }

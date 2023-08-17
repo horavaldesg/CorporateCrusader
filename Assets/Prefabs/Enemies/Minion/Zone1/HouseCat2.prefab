@@ -656,7 +656,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6012309829729335894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.695, y: 4.993, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -744,10 +744,11 @@ MonoBehaviour:
   _damage: 0
   healthBar: {fileID: 115545796209674933}
   amountOfXpToDrop: 5
-  attackRange: 0
-  attackCooldown: 0
-  xpObject: {fileID: 1039156588135131732, guid: b76e62c8302ceef428fb7deed61f1527, type: 3}
-  playerDist: {fileID: 0}
+  speed: 0
+  baseSpeed: 0
+  takingDamage: 0
+  isBoss: 0
+  _rb: {fileID: 0}
 --- !u!1 &6052580552375136078
 GameObject:
   m_ObjectHideFlags: 0
