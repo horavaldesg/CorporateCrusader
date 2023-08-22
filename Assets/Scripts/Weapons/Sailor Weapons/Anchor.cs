@@ -21,7 +21,8 @@ public class Anchor : SelectedWeapon
         go.TryGetComponent(out Rigidbody2D rb);
         go.TryGetComponent(out AnchorThrowable anchorThrowable);
         anchorThrowable.damage = damage;
-        rb.AddForce(go.transform.right * (throwForce * 100));
+        Vector3 forceAngle = new Vector3(transform.position.x + Random.Range(-0.7f, 0.7f), transform.position.y + 1, transform.position.z) - transform.position;
+        rb.AddForce(forceAngle * (throwForce * 100));
     }
 
     private void FixedUpdate()
@@ -32,6 +33,6 @@ public class Anchor : SelectedWeapon
 
     private Vector3 GetRandomRotation()
     {
-        return new Vector3(0, 0, Random.Range(45, 100));
+        return new Vector3(0, 0, Random.Range(-100, 100));
     }
 }

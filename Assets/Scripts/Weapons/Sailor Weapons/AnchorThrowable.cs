@@ -23,6 +23,5 @@ public class AnchorThrowable : MonoBehaviour
         if(!other.CompareTag("Enemy"))return;
         other.TryGetComponent(out Enemy enemy);
         enemy.TakeDamage(damage);
-        Destroy(gameObject);
     }
 }

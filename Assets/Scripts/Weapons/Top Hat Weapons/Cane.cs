@@ -10,13 +10,13 @@ public class Cane : SelectedWeapon
     
     protected override void Start()
     {
-        transform.localScale = new Vector3(length, 1, 1);
+        transform.localScale = new Vector3(length, length, length);
     }
 
     public void UpdateLength(float lengthMultiplier)
     {
         length += lengthMultiplier;
-        transform.localScale = new Vector3(length, 1, 1);
+        transform.localScale = new Vector3(length, length, length);
     }
 
     private void FixedUpdate()
