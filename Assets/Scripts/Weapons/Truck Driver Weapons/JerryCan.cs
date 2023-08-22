@@ -23,7 +23,8 @@ public class JerryCan : SelectedWeapon
         go.TryGetComponent(out Rigidbody2D rb);
         go.TryGetComponent(out JerryCanThrowable jerryCanThrowable);
         jerryCanThrowable.Damage = damage;
-        rb.AddForce(go.transform.right * (throwForce * 100));
+        Vector3 forceAngle = new Vector3(transform.position.x + Random.Range(-1f, 1f), transform.position.y + 1, transform.position.z) - transform.position;
+        rb.AddForce(forceAngle * (throwForce * 100));
     }
 
     private void FixedUpdate()
@@ -34,6 +35,6 @@ public class JerryCan : SelectedWeapon
 
     private Vector3 GetRandomRotation()
     {
-        return new Vector3(0, 0, Random.Range(0, 180));
+        return new Vector3(0, 0, Random.Range(-120, 120));
     }
 }

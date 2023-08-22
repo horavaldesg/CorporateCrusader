@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56623e88155f7304da4b3f2adc547424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sR: {fileID: 4861611264769243355}
+  oilPuddleSprite: {fileID: 21300000, guid: 2893f33bf508035439b4ba0bc5db8c20, type: 3}
 --- !u!58 &2154484030989304937
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -6,6 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class JerryCanThrowable : MonoBehaviour
 {
+   [SerializeField] private SpriteRenderer sR;
+   [SerializeField] private Sprite oilPuddleSprite;
+
    private Rigidbody2D _rigidbody2D;
 
    public float Damage
@@ -23,13 +26,24 @@ public class JerryCanThrowable : MonoBehaviour
    {
       yield return new WaitForSeconds(0.5f);
       _rigidbody2D.gravityScale = 0;
+      _rigidbody2D.velocity = Vector2.zero;
+      sR.sprite = oilPuddleSprite;
+
+      //fade out oil puddle
+      float a = 1;
+      while(a > 0)
+      {
+         a -= Time.deltaTime / 10; //oil puddle stays on ground for 10 seconds
+         sR.color = new Color(sR.color.r, sR.color.g, sR.color.b, a);
+         yield return null;
+      }
+      Destroy(gameObject);
    }
    
-   private void OnTriggerEnter2D(Collider2D other)
+   private void OnTriggerStay2D(Collider2D other)
    {
       if(!other.CompareTag("Enemy"))return;
       other.TryGetComponent(out Enemy enemy);
       enemy.TakeDamage(Damage);
-      Destroy(gameObject);
    }
 }
