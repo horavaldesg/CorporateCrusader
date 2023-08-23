@@ -6,7 +6,10 @@ using UnityEngine;
 public class Pitchfork : SelectedWeapon
 {
     public float knockBack = 35;
+    public float range = 1.5f;
+
     private Collider2D _collider2D;
+    private bool isStabbing = false;
 
     protected override void Start()
     {
@@ -18,11 +21,11 @@ public class Pitchfork : SelectedWeapon
 
     private void FixedUpdate()
     {
-        var position = PlayerController.Instance.CurrentPlayerTransform().position;
-        var gunRotation = PlayerController.Instance.GunRotation();
+        if(isStabbing) return;
 
-        // transform.position = position;
-        transform.rotation = gunRotation;
+        //rotate pitchfork in direction player is facing
+        var gunRotation = PlayerController.Instance.GunRotation();
+        transform.rotation = Quaternion.Euler(0, 0, gunRotation.eulerAngles.z);
     }
 
     protected override void Activate()
@@ -33,17 +36,47 @@ public class Pitchfork : SelectedWeapon
 
     private void Stab()
     {
-        StartCoroutine(ReturnStab());
+        StartCoroutine(StabAnimation());
     }
 
-    private IEnumerator ReturnStab()
+    private IEnumerator StabAnimation()
     {
-        var newPos = transform;
-        ToggleCollider(true);
-        transform.localPosition = newPos.right * 2;
-        yield return new WaitForSeconds(1);
+        float t = 0;
+        float xPos = 0;
         ToggleCollider(false);
-        transform.localPosition = Vector3.zero;
+        isStabbing = true;
+
+        while(t < coolDown)
+        {
+            t += Time.deltaTime; //increment time
+
+            if(t < coolDown / 9)
+            {
+                //pull back the pitchfork before stabbing
+                xPos = Mathf.Lerp(0, -0.5f, t / (coolDown/ 9));
+            }
+            else if(t < coolDown / 9 * 2)
+            {
+                //stab pitchfork
+                xPos = Mathf.Lerp(-0.5f, range, (t - (coolDown / 9)) / (coolDown / 9));
+                ToggleCollider(true);
+            }
+            else if(t < coolDown / 9 * 4)
+            {
+                //retract pitchfork
+                xPos = Mathf.Lerp(range, 0, (t - (2 * (coolDown / 9))) / (2 * (coolDown / 9)));
+            }
+            else
+            {
+                //allow pitchfork to rotate
+                ToggleCollider(false);
+                isStabbing = false;
+            }
+
+            var newPos = transform;
+            transform.localPosition = newPos.right * xPos;
+            yield return null;
+        }
     }
 
     private void ToggleCollider(bool state)
