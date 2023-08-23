@@ -8,7 +8,9 @@ using Random = UnityEngine.Random;
 public class Minigun : SelectedWeapon
 {
     [SerializeField] private float bulletSpread;
-
+    [SerializeField] private Transform turretPos;
+    [SerializeField] private Transform turretShootPos;
+    
     public float shootCoolDown;
 
     private void Awake()
@@ -20,9 +22,9 @@ public class Minigun : SelectedWeapon
     // Change to place and then cooldown and then place again
     private void Update()
     {
-        var rotation = transform.eulerAngles;
+        var rotation = turretPos.transform.eulerAngles;
         rotation.z += Time.deltaTime * -90;
-        transform.localEulerAngles = rotation;
+        turretPos.transform.localEulerAngles = rotation;
     }
 
     private void Place()
@@ -57,7 +59,7 @@ public class Minigun : SelectedWeapon
         var go = Instantiate(instantiatedObject);
         go.TryGetComponent(out Bullet bullet);
         bullet.Damage = damage;
-        go.transform.position = transform.position;
+        go.transform.position = turretShootPos.transform.position;
         go.transform.eulerAngles = RandomRotation();
         yield return new WaitForSeconds(shootCoolDown);
         Shoot();
@@ -65,6 +67,6 @@ public class Minigun : SelectedWeapon
 
     private Vector3 RandomRotation()
     {
-        return new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - Random.Range(-bulletSpread, bulletSpread));
+        return new Vector3(turretPos.transform.eulerAngles.x, turretPos.transform.eulerAngles.y, turretPos.transform.eulerAngles.z - Random.Range(-bulletSpread, bulletSpread));
     }
 }

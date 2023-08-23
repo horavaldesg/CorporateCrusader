@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountOfEnemiesPerWave: 48
   timeToSpawn: 3
+  clusterSpawn: 5
   bossBoundary: {fileID: 0}
-  enemiesSpawnedList: []

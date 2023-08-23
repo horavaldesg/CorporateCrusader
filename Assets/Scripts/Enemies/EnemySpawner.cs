@@ -11,7 +11,8 @@ public class EnemySpawner : MonoBehaviour
    public static EnemySpawner Instance;
    [SerializeField] private int amountOfEnemiesPerWave;
    [SerializeField] private float timeToSpawn;
-
+   [SerializeField] private int clusterSpawn;
+   
    [SerializeField] private GameObject bossBoundary;
    
    //Separate this by enemy type/zone/level
@@ -123,10 +124,14 @@ public class EnemySpawner : MonoBehaviour
 
    private void Spawn()
    {
-      _t = 0;
-      var go = Instantiate(GetRandomEnemy());
-      go.transform.position = GetRadius();
-      GameManager.Instance.enemiesSpawnedList.Add(go);
+      for(var i = 0; i < clusterSpawn; i++)
+      {
+         _t = 0;
+         var go = Instantiate(GetRandomEnemy());
+         go.transform.position = GetRadius();
+         GameManager.Instance.enemiesSpawnedList.Add(go);
+      }
+      
       _enemiesSpawned++;
    }
 
@@ -152,7 +157,7 @@ public class EnemySpawner : MonoBehaviour
    {
       var playerTransform = PlayerController.Instance.CurrentPlayerTransform();
       var playerPos = PlayerController.Instance.CurrentPlayerTransform().position;
-      var radius = 7f;
+      var radius = 10f;
       var randomPos = Random.insideUnitSphere * radius;
       randomPos += playerPos;
       randomPos.y = 0f;

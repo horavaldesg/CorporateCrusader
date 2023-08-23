@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1909035409222721922
 MonoBehaviour:
@@ -50,7 +50,7 @@ MonoBehaviour:
     leave behind an oil spill that slows and damages enemies that touch it.
   weaponSprite: {fileID: 21300000, guid: 5904feacfcd86b4438e8bc8342bb6fb9, type: 3}
   attribute: 0
-  damage: 5
+  damage: 1
   level: 0
   coolDown: 2
   instantiatedObject: {fileID: 8380295068482268458, guid: f7bc55127669fe54999e24a05a501f01, type: 3}

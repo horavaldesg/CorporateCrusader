@@ -44,6 +44,14 @@ public class JerryCanThrowable : MonoBehaviour
    {
       if(!other.CompareTag("Enemy"))return;
       other.TryGetComponent(out Enemy enemy);
+      enemy.speed = Damage;
       enemy.TakeDamage(Damage);
+   }
+
+   private void OnTriggerExit2D(Collider2D other)
+   {
+      if(!other.CompareTag("Enemy"))return;
+      other.TryGetComponent(out Enemy enemy);
+      enemy.SlowDownEnemy();
    }
 }
