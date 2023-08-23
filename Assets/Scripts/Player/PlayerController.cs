@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
     {
         //Move Function
         Move();
-        if (!HasArmor()) HealPlayer();
+        if (!HasArmor()) HealthCheck();
         if (_move.magnitude is > -0.1f and < 0.1f) return;
         RotateGun();
     }
@@ -236,9 +236,13 @@ public class PlayerController : MonoBehaviour
         (HasArmor() ? (Action<float>)TakeArmorDamage : TakeBaseDamage)(damageToTake);
     }
     
+    private void HealthCheck()
+    {
+        (PlayerIsAlive() ? (Action)HealPlayer : PlayerDied)();
+    }
+
     private void HealPlayer()
     {
-        if (_health >= _baseHealth) return;
         _health += healAmount * Time.deltaTime;
         healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
     }
@@ -271,6 +275,16 @@ public class PlayerController : MonoBehaviour
     private bool HasArmor()
     {
         return _armor > 0;
+    }
+
+    private bool PlayerIsAlive()
+    {
+        return _health >= _baseHealth;
+    }
+
+    private void PlayerDied()
+    {
+        // Die Condition
     }
     
     #endregion
