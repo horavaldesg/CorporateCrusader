@@ -14,6 +14,7 @@ public class NailGun : SelectedWeapon
 
     private void InstantiateObjectsOnHalfCircle()
     {
+        transform.eulerAngles = PlayerController.Instance.GunRotation().eulerAngles;
         var numberOfObjects = amountOfObjectsToSpawn; // Number of objects to instantiate
         var centerPoint = transform.position + (transform.right + transform.up).normalized * distanceFromPlayer;
         var angleIncrement = 180f / numberOfObjects;

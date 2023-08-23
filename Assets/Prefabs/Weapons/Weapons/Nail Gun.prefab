@@ -55,4 +55,4 @@ MonoBehaviour:
   instantiatedObject: {fileID: 2121791791017959938, guid: 84ba159ebc803584aaae05d56288db81, type: 3}
   radius: 3
   amountOfObjectsToSpawn: 15
-  distanceFromPlayer: 0.25
+  distanceFromPlayer: 0.2
