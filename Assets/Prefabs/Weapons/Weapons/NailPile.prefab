@@ -55,7 +55,7 @@ MonoBehaviour:
   attribute: 0
   damage: 5
   level: 0
-  coolDown: 0
+  coolDown: 3
   instantiatedObject: {fileID: 0}
   nail: {fileID: 5934357324483017355, guid: 1e32246e48ac3724eb87ef7fc23f6839, type: 3}
   fireRate: 3

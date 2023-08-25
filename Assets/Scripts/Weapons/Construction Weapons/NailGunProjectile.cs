@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(PolygonCollider2D))]
 public class NailGunProjectile : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
