@@ -157,7 +157,7 @@ public class EnemySpawner : MonoBehaviour
    {
       var playerTransform = PlayerController.Instance.CurrentPlayerTransform();
       var playerPos = PlayerController.Instance.CurrentPlayerTransform().position;
-      var radius = 10f;
+      var radius = 20f;
       var randomPos = Random.insideUnitSphere * radius;
       randomPos += playerPos;
       randomPos.y = 0f;

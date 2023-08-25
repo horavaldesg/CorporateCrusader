@@ -166,7 +166,7 @@ public class Enemy : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private void EnemyDied()
+    protected virtual void EnemyDied()
     {
         DropXp();
         EnemyDetector.Instance.EnemyKilled(gameObject);
