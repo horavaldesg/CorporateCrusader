@@ -22,4 +22,4 @@ MonoBehaviour:
   xpToDrop: 5
   coinsToDrop: 1
   attackRange: 3.5
-  attackCooldown: 3
+  attackCooldown: 2
