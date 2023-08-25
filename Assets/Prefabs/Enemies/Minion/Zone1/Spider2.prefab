@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 333811671194689885}
   - component: {fileID: 532867060399800213}
   - component: {fileID: 3425390679270254794}
-  - component: {fileID: 8340764484506297310}
+  - component: {fileID: 7970577833626366895}
   m_Layer: 0
   m_Name: Spider2
   m_TagString: Enemy
@@ -774,7 +774,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.45, y: 0.4}
   m_Direction: 1
---- !u!114 &8340764484506297310
+--- !u!114 &7970577833626366895
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -783,19 +783,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 6961948071642584231}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c944c81aadad8754e9f34f23ffb5294c, type: 3}
+  m_Script: {fileID: 11500000, guid: ff34b6c136608f443911f0ce21c67fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Minions/HouseSpider
-  health: 5
+  health: 0
+  _baseHealth: 0
   _damage: 0
   healthBar: {fileID: 6843370095103739634}
   amountOfXpToDrop: 3
   speed: 0
   baseSpeed: 0
   takingDamage: 0
+  attackRange: 0
+  attackCooldown: 0
   isBoss: 0
   _rb: {fileID: 0}
+  attackTime: 0
+  spiderWebsObject: {fileID: 6211780148271918394, guid: d1ad94effc2fe314486079cf7359d9c1, type: 3}
 --- !u!1 &8638301790121745114
 GameObject:
   m_ObjectHideFlags: 0

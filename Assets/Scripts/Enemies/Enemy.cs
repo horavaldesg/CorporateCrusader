@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private EnemyStats _enemyStats;
     private BossStats _bossStats;
     [HideInInspector] public float health;
-    private float _baseHealth;
+    [HideInInspector] public float _baseHealth;
     [HideInInspector]  public float _damage;
     [SerializeField] private RectTransform healthBar;
     [SerializeField] private float amountOfXpToDrop;
@@ -25,8 +25,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public float baseSpeed;
     [HideInInspector] public bool takingDamage;
     
-    private float _attackRange;
-    private float _attackCooldown;
+    [HideInInspector] public float attackRange;
+    [HideInInspector] public float attackCooldown;
     
     private GameObject _xpObject;
     private GameObject _coinDrop;
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     
     [HideInInspector] public Rigidbody2D _rb;
     private Collider2D _collider;
-    private float _attackTime;
+    [HideInInspector] public float attackTime;
     private readonly List<Transform> _nearbyEnemies = new List<Transform>();
     private const float AvoidanceRadius = 0.15f;
     
@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
         speed = _bossStats.movespeed;
         _baseHealth = health;
         _damage = _bossStats.damage;
-        _attackTime = _bossStats.cooldown;
+        attackTime = _bossStats.cooldown;
     }
 
     private void LoadEnemyStats()
@@ -67,9 +67,9 @@ public class Enemy : MonoBehaviour
         baseSpeed = speed;
         _baseHealth = health;
         _damage = _enemyStats.damage;
-        _attackTime = _enemyStats.attackTime;
-        _attackRange = _enemyStats.attackRange;
-        _attackCooldown = _enemyStats.attackCooldown;
+        attackTime = _enemyStats.attackTime;
+        attackRange = _enemyStats.attackRange;
+        attackCooldown = _enemyStats.attackCooldown;
         _xpToAdd = _enemyStats.xpToDrop;
         _xpToAdd = Random.Range(_xpToAdd, _xpToAdd + 5);
         _coinsToAdd = _enemyStats.coinsToDrop;
@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(UpdateNearbyEnemies());
     }
 
-    private IEnumerator UpdateNearbyEnemies()
+    protected IEnumerator UpdateNearbyEnemies()
     {
         while (true)
         {
@@ -105,7 +105,7 @@ public class Enemy : MonoBehaviour
         Move();
     }
 
-    private void Move()
+    protected virtual void Move()
     {
         var playerPos = PlayerController.Instance.CurrentPlayerTransform().position;
         //var differenceVector = playerPos - transform.position;
@@ -136,6 +136,11 @@ public class Enemy : MonoBehaviour
     public virtual void OnDestroy()
     {
         EnemySpawner.Instance.RemoveEnemyFromList(gameObject);
+    }
+
+    public void StopEnemy()
+    {
+        _rb.velocity = Vector2.zero;
     }
 
     public void TakeDamage(float damage)
@@ -232,6 +237,6 @@ public class Enemy : MonoBehaviour
     protected virtual void Attack()
     {
         //Attacks
-        _attackTime = 0;
+        attackTime = 0;
     }
 }

@@ -23,6 +23,8 @@ public class EnemySpawner : MonoBehaviour
    private bool _enemiesSpawning;
    private float _t;
    private bool _enemiesLoaded;
+   public bool spawnSpecificEnemy;
+   public int enemyIndex;
    private bool BossPhase
    {
       get;
@@ -51,7 +53,15 @@ public class EnemySpawner : MonoBehaviour
    private void StartSpawning(EnemyContainer enemyContainer)
    {
       _enemyContainer = enemyContainer;
-      _enemiesLoaded = true;
+     
+      if (spawnSpecificEnemy)
+      {
+         Spawn();
+      }
+      else
+      {
+          _enemiesLoaded = true;
+      }
    }
    
    private void Start()
@@ -139,6 +149,11 @@ public class EnemySpawner : MonoBehaviour
    private GameObject GetRandomEnemy()
    {
       //Change to use different categories of enemies depending on time
+      if (spawnSpecificEnemy)
+      {
+         return _enemyContainer.allEnemies[enemyIndex];
+      }
+      
       return _phaseIndex switch
       {
          1 => _enemyContainer.phase1Enemies[GetRandomRange(_enemyContainer.phase1Enemies.Length)],

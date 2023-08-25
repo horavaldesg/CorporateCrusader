@@ -15,6 +15,7 @@ public class EnemyContainer : ScriptableObject
     */
     
     //Old System
+    public GameObject[] allEnemies;
     public GameObject[] phase1Enemies;
     public GameObject firstBoss;
     public GameObject[] phase2Enemies;
