@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988ed5268912f7742876924250d25cc8, type: 3}
+  m_Name: Balloon
+  m_EditorClassIdentifier: 
+  enemy:
+  - {fileID: 4102240099380092201, guid: 83027a6bb5412ed49a0720e08ef8c16f, type: 3}

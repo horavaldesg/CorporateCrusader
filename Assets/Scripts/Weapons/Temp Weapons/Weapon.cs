@@ -46,7 +46,7 @@ public class Weapon : MonoBehaviour
 
     private void EndShoot()
     {
-        StopCoroutine(Shoot());
+        StopAllCoroutines();
     }
     
     private void CheckShoot()

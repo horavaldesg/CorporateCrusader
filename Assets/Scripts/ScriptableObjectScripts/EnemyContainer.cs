@@ -13,6 +13,7 @@ public class EnemyContainer : ScriptableObject
     public GameObject miniBoss;
     public GameObject mainBoss;
     */
+    public EnemyHolder[] enemyHolder;
     
     //Old System
     public GameObject[] allEnemies;

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988ed5268912f7742876924250d25cc8, type: 3}
+  m_Name: HouseCats
+  m_EditorClassIdentifier: 
+  enemy:
+  - {fileID: 7865767820744314092, guid: 49fb199c0796e1e42bc6f1bd5546f610, type: 3}
+  - {fileID: 6012309829729335894, guid: cc51f5ef4d771f2458f00e9d2cd27e87, type: 3}
+  - {fileID: 929120260372795858, guid: b6307137df5a69c47b5537de07778347, type: 3}

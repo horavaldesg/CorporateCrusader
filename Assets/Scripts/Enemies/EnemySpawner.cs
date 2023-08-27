@@ -25,6 +25,9 @@ public class EnemySpawner : MonoBehaviour
    private bool _enemiesLoaded;
    public bool spawnSpecificEnemy;
    public int enemyIndex;
+
+   [SerializeField]private int _currentEnemyIndex;
+   
    private bool BossPhase
    {
       get;
@@ -41,6 +44,7 @@ public class EnemySpawner : MonoBehaviour
       //GameManager.ChangePhase += BossFight;
       Boss.OnBossKilled += ChangePhase;
       GameManager.EnemiesLoaded += StartSpawning;
+      GameManager.EnemyIndexIncrease += IncreaseEnemyIndex;
    }
 
    private void OnDisable()
@@ -48,6 +52,7 @@ public class EnemySpawner : MonoBehaviour
       //GameManager.ChangePhase -= BossFight;
       Boss.OnBossKilled -= ChangePhase;
       GameManager.EnemiesLoaded -= StartSpawning;
+      GameManager.EnemyIndexIncrease -= IncreaseEnemyIndex;
    }
 
    private void StartSpawning(EnemyContainer enemyContainer)
@@ -67,7 +72,9 @@ public class EnemySpawner : MonoBehaviour
    private void Start()
    {
       _phaseIndex = 1;
+      _currentEnemyIndex = 0;
    }
+   
 
    private void Update()
    {
@@ -121,6 +128,11 @@ public class EnemySpawner : MonoBehaviour
       }
    }
 
+   private void IncreaseEnemyIndex()
+   {
+      _currentEnemyIndex++;
+   }
+   
    public void RemoveEnemyFromList(GameObject enemy)
    {
       if (enemy)
@@ -137,23 +149,38 @@ public class EnemySpawner : MonoBehaviour
       for(var i = 0; i < clusterSpawn; i++)
       {
          _t = 0;
-         var go = Instantiate(GetRandomEnemy());
-         go.transform.position = GetRadius();
-         GameManager.Instance.enemiesSpawnedList.Add(go);
+         if (MixEnemies() && i >= 3)
+         {
+            var go = Instantiate(
+               GetRandomEnemy(
+                  CheckIfEnemyIsValid(_currentEnemyIndex + 1) ?
+                     _currentEnemyIndex + 1 :
+                     _currentEnemyIndex));
+            go.transform.position = GetRadius();
+            GameManager.Instance.enemiesSpawnedList.Add(go);
+         }
+         else
+         {
+            var go = Instantiate(GetRandomEnemy(_currentEnemyIndex));
+            go.transform.position = GetRadius();
+            GameManager.Instance.enemiesSpawnedList.Add(go);
+         }
       }
       
       _enemiesSpawned++;
    }
 
    [CanBeNull]
-   private GameObject GetRandomEnemy()
+   private GameObject GetRandomEnemy(int currentEnemyIndex)
    {
       //Change to use different categories of enemies depending on time
       if (spawnSpecificEnemy)
       {
          return _enemyContainer.allEnemies[enemyIndex];
       }
-      
+       
+      var enemyThatSpawnsIndex = _enemyContainer.enemyHolder[currentEnemyIndex].enemy.Length;
+      return _enemyContainer.enemyHolder[currentEnemyIndex].enemy[GetRandomRange(enemyThatSpawnsIndex)];
       return _phaseIndex switch
       {
          1 => _enemyContainer.phase1Enemies[GetRandomRange(_enemyContainer.phase1Enemies.Length)],
@@ -162,11 +189,23 @@ public class EnemySpawner : MonoBehaviour
          _ => _enemyContainer.phase3Enemies[GetRandomRange(_enemyContainer.phase3Enemies.Length)]
       };
    }
+
+   private bool MixEnemies()
+   {
+      var seconds = GameManager.Instance.GetSeconds();
+      return seconds is > 14 and < 25;
+   }
    
    private int GetRandomRange(int i)
    {
-      return Random.Range(0, i);
+      return i == 1 ? 0 : Random.Range(0, i);
    }
+
+   private bool CheckIfEnemyIsValid(int i)
+   {
+      return _enemyContainer.allEnemies.Length < i;
+   }
+    
    
    private Vector3 GetRadius()
    {

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static event Action<float> XpAdded;
     public static event Action<int> LevelIncreased;
     public static event Action ChangePhase;
+    public static event Action EnemyIndexIncrease;
     public static event Action LevelChanged;
     public static event Action<EnemyContainer> EnemiesLoaded;
     private float _timeAlive;
@@ -74,6 +75,17 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.timerText.SetText(timerTextMin);
         if(ChangePhaseCheck())
             ChangePhase?.Invoke();
+        
+        if(IncreaseEnemyIndex() && CanInvoke)
+        {
+            EnemyIndexIncrease?.Invoke();
+            CanInvoke = false;
+        }
+
+        if (!CanInvoke)
+        {
+            CanInvoke = GetSeconds() > 1;
+        }
         //Debug.Log(min + ":" + sec);
     }
 
@@ -83,12 +95,24 @@ public class GameManager : MonoBehaviour
         return GetMinutes() % 5 == 0 && GetSeconds() == 0;
     }
 
-    private int GetMinutes()
+    private bool CanInvoke
+    {
+        get;
+        set;
+    }
+
+    private bool IncreaseEnemyIndex()
+    {
+        if (_timeAlive <= 1) return false;
+        return GetMinutes() % 1 == 0 && GetSeconds() == 0;
+    }
+
+    public int GetMinutes()
     {
         return Mathf.FloorToInt(_timeAlive / 60);
     }
 
-    private int GetSeconds()
+    public int GetSeconds()
     {
         return Mathf.FloorToInt(_timeAlive - GetMinutes() * 60);
     }
