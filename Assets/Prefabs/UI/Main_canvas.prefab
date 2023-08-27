@@ -4240,7 +4240,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Panel:
   - {fileID: 4349652299367750716}
-  - {fileID: 6506909403746161673}
   - {fileID: 2851783577495717876}
   ConformX: 1
   ConformY: 1
