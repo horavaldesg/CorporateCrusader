@@ -47,10 +47,10 @@ MonoBehaviour:
   weaponName: Maraca Toss
   weaponDescription: A maraca is launched from the player in a random direction,
     damaging any enemy it hits.
-  weaponSprite: {fileID: 21300000, guid: 5d5ca27ea4aebe148a814a795dd71faa, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 6c197ac092d536a43a6af438ed53d066, type: 3}
   attribute: 1
   damage: 5
   level: 0
   coolDown: 1
   instantiatedObject: {fileID: 8380295068482268458, guid: 3f7fb707f66e1994faa2edbcceedee8d, type: 3}
-  throwForce: 5
+  throwForce: 3

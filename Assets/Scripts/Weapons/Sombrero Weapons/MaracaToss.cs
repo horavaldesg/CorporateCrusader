@@ -21,6 +21,7 @@ public class MaracaToss : SelectedWeapon
         var playerPos = transform.position;
 
         go.transform.position = playerPos;
+        go.transform.eulerAngles = transform.eulerAngles;
         go.TryGetComponent(out Rigidbody2D rb);
         go.TryGetComponent(out MaracaProjectile maracaProjectile);
         
@@ -29,6 +30,7 @@ public class MaracaToss : SelectedWeapon
         var force = transform.right * (throwForce * 100);
         
         rb.AddForce(force, ForceMode2D.Force);
+        rb.AddTorque(10, ForceMode2D.Impulse);
     }
 
     private Vector3 RandomRotation()
