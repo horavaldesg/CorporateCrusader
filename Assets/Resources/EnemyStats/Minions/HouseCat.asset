@@ -15,9 +15,11 @@ MonoBehaviour:
   xpObject: {fileID: 1039156588135131732, guid: b76e62c8302ceef428fb7deed61f1527, type: 3}
   coinObject: {fileID: 6546047790249129761, guid: 3ab6091aba7d5ff448b748c3382928ea, type: 3}
   weakness: 1
-  health: 100
+  health: 5
   damage: 5
   speed: 2
   attackTime: 1
   xpToDrop: 5
   coinsToDrop: 1
+  attackRange: 0
+  attackCooldown: 0

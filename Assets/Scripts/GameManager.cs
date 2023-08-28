@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
     private bool IncreaseEnemyIndex()
     {
         if (_timeAlive <= 1) return false;
-        return GetMinutes() % 1 == 0 && GetSeconds() == 0;
+        return GetMinutes() % 2 == 0 && GetSeconds() == 0;
     }
 
     public int GetMinutes()
