@@ -98,7 +98,7 @@ public class Pitchfork : SelectedWeapon
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.CompareTag("Enemy")) return;
-        Debug.Log("Collided with Enemy");
+        //Debug.Log("Collided with Enemy");
         var enemy = other.gameObject;
         enemy.TryGetComponent(out Rigidbody2D rb);
         enemy.TryGetComponent(out Enemy enemyComp);

@@ -250,7 +250,7 @@ public class PlayerController : MonoBehaviour
     private void TakeArmorDamage(float damageToTake)
     {
         _armor -= damageToTake;
-        Debug.Log(_armor);
+        //Debug.Log(_armor);
         armorBar.localScale = new Vector3(Mathf.Clamp(_armor / _baseArmor, 0, 1), 1, 1);
     }
 
