@@ -17,7 +17,7 @@ MonoBehaviour:
   armor: 50
   damage: 15
   speed: 0
-  regenTime: 0
+  regenTime: 2
   attackSpeed: 3
   criticalDamage: 0
   criticalSpeed: 0
@@ -25,3 +25,4 @@ MonoBehaviour:
   xpMultiplier: 1
   coinMultiplier: 0
   bulletSpeed: 20
+  hatCooldown: 0

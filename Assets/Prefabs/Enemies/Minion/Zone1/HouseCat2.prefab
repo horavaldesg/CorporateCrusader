@@ -741,14 +741,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Minions/HouseCat
   health: 100
+  _baseHealth: 0
   _damage: 0
   healthBar: {fileID: 115545796209674933}
-  amountOfXpToDrop: 5
+  amountOfXpToDrop: 3
   speed: 0
   baseSpeed: 0
   takingDamage: 0
+  attackRange: 0
+  attackCooldown: 0
   isBoss: 0
   _rb: {fileID: 0}
+  attackTime: 0
 --- !u!1 &6052580552375136078
 GameObject:
   m_ObjectHideFlags: 0

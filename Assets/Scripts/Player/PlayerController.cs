@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _move;
     private Vector3 _dampSpeed;
     private Vector3 _currentVelocity;
+    private float _healTimer;
    
     #endregion
 
@@ -121,6 +122,7 @@ public class PlayerController : MonoBehaviour
         attackSpeed = _playerStats.attackSpeed;
         bulletSpeed = _playerStats.bulletSpeed;
         _hatCoolDown = _playerStats.hatCooldown;
+        healTime = _playerStats.regenTime;
         ProjectileSizeMultiplier = 1;
         TryGetComponent(out _rb);
         gunRotate.TryGetComponent(out _gunRenderer);
@@ -249,8 +251,12 @@ public class PlayerController : MonoBehaviour
 
     private void HealPlayer()
     {
-        _health += healAmount * Time.deltaTime;
+        /*_healTimer += Time.deltaTime;
+        if(_healTimer > healTime) return;
+        var newHealth = _health + healAmount;
+        _health = Mathf.Clamp(newHealth, 0, _baseHealth);
         healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
+        _healTimer = 0;*/
     }
 
     private void TakeArmorDamage(float damageToTake)
@@ -285,7 +291,7 @@ public class PlayerController : MonoBehaviour
 
     private bool PlayerIsAlive()
     {
-        return _health >= _baseHealth;
+        return _health >= 0;
     }
 
     private void PlayerDied()
@@ -345,6 +351,8 @@ public class PlayerController : MonoBehaviour
     public void IncreaseRegenTime(float regen)
     {
         healAmount += regen;
+        healTime -= 0.2f;
+        healTime = Mathf.Clamp(healTime, 0.25f, 2);
     }
 
     public void IncreaseCoinGain(int coinGain)

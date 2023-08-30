@@ -33,7 +33,8 @@ public class EnemySpawner : MonoBehaviour
    
    private int _mixIndex;
    private int _mixedMinEnemies;
-   
+   private bool _canIncreaseTime;
+
    private const string MixedEnemies = "mix";
    private const string FrequencyEnemies = "frequency";
    private const string LevelEnemies = "levelEnemies";
@@ -178,18 +179,29 @@ public class EnemySpawner : MonoBehaviour
 
    private void LevelIncreased(int currentLevel)
    {
-      if(currentLevel % 4 != 0) return;
+      if(currentLevel % 10 != 0) return;
       var levelIndexIncrease = _levelEnemyIndex + 1;
       levelIndexIncrease = Mathf.Clamp(levelIndexIncrease, 0, GetLength(LevelEnemies) -1);
       _levelEnemyIndex = levelIndexIncrease;
    }
 
-   private void CheckTime(float minutes, float seconds)
+   private void CheckTimeIncrease()
    {
-      if (minutes == 0 || minutes % 4 != 0 || seconds != 0) return;
+      if (Minutes() == 0 || Minutes() % 4 != 0 || Seconds() != 0 || _canIncreaseTime) return;
       var mixEnemyIndex = _mixEnemyIndex + 1;
-      mixEnemyIndex = Mathf.Clamp(mixEnemyIndex, 0,GetLength(MixedEnemies));
+      mixEnemyIndex = Mathf.Clamp(
+         mixEnemyIndex, 
+         0,
+         GetLength(MixedEnemies) - 1);
       _mixEnemyIndex = mixEnemyIndex;
+      Debug.Log("Mix Index" + _mixEnemyIndex);
+      _canIncreaseTime = false;
+      Invoke(nameof(ResetTime), 60);
+   }
+
+   private void ResetTime()
+   {
+      _canIncreaseTime = true;
    }
    
    private bool MixedMinEnemiesCheck()
@@ -197,12 +209,23 @@ public class EnemySpawner : MonoBehaviour
       return GameManager.Instance.enemiesSpawnedList.Count <= _mixedMinEnemies; // change to percentage
    }
 
+
    private bool TimeCheck()
    {
       var minutes = GameManager.Instance.GetMinutes();
       var seconds = GameManager.Instance.GetSeconds();
-      CheckTime(minutes, seconds);
+      CheckTimeIncrease();
       return minutes % 2 == 1 && minutes != 0 && seconds < 45;
+   }
+
+   private float Minutes()
+   {
+      return GameManager.Instance.GetMinutes();
+   }
+
+   private float Seconds()
+   {
+      return GameManager.Instance.GetSeconds();
    }
 
    private void SpawnFrequencyEnemy()
@@ -223,11 +246,8 @@ public class EnemySpawner : MonoBehaviour
 
    private void SpawnLevelEnemies()
    {
-      var playerLevel = GameManager.Instance.CurrentLevel;
-      var randomEnemy = playerLevel % 10 == 0 ? Random.Range(
-         0, Mathf.Clamp(
-            _levelEnemyIndex + 2, 0, GetLength(LevelEnemies) -1)) : 
-         _levelEnemyIndex;
+      var randomEnemy = Random.Range(
+         0, _levelEnemyIndex + 1 > GetLength(LevelEnemies) ?  _levelEnemyIndex : _levelEnemyIndex + 1);
       StartCoroutine(WaitToSpawn(LevelEnemies, randomEnemy));
    }
 
