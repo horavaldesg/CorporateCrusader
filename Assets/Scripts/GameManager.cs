@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        TotalXp = 250;
+        TotalXp = 1000;
         _levelLoader = Resources.Load<InGameLevelLoader>("InGameLevel");
     }
 

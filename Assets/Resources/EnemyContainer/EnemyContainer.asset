@@ -19,6 +19,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 17c63936411e75e4fa18fdb54d105bab, type: 2}
   - {fileID: 11400000, guid: f7fe34f9ba2beec409b2c7786ecaa41e, type: 2}
   - {fileID: 11400000, guid: fe49ed4e68388dd449ccef276924d917, type: 2}
+  frequencyEnemy:
+  - {fileID: 11400000, guid: 8f05ff16b78f5374fbf1ae9396ce0f0a, type: 2}
+  randomTriggerEnemy:
+  - {fileID: 11400000, guid: 8f05ff16b78f5374fbf1ae9396ce0f0a, type: 2}
+  - {fileID: 11400000, guid: 6d80ca548ebda2445bb0cd3ace67f508, type: 2}
+  - {fileID: 11400000, guid: 3fb85c0d7193e86408de8682fdf575d0, type: 2}
+  - {fileID: 11400000, guid: 17c63936411e75e4fa18fdb54d105bab, type: 2}
+  - {fileID: 11400000, guid: f7fe34f9ba2beec409b2c7786ecaa41e, type: 2}
+  - {fileID: 11400000, guid: fe49ed4e68388dd449ccef276924d917, type: 2}
+  playerLevelEnemy:
+  - {fileID: 11400000, guid: 6d80ca548ebda2445bb0cd3ace67f508, type: 2}
+  - {fileID: 11400000, guid: 3fb85c0d7193e86408de8682fdf575d0, type: 2}
+  - {fileID: 11400000, guid: f7fe34f9ba2beec409b2c7786ecaa41e, type: 2}
+  - {fileID: 11400000, guid: fe49ed4e68388dd449ccef276924d917, type: 2}
+  mixedEnemies:
+  - {fileID: 11400000, guid: 3fb85c0d7193e86408de8682fdf575d0, type: 2}
+  - {fileID: 11400000, guid: 6d80ca548ebda2445bb0cd3ace67f508, type: 2}
+  - {fileID: 11400000, guid: 17c63936411e75e4fa18fdb54d105bab, type: 2}
+  - {fileID: 11400000, guid: f7fe34f9ba2beec409b2c7786ecaa41e, type: 2}
+  - {fileID: 11400000, guid: fe49ed4e68388dd449ccef276924d917, type: 2}
   allEnemies:
   - {fileID: 4102240099380092201, guid: 83027a6bb5412ed49a0720e08ef8c16f, type: 3}
   - {fileID: 7865767820744314092, guid: 49fb199c0796e1e42bc6f1bd5546f610, type: 3}

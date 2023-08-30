@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu]
 public class EnemyContainer : ScriptableObject
@@ -14,6 +15,10 @@ public class EnemyContainer : ScriptableObject
     public GameObject mainBoss;
     */
     public EnemyHolder[] enemyHolder;
+    public EnemyHolder[] frequencyEnemy;
+    public EnemyHolder[] randomTriggerEnemy;
+    public EnemyHolder[] playerLevelEnemy;
+    public EnemyHolder[] mixedEnemies;
     
     //Old System
     public GameObject[] allEnemies;

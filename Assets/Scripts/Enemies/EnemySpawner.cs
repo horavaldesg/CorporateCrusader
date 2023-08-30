@@ -27,6 +27,17 @@ public class EnemySpawner : MonoBehaviour
    public int enemyIndex;
 
    [SerializeField]private int _currentEnemyIndex;
+   private int _mixEnemyIndex;
+   private int _levelEnemyIndex;
+   private int _randomTriggerIndex;
+   
+   private int _mixIndex;
+   private int _mixedMinEnemies;
+   
+   private const string MixedEnemies = "mix";
+   private const string FrequencyEnemies = "frequency";
+   private const string LevelEnemies = "levelEnemies";
+   private const string RandomTriggerEnemies = "randomTriggerEnemies";
    
    private bool BossPhase
    {
@@ -45,6 +56,7 @@ public class EnemySpawner : MonoBehaviour
       Boss.OnBossKilled += ChangePhase;
       GameManager.EnemiesLoaded += StartSpawning;
       GameManager.EnemyIndexIncrease += IncreaseEnemyIndex;
+      GameManager.LevelIncreased += LevelIncreased;
    }
 
    private void OnDisable()
@@ -53,6 +65,7 @@ public class EnemySpawner : MonoBehaviour
       Boss.OnBossKilled -= ChangePhase;
       GameManager.EnemiesLoaded -= StartSpawning;
       GameManager.EnemyIndexIncrease -= IncreaseEnemyIndex;
+      GameManager.LevelIncreased -= LevelIncreased;
    }
 
    private void StartSpawning(EnemyContainer enemyContainer)
@@ -61,7 +74,7 @@ public class EnemySpawner : MonoBehaviour
      
       if (spawnSpecificEnemy)
       {
-         Spawn();
+         SpawnFrequencyEnemy();
       }
       else
       {
@@ -73,6 +86,9 @@ public class EnemySpawner : MonoBehaviour
    {
       _phaseIndex = 1;
       _currentEnemyIndex = 0;
+      _mixEnemyIndex = 0;
+      _levelEnemyIndex = 0;
+      _mixedMinEnemies = 10;
    }
    
 
@@ -81,6 +97,7 @@ public class EnemySpawner : MonoBehaviour
       if(!_enemiesLoaded) return;
       if (BossPhase) return;
       LinearSpawn();
+      MixEnemySpawnCheck();
    }
 
    private void BossFight()
@@ -115,22 +132,31 @@ public class EnemySpawner : MonoBehaviour
    {
       _t += Time.deltaTime;
       if (!(_t > timeToSpawn)) return;
-      if (_enemiesSpawned < amountOfEnemiesPerWave)
+      SpawnFrequencyEnemy();
+      MixEnemySpawnCheck();
+      PlayerLevelEnemyCheck();
+       _t = 0;
+   }
+
+   private void MixEnemySpawnCheck()
+   {
+      if(!TimeCheck()) return;
+      
+      if (MixedMinEnemiesCheck())
       {
-         _enemiesSpawning = true;
-         Spawn();
+         SpawnMixEnemies();
       }
-      else
-      {
-         if (!WaveCheck()) return;
-         _enemiesSpawned = 0;
-         _t = 0;
-      }
+   }
+
+   private void PlayerLevelEnemyCheck()
+   {
+      if(!LevelCheck()) return;
+      SpawnLevelEnemies();
    }
 
    private void IncreaseEnemyIndex()
    {
-      _currentEnemyIndex++;
+      //_currentEnemyIndex++;
    }
    
    public void RemoveEnemyFromList(GameObject enemy)
@@ -144,7 +170,104 @@ public class EnemySpawner : MonoBehaviour
       return GameManager.Instance.enemiesSpawnedList.Count <= 5; // change to percentage
    }
 
-   private void Spawn()
+   private bool LevelCheck()
+   {
+      var playerLevel = GameManager.Instance.CurrentLevel;
+      return playerLevel % 2 == 0 && playerLevel != 1;
+   }
+
+   private void LevelIncreased(int currentLevel)
+   {
+      if(currentLevel % 4 != 0) return;
+      var levelIndexIncrease = _levelEnemyIndex + 1;
+      levelIndexIncrease = Mathf.Clamp(levelIndexIncrease, 0, GetLength(LevelEnemies) -1);
+      _levelEnemyIndex = levelIndexIncrease;
+   }
+
+   private void CheckTime(float minutes, float seconds)
+   {
+      if (minutes == 0 || minutes % 4 != 0 || seconds != 0) return;
+      var mixEnemyIndex = _mixEnemyIndex + 1;
+      mixEnemyIndex = Mathf.Clamp(mixEnemyIndex, 0,GetLength(MixedEnemies));
+      _mixEnemyIndex = mixEnemyIndex;
+   }
+   
+   private bool MixedMinEnemiesCheck()
+   {
+      return GameManager.Instance.enemiesSpawnedList.Count <= _mixedMinEnemies; // change to percentage
+   }
+
+   private bool TimeCheck()
+   {
+      var minutes = GameManager.Instance.GetMinutes();
+      var seconds = GameManager.Instance.GetSeconds();
+      CheckTime(minutes, seconds);
+      return minutes % 2 == 1 && minutes != 0 && seconds < 45;
+   }
+
+   private void SpawnFrequencyEnemy()
+   {
+      for (var i = 0; i < clusterSpawn; i++)
+      {
+         var go = Instantiate(GetRandomEnemy(FrequencyEnemies,_currentEnemyIndex));
+         go.transform.position = GetRadius();
+         GameManager.Instance.enemiesSpawnedList.Add(go);
+         _enemiesSpawned++;
+      }
+   }
+
+   private void SpawnMixEnemies()
+   {
+      StartCoroutine(WaitToSpawn(MixedEnemies, _mixEnemyIndex));
+   }
+
+   private void SpawnLevelEnemies()
+   {
+      var playerLevel = GameManager.Instance.CurrentLevel;
+      var randomEnemy = playerLevel % 10 == 0 ? Random.Range(
+         0, Mathf.Clamp(
+            _levelEnemyIndex + 2, 0, GetLength(LevelEnemies) -1)) : 
+         _levelEnemyIndex;
+      StartCoroutine(WaitToSpawn(LevelEnemies, randomEnemy));
+   }
+
+   private IEnumerator WaitToSpawn(string typeOfEnemy,int index)
+   {
+      var r = Random.Range(2, 6);
+      for (var i = 0; i < r; i++)
+      {
+         var go = Instantiate(GetRandomEnemy(typeOfEnemy,index));
+         go.transform.position = GetRadius();
+         GameManager.Instance.enemiesSpawnedList.Add(go);
+         _enemiesSpawned++;
+      }
+      
+      yield return new WaitForSeconds(timeToSpawn);
+      switch (typeOfEnemy)
+      {
+         case MixedEnemies:
+            MixEnemySpawnCheck();
+            break;
+         case LevelEnemies:
+            PlayerLevelEnemyCheck();
+            break;
+         case RandomTriggerEnemies:
+            break;
+      }
+   }
+
+   private void RandomTriggerSpawn()
+   {
+      for (var i = 0; i < clusterSpawn; i++)
+      {
+         var go = Instantiate(GetRandomEnemy(RandomTriggerEnemies, _randomTriggerIndex));
+         go.transform.position = GetRadius();
+         GameManager.Instance.enemiesSpawnedList.Add(go);
+         _enemiesSpawned++;
+      }
+   }
+
+   /*private void Spawn()
    {
       for(var i = 0; i < clusterSpawn; i++)
       {
@@ -168,19 +291,51 @@ public class EnemySpawner : MonoBehaviour
       }
       
       _enemiesSpawned++;
+   }*/
+
+   private GameObject EnemyThatSpawns(int currentEnemyIndex)
+   {
+      var enemyThatSpawnsIndex = _enemyContainer.enemyHolder[currentEnemyIndex].enemy.Length;
+      return _enemyContainer.enemyHolder[currentEnemyIndex].enemy[GetRandomRange(enemyThatSpawnsIndex)];
    }
 
    [CanBeNull]
-   private GameObject GetRandomEnemy(int currentEnemyIndex)
+   private GameObject GetRandomEnemy(string typeOfSpawn, int currentEnemyIndex)
    {
       //Change to use different categories of enemies depending on time
       if (spawnSpecificEnemy)
       {
          return _enemyContainer.allEnemies[enemyIndex];
       }
-       
-      var enemyThatSpawnsIndex = _enemyContainer.enemyHolder[currentEnemyIndex].enemy.Length;
-      return _enemyContainer.enemyHolder[currentEnemyIndex].enemy[GetRandomRange(enemyThatSpawnsIndex)];
+
+      switch (typeOfSpawn)
+      {
+         case FrequencyEnemies:
+         {
+            var enemyLength = _enemyContainer.frequencyEnemy[currentEnemyIndex].enemy.Length;
+            return _enemyContainer.frequencyEnemy[currentEnemyIndex].enemy[GetRandomRange(enemyLength)];
+         }
+         case MixedEnemies:
+         {
+            var enemyLength = _enemyContainer.mixedEnemies[currentEnemyIndex].enemy.Length;
+            return _enemyContainer.mixedEnemies[currentEnemyIndex].enemy[GetRandomRange(enemyLength)];
+         }
+         case LevelEnemies:
+         {
+            var enemyLength = _enemyContainer.playerLevelEnemy[currentEnemyIndex].enemy.Length;
+            return _enemyContainer.playerLevelEnemy[currentEnemyIndex].enemy[GetRandomRange(enemyLength)];
+         }
+         case RandomTriggerEnemies:
+         {
+            var enemyLength = _enemyContainer.randomTriggerEnemy[currentEnemyIndex].enemy.Length;
+            return _enemyContainer.randomTriggerEnemy[currentEnemyIndex].enemy[GetRandomRange(enemyLength)];
+         }
+         default:
+            return null;
+      }
+      
+      //var enemyThatSpawnsIndex = _enemyContainer.enemyHolder[currentEnemyIndex].enemy.Length;
+      //return _enemyContainer.enemyHolder[currentEnemyIndex].enemy[GetRandomRange(enemyThatSpawnsIndex)];
       return _phaseIndex switch
       {
          1 => _enemyContainer.phase1Enemies[GetRandomRange(_enemyContainer.phase1Enemies.Length)],
@@ -189,13 +344,7 @@ public class EnemySpawner : MonoBehaviour
          _ => _enemyContainer.phase3Enemies[GetRandomRange(_enemyContainer.phase3Enemies.Length)]
       };
    }
-
-   private bool MixEnemies()
-   {
-      var seconds = GameManager.Instance.GetSeconds();
-      return seconds is > 14 and < 25;
-   }
-   
+    
    private int GetRandomRange(int i)
    {
       return i == 1 ? 0 : Random.Range(0, i);
@@ -204,6 +353,31 @@ public class EnemySpawner : MonoBehaviour
    private bool CheckIfEnemyIsValid(int i)
    {
       return _enemyContainer.allEnemies.Length < i;
+   }
+
+   private int GetLength(string typeOfSpawn)
+   {
+      switch (typeOfSpawn)
+      {
+         case FrequencyEnemies:
+         {
+           return  _enemyContainer.frequencyEnemy.Length;
+         }
+         case MixedEnemies:
+         {
+            return _enemyContainer.mixedEnemies.Length;
+         }
+         case LevelEnemies:
+         {
+            return _enemyContainer.playerLevelEnemy.Length;
+         }
+         case RandomTriggerEnemies:
+         {
+            return _enemyContainer.randomTriggerEnemy.Length;
+         }
+         default:
+            return 0;
+      }
    }
     
    

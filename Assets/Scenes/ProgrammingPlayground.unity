@@ -3177,12 +3177,20 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2390223284491747786, guid: de13cae54f42c72479b380a0260ec483, type: 3}
+      propertyPath: timeToSpawn
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2390223284491747786, guid: de13cae54f42c72479b380a0260ec483, type: 3}
       propertyPath: bossBoundary
       value: 
       objectReference: {fileID: 2241698119680336377, guid: 58c54d8fbb9d3a548bb5ff1f7cbf7e61, type: 3}
     - target: {fileID: 2390223284491747786, guid: de13cae54f42c72479b380a0260ec483, type: 3}
       propertyPath: spawnSpecificEnemy
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2390223284491747786, guid: de13cae54f42c72479b380a0260ec483, type: 3}
+      propertyPath: amountOfEnemiesPerWave
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6776733305777691616, guid: de13cae54f42c72479b380a0260ec483, type: 3}
       propertyPath: m_RootOrder
