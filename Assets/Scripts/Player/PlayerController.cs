@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     #region Player Transforms
 
     //Player Transforms
+    [Header("Player Transforms")]
     [SerializeField] private RectTransform healthBar;
     [SerializeField] private RectTransform armorBar;
     [SerializeField] private Transform gunRotate;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     #region Player Movement
 
     //Player Movement
+    [Header("Player Movement")]
     [SerializeField] private float playerSpeed;
     [SerializeField] private float gunRotationSpeed;
     [SerializeField] private float rotationThreshold;
@@ -52,16 +54,21 @@ public class PlayerController : MonoBehaviour
     #region Player Components
 
     //Player Components
+    [Header("Player Components")]
+    public CapsuleCollider2D playerCollider;
+    [SerializeField] private List<SpriteRenderer> playerLegs;
+    [SerializeField] private Sprite corgiLegBootSprite;
     private PlayerControls _controls;
     private Rigidbody2D _rb;
     private SpriteRenderer _gunRenderer;
-    public CapsuleCollider2D playerCollider;
 
     #endregion
     
     #region Player Stats
 
     //Player Stats
+    [Header("Player Stats")]
+    public float bulletSpeed;
     private PlayerStats _playerStats;
     private float _baseHealth;
     private float _health;
@@ -74,7 +81,6 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public float xPMultiplier;
     [HideInInspector] public float attackSpeed;
     [HideInInspector] public int coinMultiplier;
-    public float bulletSpeed;
     private float _hatCoolDown;
     private const int XpMaxCollection = 350;
     
@@ -375,6 +381,11 @@ public class PlayerController : MonoBehaviour
     {
         if (!HaseBinoculars) return;
         EnemyHealthReduction = healthReduction;
+    }
+
+    public void BootSpurs()
+    {
+        foreach(SpriteRenderer sr in playerLegs) sr.sprite = corgiLegBootSprite;
     }
 
     public float NewEnemyHealth([NotNull] Enemy enemy)

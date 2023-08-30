@@ -16,6 +16,9 @@ public class BootSpurs : SelectedWeapon
         capsuleCollider2D.direction = playerCollider.direction;
         capsuleCollider2D.offset = playerCollider.offset;
         capsuleCollider2D.size = playerCollider.size;
+
+        //set corgi leg boot sprites
+        PlayerController.Instance.BootSpurs();
     }
     
 
