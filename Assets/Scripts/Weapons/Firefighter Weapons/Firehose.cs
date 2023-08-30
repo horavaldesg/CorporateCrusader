@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,6 +45,7 @@ public class Firehose : SelectedWeapon
         fireHoseBullet.Damage = damage;
         go.transform.position = transform.position;
         go.transform.eulerAngles = transform.eulerAngles;
+        go.transform.localScale = Vector3.one * Random.Range(1f, 2f);
     }
 
     private IEnumerator Rotate()

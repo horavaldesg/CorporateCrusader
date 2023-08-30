@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     public float Damage { get; set; }
     public float speed;
     public Rigidbody2D rb;
-    [SerializeField] private float timeAlive;
+    public float timeAlive;
     [HideInInspector] public Transform whereToShoot;
     
     protected virtual void Awake()
