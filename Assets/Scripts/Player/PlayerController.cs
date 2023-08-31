@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     //Player Movement
     [Header("Player Movement")]
+    [SerializeField] private bool useKeyboardInput;
     [SerializeField] private float playerSpeed;
     [SerializeField] private float playerBaseSpeed;
     [SerializeField] private float gunRotationSpeed;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
     
     //Private Fields
     private Vector2 _move;
+    private Vector2 _look;
     private Vector3 _dampSpeed;
     private Vector3 _currentVelocity;
     private float _healTimer;
@@ -133,7 +135,15 @@ public class PlayerController : MonoBehaviour
         _controls = new PlayerControls();
         //Movement Player Input
         _controls.Player.Move.performed += tgb => { _move = tgb.ReadValue<Vector2>(); };
-        _controls.Player.Move.canceled += tgb => { _move = Vector2.zero; };
+        _controls.Player.Move.canceled += _ => { _move = Vector2.zero; };
+        if(useKeyboardInput)
+        {
+            _controls.Player.Move.performed += tgb => { _look = tgb.ReadValue<Vector2>(); };
+            _controls.Player.Move.canceled += _ => { _look = Vector2.zero; };
+        }
+        
+        _controls.Player.Look.performed += tgb => { _look = tgb.ReadValue<Vector2>(); };
+        _controls.Player.Look.canceled += _ => { _look = Vector2.zero; };
     }
 
     private void Start()
@@ -158,7 +168,7 @@ public class PlayerController : MonoBehaviour
         //Move Function
         Move();
         if (!HasArmor()) HealthCheck();
-        if (_move.magnitude is > -0.1f and < 0.1f) return;
+        if (_look.magnitude is > -0.1f and < 0.1f) return;
         RotateGun();
     }
 
@@ -194,7 +204,7 @@ public class PlayerController : MonoBehaviour
 
     private void RotateGun()
     {
-        var moveDir = new Vector2(-_move.y, _move.x);
+        var moveDir = new Vector2(-_look.y, _look.x);
         _gunRenderer.flipY = moveDir.y < 0;
         var rotation = Quaternion.LookRotation(Vector3.forward, moveDir);
         gunRotate.rotation = Quaternion.RotateTowards(gunRotate.transform.rotation, rotation,
