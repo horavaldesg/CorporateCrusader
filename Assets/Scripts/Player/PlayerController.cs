@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     //Player Movement
     [Header("Player Movement")]
     [SerializeField] private float playerSpeed;
+    [SerializeField] private float playerBaseSpeed;
     [SerializeField] private float gunRotationSpeed;
     [SerializeField] private float rotationThreshold;
     [SerializeField] [Range(0, 1)] private float smoothMovement;
@@ -123,6 +124,7 @@ public class PlayerController : MonoBehaviour
         bulletSpeed = _playerStats.bulletSpeed;
         _hatCoolDown = _playerStats.hatCooldown;
         healTime = _playerStats.regenTime;
+        playerBaseSpeed = playerSpeed;
         ProjectileSizeMultiplier = 1;
         TryGetComponent(out _rb);
         gunRotate.TryGetComponent(out _gunRenderer);
@@ -251,12 +253,12 @@ public class PlayerController : MonoBehaviour
 
     private void HealPlayer()
     {
-        /*_healTimer += Time.deltaTime;
+        _healTimer += Time.deltaTime;
         if(_healTimer > healTime) return;
-        var newHealth = _health + healAmount;
-        _health = Mathf.Clamp(newHealth, 0, _baseHealth);
-        healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
-        _healTimer = 0;*/
+        _health += healAmount;
+        _health = Mathf.Clamp(_health, 0, _baseHealth);
+        healthBar.localScale = new Vector3(_health/_baseHealth, 1, 1);
+        _healTimer = 0;
     }
 
     private void TakeArmorDamage(float damageToTake)
@@ -264,6 +266,26 @@ public class PlayerController : MonoBehaviour
         _armor -= damageToTake;
         //Debug.Log(_armor);
         armorBar.localScale = new Vector3(Mathf.Clamp(_armor / _baseArmor, 0, 1), 1, 1);
+    }
+
+    public void SlowDownPlayer(float slowDown)
+    {
+        playerSpeed = slowDown;
+    }
+
+    public void RestoreSpeed()
+    {
+        playerSpeed = playerBaseSpeed;
+    }
+
+    public float GetCurrentSpeed()
+    {
+        return playerSpeed;
+    }
+
+    public float GetBaseSpeed()
+    {
+        return playerSpeed;
     }
 
     private void RestoreHealth(float health)
@@ -281,7 +303,8 @@ public class PlayerController : MonoBehaviour
     private void TakeBaseDamage(float damageToTake)
     {
         _health -= damageToTake;
-        healthBar.localScale = new Vector3(Mathf.Clamp(_health / _baseHealth, 0, 1), 1, 1);
+        _health = Mathf.Clamp(_health, 0, _baseHealth);
+        healthBar.localScale = new Vector3(_health / _baseHealth, 1, 1);
     }
 
     private bool HasArmor()
@@ -329,6 +352,7 @@ public class PlayerController : MonoBehaviour
     public void UpgradeSpeed(float speed)
     {
         playerSpeed += speed;
+        playerBaseSpeed = playerSpeed;
     }
 
     public void IncreaseRange(float radius)
