@@ -371,9 +371,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1311372850617357571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.51, y: 3.5, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.4814813, z: 4.4444437}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: -1.11, y: 4.28, z: 0}
+  m_LocalScale: {x: 2.2, y: 2.037037, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7487231023331454957}
   - {fileID: 6957163090628992954}
@@ -421,7 +421,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 12
-  m_Sprite: {fileID: 21300000, guid: 8513d023ec657b0459cf2f2a704051f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e263a16717bed5241aaa7a4f6def4d05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -876,7 +876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3643083647612234497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.52, y: 0.59, z: 0}
+  m_LocalPosition: {x: 0.92, y: -0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1088,6 +1088,7 @@ MonoBehaviour:
   gunRotate: {fileID: 620490262424129746}
   bodyTransform: {fileID: 6076901445116773778}
   playerSpeed: 3
+  playerBaseSpeed: 0
   gunRotationSpeed: 5
   rotationThreshold: 0.75
   smoothMovement: 0
