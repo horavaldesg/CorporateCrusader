@@ -372,7 +372,7 @@ Transform:
   m_GameObject: {fileID: 1311372850617357571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.11, y: 4.28, z: 0}
-  m_LocalScale: {x: 2.2, y: 2.037037, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7487231023331454957}
@@ -1087,9 +1087,10 @@ MonoBehaviour:
   armorBar: {fileID: 6854462468921364119}
   gunRotate: {fileID: 620490262424129746}
   bodyTransform: {fileID: 6076901445116773778}
+  useKeyboardInput: 0
   playerSpeed: 3
   playerBaseSpeed: 0
-  gunRotationSpeed: 5
+  gunRotationSpeed: 0.2
   rotationThreshold: 0.75
   smoothMovement: 0
   playerCollider: {fileID: 0}
