@@ -2,17 +2,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JugglingBalls : MonoBehaviour
+public class JugglingBalls : SelectedWeapon
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float force;
+    
+    private int AmountOfBounces
     {
-        
+        get;
+        set;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Start()
     {
-        
+        AmountOfBounces = 5;
+        base.Start();
     }
+
+    protected override void Activate()
+    {
+        ShootBalls();
+        base.Activate();
+    }
+
+    private void ShootBalls()
+    {
+        var go = Instantiate(instantiatedObject);
+        instantiatedObject.transform.position = transform.position;
+        go.TryGetComponent(out JugglingBall jugglingBall);
+        jugglingBall.amountOfBounces = AmountOfBounces;
+        var forceDir = transform.right * (force * 10);
+        jugglingBall.damage = damage;
+        //jugglingBall.rb.AddForce(forceDir);
+        jugglingBall.force = force;
+    }
+
+    #region Level Upgrades
+
+    protected override void Level1Upgrade()
+    {
+        AmountOfBounces = 5;
+        base.Level1Upgrade();
+    }
+
+    protected override void Level2Upgrade()
+    {
+        AmountOfBounces = 7;
+        base.Level2Upgrade();
+    }
+
+    protected override void Level3Upgrade()
+    {
+        AmountOfBounces = 8;
+        base.Level3Upgrade();
+    }
+    
+    protected override void Level4Upgrade()
+    {
+        AmountOfBounces = 9;
+        base.Level3Upgrade();
+    }
+    
+    protected override void Level5Upgrade()
+    {
+        AmountOfBounces = 10;
+        base.Level3Upgrade();
+    }
+    
+    #endregion
 }
