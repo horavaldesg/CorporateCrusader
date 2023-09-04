@@ -31,6 +31,11 @@ public class JugglingBall : MonoBehaviour
     private float _screenHeight;
     private bool _isBouncing;
     
+    // Define screen safe space as a percentage of the screen width and height.
+    public float screenSafeSpacePercentageX = 5.0f; // Adjust this as needed.
+    public float screenSafeSpacePercentageY = 10.0f; // Adjust this as needed.
+
+    private float minX, maxX, minY, maxY;
     private void Awake()
     {
         TryGetComponent(out rb);
@@ -47,8 +52,22 @@ public class JugglingBall : MonoBehaviour
         lastDirection = direction;
         _screenWidth = Screen.safeArea.width - 50;
         _screenHeight = Screen.safeArea.height - 100;
-    }
+        CalculateScreenSafeSpace();
 
+    }
+    
+    private void CalculateScreenSafeSpace()
+    {
+        // Calculate the screen safe space boundaries based on the percentage of the screen size.
+        var screenSafeSpaceX = Screen.width * (screenSafeSpacePercentageX / 100.0f);
+        var screenSafeSpaceY = Screen.height * (screenSafeSpacePercentageY / 100.0f);
+
+        minX = screenSafeSpaceX;
+        maxX = Screen.width - screenSafeSpaceX;
+        minY = screenSafeSpaceY;
+        maxY = Screen.height - screenSafeSpaceY;
+    }
+    
     private void Update()
     {
         // Move the circle in its current direction.
@@ -62,7 +81,7 @@ public class JugglingBall : MonoBehaviour
     {
         var screenPos = _mainCamera.WorldToScreenPoint(transform.position);
         
-        if (screenPos.x <= 50 || screenPos.x >= _screenWidth)
+        if (screenPos.x <= minX || screenPos.x >= maxX)
         {
             // Bounce off the horizontal edges by reversing the x direction.
             lastDirection = direction;
@@ -71,7 +90,7 @@ public class JugglingBall : MonoBehaviour
             _isBouncing = true;
         }
 
-        if (screenPos.y <= 100 || screenPos.y >= _screenHeight)
+        if (screenPos.y <= minY || screenPos.y >= maxY)
         {
             // Bounce off the vertical edges by reversing the y direction.
             lastDirection = direction;
