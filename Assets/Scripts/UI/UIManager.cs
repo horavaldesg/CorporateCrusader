@@ -202,19 +202,16 @@ public class UIManager : MonoBehaviour
     public void ToggleOptions()
     { 
         _anim.SetTrigger("ToggleOptions");
-        StopTime();
+        ToggleGamePaused();
     }
 
     public void ToggleLevelUpScreen()
     {
         levelUpScreen.SetActive(!levelUpScreen.activeSelf);
-        StopTime();
+        ToggleGamePaused();
     }
 
-    private void StopTime()
-    {
-        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-    }
+    private void ToggleGamePaused() => Time.timeScale = Time.timeScale == 0 ? 1 : 0;
     
     public void ToggleInventory()
     {
@@ -227,7 +224,7 @@ public class UIManager : MonoBehaviour
             UpdateInventoryRows(currentOrientation);
             UpdateInventoryDisplay();
         }
-        StopTime();
+        ToggleGamePaused();
         _anim.SetTrigger("ToggleInventory");
     }
 
@@ -261,18 +258,19 @@ public class UIManager : MonoBehaviour
         UpdateInventoryDisplay();
     }
 
-    public void Restart()
+    //fades out screen before restarting the level
+    public void RestartButton() => _anim.SetTrigger("FadeOutToRestart");
+
+    public void RestartLevel()
     {
-        //Restarts Level
-        StopTime();
+        //restarts level
         var currentScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentScene);
     }
 
-    public void QuitToMainMenu()
-    {
-        //Returns to main menu
-        StopTime();
-        SceneManager.LoadScene("MainMenu");
-    }
+    //fades out screen before returning to main menu
+    public void QuitButton() => _anim.SetTrigger("FadeOut");
+
+    //returns to main menu
+    public void ReturnToMainMenu() => SceneManager.LoadScene("MainMenu");
 }
