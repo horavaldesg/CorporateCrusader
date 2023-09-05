@@ -264,12 +264,17 @@ public class UIManager : MonoBehaviour
     public void RestartLevel()
     {
         //restarts level
+        ToggleGamePaused();
         var currentScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentScene);
     }
 
     //fades out screen before returning to main menu
-    public void QuitButton() => _anim.SetTrigger("FadeOut");
+    public void QuitButton()
+    {
+        _anim.SetTrigger("FadeOut");
+        ToggleGamePaused();
+    }
 
     //returns to main menu
     public void ReturnToMainMenu() => SceneManager.LoadScene("MainMenu");
