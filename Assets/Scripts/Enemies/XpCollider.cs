@@ -15,7 +15,7 @@ public class XpCollider : MonoBehaviour
     private void Awake()
     {
         TryGetComponent(out _spriteRenderer);
-        _spriteRenderer.color =  Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+       // _spriteRenderer.color =  Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     }
     
     
