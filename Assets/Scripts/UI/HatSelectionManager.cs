@@ -86,7 +86,10 @@ public class HatSelectionManager : MonoBehaviour
         //select current hat and set its icon
         selectedHats[currentHatSlot] = currentHat;
         selectedHatIcons[currentHatSlot].sprite = currentHat.HatIcon;
-
+        object[] hatContainer = {
+            currentHat.HatIcon,
+            currentHat.HatTier
+        };
         //disable hat selection screen
         hatSelectionBG.SetActive(false);
 
@@ -103,8 +106,11 @@ public class HatSelectionManager : MonoBehaviour
                 energyReqPanel.SetActive(true); //also enable energy req panel
             }
         }
+
+        
         
         _chosenHats.chosenHats.Add(currentHat.chosenHat);
+        _chosenHats.hatContainer.Add(currentHat.chosenHat, hatContainer);
     }
 
     private void UpdateSelectedHat()

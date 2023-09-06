@@ -70,12 +70,15 @@ public class InventoryItem : MonoBehaviour
         itemTierText.enabled = false;
     }
 
-    public void SetHatDisplay()
+    public void SetHatDisplay(Hat.ChosenHat chosenHat)
     {
         //set and enable hat icon
         //itemIcon.sprite =
-        itemIcon.enabled = false;
-
+        itemIcon.enabled = true;
+        var chosenHatContainer = HatSelection.Instance._chosenHat.hatContainer[chosenHat];
+        itemIcon.sprite = (Sprite)chosenHatContainer[0];
+        itemTierText.text = "Tier: " + (int)chosenHatContainer[1];
+        // = (string)chosenHatContainer[1];
         //disable item level panel
         itemLevelPanel.gameObject.SetActive(false);
 

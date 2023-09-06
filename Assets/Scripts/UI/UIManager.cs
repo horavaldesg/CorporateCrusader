@@ -188,13 +188,19 @@ public class UIManager : MonoBehaviour
                 break;
             case InventoryDisplay.Hats:
                 //loop through inventory items (6 inventory panels)
-                for(int i = 0; i < inventoryItems.Length; i++)
+                for(int i = 0; i < HatSelection.Instance.GetChosenHats().Count; i++)
                 {
                     //NOTE: GET CURRENT SELECTED HAT AT INDEX i
 
                     //set hat display
-                    inventoryItems[i].SetHatDisplay();
+                    inventoryItems[i].SetHatDisplay(HatSelection.Instance.GetChosenHats()[i]);
                 }
+                
+                for (var i = HatSelection.Instance.GetChosenHats().Count; i < inventoryItems.Length; i++)
+                {
+                    inventoryItems[i].HideDisplay();
+                }
+                
                 break;
         }
     }

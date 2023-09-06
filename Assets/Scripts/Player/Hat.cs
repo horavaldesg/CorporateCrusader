@@ -40,8 +40,13 @@ public class Hat : ScriptableObject
         Jester
     };
 
+    public ChosenHat chosenHat;
+
     public List<ChosenHat> chosenHats = new ();
-    
+
+    public Dictionary<ChosenHat, object[]> hatContainer = new();
+
+  
     /*
     public ChosenHat hat1;
     public ChosenHat hat2;
