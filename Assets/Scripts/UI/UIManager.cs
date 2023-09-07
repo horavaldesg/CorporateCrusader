@@ -19,16 +19,23 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text coinsText;
     [SerializeField] private GameObject levelUpScreen;
     
-    [Header("Inventory References")]
+    [Header("Inventory UI References")]
     [SerializeField] private Transform invRow1;
     [SerializeField] private Transform invRow2;
     [SerializeField] private List<Transform> last3InvItems;
     [SerializeField] private InventoryItem[] inventoryItems = new InventoryItem[6];
 
+    [Header("Game Over UI References")]
+    [SerializeField] private TMP_Text timeSurvivedText;
+    [SerializeField] private TMP_Text enemiesDefeatedText;
+    [SerializeField] private Transform coinsCollectedPanel;
+    [SerializeField] private Transform xpEarnedPanel;
+
     private PlayerControls _controls;
     private Animator _anim;
     private bool _canAddLevel;
     private bool _inventoryOpen = false;
+    private int _numDeaths = 0;
     private ScreenOrientation currentOrientation;
 
     private enum InventoryDisplay { Weapons, Equipment, Hats };
@@ -71,6 +78,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        if(Time.timeScale != 1) Time.timeScale = 1; //make sure game isn't paused
+        
         UpdateKills(0);
         UpdateXpBar(0);
         UpdateCoins(0);
@@ -270,18 +279,55 @@ public class UIManager : MonoBehaviour
     public void RestartLevel()
     {
         //restarts level
-        ToggleGamePaused();
         var currentScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentScene);
     }
 
     //fades out screen before returning to main menu
-    public void QuitButton()
-    {
-        _anim.SetTrigger("FadeOut");
-        ToggleGamePaused();
-    }
+    public void QuitButton() => _anim.SetTrigger("FadeOut");
 
     //returns to main menu
     public void ReturnToMainMenu() => SceneManager.LoadScene("MainMenu");
+
+    #region Death Screen UI
+
+    public void PlayerDeath()
+    {
+        ToggleGamePaused();
+
+        if(_numDeaths == 0) _anim.SetTrigger("FirstDeath");
+        else
+        {
+            InitGameOverPanel(); //set values on game over screen
+            _anim.SetTrigger("SecondDeath");
+        }
+    }
+
+    public void SkipAdButton()
+    {
+        InitGameOverPanel(); //set values on game over screen
+        _anim.SetTrigger("SkipAd");
+    }
+
+    private void InitGameOverPanel()
+    {
+        timeSurvivedText.text = timerText.text; //set time survived
+        enemiesDefeatedText.text = "Enemies Defeated: " + enemiesKilledText.text; //set enemies defeated
+
+        if(int.Parse(coinsText.text) == 0) coinsCollectedPanel.gameObject.SetActive(false); //hide coins collected panel if none were collected
+        else coinsCollectedPanel.GetComponentInChildren<TMP_Text>().text = "x" + coinsText.text; //else set coins collected text
+
+        //NOTE: Determine if we want to give profile xp even if you fail a level and how much that would be
+        //for now just hiding xp earned panel
+        xpEarnedPanel.gameObject.SetActive(false);
+    }
+
+    //fades out screen before returning to main menu
+    public void ContinueButton()
+    {
+        //NOTE: Add coins collected and XP earned to player profile before leaving
+        _anim.SetTrigger("FadeOut");
+    }
+
+    #endregion
 }

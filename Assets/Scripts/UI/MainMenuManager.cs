@@ -35,6 +35,8 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        if(Time.timeScale != 1) Time.timeScale = 1; //make sure game isn't paused
+
         _anim = GetComponent<Animator>();
 
         currentOrientation = Screen.orientation;

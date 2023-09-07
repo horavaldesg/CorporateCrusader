@@ -323,12 +323,13 @@ public class PlayerController : MonoBehaviour
 
     private bool PlayerIsAlive()
     {
-        return _health >= 0;
+        return _health > 0;
     }
 
     private void PlayerDied()
     {
-        // Die Condition
+        //death condition
+        UIManager.Instance.PlayerDeath();
     }
     
     #endregion

@@ -1101,7 +1101,7 @@ MonoBehaviour:
   - {fileID: 2220133295510674940}
   corgiLegBootSprite: {fileID: 21300000, guid: 5637f0046f3870943aefa163f82e4637, type: 3}
   bulletSpeed: 0
-  healAmount: 0.2
+  healAmount: 0.1
   healTime: 0
   damage: 0
   xPMultiplier: 0
@@ -1138,6 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5941f7b8f7484b244b5d08fc0d60c28f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _chosenHat: {fileID: 0}
   chosenHats: 
 --- !u!1 &5541413408973786608
 GameObject:

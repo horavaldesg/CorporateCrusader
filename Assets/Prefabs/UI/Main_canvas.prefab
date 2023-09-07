@@ -5144,6 +5144,10 @@ MonoBehaviour:
   - {fileID: 1310489433655393256}
   - {fileID: 1244212986835078401}
   - {fileID: 7156219802012586964}
+  timeSurvivedText: {fileID: 4885917828567232356}
+  enemiesDefeatedText: {fileID: 2103465467366650319}
+  coinsCollectedPanel: {fileID: 4086633455931251439}
+  xpEarnedPanel: {fileID: 8512016401418219515}
 --- !u!95 &8261173412419688511
 Animator:
   serializedVersion: 5
@@ -8283,7 +8287,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7338331731302060612}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7917450503711090996}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ContinueButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4982073731207607542
 GameObject:
   m_ObjectHideFlags: 0
@@ -13235,7 +13251,7 @@ GameObject:
   - component: {fileID: 5767767822331318106}
   - component: {fileID: 1432299561623424826}
   m_Layer: 5
-  m_Name: Cancel_button
+  m_Name: SkipAd_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13343,7 +13359,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5767767822331318106}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7917450503711090996}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SkipAdButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8540943055889052515
 GameObject:
   m_ObjectHideFlags: 0
