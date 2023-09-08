@@ -14,13 +14,14 @@ public class SpiderWebs : MonoBehaviour
     [SerializeField] private Sprite staticWeb;
     private SpriteRenderer _currentImage;
     private PlayerController _playerController;
-    
+    private CircleCollider2D _collider2D;
     public float force;
     private bool _isStatic;
     
     private void Awake()
     {
         TryGetComponent(out _rb);
+        TryGetComponent(out _collider2D);
         TryGetComponent(out _currentImage);
         //Destroy(gameObject, 5);
     }
@@ -47,7 +48,10 @@ public class SpiderWebs : MonoBehaviour
 
     private void StaticWeb()
     {
-        transform.localScale = new Vector3(2.3f, 2.3f, 1);
+        //scale 0.25f
+        // col radius 2.3
+        transform.localScale = new Vector3(0.25f, 0.25f, 1);
+        _collider2D.radius = 2.3f;
         _currentImage.sprite = staticWeb;
         _rb.velocity = Vector2.zero;
         _isStatic = true;

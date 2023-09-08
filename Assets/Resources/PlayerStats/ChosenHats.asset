@@ -12,10 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659810d81fbd9714485d7f1a1274d93f, type: 3}
   m_Name: ChosenHats
   m_EditorClassIdentifier: 
-  hat: 0
-  hat1: 0
-  hat2: 0
-  hat3: 0
-  hat4: 0
-  hat5: 0
-  hat6: 0
+  chosenHat: 0
+  chosenHats: 000000000100000002000000030000000400000005000000
