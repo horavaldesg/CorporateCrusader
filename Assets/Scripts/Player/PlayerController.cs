@@ -297,6 +297,8 @@ public class PlayerController : MonoBehaviour
         return playerSpeed;
     }
 
+    public void RevivePlayer() => RestoreHealth(_baseHealth);
+
     private void RestoreHealth(float health)
     {
         _health = health;

@@ -301,6 +301,15 @@ public class UIManager : MonoBehaviour
             InitGameOverPanel(); //set values on game over screen
             _anim.SetTrigger("SecondDeath");
         }
+
+        _numDeaths++; //increment death count
+    }
+
+    public void WatchedAd()
+    {
+        ToggleGamePaused(); //unpause game
+        _anim.SetTrigger("WatchedAd"); //hide "keep playing" screen
+        PlayerController.Instance.RevivePlayer(); //heal player
     }
 
     public void SkipAdButton()
