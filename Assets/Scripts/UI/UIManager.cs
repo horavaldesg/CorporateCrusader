@@ -331,10 +331,12 @@ public class UIManager : MonoBehaviour
         xpEarnedPanel.gameObject.SetActive(false);
     }
 
-    //fades out screen before returning to main menu
+    //initialize rewards before fading out screen and returning to main menu
     public void ContinueButton()
     {
-        //NOTE: Add coins collected and XP earned to player profile before leaving
+        RewardsManager.Instance.InitializeRewards();
+        RewardsManager.Instance.CoinsCollected = int.Parse(coinsText.text);
+        RewardsManager.Instance.ProfileXPEarned = 0; //NOTE: update this with actual xp earned if we add that above
         _anim.SetTrigger("FadeOut");
     }
 
