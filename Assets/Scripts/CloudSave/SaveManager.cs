@@ -66,7 +66,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public async void SaveSomeData(string key, string data)
+    public async Task SaveSomeData(string key, string data)
     {
         var savedData = new Dictionary<string, object>{{key, data}};
         await CloudSaveService.Instance.Data.ForceSaveAsync(savedData);

@@ -1762,7 +1762,7 @@ GameObject:
   - component: {fileID: 42416324}
   - component: {fileID: 42416323}
   m_Layer: 0
-  m_Name: Ads Manager
+  m_Name: AdsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8263,7 +8263,7 @@ GameObject:
   - component: {fileID: 186123645}
   - component: {fileID: 186123644}
   m_Layer: 0
-  m_Name: Ads Initializer
+  m_Name: AdsInitializer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

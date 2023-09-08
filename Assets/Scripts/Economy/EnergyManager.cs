@@ -172,7 +172,7 @@ public class EnergyManager : MonoBehaviour
         int adChancesLeft = await SaveManager.Instance.LoadSomeInt("AdForEnergyChancesLeft");
         int coinsChancesLeft = await SaveManager.Instance.LoadSomeInt("CoinsForEnergyChancesLeft");
         int gemsChancesLeft = await SaveManager.Instance.LoadSomeInt("GemsForEnergyChancesLeft");
-
+        
         //update watch ad for energy button and chances left text
         adForEnergyButton.interactable = (adChancesLeft > 0) 
         && (ProfileManager.Instance.ProfileInfo.energy <= maxEnergy - 5);
@@ -202,22 +202,24 @@ public class EnergyManager : MonoBehaviour
     public async void AdForEnergyButton(int amount)
     {
         int adsChancesLeft = await SaveManager.Instance.LoadSomeInt("AdForEnergyChancesLeft") - 1; //get previous chances left and decrement by 1
-        SaveManager.Instance.SaveSomeData("AdForEnergyChancesLeft", adsChancesLeft.ToString()); //save chances left
+        await SaveManager.Instance.SaveSomeData("AdForEnergyChancesLeft", adsChancesLeft.ToString()); //save chances left
         ProfileManager.Instance.ChangeNumEnergy(amount);
     }
 
     public async void CoinsForEnergyButton()
     {
+        coinsForEnergyButton.interactable = false; //disable button to avoid spam pressing it
         int coinsChancesLeft = await SaveManager.Instance.LoadSomeInt("CoinsForEnergyChancesLeft") - 1; //get previous chances left and decrement by 1
-        SaveManager.Instance.SaveSomeData("CoinsForEnergyChancesLeft", coinsChancesLeft.ToString()); //save chances left
+        await SaveManager.Instance.SaveSomeData("CoinsForEnergyChancesLeft", coinsChancesLeft.ToString()); //save chances left
         ProfileManager.Instance.ChangeNumCoins(-100); //subtract coins
         ProfileManager.Instance.ChangeNumEnergy(10); //add energy
     }
 
     public async void GemsForEnergyButton()
     {
+        gemsForEnergyButton.interactable = false; //disable button to avoid spam pressing it
         int gemsChancesLeft = await SaveManager.Instance.LoadSomeInt("GemsForEnergyChancesLeft") - 1; //get previous chances left and decrement by 1
-        SaveManager.Instance.SaveSomeData("GemsForEnergyChancesLeft", gemsChancesLeft.ToString()); //save chances left
+        await SaveManager.Instance.SaveSomeData("GemsForEnergyChancesLeft", gemsChancesLeft.ToString()); //save chances left
         ProfileManager.Instance.ChangeNumGems(-25); //subtract gems
         ProfileManager.Instance.ChangeNumEnergy(15); //add energy
     }

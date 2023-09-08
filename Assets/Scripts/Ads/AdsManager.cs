@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-    [SerializeField] Button _showAdButton;
-    [SerializeField] string _androidAdUnitId = "Rewarded_Android";
-    [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
-    string _adUnitId = null; // This will remain null for unsupported platforms
+    [SerializeField] private Button _showAdButton;
+    [SerializeField] private string _iOSAdUnitId = "Rewarded_iOS";
+    [SerializeField] private string _androidAdUnitId = "Rewarded_Android";
+
+    private string _adUnitId = null; // This will remain null for unsupported platforms
  
-    void Awake()
+    private void Awake()
     {   
         // Get the Ad Unit ID for the current platform:
 #if UNITY_IOS
@@ -19,9 +20,6 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
 #elif UNITY_ANDROID
         _adUnitId = _androidAdUnitId;
 #endif
-
-        // Disable the button until the ad is ready to show:
-        //_showAdButton.interactable = false;
     }
  
     // Call this public method when you want to get an ad ready to show.
@@ -30,25 +28,17 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
         Debug.Log("Loading Ad: " + _adUnitId);
         Advertisement.Load(_adUnitId, this);
-        
     }
  
-    // If the ad successfully loads, add a listener to the button and enable it:
+    // If the ad successfully loads, show it.
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
         Debug.Log("Ad Loaded: " + adUnitId);
  
-        if (adUnitId.Equals(_adUnitId))
-        {
-            // Configure the button to call the ShowAd() method when clicked:
-           // _showAdButton.onClick.AddListener(ShowAd);
-            ShowAd();
-            // Enable the button for users to click:
-          //  _showAdButton.interactable = true;
-        }
+        if (adUnitId.Equals(_adUnitId)) ShowAd();
     }
  
-    // Implement a method to execute when the user clicks the button:
+    // Disables the button and shows the loaded ad.
     public void ShowAd()
     {
         // Disable the button:
@@ -83,10 +73,4 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
  
     public void OnUnityAdsShowStart(string adUnitId) { }
     public void OnUnityAdsShowClick(string adUnitId) { }
- 
-    void OnDestroy()
-    {
-        // Clean up the button listeners:
-        _showAdButton.onClick.RemoveAllListeners();
-    }
 }
