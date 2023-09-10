@@ -26,6 +26,7 @@ public class MaracaToss : SelectedWeapon
         go.TryGetComponent(out MaracaProjectile maracaProjectile);
         
         maracaProjectile.damage = damage;
+        maracaProjectile.attributes = attribute;
         
         var force = transform.right * (throwForce * 100);
         

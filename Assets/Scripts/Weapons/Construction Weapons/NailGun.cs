@@ -37,6 +37,7 @@ public class NailGun : SelectedWeapon
             go.transform.rotation = Quaternion.Euler(0, 0, rotationAngle);
             go.TryGetComponent(out NailGunProjectile nailGunProjectile);
             nailGunProjectile.damage = damage;
+            nailGunProjectile.attributes = attribute;
             Destroy(go, 2);
         }
     }

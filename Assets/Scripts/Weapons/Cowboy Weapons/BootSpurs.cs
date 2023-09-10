@@ -30,7 +30,7 @@ public class BootSpurs : SelectedWeapon
         
         rb.AddForce(differenceVector, ForceMode2D.Force);
         enemy.SlowDownEnemy();
-        enemy.TakeDamage(damage);
+        enemy.TakeDamage(damage, attribute);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

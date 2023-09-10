@@ -32,6 +32,7 @@ public class JugglingBalls : SelectedWeapon
         jugglingBall.amountOfBounces = AmountOfBounces;
         var forceDir = transform.right * (force * 10);
         jugglingBall.damage = damage;
+        jugglingBall.attributes = attribute;
         //jugglingBall.rb.AddForce(forceDir);
         jugglingBall.force = force;
     }

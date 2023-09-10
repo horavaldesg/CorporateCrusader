@@ -10,7 +10,8 @@ public class NailGunProjectile : MonoBehaviour
     [SerializeField] private float speed = 5;
     public PlayerController.PlayerDirection playerDirection;
     public float damage;
-
+    [HideInInspector] public SelectedWeapon.Attributes attributes;
+    
     private void Awake()
     {
         TryGetComponent(out _rigidbody2D);
@@ -32,7 +33,7 @@ public class NailGunProjectile : MonoBehaviour
     {
         if(!other.CompareTag("Enemy"))return;
         other.TryGetComponent(out Enemy enemy);
-        enemy.TakeDamage(damage);
+        enemy.TakeDamage(damage, attributes);
         Destroy(gameObject);
     }
 }

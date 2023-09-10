@@ -26,6 +26,7 @@ public class Rockets : SelectedWeapon
         go.TryGetComponent(out RocketProjectile rocketProjectile);
         rocketProjectile.damage = damage;
         rocketProjectile.moveSpeed = velocity;
+        rocketProjectile.attributes = attribute;
     }
 
     private Vector3 RandomPos()

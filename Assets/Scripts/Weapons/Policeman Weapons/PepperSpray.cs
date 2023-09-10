@@ -8,7 +8,7 @@ public class PepperSpray : SelectedWeapon
 {
     public float radius;
     public float slowDownMultiplier;
-
+    
     protected override void Start()
     {
         transform.localScale = new Vector3(radius,radius, 1);
@@ -26,7 +26,7 @@ public class PepperSpray : SelectedWeapon
         if (!enemy) return;
         SlowDownEnemy(enemy);
         if(enemy.takingDamage) return;
-        enemy.TakeDamageWithCoolDown(coolDown, damage);
+        enemy.TakeDamageWithCoolDown(coolDown, damage, attribute);
     }
 
     private void OnTriggerExit2D(Collider2D other)

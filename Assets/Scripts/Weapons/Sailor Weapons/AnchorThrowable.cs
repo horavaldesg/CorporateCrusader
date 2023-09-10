@@ -10,7 +10,8 @@ public class AnchorThrowable : MonoBehaviour
 {
     private Rigidbody2D _rb;
     public float damage;
-
+    public SelectedWeapon.Attributes attributes;
+    
     private void Start()
     {
         TryGetComponent(out CircleCollider2D circleCollider2D);
@@ -22,6 +23,6 @@ public class AnchorThrowable : MonoBehaviour
     {
         if(!other.CompareTag("Enemy"))return;
         other.TryGetComponent(out Enemy enemy);
-        enemy.TakeDamage(damage);
+        enemy.TakeDamage(damage, attributes);
     }
 }

@@ -53,6 +53,7 @@ public class SawBlades : SelectedWeapon
          go.transform.position = transform.position;
          go.TryGetComponent(out SawBladeProjectile sawBladeProjectile);
          sawBladeProjectile.Damage = damage;
+         sawBladeProjectile.attributes =  attribute;
          sawBladeProjectile.ShootBlades(blades[i]);
       }
    }

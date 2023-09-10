@@ -18,6 +18,6 @@ public class CaneDamageable : MonoBehaviour
         other.TryGetComponent(out Enemy enemy);
         if(!enemy) return;
         Debug.Log("Collided with Enemy");
-        enemy.TakeDamage(_cane.damage);
+        enemy.TakeDamage(_cane.damage, _cane.attribute);
     }
 }

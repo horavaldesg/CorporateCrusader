@@ -9,6 +9,7 @@ public class RocketProjectile : MonoBehaviour
     private BoxCollider2D _collider2D;
     [HideInInspector] public float damage;
     [HideInInspector] public float moveSpeed;
+    [HideInInspector] public SelectedWeapon.Attributes attributes;
     
     private void Start()
     {
@@ -33,6 +34,6 @@ public class RocketProjectile : MonoBehaviour
     {
         if(!other.CompareTag("Enemy"))return;
         other.TryGetComponent(out Enemy enemy);
-        enemy.TakeDamage(damage);
+        enemy.TakeDamage(damage, attributes);
     }
 }

@@ -59,6 +59,7 @@ public class Minigun : SelectedWeapon
         var go = Instantiate(instantiatedObject);
         go.TryGetComponent(out Bullet bullet);
         bullet.Damage = damage;
+        bullet.attributes = attribute;
         go.transform.position = turretShootPos.transform.position;
         go.transform.eulerAngles = RandomRotation();
         yield return new WaitForSeconds(shootCoolDown);

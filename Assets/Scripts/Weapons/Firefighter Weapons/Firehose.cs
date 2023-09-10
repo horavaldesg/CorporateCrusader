@@ -43,6 +43,7 @@ public class Firehose : SelectedWeapon
         var go = Instantiate(instantiatedObject);
         go.TryGetComponent(out FireHoseBullet fireHoseBullet);
         fireHoseBullet.Damage = damage;
+        fireHoseBullet.attributes = attribute;
         go.transform.position = transform.position;
         go.transform.eulerAngles = transform.eulerAngles;
         go.transform.localScale = Vector3.one * Random.Range(1f, 2f);

@@ -47,7 +47,7 @@ MonoBehaviour:
   weaponName: Juggling Balls
   weaponDescription: 
   weaponSprite: {fileID: 21300000, guid: fc6a1fb2ca445da4c8cf1cf94d4b1c69, type: 3}
-  attribute: 0
+  attribute: 1
   damage: 3
   level: 0
   coolDown: 5

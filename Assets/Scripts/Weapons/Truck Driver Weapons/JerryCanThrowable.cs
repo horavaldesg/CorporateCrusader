@@ -8,7 +8,7 @@ public class JerryCanThrowable : MonoBehaviour
 {
    [SerializeField] private SpriteRenderer sR;
    [SerializeField] private Sprite oilPuddleSprite;
-
+   [HideInInspector] public SelectedWeapon.Attributes attributes;
    private Rigidbody2D _rigidbody2D;
 
    public float Damage
@@ -45,7 +45,7 @@ public class JerryCanThrowable : MonoBehaviour
       if(!other.CompareTag("Enemy"))return;
       other.TryGetComponent(out Enemy enemy);
       enemy.speed = Damage;
-      enemy.TakeDamage(Damage);
+      enemy.TakeDamage(Damage, attributes);
    }
 
    private void OnTriggerExit2D(Collider2D other)

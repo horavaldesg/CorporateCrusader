@@ -10,7 +10,8 @@ public class SawBladeProjectile : MonoBehaviour
    private float _currentRotation;
    [HideInInspector] public float Damage;
    private Collider2D _collider2D;
-
+   [HideInInspector] public SelectedWeapon.Attributes attributes;
+   
    private void Awake()
    {
       TryGetComponent(out _rb);
@@ -53,6 +54,6 @@ public class SawBladeProjectile : MonoBehaviour
    private IEnumerator TakeDamageWithTimer(Enemy enemy)
    {
       yield return new WaitForSeconds(0.2f);
-      enemy.TakeDamage(Damage);
+      enemy.TakeDamage(Damage, attributes);
    }
 }

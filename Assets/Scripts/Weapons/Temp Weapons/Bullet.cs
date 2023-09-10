@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D rb;
     public float timeAlive;
     [HideInInspector] public Transform whereToShoot;
+    [HideInInspector] public SelectedWeapon.Attributes attributes;
     
     protected virtual void Awake()
     {
@@ -27,7 +28,7 @@ public class Bullet : MonoBehaviour
     {
         if(!other.CompareTag("Enemy"))return;
         other.TryGetComponent(out Enemy enemy);
-        enemy.TakeDamage(Damage);
+        enemy.TakeDamage(Damage, attributes);
         Destroy(gameObject);
     }
 }

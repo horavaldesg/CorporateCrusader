@@ -11,6 +11,7 @@ public class JugglingBall : MonoBehaviour
     [HideInInspector] public float force;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public float damage;
+    [HideInInspector] public SelectedWeapon.Attributes attributes;
     
     [SerializeField] private Sprite[] ballSprites;
     
@@ -123,7 +124,7 @@ public class JugglingBall : MonoBehaviour
     {
         other.TryGetComponent(out Enemy enemy);
         if(!enemy) return;
-        enemy.TakeDamage(damage);
+        enemy.TakeDamage(damage, attributes);
         Destroy(gameObject);
     }
 }

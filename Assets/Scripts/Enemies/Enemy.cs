@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     
     [HideInInspector] public float attackRange;
     [HideInInspector] public float attackCooldown;
+    private EnemyStats.Weakness _weakness;
     
     private GameObject _xpObject;
     private GameObject _coinDrop;
@@ -75,6 +76,7 @@ public class Enemy : MonoBehaviour
         _coinsToAdd = _enemyStats.coinsToDrop;
         _coinDrop = _enemyStats.coinObject;
         _xpObject = _enemyStats.xpObject;
+        _weakness = _enemyStats.weakness;
     }
 
     private void Start()
@@ -143,8 +145,9 @@ public class Enemy : MonoBehaviour
         _rb.velocity = Vector2.zero;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, SelectedWeapon.Attributes attributes)
     {
+        //Debug.Log(CheckWeakness(attributes));
         takingDamage = true;
         health -= damage;
         healthBar.localScale = new Vector3(health / _baseHealth, 1, 1);
@@ -153,16 +156,21 @@ public class Enemy : MonoBehaviour
             EnemyDied();
     }
 
-    public void TakeDamageWithCoolDown(float time, float damage)
+    private bool CheckWeakness(SelectedWeapon.Attributes attributes)
     {
-        TakeDamage(damage);
-        StartCoroutine(WaitToTakeDamage(time, damage));
+        return _weakness.ToString() == attributes.ToString();
     }
 
-    private IEnumerator WaitToTakeDamage(float time, float damage)
+    public void TakeDamageWithCoolDown(float time, float damage, SelectedWeapon.Attributes attributes)
+    {
+        TakeDamage(damage, attributes);
+        StartCoroutine(WaitToTakeDamage(time, damage, attributes));
+    }
+
+    private IEnumerator WaitToTakeDamage(float time, float damage, SelectedWeapon.Attributes attributes)
     {
         yield return new WaitForSeconds(time);
-        TakeDamageWithCoolDown(time, damage);
+        TakeDamageWithCoolDown(time, damage, attributes);
     }
 
     public void StopTakingDamage()

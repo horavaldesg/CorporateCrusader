@@ -7,7 +7,7 @@ public class Pitchfork : SelectedWeapon
 {
     public float knockBack = 35;
     public float range = 1.5f;
-
+    
     private Collider2D _collider2D;
     private bool isStabbing = false;
 
@@ -92,7 +92,7 @@ public class Pitchfork : SelectedWeapon
 
         rb.AddForce(differenceVector, ForceMode2D.Force);
         enemy.SlowDownEnemy();
-        enemy.TakeDamage(damage);
+        enemy.TakeDamage(damage, attribute);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

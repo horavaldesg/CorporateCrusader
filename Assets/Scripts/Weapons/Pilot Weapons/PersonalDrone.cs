@@ -20,6 +20,7 @@ public class PersonalDrone : SelectedWeapon
         go.TryGetComponent(out DroneBullet droneBullet);
         droneBullet.bulletSpeed = bulletSpeed;
         droneBullet.damage = damage;
+        droneBullet.attributes = attribute;
         droneBullet.timeAlive = 5;
         droneBullet.TargetPos = GetClosestEnemy();
     }

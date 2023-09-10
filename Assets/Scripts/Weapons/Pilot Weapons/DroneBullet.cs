@@ -10,7 +10,7 @@ public class DroneBullet : MonoBehaviour
     public float bulletSpeed;
     public float damage;
     public float timeAlive;
-    
+    [HideInInspector] public SelectedWeapon.Attributes attributes;
     public Transform TargetPos
     {
         get;
@@ -35,7 +35,7 @@ public class DroneBullet : MonoBehaviour
     {
         if(!other.CompareTag("Enemy"))return;
         other.TryGetComponent(out Enemy enemy);
-        enemy.TakeDamage(damage);
+        enemy.TakeDamage(damage, attributes);
         Destroy(gameObject);
     }
 }
