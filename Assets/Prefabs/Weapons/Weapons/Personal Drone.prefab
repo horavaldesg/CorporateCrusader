@@ -219,6 +219,7 @@ MonoBehaviour:
     enemies that get close. Simple as.
   weaponSprite: {fileID: 21300000, guid: 0564f8ebeeff6fb4fa9991d093457be9, type: 3}
   attribute: 0
+  hat: 7
   damage: 15
   level: 0
   coolDown: 2

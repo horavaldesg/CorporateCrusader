@@ -49,6 +49,7 @@ MonoBehaviour:
     to top, damaging all enemies they touch.
   weaponSprite: {fileID: 21300000, guid: 4d872cd0851b32b48848e3af8df69033, type: 3}
   attribute: 1
+  hat: 8
   damage: 10
   level: 0
   coolDown: 7.5

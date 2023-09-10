@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SelectedWeapon : MonoBehaviour
@@ -17,14 +18,15 @@ public class SelectedWeapon : MonoBehaviour
     public Sprite weaponSprite;
     
     public Attributes attribute;
-
+    public Hat.ChosenHat hat;
+    
     public float damage;
     public int level;
 
     public float coolDown;
     
     public GameObject instantiatedObject;
-
+    
     protected virtual void Start()
     {
         Activate();
@@ -43,6 +45,7 @@ public class SelectedWeapon : MonoBehaviour
 
     public void UpgradeWeapon()
     {
+        if (level >=6) return;
         level++;
         UpgradeCheck();
     }
@@ -66,6 +69,9 @@ public class SelectedWeapon : MonoBehaviour
             case 5:
                 Level5Upgrade();
                 break;
+            case 6:
+                EvolveWeapon();
+                break;
         }
     }
 
@@ -87,5 +93,22 @@ public class SelectedWeapon : MonoBehaviour
     
     protected virtual void Level5Upgrade()
     {
+    }
+
+    protected virtual void EvolveWeapon()
+    {
+        if(!CheckEvolution()) return;
+        Debug.Log("Weapon Evolved");
+    }
+
+    private bool CheckEvolution()
+    {
+        var canEvolve = false;
+        foreach (var _ in HatSelection.Instance.chosenHats.Where(chosenHat => chosenHat == hat))
+        {
+            canEvolve = true;
+        }
+
+        return canEvolve;
     }
 }

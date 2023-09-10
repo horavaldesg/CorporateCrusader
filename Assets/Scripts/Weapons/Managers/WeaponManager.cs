@@ -60,7 +60,7 @@ public class WeaponManager : MonoBehaviour
             weapon.TryGetComponent(out SelectedWeapon currentSelectedWeapon);
             if (selectedWeapon.weaponName == currentSelectedWeapon.weaponName)
             {
-                if(currentSelectedWeapon.level == 5) return;
+                // if(currentSelectedWeapon.level == 5) return;
                 currentSelectedWeapon.UpgradeWeapon();
             }
         }

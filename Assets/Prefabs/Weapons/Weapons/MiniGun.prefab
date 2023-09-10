@@ -283,6 +283,7 @@ MonoBehaviour:
   weaponDescription: Brrrt
   weaponSprite: {fileID: 0}
   attribute: 0
+  hat: 15
   damage: 1
   level: 0
   coolDown: 90
