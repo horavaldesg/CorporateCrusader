@@ -13,6 +13,9 @@ public class UIManager : MonoBehaviour
     
     public TMP_Text timerText;
 
+    [SerializeField] private int profileXPForVictory = 20;
+
+    [Header("HUD UI References")]
     [SerializeField] private TMP_Text enemiesKilledText;
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private Image xpBarFill;
@@ -27,9 +30,14 @@ public class UIManager : MonoBehaviour
 
     [Header("Game Over UI References")]
     [SerializeField] private TMP_Text timeSurvivedText;
-    [SerializeField] private TMP_Text enemiesDefeatedText;
-    [SerializeField] private Transform coinsCollectedPanel;
-    [SerializeField] private Transform xpEarnedPanel;
+    [SerializeField] private TMP_Text enemiesDefeatedGOText;
+    [SerializeField] private Transform coinsCollectedGOPanel;
+    [SerializeField] private Transform xpEarnedGOPanel;
+
+    [Header("Victory UI References")]
+    [SerializeField] private TMP_Text enemiesDefeatedVText;
+    [SerializeField] private Transform coinsCollectedVPanel;
+    [SerializeField] private Transform xpEarnedVPanel;
 
     private PlayerControls _controls;
     private Animator _anim;
@@ -321,22 +329,49 @@ public class UIManager : MonoBehaviour
     private void InitGameOverPanel()
     {
         timeSurvivedText.text = timerText.text; //set time survived
-        enemiesDefeatedText.text = "Enemies Defeated: " + enemiesKilledText.text; //set enemies defeated
+        enemiesDefeatedGOText.text = "Enemies Defeated: " + enemiesKilledText.text; //set enemies defeated text
 
-        if(int.Parse(coinsText.text) == 0) coinsCollectedPanel.gameObject.SetActive(false); //hide coins collected panel if none were collected
-        else coinsCollectedPanel.GetComponentInChildren<TMP_Text>().text = "x" + coinsText.text; //else set coins collected text
+        if(int.Parse(coinsText.text) == 0) coinsCollectedGOPanel.gameObject.SetActive(false); //hide coins collected panel if none were collected
+        else coinsCollectedGOPanel.GetComponentInChildren<TMP_Text>().text = "x" + coinsText.text; //else set coins collected text
 
         //NOTE: Determine if we want to give profile xp even if you fail a level and how much that would be
         //for now just hiding xp earned panel
-        xpEarnedPanel.gameObject.SetActive(false);
+        xpEarnedGOPanel.gameObject.SetActive(false);
     }
 
     //initialize rewards before fading out screen and returning to main menu
-    public void ContinueButton()
+    public void ContinueGOButton()
     {
         RewardsManager.Instance.InitializeRewards();
         RewardsManager.Instance.CoinsCollected = int.Parse(coinsText.text);
         RewardsManager.Instance.ProfileXPEarned = 0; //NOTE: update this with actual xp earned if we add that above
+        _anim.SetTrigger("FadeOut");
+    }
+
+    #endregion
+
+    #region Victory Screen UI
+
+    public void GameWon()
+    {
+        ToggleGamePaused(); //pause game
+
+        enemiesDefeatedVText.text = "Enemies Defeated: " + enemiesKilledText.text; //set enemies defeated text
+
+        if(int.Parse(coinsText.text) == 0) coinsCollectedVPanel.gameObject.SetActive(false); //hide coins collected panel if none were collected
+        else coinsCollectedVPanel.GetComponentInChildren<TMP_Text>().text = "x" + coinsText.text; //else set coins collected text
+
+        xpEarnedVPanel.GetChild(0).GetComponent<TMP_Text>().text = "+" + profileXPForVictory; //set profile xp earned text
+
+        _anim.SetTrigger("GameWon");
+    }
+
+    //initialize rewards before fading out screen and returning to main menu
+    public void ContinueVButton()
+    {
+        RewardsManager.Instance.InitializeRewards();
+        RewardsManager.Instance.CoinsCollected = int.Parse(coinsText.text);
+        RewardsManager.Instance.ProfileXPEarned = profileXPForVictory;
         _anim.SetTrigger("FadeOut");
     }
 
