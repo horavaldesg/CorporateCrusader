@@ -123,4 +123,35 @@ public class WeaponManager : MonoBehaviour
 
         return level;
     }
+
+    public bool IsWeaponMaxLevel(SelectedWeapon selectedWeapon)
+    {
+        var level = 0;
+        foreach (var localWeapon in localWeapons)
+        {
+            localWeapon.TryGetComponent(out SelectedWeapon localSelectedWeapon);
+            if (selectedWeapon.weaponName == localSelectedWeapon.weaponName)
+            {
+                level = localSelectedWeapon.level;
+            }
+        }
+
+        return level == 5;
+    }
+
+    public bool WeaponCanEvolve(SelectedWeapon selectedWeapon)
+    {
+        var canEvolve = false;
+        foreach (var localWeapon in localWeapons)
+        {
+            localWeapon.TryGetComponent(out SelectedWeapon localSelectedWeapon);
+            if (selectedWeapon.weaponName != localSelectedWeapon.weaponName) continue;
+            foreach (var _ in HatSelection.Instance.chosenHats.Where(chosenHat => chosenHat == localSelectedWeapon.hat))
+            {
+                canEvolve = true;
+            }
+        }
+        
+        return canEvolve;
+    }
 }

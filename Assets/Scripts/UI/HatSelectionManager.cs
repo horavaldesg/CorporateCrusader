@@ -106,11 +106,10 @@ public class HatSelectionManager : MonoBehaviour
                 energyReqPanel.SetActive(true); //also enable energy req panel
             }
         }
-
         
-        
-        _chosenHats.chosenHats.Add(currentHat.chosenHat);
-        _chosenHats.hatContainer.Add(currentHat.chosenHat, hatContainer);
+        if(!_chosenHats.chosenHats.Contains(currentHat.chosenHat))
+            _chosenHats.chosenHats.Add(currentHat.chosenHat);
+        _chosenHats.hatContainer.TryAdd(currentHat.chosenHat, hatContainer);
     }
 
     private void UpdateSelectedHat()
