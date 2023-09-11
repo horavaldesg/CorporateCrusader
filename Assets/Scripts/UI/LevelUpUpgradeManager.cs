@@ -8,18 +8,24 @@ using Random = UnityEngine.Random;
 
 public class LevelUpUpgradeManager : MonoBehaviour
 {
+    public static LevelUpUpgradeManager Instance;
     [SerializeField] private GameObject levelUpButton;
     [SerializeField] private Transform levelUpButtonParent;
     private WeaponsList _weaponsList;
     private List<Button> _buttons = new();
-    private List<GameObject> _weaponsLists = new();
+    [SerializeField]private List<GameObject> _weaponsLists = new();
     private List<GameObject> _equipmentList = new();
     private Dictionary<string, int> equipmentAdded = new Dictionary<string, int>();
-    private Dictionary<string, int> weaponsAdded = new Dictionary<string, int>();
+    private Dictionary<string, object[]> weaponsAdded = new Dictionary<string, object[]>();
     [SerializeField] private List<int> chosenIndexes = new List<int>(3);
     [SerializeField] private List<int> chosenIndexesEquipment = new List<int>(3);
     public static event Action<SelectedWeapon> UpgradePlayer;
     public static event Action UpgradeEnded;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void OnEnable()
     {
@@ -48,7 +54,7 @@ public class LevelUpUpgradeManager : MonoBehaviour
             }
             else
             {
-                button.onClick.AddListener(() => ButtonClicked(levelUpLoader.selectedWeapon));
+                button.onClick.AddListener(() => WeaponClicked(levelUpLoader.selectedWeapon));
             }
         }
     }
@@ -57,11 +63,27 @@ public class LevelUpUpgradeManager : MonoBehaviour
     {
         foreach (var weapon in weaponList)
         {
+            weapon.TryGetComponent(out SelectedWeapon selectedWeapon);
             _weaponsLists.Add(weapon);
-            weaponsAdded.TryAdd(weapon.name, 0);
-            if (weaponsAdded[weapon.name] == 5)
+            var weaponMaxLevel = WeaponManager.Instance.IsWeaponMaxLevel(selectedWeapon);
+            var weaponEvolved = WeaponManager.Instance.WeaponCanEvolve(selectedWeapon);
+            var weaponLevel = WeaponManager.Instance.LevelOfLocalWeapon(selectedWeapon);
+            object[] weaponStats = { weaponLevel, 
+                weaponMaxLevel, 
+                weaponEvolved };
+            weaponsAdded.TryAdd(selectedWeapon.weaponName, weaponStats);
+            var weaponObj = weaponsAdded[selectedWeapon.weaponName];
+           //var weaponLevel = weaponsAdded[selectedWeapon.name];
+           // Debug.Log("Weapon Name that is Loaded: " + weapon.name + " Is Level: " + weaponLevel);
+            if (weaponEvolved)
             {
-                _equipmentList.Remove(weapon);
+                _weaponsLists.Remove(weapon);
+                Debug.Log(weapon.name + " Has Been Removed from list");
+            }
+            else if(weaponLevel  == 5 && !WeaponManager.Instance.WeaponCanEvolve(selectedWeapon))
+            {
+                _weaponsLists.Remove(weapon);
+                Debug.Log(weapon.name + " Has Been Removed from list");
             }
         }
     }
@@ -70,9 +92,10 @@ public class LevelUpUpgradeManager : MonoBehaviour
     {
         foreach (var equipment in equipmentList)
         {
+            equipment.TryGetComponent(out Equipment equipmentComp);
             _equipmentList.Add(equipment);
-            equipmentAdded.TryAdd(equipment.name, 0);
-            if (equipmentAdded[equipment.name] == 5)
+            equipmentAdded.TryAdd(equipmentComp.name, 0);
+            if (equipmentAdded[equipmentComp.name] == 5)
             {
                 _equipmentList.Remove(equipment);
             }
@@ -94,7 +117,7 @@ public class LevelUpUpgradeManager : MonoBehaviour
             }
             else
             {
-                button.onClick.RemoveListener(() => ButtonClicked(levelUpLoader.selectedWeapon));
+                button.onClick.RemoveListener(() => WeaponClicked(levelUpLoader.selectedWeapon));
             }
 
             _buttons.Remove(button);
@@ -106,9 +129,17 @@ public class LevelUpUpgradeManager : MonoBehaviour
         chosenIndexes.Clear();
     }
 
-    private void ButtonClicked(SelectedWeapon selectedWeapon)
+    private void WeaponClicked(SelectedWeapon selectedWeapon)
     {
         UpgradePlayer?.Invoke(selectedWeapon);
+    }
+
+    public void IncreaseLevelOfUpgradedWeapon(SelectedWeapon selectedWeapon)
+    {
+        var weapon = weaponsAdded[selectedWeapon.weaponName];
+        var weaponLevel = WeaponManager.Instance.LevelOfLocalWeapon(selectedWeapon);
+        weapon[0] = weaponLevel;
+        Debug.Log("Weapon Name: " + selectedWeapon.name + " Is Level: " + weaponLevel + " Can Evolve " + (bool)weapon[2]);
         UpgradeEnded?.Invoke();
     }
 
@@ -128,7 +159,6 @@ public class LevelUpUpgradeManager : MonoBehaviour
         var upgrade = RandomList(_weaponsLists);
         _weaponsLists.Remove(upgrade);
         upgrade.TryGetComponent(out SelectedWeapon selectedWeapon);
-
         var go = Instantiate(levelUpButton, levelUpButtonParent, true);
         go.TryGetComponent(out Button button);
         _buttons.Add(button);

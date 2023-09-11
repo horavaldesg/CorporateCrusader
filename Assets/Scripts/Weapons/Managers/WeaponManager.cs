@@ -64,6 +64,8 @@ public class WeaponManager : MonoBehaviour
                 currentSelectedWeapon.UpgradeWeapon();
             }
         }
+        
+        LevelUpUpgradeManager.Instance.IncreaseLevelOfUpgradedWeapon(selectedWeapon);
     }
 
     private int GetRandom(int i)
@@ -151,7 +153,20 @@ public class WeaponManager : MonoBehaviour
                 canEvolve = true;
             }
         }
-        
+
         return canEvolve;
+    }
+    
+    public bool WeaponEvolved(SelectedWeapon selectedWeapon)
+    {
+        var weaponEvolved = false;
+        foreach (var localWeapon in localWeapons)
+        {
+            localWeapon.TryGetComponent(out SelectedWeapon localSelectedWeapon);
+            if (selectedWeapon.weaponName != localSelectedWeapon.weaponName) continue;
+            weaponEvolved = localSelectedWeapon.WeaponEvolved;
+        }
+
+        return weaponEvolved;
     }
 }

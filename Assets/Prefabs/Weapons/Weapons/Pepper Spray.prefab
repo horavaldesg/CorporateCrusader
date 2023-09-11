@@ -139,7 +139,7 @@ MonoBehaviour:
   attribute: 2
   hat: 2
   damage: 4
-  level: 1
+  level: 0
   coolDown: 0.5
   instantiatedObject: {fileID: 0}
   radius: 5

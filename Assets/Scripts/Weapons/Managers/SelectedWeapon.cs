@@ -21,11 +21,17 @@ public class SelectedWeapon : MonoBehaviour
     public Hat.ChosenHat hat;
     
     public float damage;
-    public int level;
+    [HideInInspector] public int level;
 
     public float coolDown;
     
     public GameObject instantiatedObject;
+
+    public bool WeaponEvolved
+    {
+        get;
+        private set;
+    }
     
     protected virtual void Start()
     {
@@ -98,6 +104,7 @@ public class SelectedWeapon : MonoBehaviour
     protected virtual void EvolveWeapon()
     {
         if(!CheckEvolution()) return;
+        WeaponEvolved = true;
         Debug.Log("Weapon Evolved");
     }
 

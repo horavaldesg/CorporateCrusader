@@ -214,7 +214,7 @@ public class EnemySpawner : MonoBehaviour
    {
       var minutes = GameManager.Instance.GetMinutes();
       var seconds = GameManager.Instance.GetSeconds();
-      CheckTimeIncrease();
+    // CheckTimeIncrease();
       return minutes % 2 == 1 && minutes != 0 && seconds < 45;
    }
 
