@@ -1148,9 +1148,9 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 168982349145506520}
+  - {fileID: 3957936619017213967}
   - {fileID: 6051907428539861886}
   - {fileID: 2455411270628515472}
-  - {fileID: 3957936619017213967}
   - {fileID: 5662112079132551954}
   - {fileID: 7344755224429851773}
   m_Father: {fileID: 442378886369754257}
@@ -5563,6 +5563,7 @@ GameObject:
   - component: {fileID: 7917450503711090996}
   - component: {fileID: 8261173412419688511}
   - component: {fileID: 5908250872660049086}
+  - component: {fileID: 5634535538662058122}
   m_Layer: 5
   m_Name: Main_canvas
   m_TagString: Untagged
@@ -5754,6 +5755,21 @@ MonoBehaviour:
   ConformX: 1
   ConformY: 1
   Logging: 0
+--- !u!114 &5634535538662058122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451906790093342556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db36c1fbb3b1c1418c7d2a6d6ff3f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joysticks:
+  - {fileID: 4709493897959995205}
+  - {fileID: 6418975401316289478}
 --- !u!1 &3516677476625470655
 GameObject:
   m_ObjectHideFlags: 0
@@ -11268,7 +11284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6601508554376090920
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14039,7 +14055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1136959269911666651
 RectTransform:
   m_ObjectHideFlags: 0

@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController Instance;
 
+    public static event Action<object[]> MoveStickAction;
+    public static event Action<object[]> LookStickAction;
+
+    public const string LeftStick = "LeftStick";
+    public const string RightStick = "RightStick";
     public enum PlayerDirection
     {
         Right,
@@ -135,15 +140,33 @@ public class PlayerController : MonoBehaviour
         _controls = new PlayerControls();
         //Movement Player Input
         _controls.Player.Move.performed += tgb => { _move = tgb.ReadValue<Vector2>(); };
+        var param = new object[]{};
+        _controls.Player.Move.performed += tgb =>
+        {
+            param = new object[] { true, LeftStick };
+        };
+        _controls.Player.Move.performed += tgb => {MoveStickAction?.Invoke(param); };
         _controls.Player.Move.canceled += _ => { _move = Vector2.zero; };
+        _controls.Player.Move.canceled += _ => {   param = new object[] { false, LeftStick }; };
+        _controls.Player.Move.canceled += tgb => {MoveStickAction?.Invoke(param); };
+
         if(useKeyboardInput)
         {
+            _controls.Player.Look.performed += tgb => { param = new object[] { true, RightStick }; };
+            _controls.Player.Look.performed += tgb => {LookStickAction?.Invoke(param); };
             _controls.Player.Move.performed += tgb => { _look = tgb.ReadValue<Vector2>(); };
             _controls.Player.Move.canceled += _ => { _look = Vector2.zero; };
+            _controls.Player.Look.canceled += _ => {  param = new object[] { false, RightStick }; };
+            _controls.Player.Look.canceled += tgb => {LookStickAction?.Invoke(param); };
         }
         
         _controls.Player.Look.performed += tgb => { _look = tgb.ReadValue<Vector2>(); };
+       
+        _controls.Player.Look.performed += tgb => { param = new object[] { true, RightStick }; };
+        _controls.Player.Look.performed += tgb => {LookStickAction?.Invoke(param); };
         _controls.Player.Look.canceled += _ => { _look = Vector2.zero; };
+        _controls.Player.Look.canceled += _ => {  param = new object[] { false, RightStick }; };
+        _controls.Player.Look.canceled += tgb => {LookStickAction?.Invoke(param); };
     }
 
     private void Start()
