@@ -16,6 +16,8 @@ public class LevelUpLoader : MonoBehaviour
     public int level;
 
     [HideInInspector] public bool isEquipment;
+
+    [HideInInspector] public bool isGold;
     /*private void Start()
     {
         foreach (var t in levelSpriteReference)
@@ -63,5 +65,16 @@ public class LevelUpLoader : MonoBehaviour
                 image.color = Color.black;
             }
         }
+    }
+
+    public void LoadGold(Sprite goldSprite)
+    {
+        nameText.SetText("Gold");
+        imageReference.sprite = goldSprite;
+    }
+    
+    public void ClickGold()
+    {
+        GameManager.AddCoins(1);
     }
 }

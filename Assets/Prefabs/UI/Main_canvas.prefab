@@ -4410,6 +4410,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelUpButton: {fileID: 5666926050170141842, guid: c0132179df39efc46859266f2e198312, type: 3}
   levelUpButtonParent: {fileID: 8107495749280892361}
+  coinSprite: {fileID: 21300000, guid: 701a05a0e4de4ac4e8229ab5332f393a, type: 3}
+  _weaponsLists: []
   chosenIndexes: 
   chosenIndexesEquipment: 
 --- !u!1 &2477006540650219665
