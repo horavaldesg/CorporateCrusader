@@ -48,6 +48,7 @@ MonoBehaviour:
   weaponDescription: Projectiles are fired above the player character in a sweeping
     arc akin to a garden sprinkler. Targets hit are damaged and pushed back slightly.
   weaponSprite: {fileID: 21300000, guid: 08e4c650789341647b7e36cdc1898cbf, type: 3}
+  evoSprite: {fileID: 21300000, guid: 08e4c650789341647b7e36cdc1898cbf, type: 3}
   attribute: 1
   hat: 3
   damage: 5

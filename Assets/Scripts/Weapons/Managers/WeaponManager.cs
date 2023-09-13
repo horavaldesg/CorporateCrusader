@@ -154,7 +154,7 @@ public class WeaponManager : MonoBehaviour
             }
         }
 
-        return canEvolve;
+        return IsWeaponMaxLevel(selectedWeapon) && canEvolve;
     }
     
     public bool WeaponEvolved(SelectedWeapon selectedWeapon)

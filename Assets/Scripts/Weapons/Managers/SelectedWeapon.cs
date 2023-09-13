@@ -16,6 +16,7 @@ public class SelectedWeapon : MonoBehaviour
     public string weaponName;
     [TextArea(5,10)]public string weaponDescription;
     public Sprite weaponSprite;
+    public Sprite evoSprite;
     
     public Attributes attribute;
     public Hat.ChosenHat hat;

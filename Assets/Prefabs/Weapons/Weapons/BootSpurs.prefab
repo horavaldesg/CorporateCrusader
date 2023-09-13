@@ -84,6 +84,7 @@ MonoBehaviour:
   weaponDescription: Enemies that touch the player character are damaged and knocked
     back a considerable distance.
   weaponSprite: {fileID: 21300000, guid: 9ade9338b1a8c1f42877553040b18740, type: 3}
+  evoSprite: {fileID: 21300000, guid: 9ade9338b1a8c1f42877553040b18740, type: 3}
   attribute: 0
   hat: 5
   damage: 5

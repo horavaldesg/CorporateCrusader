@@ -117,7 +117,7 @@ public class LevelUpUpgradeManager : MonoBehaviour
                 _weaponsLists.Remove(weapon);
                 Debug.Log(weapon.name + " Has Been Removed from list");
             }
-            else if(weaponLevel  == 5 && !WeaponManager.Instance.WeaponCanEvolve(selectedWeapon))
+            else if(!WeaponManager.Instance.WeaponCanEvolve(selectedWeapon))
             {
                 _weaponsLists.Remove(weapon);
                 Debug.Log(weapon.name + " Has Been Removed from list");

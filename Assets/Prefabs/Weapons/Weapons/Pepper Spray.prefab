@@ -136,6 +136,7 @@ MonoBehaviour:
   weaponName: Pepper Spray
   weaponDescription: 
   weaponSprite: {fileID: 21300000, guid: 45c759e65db909241b82ab1573093169, type: 3}
+  evoSprite: {fileID: 21300000, guid: 45c759e65db909241b82ab1573093169, type: 3}
   attribute: 2
   hat: 2
   damage: 4
