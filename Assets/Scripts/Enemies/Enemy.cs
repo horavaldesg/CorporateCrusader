@@ -150,7 +150,11 @@ public class Enemy : MonoBehaviour
         //Debug.Log(CheckWeakness(attributes));
         takingDamage = true;
         health -= damage;
-        healthBar.localScale = new Vector3(health / _baseHealth, 1, 1);
+        if(healthBar)
+        {
+            healthBar.localScale = new Vector3(health / _baseHealth, 1, 1);
+        }
+
         health = Mathf.Clamp(health, 0, _baseHealth);
         if (health <= 0)
             EnemyDied();
