@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class DroneBullet : MonoBehaviour
 {
     private Rigidbody2D _rb;
@@ -19,13 +19,16 @@ public class DroneBullet : MonoBehaviour
 
     private void Awake()
     {
-       // Destroy(gameObject, timeAlive);
         TryGetComponent(out _rb);
     }
 
     private void FixedUpdate()
     {
-        if(!TargetPos) return;
+        if(!TargetPos)
+        {
+            Destroy(gameObject);
+            return;
+        }
         var position = _rb.transform.position;
         var direction = (TargetPos.position - position).normalized;
         _rb.MovePosition(position + direction * (bulletSpeed * Time.fixedDeltaTime));
