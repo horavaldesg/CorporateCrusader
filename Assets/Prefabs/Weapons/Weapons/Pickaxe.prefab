@@ -270,7 +270,7 @@ MonoBehaviour:
   weaponDescription: A spinning weapon originating from the player character. The
     cane endlessly spins around the player, damaging all enemies it touches.
   weaponSprite: {fileID: 21300000, guid: 2bc4ccd16a7483c47bc5cd4759fecd6b, type: 3}
-  evoSprite: {fileID: 21300000, guid: 2bc4ccd16a7483c47bc5cd4759fecd6b, type: 3}
+  evoSprite: {fileID: 21300000, guid: b33c37d5c21445044af3527ea58ec851, type: 3}
   attribute: 0
   hat: 21
   damage: 4

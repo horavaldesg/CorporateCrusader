@@ -52,7 +52,7 @@ MonoBehaviour:
     for as long as there are nails present. A nail is removed from the pile on each
     hit.
   weaponSprite: {fileID: 21300000, guid: 2cc9cd53faf9a60429d0c779954d0922, type: 3}
-  evoSprite: {fileID: 21300000, guid: 2cc9cd53faf9a60429d0c779954d0922, type: 3}
+  evoSprite: {fileID: 21300000, guid: 4359f1b4282b1544f809de6cef68dafa, type: 3}
   attribute: 0
   hat: 0
   damage: 5

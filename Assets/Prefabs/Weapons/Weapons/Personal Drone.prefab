@@ -300,8 +300,8 @@ MonoBehaviour:
   weaponName: Personal Drone
   weaponDescription: A friendly drone follows the player character, firing on any
     enemies that get close. Simple as.
-  weaponSprite: {fileID: 21300000, guid: 0564f8ebeeff6fb4fa9991d093457be9, type: 3}
-  evoSprite: {fileID: 21300000, guid: 0564f8ebeeff6fb4fa9991d093457be9, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 559adffbdbd5b014e9c1e8af3e963a27, type: 3}
+  evoSprite: {fileID: 21300000, guid: ce988121616585e4eb7f7c20d4e240f2, type: 3}
   attribute: 0
   hat: 7
   damage: 15
