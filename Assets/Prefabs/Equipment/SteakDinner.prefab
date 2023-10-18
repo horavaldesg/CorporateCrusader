@@ -48,5 +48,6 @@ MonoBehaviour:
   equipmentName: Steak Dinner
   equipmentDescription: Faster health regeneration
   equipmentSprite: {fileID: 21300000, guid: ee1ecc0bb01114643a9ba7393656e55a, type: 3}
+  evoSprite: {fileID: 21300000, guid: 78893d34538bf444fa5db7fdf14a6014, type: 3}
   level: 2
   regenAmount: 0.25

@@ -48,5 +48,6 @@ MonoBehaviour:
   equipmentName: Gardening Gloves
   equipmentDescription: Increase bullet speed
   equipmentSprite: {fileID: 21300000, guid: 14fc2d58df166e94e9930505720e31cc, type: 3}
+  evoSprite: {fileID: 21300000, guid: f8468967d8156d547a5d081e9f699bde, type: 3}
   level: 0
   bulletSpeedIncrease: 2

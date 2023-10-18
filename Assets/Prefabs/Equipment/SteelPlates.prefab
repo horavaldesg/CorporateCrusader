@@ -48,5 +48,6 @@ MonoBehaviour:
   equipmentName: Steel Plates
   equipmentDescription: Max Armor
   equipmentSprite: {fileID: 21300000, guid: edf59e84fd412b349ada14980fc310fc, type: 3}
+  evoSprite: {fileID: 21300000, guid: 3d4f452df9ae87d47b63d3fd3051e225, type: 3}
   level: 0
   armorIncrease: 0.5

@@ -48,5 +48,6 @@ MonoBehaviour:
   equipmentName: Fish Net
   equipmentDescription: Increased pickup range.
   equipmentSprite: {fileID: 21300000, guid: ea7707ac9b4d18245b6a5dec4577ac96, type: 3}
+  evoSprite: {fileID: 21300000, guid: 65b8581c7bd052945976ee0e2fef9784, type: 3}
   level: 0
   range: 0.75

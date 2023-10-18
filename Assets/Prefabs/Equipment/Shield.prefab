@@ -48,5 +48,6 @@ MonoBehaviour:
   equipmentName: Shield
   equipmentDescription: Nearby enemies do less damage
   equipmentSprite: {fileID: 21300000, guid: ffd9c718b81be814e88c81c230856697, type: 3}
+  evoSprite: {fileID: 21300000, guid: adda01797f4721749a1f70911d727e3f, type: 3}
   level: 0
   enemyDamageReduction: 5

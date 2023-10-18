@@ -48,5 +48,6 @@ MonoBehaviour:
   equipmentName: Syringe
   equipmentDescription: Upgrade Health
   equipmentSprite: {fileID: 21300000, guid: 7eafa078ab60c254fa9d18f50833a1b9, type: 3}
+  evoSprite: {fileID: 21300000, guid: 4b09b15fbc9f6be4cab801f6aa9ec5a3, type: 3}
   level: 0
   baseHealthUpgrade: 10

@@ -50,5 +50,6 @@ MonoBehaviour:
 
 '
   equipmentSprite: {fileID: 21300000, guid: b2b416a2b445fe840a6343d22f4cff90, type: 3}
+  evoSprite: {fileID: 21300000, guid: dc403faeed063374cb0ff30e3cf77551, type: 3}
   level: 0
   enemyHealthReduction: 2

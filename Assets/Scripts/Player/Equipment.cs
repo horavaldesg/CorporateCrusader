@@ -10,6 +10,7 @@ public class Equipment : MonoBehaviour
     public string equipmentName;
     [TextArea(5,10)]public string equipmentDescription;
     public Sprite equipmentSprite;
+    public Sprite evoSprite;
 
     public int level;
     

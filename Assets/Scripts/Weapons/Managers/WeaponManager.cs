@@ -141,6 +141,21 @@ public class WeaponManager : MonoBehaviour
         return level == 5;
     }
 
+    public bool IsEquipmentMaxLevel(Equipment selectedEquipment)
+    {
+        var level = 0;
+        foreach (var localWeapon in localEquipment)
+        {
+            localWeapon.TryGetComponent(out Equipment localSelectedEquipment);
+            if (selectedEquipment.equipmentName == localSelectedEquipment.equipmentName)
+            {
+                level = localSelectedEquipment.level;
+            }
+        }
+
+        return level == 5;
+    }
+    
     public bool WeaponCanEvolve(SelectedWeapon selectedWeapon)
     {
         var canEvolve = false;
@@ -155,6 +170,22 @@ public class WeaponManager : MonoBehaviour
         }
 
         return IsWeaponMaxLevel(selectedWeapon) && canEvolve;
+    }
+    
+    public bool EquipmentCanEvolve(Equipment equipment)
+    {
+        var canEvolve = false;
+        foreach (var localEquipment in localEquipment)
+        {
+            localEquipment.TryGetComponent(out Equipment localSelectedEquipment);
+            if (equipment.equipmentName != localSelectedEquipment.equipmentName) continue;
+            foreach (var _ in HatSelection.Instance.chosenHats.Where(chosenHat => chosenHat == localSelectedEquipment.hat))
+            {
+                canEvolve = true;
+            }
+        }
+
+        return canEvolve;
     }
     
     public bool WeaponEvolved(SelectedWeapon selectedWeapon)

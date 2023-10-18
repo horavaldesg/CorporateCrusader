@@ -53,7 +53,9 @@ public class LevelUpLoader : MonoBehaviour
     {
         nameText.SetText(selectedEquipment.equipmentName);
         descriptionText.SetText(selectedEquipment.equipmentDescription);
-        imageReference.sprite = selectedEquipment.equipmentSprite;
+        imageReference.sprite = WeaponManager.Instance.EquipmentCanEvolve(selectedEquipment) ? 
+            selectedEquipment.evoSprite : 
+            selectedEquipment.equipmentSprite;
         for (var i = 0; i < levelSpriteReference.Length; i++)
         {
             if (i < level)

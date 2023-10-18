@@ -48,5 +48,6 @@ MonoBehaviour:
   equipmentName: Magnifying Glass
   equipmentDescription: 
   equipmentSprite: {fileID: 21300000, guid: 66d90b13a88539940bf82eee8f89d81d, type: 3}
+  evoSprite: {fileID: 21300000, guid: f94a28cf20ff39b49a87d983faee4d4d, type: 3}
   level: 0
   sizeMultiplier: 0.2

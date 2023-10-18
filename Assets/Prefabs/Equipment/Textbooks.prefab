@@ -48,5 +48,6 @@ MonoBehaviour:
   equipmentName: Textbooks
   equipmentDescription: Increased XP gain
   equipmentSprite: {fileID: 21300000, guid: 1d3d39ad6c9fc7747bcaf296d6708fc0, type: 3}
+  evoSprite: {fileID: 21300000, guid: 84773233dc3d72e47bc0a6365d470b54, type: 3}
   level: 1
   xpMultiplier: 0.25

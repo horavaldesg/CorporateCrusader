@@ -48,5 +48,6 @@ MonoBehaviour:
   equipmentName: Color Palette
   equipmentDescription: Hat Cooldown
   equipmentSprite: {fileID: 21300000, guid: 01e5ab68786d0eb41858b698ac5c11f7, type: 3}
+  evoSprite: {fileID: 21300000, guid: 089bb6b7360d97a45a7ee0e7867b0697, type: 3}
   level: 0
   coolDown: 0.1

@@ -132,7 +132,7 @@ public class LevelUpUpgradeManager : MonoBehaviour
             equipment.TryGetComponent(out Equipment equipmentComp);
             _equipmentList.Add(equipment);
             equipmentAdded.TryAdd(equipmentComp.name, 0);
-            if (equipmentAdded[equipmentComp.name] == 5)
+            if (equipmentAdded[equipmentComp.name] == 5 && !WeaponManager.Instance.EquipmentCanEvolve(equipmentComp))
             {
                 _equipmentList.Remove(equipment);
             }

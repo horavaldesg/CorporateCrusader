@@ -48,5 +48,6 @@ MonoBehaviour:
   equipmentName: Nitro Can
   equipmentDescription: Increased attack rate
   equipmentSprite: {fileID: 21300000, guid: 8d6c7734104eb6049b10d861f5c6bf14, type: 3}
+  evoSprite: {fileID: 21300000, guid: 171f2c2cb6e2cee4a885b3b0db73d5c0, type: 3}
   level: 0
   attackDecrease: 0.1

@@ -48,5 +48,6 @@ MonoBehaviour:
   equipmentName: Gauntlets
   equipmentDescription: Increased strength and damage
   equipmentSprite: {fileID: 21300000, guid: 61479ba8277455f459adff1dae1d80c2, type: 3}
+  evoSprite: {fileID: 21300000, guid: bcefb1e8bd90d684c883f9ca70231549, type: 3}
   level: 0
   damageMultiplier: 0.25
