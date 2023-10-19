@@ -185,7 +185,9 @@ public class WeaponManager : MonoBehaviour
             }
         }
 
-        return canEvolve;
+        //For Testing
+       // canEvolve = true;
+        return canEvolve && IsEquipmentMaxLevel(equipment) ;
     }
     
     public bool WeaponEvolved(SelectedWeapon selectedWeapon)
