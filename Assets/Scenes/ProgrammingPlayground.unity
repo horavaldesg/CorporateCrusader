@@ -3031,7 +3031,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742599513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 197.05782, y: 167.01451, z: -0.4435358}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3053,6 +3053,7 @@ MonoBehaviour:
   enemiesSpawnedList: []
   levelBackground: {fileID: 551703165}
   ToggleLevelUpScreen: 0
+  crateObject: {fileID: 5759645695992560573, guid: ffe611891830be14586b9976766dd3c9, type: 3}
 --- !u!1 &1773185238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3317,12 +3318,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2241698119680336377, guid: 58c54d8fbb9d3a548bb5ff1f7cbf7e61, type: 3}
     - target: {fileID: 2390223284491747786, guid: de13cae54f42c72479b380a0260ec483, type: 3}
+      propertyPath: clusterSpawn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2390223284491747786, guid: de13cae54f42c72479b380a0260ec483, type: 3}
       propertyPath: spawnSpecificEnemy
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2390223284491747786, guid: de13cae54f42c72479b380a0260ec483, type: 3}
       propertyPath: amountOfEnemiesPerWave
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6776733305777691616, guid: de13cae54f42c72479b380a0260ec483, type: 3}
       propertyPath: m_RootOrder

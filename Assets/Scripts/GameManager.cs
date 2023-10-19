@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public SpriteRenderer levelBackground;
     
     public bool ToggleLevelUpScreen;
+
+    [SerializeField] private GameObject crateObject;
+    private bool _canSpawnCrate;
     
     public int TotalXp
     {
@@ -86,6 +89,18 @@ public class GameManager : MonoBehaviour
         {
             CanInvoke = GetSeconds() > 1;
         }
+
+        //Add Max Crate Count
+        if (CheckSeconds(15) && _canSpawnCrate)
+        {
+            SpawnCrates();
+            _canSpawnCrate = false;
+        }
+
+        if (!_canSpawnCrate)
+        {
+            _canSpawnCrate = !CheckSeconds(4);
+        }
         //Debug.Log(min + ":" + sec);
     }
 
@@ -115,6 +130,11 @@ public class GameManager : MonoBehaviour
     public int GetSeconds()
     {
         return Mathf.FloorToInt(_timeAlive - GetMinutes() * 60);
+    }
+    
+    public bool CheckSeconds(int number)
+    {
+        return GetSeconds() % number == 0 && GetSeconds() != 0;
     }
 
     public static void AddXp(int xp)
@@ -158,5 +178,11 @@ public class GameManager : MonoBehaviour
         CurrentLevel++;
         LevelIncreased?.Invoke(CurrentLevel);
         LevelChanged?.Invoke();
+    }
+
+    private void SpawnCrates()
+    {
+        var crate = Instantiate(crateObject);
+        crate.transform.position = EnemySpawner.Instance.GetRadius(30);
     }
 }

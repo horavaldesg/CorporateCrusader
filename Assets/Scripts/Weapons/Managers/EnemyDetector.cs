@@ -22,8 +22,8 @@ public class EnemyDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(!other.CompareTag("Enemy")) return;
-        enemies.Add(other.gameObject);
+        if(!other.CompareTag("Enemy") || other.CompareTag("Crate")) return;
+        if(other.CompareTag("Enemy")) enemies.Add(other.gameObject);
         if(!_collided)
             StartCheck?.Invoke();
         _collided = true;

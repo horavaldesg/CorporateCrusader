@@ -35,6 +35,8 @@ public class EnemySpawner : MonoBehaviour
    private int _mixedMinEnemies;
    private bool _canIncreaseTime;
 
+   private float _defaultRadius = 20;
+   
    private const string MixedEnemies = "mix";
    private const string FrequencyEnemies = "frequency";
    private const string LevelEnemies = "levelEnemies";
@@ -233,7 +235,7 @@ public class EnemySpawner : MonoBehaviour
       for (var i = 0; i < clusterSpawn; i++)
       {
          var go = Instantiate(GetRandomEnemy(FrequencyEnemies,_currentEnemyIndex));
-         go.transform.position = GetRadius();
+         go.transform.position = GetRadius(_defaultRadius);
          GameManager.Instance.enemiesSpawnedList.Add(go);
          _enemiesSpawned++;
       }
@@ -257,7 +259,7 @@ public class EnemySpawner : MonoBehaviour
       for (var i = 0; i < r; i++)
       {
          var go = Instantiate(GetRandomEnemy(typeOfEnemy,index));
-         go.transform.position = GetRadius();
+         go.transform.position = GetRadius(_defaultRadius);
          GameManager.Instance.enemiesSpawnedList.Add(go);
          _enemiesSpawned++;
       }
@@ -281,7 +283,7 @@ public class EnemySpawner : MonoBehaviour
       for (var i = 0; i < clusterSpawn; i++)
       {
          var go = Instantiate(GetRandomEnemy(RandomTriggerEnemies, _randomTriggerIndex));
-         go.transform.position = GetRadius();
+         go.transform.position = GetRadius(_defaultRadius);
          GameManager.Instance.enemiesSpawnedList.Add(go);
          _enemiesSpawned++;
       }
@@ -401,11 +403,11 @@ public class EnemySpawner : MonoBehaviour
    }
     
    
-   private Vector3 GetRadius()
+   public Vector3 GetRadius(float radius)
    {
       var playerTransform = PlayerController.Instance.CurrentPlayerTransform();
       var playerPos = PlayerController.Instance.CurrentPlayerTransform().position;
-      var radius = 20f;
+      //var radius = 20f;
       var randomPos = Random.insideUnitSphere * radius;
       randomPos += playerPos;
       randomPos.y = 0f;

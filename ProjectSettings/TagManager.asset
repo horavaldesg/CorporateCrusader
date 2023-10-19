@@ -10,6 +10,7 @@ TagManager:
   - XPCollider
   - EnemyTrigger
   - CoinCollider
+  - Crate
   layers:
   - Default
   - TransparentFX
