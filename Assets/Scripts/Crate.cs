@@ -87,4 +87,9 @@ public class Crate : MonoBehaviour
       Debug.Log(i);
       _image.sprite = referenceImages[i];
    }
+
+   private void OnDestroy()
+   {
+      GameManager.Instance.RemoveCrate(gameObject);
+   }
 }

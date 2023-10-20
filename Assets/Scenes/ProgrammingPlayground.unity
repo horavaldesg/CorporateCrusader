@@ -3054,6 +3054,8 @@ MonoBehaviour:
   levelBackground: {fileID: 551703165}
   ToggleLevelUpScreen: 0
   crateObject: {fileID: 5759645695992560573, guid: ffe611891830be14586b9976766dd3c9, type: 3}
+  crateSpawnRate: 15
+  maxCrates: 0
 --- !u!1 &1773185238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,14 +3891,6 @@ PrefabInstance:
     - target: {fileID: 6397563500407889097, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340219557983460371, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
-      propertyPath: fireRate
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340219557983460371, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
-      propertyPath: bulletForce
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2455129827077362206, guid: 6a916e303988b9c4dac72e121831195e, type: 3}

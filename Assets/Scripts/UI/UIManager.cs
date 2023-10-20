@@ -117,7 +117,7 @@ public class UIManager : MonoBehaviour
 
     public static void UpdateXpBar(float coinsCollected)
     {
-        var xpToAdd = (float)coinsCollected / GameManager.Instance.TotalXp;
+        var xpToAdd = coinsCollected / GameManager.Instance.TotalXp;
         var xpBarXScaler = Mathf.Clamp(xpToAdd, 0, 1);
         Instance.xpBarFill.fillAmount = xpBarXScaler;
         if (Instance.xpBarFill.fillAmount >= 1)

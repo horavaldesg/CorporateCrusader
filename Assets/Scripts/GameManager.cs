@@ -19,8 +19,16 @@ public class GameManager : MonoBehaviour
     
     public bool ToggleLevelUpScreen;
 
+    [Header("Drop Crates")]
     [SerializeField] private GameObject crateObject;
+
+    [Tooltip("Every x seconds")]
+    [SerializeField] private int crateSpawnRate;
+
+    [SerializeField] private int maxCrates;
+    
     private bool _canSpawnCrate;
+    private List<GameObject> _cratesAdded = new();
     
     public int TotalXp
     {
@@ -91,7 +99,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Add Max Crate Count
-        if (CheckSeconds(15) && _canSpawnCrate)
+        if (CheckSeconds(crateSpawnRate) && _canSpawnCrate)
         {
             SpawnCrates();
             _canSpawnCrate = false;
@@ -184,5 +192,19 @@ public class GameManager : MonoBehaviour
     {
         var crate = Instantiate(crateObject);
         crate.transform.position = EnemySpawner.Instance.GetRadius(30);
+        AddCrate(crate);
+    }
+
+    private void AddCrate(GameObject crate)
+    {
+        _cratesAdded.Add(crate);
+    }
+
+    public void RemoveCrate(GameObject crate)
+    {
+        if (_cratesAdded.Contains(crate))
+        {
+            _cratesAdded.Remove(crate);
+        }
     }
 }
