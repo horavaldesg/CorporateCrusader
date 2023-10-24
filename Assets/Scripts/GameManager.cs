@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
         EnemiesLoaded?.Invoke(_levelLoader.levelLoader.enemiesThatSpawn);
         levelBackground.sprite = _levelLoader.levelLoader.levelBackground;
         levelBackground.size = new Vector2(1000, 1000);
+        _canSpawnCrate = true;
     }
 
     private void Update()
@@ -107,7 +108,7 @@ public class GameManager : MonoBehaviour
 
         if (!_canSpawnCrate)
         {
-            _canSpawnCrate = !CheckSeconds(4);
+            //_canSpawnCrate = !CheckSeconds(crateSpawnRate + 1);
         }
         //Debug.Log(min + ":" + sec);
     }
@@ -191,7 +192,7 @@ public class GameManager : MonoBehaviour
     private void SpawnCrates()
     {
         var crate = Instantiate(crateObject);
-        crate.transform.position = EnemySpawner.Instance.GetRadius(30);
+        crate.transform.position = EnemySpawner.Instance.GetRadius(5);
         AddCrate(crate);
     }
 
@@ -205,6 +206,16 @@ public class GameManager : MonoBehaviour
         if (_cratesAdded.Contains(crate))
         {
             _cratesAdded.Remove(crate);
+        }
+    }
+
+    public void KillAllEnemies()
+    {
+        foreach (var enemy in enemiesSpawnedList)
+        {
+            enemy.TryGetComponent(out Enemy enemyComp);
+            if(enemyComp)
+                enemyComp.TakeDamage(enemyComp.health, SelectedWeapon.Attributes.Blunt);
         }
     }
 }

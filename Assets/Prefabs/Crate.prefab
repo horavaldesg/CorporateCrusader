@@ -171,6 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa86c2c808164d4f896985a8303ed15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  littleCoinsToAdd: 1
+  aLotOfCoinsToAdd: 2
+  pickupRadius: 5
   referenceImages:
   - {fileID: 21300000, guid: a06d3cc4d8925174a8bc47521c62f239, type: 3}
   - {fileID: 21300000, guid: a06d3cc4d8925174a8bc47521c62f239, type: 3}

@@ -47,4 +47,21 @@ public class XpPickup : MonoBehaviour
     {
         _collider2D.radius = newRadius;
     }
+
+    public void PickupPowerUp(float newRadius)
+    {
+        StartCoroutine(IncreaseRadiusTemp(newRadius));
+    }
+
+    private IEnumerator IncreaseRadiusTemp(float newRadius)
+    {
+        var oldRadius = _collider2D.radius;
+
+       var radius = newRadius;
+        radius += newRadius;
+        _collider2D.radius = radius;
+        
+        yield return new WaitForSeconds(0.25f);
+        _collider2D.radius = oldRadius;
+    }
 }

@@ -19,8 +19,16 @@ public class Crate : MonoBehaviour
       Bomb = 3
    }
 
-   [Header("Place in this order (Little Gold, A lot of Gold, Magnet, Bomb)")]
-   [SerializeField] private Sprite[] referenceImages;
+   [Header("Pickup Variables")] [SerializeField]
+   private int littleCoinsToAdd;
+
+   [SerializeField] private int aLotOfCoinsToAdd;
+   [SerializeField] private float pickupRadius;
+   
+
+   [Header("Place in this order (Little Gold, A lot of Gold, Magnet, Bomb)")] [SerializeField] 
+   private Sprite[] referenceImages;
+   
    [SerializeField] private Sprite defaultImage;
    
 
@@ -29,6 +37,10 @@ public class Crate : MonoBehaviour
    private Rigidbody2D _rigidbody2D;
    
    private SpriteRenderer _image;
+
+   private const string CrateTag = "Crate";
+   private const string PickUpTag = "PickUp";
+   
    
    private void Awake()
    {
@@ -36,26 +48,22 @@ public class Crate : MonoBehaviour
       TryGetComponent(out _collider2D);
       TryGetComponent(out _rigidbody2D);
       _image.sprite = defaultImage;
-      _collider2D.isTrigger = false;
+      _collider2D.isTrigger = true;
       _rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+      gameObject.tag = CrateTag;
    }
 
    private void OnTriggerEnter2D(Collider2D other)
    {
       if(!other.CompareTag("Player")) return;
-      CheckWhatDropped();
+      (gameObject.CompareTag("Crate") ? (Action)BreakBox : CheckWhatDropped)();
    }
 
-   private void OnCollisionEnter2D(Collision2D other)
-   {
-      if(!other.collider.CompareTag("Player") || other.collider.CompareTag("Bullet")) return;
-      BreakBox();
-   }
-
-   private void BreakBox()
+ 
+   public void BreakBox()
    {
       ChooseWhatToDrop();
-      _collider2D.isTrigger = true;
+      gameObject.tag = PickUpTag;
    }
 
    private void CheckWhatDropped()
@@ -63,12 +71,22 @@ public class Crate : MonoBehaviour
       switch (_whatToDrop)
       {
          case WhatToDrop.LittleGold:
+         {
+            GameManager.AddCoins(littleCoinsToAdd);
+         }
             break;
          case WhatToDrop.ALotGold:
+         {
+            GameManager.AddCoins(littleCoinsToAdd);
+         }
             break;
          case WhatToDrop.Magnet:
+            //Call function in player
+            XpPickup.Instance.PickupPowerUp(pickupRadius);
             break;
          case WhatToDrop.Bomb:
+            //Kill all enemies alive
+            GameManager.Instance.KillAllEnemies();
             break;
       }
 

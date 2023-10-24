@@ -26,9 +26,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(!other.CompareTag("Enemy"))return;
-        other.TryGetComponent(out Enemy enemy);
-        enemy.TakeDamage(Damage, attributes);
-        Destroy(gameObject);
+        if(other.CompareTag("Enemy"))
+        {
+            other.TryGetComponent(out Enemy enemy);
+            enemy.TakeDamage(Damage, attributes);
+            Destroy(gameObject);
+        }
+        else if(other.CompareTag("Crate"))
+        {
+            other.TryGetComponent(out Crate crate);
+            crate.BreakBox();
+            Destroy(gameObject);
+        }
     }
 }

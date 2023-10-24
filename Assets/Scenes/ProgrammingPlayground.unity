@@ -3054,7 +3054,7 @@ MonoBehaviour:
   levelBackground: {fileID: 551703165}
   ToggleLevelUpScreen: 0
   crateObject: {fileID: 5759645695992560573, guid: ffe611891830be14586b9976766dd3c9, type: 3}
-  crateSpawnRate: 15
+  crateSpawnRate: 3
   maxCrates: 0
 --- !u!1 &1773185238
 GameObject:
@@ -3319,10 +3319,6 @@ PrefabInstance:
       propertyPath: bossBoundary
       value: 
       objectReference: {fileID: 2241698119680336377, guid: 58c54d8fbb9d3a548bb5ff1f7cbf7e61, type: 3}
-    - target: {fileID: 2390223284491747786, guid: de13cae54f42c72479b380a0260ec483, type: 3}
-      propertyPath: clusterSpawn
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2390223284491747786, guid: de13cae54f42c72479b380a0260ec483, type: 3}
       propertyPath: spawnSpecificEnemy
       value: 0
@@ -3873,24 +3869,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6397563500407889097, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6397563500407889097, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 6397563500407889097, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6397563500407889097, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6397563500407889097, guid: 6a916e303988b9c4dac72e121831195e, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2455129827077362206, guid: 6a916e303988b9c4dac72e121831195e, type: 3}

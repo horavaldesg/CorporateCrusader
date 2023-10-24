@@ -11,6 +11,7 @@ TagManager:
   - EnemyTrigger
   - CoinCollider
   - Crate
+  - PickUp
   layers:
   - Default
   - TransparentFX
