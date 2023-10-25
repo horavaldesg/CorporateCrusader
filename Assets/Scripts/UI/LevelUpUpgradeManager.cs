@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -14,15 +15,21 @@ public class LevelUpUpgradeManager : MonoBehaviour
     [SerializeField] private Sprite coinSprite;
     private WeaponsList _weaponsList;
     private List<Button> _buttons = new();
-    [SerializeField]private List<GameObject> _weaponsLists = new();
+    [SerializeField]private List<GameObject> weaponsLists = new();
     private List<GameObject> _equipmentList = new();
-    private Dictionary<string, int> equipmentAdded = new Dictionary<string, int>();
-    private Dictionary<string, object[]> weaponsAdded = new Dictionary<string, object[]>();
-    [SerializeField] private List<int> chosenIndexes = new List<int>(3);
-    [SerializeField] private List<int> chosenIndexesEquipment = new List<int>(3);
+    private Dictionary<string, int> _equipmentAdded = new ();
+    private Dictionary<string, object[]> _weaponsAdded = new ();
+    [SerializeField] private List<int> chosenIndexes = new (3);
+    [SerializeField] private List<int> chosenIndexesEquipment = new (3);
     public static event Action<SelectedWeapon> UpgradePlayer;
     public static event Action UpgradeEnded;
 
+    public bool HasLuckCoin
+    {
+        get;
+        set;
+    }
+    
     private void Awake()
     {
         Instance = this;
@@ -92,94 +99,110 @@ public class LevelUpUpgradeManager : MonoBehaviour
         }
         
         _equipmentList.Clear();
-        _weaponsLists.Clear();
+        weaponsLists.Clear();
         chosenIndexes.Clear();
     }
 
+    //Loads Resources List into Local List
     private void LoadWeaponList([NotNull] List<GameObject> weaponList)
     {
         foreach (var weapon in weaponList)
         {
             weapon.TryGetComponent(out SelectedWeapon selectedWeapon);
-            _weaponsLists.Add(weapon);
+            weaponsLists.Add(weapon);
             var weaponMaxLevel = WeaponManager.Instance.IsWeaponMaxLevel(selectedWeapon);
             var weaponEvolved = WeaponManager.Instance.WeaponEvolved(selectedWeapon);
             var weaponLevel = WeaponManager.Instance.LevelOfLocalWeapon(selectedWeapon);
             object[] weaponStats = { weaponLevel, 
                 weaponMaxLevel, 
                 weaponEvolved };
-            weaponsAdded.TryAdd(selectedWeapon.weaponName, weaponStats);
-            var weaponObj = weaponsAdded[selectedWeapon.weaponName];
+            _weaponsAdded.TryAdd(selectedWeapon.weaponName, weaponStats);
+            var weaponObj = _weaponsAdded[selectedWeapon.weaponName];
            //var weaponLevel = weaponsAdded[selectedWeapon.name];
            // Debug.Log("Weapon Name that is Loaded: " + weapon.name + " Is Level: " + weaponLevel);
             if (weaponEvolved)
             {
-                _weaponsLists.Remove(weapon);
+                weaponsLists.Remove(weapon);
                 Debug.Log(weapon.name + " Has Been Removed from list");
             }
             else if(weaponLevel  == 5 && !WeaponManager.Instance.WeaponCanEvolve(selectedWeapon))
             {
-                _weaponsLists.Remove(weapon);
+                weaponsLists.Remove(weapon);
                 Debug.Log(weapon.name + " Has Been Removed from list");
             }
         }
     }
-
+    
+    //Loads Resources List into Local List
     private void LoadEquipmentList([NotNull] List<GameObject> equipmentList)
     {
         foreach (var equipment in equipmentList)
         {
             equipment.TryGetComponent(out Equipment equipmentComp);
             _equipmentList.Add(equipment);
-            equipmentAdded.TryAdd(equipmentComp.name, 0);
-            if (equipmentAdded[equipmentComp.name] == 5 && !WeaponManager.Instance.EquipmentCanEvolve(equipmentComp))
+            _equipmentAdded.TryAdd(equipmentComp.equipmentName, 0);
+            if (_equipmentAdded[equipmentComp.equipmentName] == 5 && !WeaponManager.Instance.EquipmentCanEvolve(equipmentComp))
             {
                 _equipmentList.Remove(equipment);
             }
         }
     }
     
+    //Click Event
     private void WeaponClicked(SelectedWeapon selectedWeapon)
     {
         UpgradePlayer?.Invoke(selectedWeapon);
     }
 
+    //Increases Level of Weapon when upgraded
     public void IncreaseLevelOfUpgradedWeapon(SelectedWeapon selectedWeapon)
     {
-        var weapon = weaponsAdded[selectedWeapon.weaponName];
+        var weapon = _weaponsAdded[selectedWeapon.weaponName];
         var weaponLevel = WeaponManager.Instance.LevelOfLocalWeapon(selectedWeapon);
         weapon[0] = weaponLevel;
         Debug.Log("Weapon Name: " + selectedWeapon.name + " Is Level: " + weaponLevel + " Can Evolve " + (bool)weapon[2]);
         UpgradeEnded?.Invoke();
     }
 
+    //Click Event
     private void EquipmentClicked(Equipment equipment)
     {
-        var level = equipmentAdded[equipment.name];
+        var level = _equipmentAdded[equipment.equipmentName];
         level += 1;
         EquipmentLevel = Mathf.Clamp(level, 0, 5);
-        equipmentAdded[equipment.name] = EquipmentLevel;
+        _equipmentAdded[equipment.equipmentName] = EquipmentLevel;
         equipment.AffectPlayer(EquipmentLevel);
         WeaponManager.Instance.AddEquipment(equipment);
         UpgradeEnded?.Invoke();
     }
 
+    //Click Event
     private void GoldClicked([NotNull]LevelUpLoader levelUpLoader)
     {
         levelUpLoader.ClickGold();
         UpgradeEnded?.Invoke();
     }
 
+    //Picks weapons to show on screen
     private void ChooseWeaponUpgrade()
     {
-        switch (CanLoadCoins() || _weaponsLists.Count == 2)
+        switch (CanLoadCoins() || weaponsLists.Count == 2)
         {
             case true:
                 ChooseCoinUpgrade();
                 break;
             case false:
-                var upgrade = RandomList(_weaponsLists);
-                _weaponsLists.Remove(upgrade);
+                var chooseFromLuckyCoin = Random.Range(0, 20);
+
+                var listToChooseFrom = HasLuckCoin ? ChooseFromLuckyCoin() : weaponsLists;
+                 /*
+                 var listToChooseFrom = HasLuckCoin ? chooseFromLuckyCoin % 2 == 0 ? 
+                        ChooseFromLuckyCoin() : weaponsLists : 
+                    weaponsLists;
+                    */
+                
+                var upgrade = RandomList(listToChooseFrom, weaponsLists);
+                weaponsLists.Remove(upgrade);
                 upgrade.TryGetComponent(out SelectedWeapon selectedWeapon);
                 var go = Instantiate(levelUpButton, levelUpButtonParent, true);
                 go.TryGetComponent(out Button button);
@@ -193,6 +216,49 @@ public class LevelUpUpgradeManager : MonoBehaviour
         }
     }
 
+    [NotNull]
+    private List<GameObject> ChooseFromLuckyCoin()
+    {
+            var localWeaponsAdded = new List<GameObject>();
+            foreach (var weapons in weaponsLists)
+            {
+                weapons.TryGetComponent(out SelectedWeapon sw);
+
+                if (_weaponsAdded.ContainsKey(sw.weaponName))
+                {
+                    localWeaponsAdded.Add(weapons);
+                }
+            }
+
+            return localWeaponsAdded;
+    }
+    
+    [NotNull]
+    private List<GameObject> ChooseFromLuckyCoinEquipment()
+    {
+        var localEquipmentsAdded = new List<GameObject>();
+        foreach (var equipment in _equipmentList)
+        {
+            equipment.TryGetComponent(out Equipment equipmentComp);
+
+            if (_equipmentAdded.ContainsKey(equipmentComp.equipmentName))
+            {
+                if (_equipmentAdded[equipmentComp.equipmentName] >= 1 && equipmentComp.equipmentName != "Lucky Coin")
+                {
+                    Debug.Log("Added " + equipmentComp.equipmentName);
+                    localEquipmentsAdded.Add(equipment);
+                }
+                else
+                {
+                    localEquipmentsAdded.Add(equipment);
+                }
+            }
+        }
+
+        return localEquipmentsAdded;
+    }
+
+    //Picks Equipment to show on screen
     private void ChooseEquipmentUpgrade()
     {
        // var i = GetRandomNumber(_equipmentList);
@@ -203,10 +269,22 @@ public class LevelUpUpgradeManager : MonoBehaviour
                break;
            case false:
                if(_equipmentList.Count == 0) return;
-               var upgrade = RandomListEquipment(_equipmentList);
+               var chooseFromLuckyCoin = Random.Range(0, 20);
+                
+               var listToChooseFrom = HasLuckCoin ?
+                       ChooseFromLuckyCoinEquipment(): 
+                   _equipmentList;
+                /*
+                var listToChooseFrom = HasLuckCoin ? chooseFromLuckyCoin % 2 == 0 ? 
+                       ChooseFromLuckyCoinEquipment() : _equipmentList : 
+                   _equipmentList;
+                   */
+               var upgrade = RandomList(listToChooseFrom, listToChooseFrom);
+                Debug.Log("Has Lucky Coin " + HasLuckCoin);
+               //var upgrade = RandomListEquipment(listToChooseFrom);
         
                upgrade.TryGetComponent(out Equipment equipment);
-               EquipmentLevel = equipmentAdded[equipment.name];
+               EquipmentLevel = _equipmentAdded[equipment.equipmentName];
 
                var go = Instantiate(levelUpButton, levelUpButtonParent, true);
                go.TryGetComponent(out Button button);
@@ -220,6 +298,7 @@ public class LevelUpUpgradeManager : MonoBehaviour
        }
     }
 
+    //Coins show on screen
     private void ChooseCoinUpgrade()
     {
         var go = Instantiate(levelUpButton, levelUpButtonParent, true);
@@ -232,7 +311,7 @@ public class LevelUpUpgradeManager : MonoBehaviour
 
     private bool CanLoadCoins()
     {
-        return _equipmentList.Count + _weaponsLists.Count <= 2;
+        return _equipmentList.Count + weaponsLists.Count <= 2;
     }
     
     
@@ -242,36 +321,42 @@ public class LevelUpUpgradeManager : MonoBehaviour
         set;
     }
 
-    private GameObject RandomList(List<GameObject> list)
+    private GameObject RandomList(List<GameObject> list, [NotNull] IReadOnlyList<GameObject> listToChooseFrom)
     {
-        var i = GetRandomNumber(list);
-
-        foreach (var index in chosenIndexes)
+        while (true)
         {
-            while (i == index)
-            {
-                i = GetRandomNumber(list);
-            }
-        }
+            var i = GetRandomNumber(list);
 
-        chosenIndexes.Add(i);
-        return _weaponsLists[i];
+            foreach (var index in chosenIndexes)
+            {
+                while (i == index)
+                {
+                    i = GetRandomNumber(list);
+                }
+            }
+
+            chosenIndexes.Add(i);
+            if (weaponsLists[i] != null) return listToChooseFrom[i];
+        }
     }
 
     private GameObject RandomListEquipment(List<GameObject> list)
     {
-        var i = GetRandomNumber(list);
-
-        foreach (var index in chosenIndexesEquipment)
+        while (true)
         {
-            while (i == index)
-            {
-                i = GetRandomNumber(list);
-            }
-        }
+            var i = GetRandomNumber(list);
 
-        chosenIndexesEquipment.Add(i);
-        return _equipmentList[i];
+            foreach (var index in chosenIndexesEquipment)
+            {
+                while (i == index)
+                {
+                    i = GetRandomNumber(list);
+                }
+            }
+
+            chosenIndexesEquipment.Add(i);
+            if (_equipmentList[i] != null) return _equipmentList[i];
+        }
     }
 
     private int GetRandomNumber(List<GameObject> list)

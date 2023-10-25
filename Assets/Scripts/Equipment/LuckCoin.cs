@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LuckCoin : MonoBehaviour
+public class LuckCoin : Equipment
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Level1()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Level1();
+        LevelUpUpgradeManager.Instance.HasLuckCoin = true;
+        Debug.Log("has luck coin");
     }
 }
