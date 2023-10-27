@@ -201,7 +201,7 @@ public class LevelUpUpgradeManager : MonoBehaviour
                 ChooseCoinUpgrade();
                 break;
             case false:
-                var chooseFromLuckyCoin = Random.Range(0, 20);
+                var chooseFromLuckyCoin = LuckyCoinRandomizer();
 
                 var upgrade = RandomList(weaponsLists);
                 if (HasLuckCoin)
@@ -235,7 +235,7 @@ public class LevelUpUpgradeManager : MonoBehaviour
                break;
            case false:
                if(_equipmentList.Count == 0) return;
-               var chooseFromLuckyCoin = Random.Range(0, 20);
+               var chooseFromLuckyCoin = LuckyCoinRandomizer();
                
                var upgrade = RandomList(_equipmentList);
                if (HasLuckCoin)
@@ -345,6 +345,14 @@ public class LevelUpUpgradeManager : MonoBehaviour
 
         return objectToReturn;
     }
+
+    private int LuckyCoinRandomizer()
+    {
+        var luckCoinList = GameManager.Instance._luckCoinList;
+        var returnVar = Random.Range(0, luckCoinList.Count);
+        return luckCoinList[returnVar];
+    }
+        
     
     
     private bool CanLoadCoins()

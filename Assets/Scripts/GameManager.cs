@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviour
         get;
         set;
     }
+
+    public List<int> _luckCoinList = new();
+  
+    
     
     private void Awake()
     {
@@ -67,6 +71,7 @@ public class GameManager : MonoBehaviour
         levelBackground.sprite = _levelLoader.levelLoader.levelBackground;
         levelBackground.size = new Vector2(1000, 1000);
         _canSpawnCrate = true;
+        SetLuckCoinList(50);
     }
 
     private void Update()
@@ -216,6 +221,21 @@ public class GameManager : MonoBehaviour
             enemy.TryGetComponent(out Enemy enemyComp);
             if(enemyComp)
                 enemyComp.TakeDamage(enemyComp.health, SelectedWeapon.Attributes.Blunt);
+        }
+    }
+
+    public void SetLuckCoinList(int percentage)
+    {
+        _luckCoinList.Clear();
+
+        for (var i = 0; i < percentage - 10; i++)
+        {
+            if (i % 2 == 0) _luckCoinList.Add(i);
+        }
+
+        for (var i = 1; i < percentage; i++)
+        {
+            if (i % 2 == 1) _luckCoinList.Add(i);
         }
     }
 }
