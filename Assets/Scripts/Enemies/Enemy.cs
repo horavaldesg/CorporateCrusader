@@ -191,7 +191,7 @@ public class Enemy : MonoBehaviour
 
     private void DropXp()
     {
-        var randomNum = Random.Range(0, 11);
+        var randomNum = Random.Range(0, 51);
         if(randomNum % 2 == 0) DropCoins();
         
         for (var i = 0; i < amountOfXpToDrop; i++)
