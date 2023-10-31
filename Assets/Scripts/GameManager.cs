@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private float _timeAlive;
     public List<GameObject> enemiesSpawnedList = new();
     private InGameLevelLoader _levelLoader;
-    public SpriteRenderer levelBackground;
+    public SpriteRenderer[] levelBackground;
     
     public bool ToggleLevelUpScreen;
 
@@ -68,8 +68,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         EnemiesLoaded?.Invoke(_levelLoader.levelLoader.enemiesThatSpawn);
-        levelBackground.sprite = _levelLoader.levelLoader.levelBackground;
-        levelBackground.size = new Vector2(1000, 1000);
+        foreach (var background in levelBackground)
+        {
+            background.sprite = _levelLoader.levelLoader.levelBackground;
+            background.size = new Vector2(1000, 1000);
+        }
+        
         _canSpawnCrate = true;
         SetLuckCoinList(50);
     }

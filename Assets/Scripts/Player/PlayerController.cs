@@ -230,7 +230,7 @@ public class PlayerController : MonoBehaviour
         var moveDir = new Vector2(-_look.y, _look.x);
         _gunRenderer.flipY = moveDir.y < 0;
         var rotation = Quaternion.LookRotation(Vector3.forward, moveDir);
-        gunRotate.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(gunRotate.rotation.eulerAngles.z, rotation.eulerAngles.z, gunRotationSpeed * Time.deltaTime * 100));
+        gunRotate.rotation = Quaternion.Lerp(gunRotate.rotation, rotation, gunRotationSpeed * Time.deltaTime * 100);
     }
     
     #endregion
