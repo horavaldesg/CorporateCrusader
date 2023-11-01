@@ -37,7 +37,9 @@ public class Crate : MonoBehaviour
    private Rigidbody2D _rigidbody2D;
    
    private SpriteRenderer _image;
-
+   private List<Vector2> _imageSizes = new();
+   
+  
    private const string CrateTag = "Crate";
    private const string PickUpTag = "PickUp";
    
@@ -51,6 +53,16 @@ public class Crate : MonoBehaviour
       _collider2D.isTrigger = true;
       _rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
       gameObject.tag = CrateTag;
+      _image.size = new Vector2(1, 1);
+      for (var i = 0; i < 4; i++)
+      {
+         _imageSizes.Add(Vector2.zero);
+      }
+      
+      _imageSizes[0] = new Vector2(1.5f, 1);
+      _imageSizes[1] = new Vector2(1.5f, 1);
+      _imageSizes[2] = new Vector2(0.75f, 0.75f);
+      _imageSizes[3] = new Vector2(0.8f, 0.8f);
    }
 
    private void OnTriggerEnter2D(Collider2D other)
@@ -103,6 +115,7 @@ public class Crate : MonoBehaviour
    private void ChangeImage(int i)
    {
       Debug.Log(i);
+     // _image.size = _imageSizes[i];
       _image.sprite = referenceImages[i];
    }
 

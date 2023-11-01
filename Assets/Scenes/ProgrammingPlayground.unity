@@ -3607,7 +3607,7 @@ MonoBehaviour:
   - {fileID: 276845425}
   ToggleLevelUpScreen: 0
   crateObject: {fileID: 5759645695992560573, guid: ffe611891830be14586b9976766dd3c9, type: 3}
-  crateSpawnRate: 3
+  crateSpawnRate: 4
   maxCrates: 0
   _luckCoinList: 
 --- !u!1 &1747074667

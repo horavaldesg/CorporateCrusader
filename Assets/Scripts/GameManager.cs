@@ -112,14 +112,16 @@ public class GameManager : MonoBehaviour
         if (CheckSeconds(crateSpawnRate) && _canSpawnCrate)
         {
             SpawnCrates();
+            Invoke(nameof(TurnOnSpawn),2 );
             _canSpawnCrate = false;
         }
-
-        if (!_canSpawnCrate)
-        {
-            //_canSpawnCrate = !CheckSeconds(crateSpawnRate + 1);
-        }
+        
         //Debug.Log(min + ":" + sec);
+    }
+
+    private void TurnOnSpawn()
+    {
+        _canSpawnCrate = true;
     }
 
     private bool ChangePhaseCheck()
